@@ -1,0 +1,8 @@
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.csproj.AssemblyReference.cache
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.AssemblyInfoInputs.cache
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.AssemblyInfo.cs
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.csproj.CoreCompileInputs.cache
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.MvcApplicationPartsAssemblyInfo.cache
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.RazorAssemblyInfo.cache
+D:\projects\ASP.NET\Shoppe_Clone\obj\Debug\net7.0\Shoppe_Clone.RazorAssemblyInfo.cs
