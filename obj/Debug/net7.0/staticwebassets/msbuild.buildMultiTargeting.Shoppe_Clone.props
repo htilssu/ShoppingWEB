@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Shoppe_Clone.props" />
+</Project>
