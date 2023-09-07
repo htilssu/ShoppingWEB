@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj": {}
+    "D:\\projects\\ASP.NET\\ShoppingWEB\\Shoppe_Clone.csproj": {}
   },
   "projects": {
-    "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj": {
+    "D:\\projects\\ASP.NET\\ShoppingWEB\\Shoppe_Clone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj",
+        "projectUniqueName": "D:\\projects\\ASP.NET\\ShoppingWEB\\Shoppe_Clone.csproj",
         "projectName": "Shoppe_Clone",
-        "projectPath": "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj",
+        "projectPath": "D:\\projects\\ASP.NET\\ShoppingWEB\\Shoppe_Clone.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\ASP.NET\\Shoppe_Clone\\obj\\",
+        "outputPath": "D:\\projects\\ASP.NET\\ShoppingWEB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

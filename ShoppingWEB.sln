@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shoppe_Clone", "Shoppe_Clone.csproj", "{7CF53DF0-CC3B-4075-B1DB-E5E381F7A589}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingWEB", "ShoppingWEB.csproj", "{7CF53DF0-CC3B-4075-B1DB-E5E381F7A589}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj",
-      "projectName": "Shoppe_Clone",
-      "projectPath": "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj",
+      "projectUniqueName": "D:\\projects\\ASP.NET\\ShoppingWEB\\ShoppingWEB.csproj",
+      "projectName": "ShoppingWEB",
+      "projectPath": "D:\\projects\\ASP.NET\\ShoppingWEB\\ShoppingWEB.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\ASP.NET\\Shoppe_Clone\\obj\\",
+      "outputPath": "D:\\projects\\ASP.NET\\ShoppingWEB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

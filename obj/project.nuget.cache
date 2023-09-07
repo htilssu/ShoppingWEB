@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EBHaKK5FjK43dpAf7JEIBlPGOWG8NGY7cM7+/Wcix7NgqxPNHwoNOkEKdgdUkQekkAndek8F6NmOLx/8Hza7LQ==",
+  "dgSpecHash": "yPu9XGzvhYqNbTIQNcrRoRkJOYgChhFLYyOKJnXuzIm/WMTNXuUFDOttOK0W5gDPnNnwSZjnuhlmTMf3IRtO1g==",
   "success": true,
-  "projectFilePath": "D:\\projects\\ASP.NET\\Shoppe_Clone\\Shoppe_Clone.csproj",
+  "projectFilePath": "D:\\projects\\ASP.NET\\ShoppingWEB\\ShoppingWEB.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
