@@ -1,8 +1,65 @@
-﻿@model dynamic
+﻿@model LoginModel
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Đăng nhập";
+    Layout = "_LoginLayout";
 }
 
-<h2>title</h2>
+<div class="main d-flex container-fluid">
+    <div class="bg-image"></div>
+    <div class="container-md d-flex justify-content-end align-items-center p-md-5">
+        <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Login" method="post">
+            <h4 class="title fw-normal mb-4">Đăng nhập</h4>
+            <div class="username mb-4">
+                <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập" >
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="pass position-relative mb-4">
+                <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu" >
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-danger mb-2">Đăng nhập</button>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="action d-flex justify-content-between">
+                <a href="" class="text-decoration-none text-muted">
+                    <p>Quên mật khẩu</p>
+                </a>
+                <a href=""></a>
+            </div>
+
+            <div class="or d-flex mb-4">
+                <div class="w-100">
+                    <hr>
+                </div>
+                <div class="orr text-muted w-100 text-center">Hoặc</div>
+                <div class="w-100">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="login-by-other d-flex justify-content-around align-items-center gap-4 mb-5">
+                <div class="fb">
+                    <a class="btn btn-outline-info">
+                        <i style="color: #0c63e4" class="bi bi-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+                <div class="gg">
+                    <a class="btn btn-outline-danger">
+                        <i
+                           class="bi bi-google">
+                        </i>
+                        <span>Google</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-reg d-flex justify-content-center gap-1">
+                <p class="text-muted">Bạn mới biết đến Aetherix?</p>
+                <span>
+                    <a href="/Register" class="text-danger text-decoration-none">Đăng ký</a>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

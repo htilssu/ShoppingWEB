@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 
-namespace Shoppe_Clone.Controllers;
+namespace ShoppingWEB.Controllers;
 
 public class HomeController : Controller
 {
-    // GET
+
     public IActionResult Index()
     {
         return View();
