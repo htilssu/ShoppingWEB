@@ -1,0 +1,49 @@
+﻿@font-face {
+    font-display: block;
+    font-family: "bootstrap-icons";
+    src: url("../../fonts/bootstrap-icons.woff2?24e3eb84d0bcaf83d77f904c78ac1f47") format("woff2"), url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("woff");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header .navbar {
+    height: 84px;
+}
+
+header .navbar h3 {
+    color: #C1712A;
+    font-weight: normal;
+    margin: 0;
+    margin-top: 5px;
+}
+
+header .navbar h3.log-type {
+    font-weight: normal;
+    color: black;
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.info-company {
+    font-size: .8rem
+}
+
+.main {
+    background-color: #C1712A;
+    height: 80vh;
+}
+
+.main .form-login {
+    height: 100%;
+    width: 400px;
+}
+
+
+.main .form-login .action a {
+    font-size: .8rem;
+}
