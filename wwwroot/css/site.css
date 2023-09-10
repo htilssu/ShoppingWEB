@@ -1,0 +1,208 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 14px;
+    color: black;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+header {
+    background-color: #ce6c09;
+
+}
+
+
+header .navbar {
+    height: 70px;
+}
+
+header .navbar.nav-social {
+    font-size: .9rem;
+    height: 10%;
+    z-index: 1000;
+}
+
+.navbar .btn-search {
+    background-color: #ce6c09;
+    width: 65px;
+    height: calc(100% - 4px);
+    margin: 2px;
+}
+
+.navbar .nav-item a:hover {
+    cursor: pointer;
+}
+
+.navbar div {
+    color: white;
+}
+
+
+.navbar .social a:hover {
+    cursor: pointer;
+}
+
+.navbar .nav-left .nav-item:not(:first-child) {
+    margin-left: .5rem;
+    position: relative;
+}
+
+.navbar .nav-left .nav-item:not(:last-child) {
+    margin-right: .5rem;
+}
+
+.navbar .nav-left .nav-item:not(:first-child)::after {
+    content: "|";
+    position: absolute;
+    opacity: .5;
+    left: calc(-.5rem - 1px);
+}
+
+.navbar .nav-right .nav-item:not(:first-child) {
+    margin-left: .5rem;
+}
+
+.navbar .nav-right .reg-log div:not(:first-child) {
+    margin-left: .5rem;
+    position: relative;
+}
+
+.navbar .nav-right .reg-log div:not(:first-child)::after {
+    content: "|";
+    position: absolute;
+    left: calc(-.5rem - 1px);
+    opacity: .5;
+}
+
+.navbar .nav-right .reg-log div:not(:last-child) {
+    margin-right: .5rem;
+}
+
+.navbar .nav-right .reg-log div a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar .nav-right .notify-render::after {
+    content: "";
+    height: 15px;
+    width: 15px;
+    rotate: 45deg;
+    right: 10%;
+    top: -7.5px;
+    position: absolute;
+    background: white;
+    clip-path: polygon(0 0, 100% 0,0 100%);
+    z-index: 99;
+}
+
+.navbar .nav-right .notify-render {
+    width: 500%;
+    left: -400%;
+    opacity: 1;
+    top: 130%;
+    height: 300px;
+    border: 1px solid #a29e9e;
+    transition: all .2s;
+}
+
+.newrender {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    left: 50% !important;
+}
+
+
+.navbar .nav-right .notify-render .notify-action a {
+    height: 35px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background-color: #d5dade;
+}
+
+.navbar .nav-right .notify-render .notify {
+    height: calc(100% - 35px);
+
+}
+
+.navbar .nav-right .notify-render .notify .bg-notify {
+    height: calc(100% - 50px);
+    background-image: url("/imgs/Chuong_BG.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.navbar .nav-right .notify-render .notify p {
+    font-size: .9rem;
+}
+
+
+.navbar .nav-item:hover {
+    cursor: pointer;
+}
+
+.navbar .nav-item a:hover {
+    opacity: .8;
+}
+
+.navbar .nav-right .nav-item:not(:last-child):not(:first-child):hover {
+    opacity: .8;
+}
+
+
+.placeholder {
+    height: 108px;
+}
+
+.info-company {
+    font-size: .8rem
+}
+
+
+@media screen and (max-width: 768px) {
+    header .navbar {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

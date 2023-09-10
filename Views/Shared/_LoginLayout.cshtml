@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/login/style.css" asp-append-version="true">
+    <link rel="shortcut icon" href="~/imgs/shopping-brand.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" asp-append-version="true">
+    <title>@ViewBag.Title - Aetherix</title>
+</head>
+<body>
+<header>
+    <div class="container-fluid">
+        <div class="container-md navbar d-flex">
+            <div class="navbar-brand h-100 d-flex justify-content-center align-items-center">
+                <a href="/" class="h-100 text-decoration-none d-flex justify-content-center align-items-center">
+                    <svg class="h-100 w-75"  version="1.0" xmlns="http://www.w3.org/2000/svg"
+                         width="633.000000pt" height="633.000000pt" viewBox="0 0 633.000000 633.000000"
+                         preserveAspectRatio="xMidYMid meet">
+                        <g transform="translate(0.000000,633.000000) scale(0.100000,-0.100000)"
+                           fill="#C1712A" stroke="none">
+                            <path d="M3075 6310 c-356 -56 -662 -276 -821 -591 -59 -118 -91 -218 -109
+                                                  -336 -26 -169 -17 -237 36 -298 62 -70 171 -83 251 -30 56 37 78 89 88 208 18
+                                                  219 105 384 272 519 124 100 272 151 438 151 115 -1 170 -11 270 -50 256 -101
+                                                  449 -373 450 -633 0 -80 17 -130 59 -171 67 -68 171 -76 248 -20 61 44 78 89
+                                                  76 194 -11 485 -353 910 -830 1033 -110 29 -322 40 -428 24z"/>
+                            <path d="M1711 4709 c-72 -12 -181 -71 -230 -124 -40 -43 -93 -137 -104 -185
+                                                  -18 -76 -35 -284 -27 -332 18 -111 64 -195 143 -264 23 -20 353 -215 732 -434
+                                                  380 -219 711 -416 737 -439 60 -53 102 -117 129 -198 18 -54 21 -82 17 -167
+                                                  -3 -95 -6 -109 -41 -178 -65 -132 -60 -129 -1022 -683 -952 -548 -959 -553
+                                                  -1017 -674 -28 -58 -33 -78 -36 -166 l-4 -100 91 -252 c49 -139 100 -271 111
+                                                  -294 45 -88 145 -170 245 -203 46 -15 208 -16 1815 -14 l1765 3 59 28 c78 36
+                                                  139 87 182 151 20 31 69 151 125 306 78 215 93 267 96 330 3 53 -32 407 -121
+                                                  1210 -69 624 -155 1405 -191 1735 -36 330 -72 623 -80 651 -33 117 -137 225
+                                                  -264 276 l-56 23 -1500 1 c-854 1 -1523 -2 -1554 -7z"/>
+                            <path d="M1254 3451 c-30 -13 -64 -59 -64 -87 0 -13 56 -189 125 -390 69 -201
+                                                  125 -375 125 -385 0 -10 -56 -184 -125 -385 -69 -201 -125 -377 -125 -390 0
+                                                  -13 13 -38 29 -56 56 -63 38 -71 736 332 347 200 645 377 663 394 60 56 62
+                                                  151 5 207 -35 35 -1289 759 -1323 764 -14 3 -35 0 -46 -4z"/>
+                            <path d="M479 3190 c-93 -49 -90 -199 5 -244 50 -23 313 -23 363 1 98 46 97
+                                                  200 -1 247 -27 13 -66 16 -183 16 -126 -1 -153 -4 -184 -20z"/>
+                            <path d="M665 2721 c-74 -32 -108 -137 -66 -204 35 -58 69 -67 236 -67 114 0
+                                                  155 4 181 16 46 22 74 70 74 128 0 41 -5 52 -39 89 l-40 42 -163 2 c-90 1
+                                                  -172 -1 -183 -6z"/>
+                            <path d="M389 2227 c-90 -60 -88 -181 4 -237 28 -18 51 -20 187 -20 170 0 199
+                                                  8 236 66 25 37 24 116 -2 152 -39 53 -74 62 -240 62 -140 0 -153 -2 -185 -23z"/>
+                        </g>
+                    </svg>
+                </a>
+                <h3>Aetherix</h3>
+                <h3 class="log-type">@ViewBag.Title</h3>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main">
+    @RenderBody()
+</div>
+<footer class=" card-footer p-md-5">
+    <div class="container-md">
+        <hr>
+            <div class="copyright d-flex justify-content-between fs-6 text-muted flex-wrap align-items-center text-center">
+                <p>&copy; @DateTime.Today.Year Aetherix. Tất cả các quyền được bảo lưu</p>
+                <p>Quốc gia & Khu vực: Việt Nam</p>
+            </div>
+            <hr>
+            <div class="info-company d-flex flex-column flex-md-wrap justify-content-center align-items-center">
+                <p>Công ty TNHH Aetherix</p>
+                <br>
+                <p>Địa chỉ: Tầng 1-2-3-4, Tòa nhà HUFLIT, số 828 đường Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh, Việt Nam. Tổng đài hỗ trợ: 0123456789 - Email: cskh@hotro.aetherix.vn</p>
+                <p>Chịu Trách Nhiệm Quản Lý Nội Dung: Hihihi - Điện thoại liên hệ: 0123456789</p>
+                <p>© 2023 - Bản quyền thuộc về Công ty TNHH Aetherix</p>
+            </div>
+    </div>
+</footer>
+
+</body>
+</html>
