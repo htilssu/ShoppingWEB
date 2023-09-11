@@ -22,7 +22,12 @@ public class LoginController : Controller
     [ActionName("Index")]
     public async Task<IActionResult> LoginAction(LoginModel usr)
     {
-   
-        return RedirectToAction("Index", "Home");
+
+        if (ModelState.IsValid)
+        {
+            return RedirectToAction("Index","Home");
+        }
+
+        return View(usr);
     }
 }
