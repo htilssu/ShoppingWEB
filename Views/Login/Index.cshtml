@@ -11,15 +11,14 @@
         <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Login" method="post">
             <h4 class="title fw-normal mb-4">Đăng nhập</h4>
             <div class="username mb-4">
-                <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập" >
+                <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập">
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
-            <div class="pass position-relative mb-4">
-                <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu" >
+            <div class="pass mb-4">
+                <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-danger mb-2">Đăng nhập</button>
-            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="action d-flex justify-content-between">
                 <a href="" class="text-decoration-none text-muted">
                     <p>Quên mật khẩu</p>
@@ -47,7 +46,7 @@
                 <div class="gg">
                     <a class="btn btn-outline-danger">
                         <i
-                           class="bi bi-google">
+                            class="bi bi-google">
                         </i>
                         <span>Google</span>
                     </a>

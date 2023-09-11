@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Shoppe_Clone.Controllers;
-
+ namespace ShoppingWEB.Controllers;
 public class AdminController : Controller
 {
     // GET
