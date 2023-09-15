@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -18,7 +17,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder => { optionsB
 builder.Services.AddIdentity<UserModel, RoleModel>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
-
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = new PathString("/Login");
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
