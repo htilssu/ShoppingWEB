@@ -10,11 +10,13 @@ var conf = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
-var connectionString = conf["Database:ConnectionString"];
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = conf["Database:ConnectionString"];
 builder.Services.AddSingleton<MySqlConnection>(new MySqlConnection(connectionString));
 builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder => { optionsBuilder.UseMySQL(connectionString); });
+
+builder.Services.AddDefaultIdentity<UserModel>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddIdentity<UserModel, RoleModel>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
