@@ -1,0 +1,30 @@
+﻿.placeholder {
+    height: 70px !important;
+}
+
+.main .nav-menu {
+    width: 15% !important;
+    background-color: #F7F7F7 !important;
+    box-shadow: 1px -1px 1px #eae2e2;
+}
+
+.main .nav-menu .nav-item {
+    height: 40px;   
+    line-height: 40px;
+    width: 100%;
+}
+.main .nav-menu .nav-item > div {
+    width: 50%;
+}
+
+.main .nav-menu .nav-item i {
+    color: #855832;
+}
+
+.main .nav-menu .nav-item:not(:last-child){
+    border-bottom: 1px solid #bcbebf;
+}
+
+.main .nav-menu .nav-item:hover {
+    background-color: #bcbebf;
+}
