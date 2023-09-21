@@ -35,7 +35,7 @@ public partial class Product
 
     public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
 
-    public virtual AspNetUser? Seller { get; set; }
+    public virtual UserModel? Seller { get; set; }
 
     public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();
 }

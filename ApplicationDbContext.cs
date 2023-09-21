@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Shoppe_Clone.Models;
+using ShoppingWEB.Models;
 
 namespace ShoppingWEB;
 

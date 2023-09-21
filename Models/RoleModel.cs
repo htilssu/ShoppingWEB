@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 
-namespace Shoppe_Clone.Models;
+namespace ShoppingWEB.Models;
 
 public class RoleModel : IdentityRole
 {

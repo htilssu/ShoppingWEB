@@ -21,5 +21,5 @@ public partial class DeliveryInfo
 
     public bool? Default { get; set; }
 
-    public virtual AspNetUser? ReceiverNavigation { get; set; }
+    public virtual UserModel? ReceiverNavigation { get; set; }
 }

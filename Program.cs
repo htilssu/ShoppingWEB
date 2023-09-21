@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using Shoppe_Clone.Models;
+using ShoppingWEB.Models;
 using ShoppingWEB;
 
 var conf = new ConfigurationBuilder()
@@ -13,14 +13,9 @@ var conf = new ConfigurationBuilder()
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = conf["Database:ConnectionString"];
-builder.Services.AddSingleton<MySqlConnection>(new MySqlConnection(connectionString));
+builder.Services.AddSingleton<MySqlConnection>();
 builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder => { optionsBuilder.UseMySQL(connectionString); });
-
-builder.Services.AddDefaultIdentity<UserModel>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddIdentity<UserModel, RoleModel>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
+builder.Services.AddDefaultIdentity<UserModel>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;
@@ -33,10 +28,12 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
+    
     options.LoginPath = "/Login";
     options.LogoutPath = "/";
     options.Cookie.HttpOnly = true;
     options.Cookie.MaxAge = TimeSpan.FromHours(6);
+    options.Cookie.Name = "Shopping_Cookie";
 });
 
 // Add services to the container.
@@ -60,14 +57,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name : "areas",
-    pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-);
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
-
+app.MapRazorPages();
 
 
 app.Run();
