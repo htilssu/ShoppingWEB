@@ -7,21 +7,28 @@ namespace ShoppingWEB.Controllers;
 public class LoginController : Controller
 {
     public LoginController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager,
-        ILogger<UserModel> logger)
+        ILogger<UserModel> logger, RoleManager<RoleModel> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _logger = logger;
+        _roleManager = roleManager;
     }
 
     private UserManager<UserModel> _userManager;
     private SignInManager<UserModel> _signInManager;
     private ILogger<UserModel> _logger;
+    private RoleManager<RoleModel> _roleManager;
 
 
     // GET
     public IActionResult Index()
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         return View();
     }
 
@@ -36,8 +43,7 @@ public class LoginController : Controller
                     lockoutOnFailure: false);
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("Fail", "Sai tên đăng nhập hoặc mật khẩu");
-                return View();
+                ModelState.AddModelError(string.Empty, "Sai tên đăng nhập hoặc mật khẩu");
             }
             else
             {

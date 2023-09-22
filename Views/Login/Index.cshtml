@@ -10,13 +10,22 @@
     <div class="container-md d-flex justify-content-end align-items-center p-md-5">
         <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Login" method="post">
             <h4 class="title fw-normal mb-4">Đăng nhập</h4>
-            <div class="username mb-4">
+            <div asp-validation-summary="ModelOnly" class="summary text-danger" style="list-style: none">
+            </div>
+            <div class="username mb-3 d-flex flex-column">
                 <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập">
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
-            <div class="pass mb-4">
-                <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
+            <div class="pass mb-2 d-flex flex-column">
+                <div class="d-flex position-relative">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
+                    <div class="pass-toggle position-absolute"></div>
+                </div>
                 <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="remember mb-4">
+                <input type="checkbox" asp-for="Remember">
+                @Html.DisplayNameFor(m => m.Remember)
             </div>
             <button type="submit" class="btn btn-danger mb-2">Đăng nhập</button>
             <div class="action d-flex justify-content-between">
@@ -26,7 +35,7 @@
                 <a href=""></a>
             </div>
 
-            <div class="or d-flex mb-4">
+            <div class="or d-flex mb-2">
                 <div class="w-100">
                     <hr>
                 </div>
@@ -36,15 +45,15 @@
                 </div>
             </div>
 
-            <div class="login-by-other d-flex justify-content-around align-items-center gap-4 mb-5">
-                <div class="fb">
-                    <a class="btn btn-outline-info">
+            <div class="login-by-other row justify-content-around align-items-center gap-4 mb-4">
+                <div class="fb col-12 col-md-5 justify-content-center align-items-center">
+                    <a class="btn btn-outline-info gap-2 d-flex justify-content-center align-items-center">
                         <i style="color: #0c63e4" class="bi bi-facebook"></i>
                         <span>Facebook</span>
                     </a>
                 </div>
-                <div class="gg">
-                    <a class="btn btn-outline-danger">
+                <div class="gg col-12 col-md-5 justify-content-center align-items-center">
+                    <a class="btn btn-outline-danger gap-2 d-flex justify-content-center align-items-center">
                         <i
                             class="bi bi-google">
                         </i>

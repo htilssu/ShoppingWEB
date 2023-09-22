@@ -16,6 +16,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -44,5 +45,8 @@
       <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ValidationScriptsPartial.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewImports.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewStart.cshtml" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Migrations\" />
     </ItemGroup>
 </Project>

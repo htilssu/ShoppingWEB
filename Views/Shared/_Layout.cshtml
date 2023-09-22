@@ -1,4 +1,8 @@
-﻿@using Microsoft.EntityFrameworkCore.Migrations
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.Build.Construction
+@inject UserManager<UserModel> _UserManager
+@inject SignInManager<UserModel> _SignInManager
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,7 +35,7 @@
                 </a>
             </div>
         </div>
-        <div class="nav-right d-flex">
+        <div class="nav-right d-flex justify-content-center align-items-center">
             <div id="notify" class="nav-item position-relative">
                 <i class="bi bi-bell-fill">
                 </i>
@@ -42,22 +46,31 @@
                 <i class="bi bi-question-circle"></i>
                 <span>Hỗ trợ</span>
             </div>
-            <div class="reg-log nav-item d-flex">
-                @if (!User.Identity.IsAuthenticated)
-                {
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="reg-log nav-item gap-1 d-flex">
                     <div class="reg">
                         <a href="/Register">Đăng ký</a>
                     </div>
                     <div class="log">
                         <a href="/Login">Đăng nhập</a>
                     </div>
-                }
-                else
-                {
-                    /*TODO print avatar and username*/
-                }
-            </div>
+                </div>
+            }
+            else
+            {
+                <div class="reg-log logged nav-item gap-1 d-flex">
+                    @{
+                        UserModel user = await _UserManager.GetUserAsync(User);
+                        
+                    }
+                    <img class="avatar" src="@user.avtPath" alt="avt">
+                    <span>@user.UserName</span>
+                </div>
+            }
         </div>
+
     </div>
     <div class="container-md navbar flex-nowrap with-search">
         <div class="navbar-brand">
@@ -102,7 +115,7 @@
         </div>
     </div>
     <div class="notify-mobile-area" id="mobile-area-notify">
-        
+
     </div>
 </header>
 <div class="placeholder"></div>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_EmptyLayout";
+    ViewData["Title"] = "Không có quyền truy cập";
+}
+
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+   .error-bg {
+        background-image: url("/imgs/accessdenied.png");
+       background-size: contain;
+       background-position: center;
+       background-repeat: no-repeat;
+       height: 75%;
+       width: 80%;
+   }
+</style>
+    <div class="error-bg"></div>
+    <h1>Bạn không có quyền truy cập!</h1>
+

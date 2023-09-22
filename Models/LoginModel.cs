@@ -14,6 +14,7 @@ public class LoginModel
     [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
     public string? Password { get; set; }
 
+    [Display(Name = "Ghi nhớ đăng nhập?")]
     public bool Remember { get; set; }
     
 }

@@ -13,9 +13,15 @@ var conf = new ConfigurationBuilder()
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = conf["Database:ConnectionString"];
-builder.Services.AddSingleton<MySqlConnection>();
-builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder => { optionsBuilder.UseMySQL(connectionString); });
-builder.Services.AddDefaultIdentity<UserModel>().AddEntityFrameworkStores<ApplicationDbContext>();
+
+//Regist Service
+builder.Services.AddSingleton(new MySqlConnection(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder =>
+{
+    optionsBuilder.UseMySQL(connectionString);
+    optionsBuilder.EnableSensitiveDataLogging(false);
+});
+builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;
@@ -28,7 +34,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    
+    options.AccessDeniedPath = "/Home/AccessDenied";
     options.LoginPath = "/Login";
     options.LogoutPath = "/";
     options.Cookie.HttpOnly = true;
