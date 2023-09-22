@@ -107,7 +107,7 @@ header .navbar.nav-social {
     position: relative;
 }
 
-.navbar .nav-right .reg-log div:not(:first-child)::after {
+.navbar .nav-right .reg-log.not-logged div:not(:first-child)::after {
     content: "|";
     position: absolute;
     left: calc(-.5rem - 3px);
@@ -123,7 +123,7 @@ header .navbar.nav-social {
     color: white;
 }
 
- .notify-render::after {
+.notify-render::after {
     content: "";
     height: 15px;
     width: 15px;
@@ -132,7 +132,7 @@ header .navbar.nav-social {
     top: -7.5px;
     position: absolute;
     background: white;
-    clip-path: polygon(0 0, 100% 0,0 100%);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
     z-index: 99;
 }
 
@@ -169,7 +169,7 @@ header .navbar.nav-social {
 
 }
 
- .notify-render .notify .bg-notify {
+.notify-render .notify .bg-notify {
     height: calc(100% - 50px);
     background-image: url("/imgs/Chuong_BG.svg");
     background-position: center;
@@ -178,6 +178,56 @@ header .navbar.nav-social {
 }
 
 .notify-render .notify p {
+    font-size: .9rem;
+}
+
+.op-hide {
+    opacity: 0 !important;
+    height: 0 !important;
+}
+
+.op-hide button {
+    display: none !important;
+}
+
+
+.logged .option {
+    right: 0;
+    width: 100px;
+    opacity: 1 ;
+    height: auto;
+    top: 110%;
+    transition: all .2s !important;
+}
+
+.logged button   {
+    display: flex;
+    transition: all .2s !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.logged  button:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.logged button:focus {
+
+        outline-color: transparent; /* Đặt màu sắc là trong suốt */
+        outline-width: 2px; /* Đặt độ dày */
+    
+}
+
+.logged .option ul {
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.logged .option li {
+    list-style: none;
     font-size: .9rem;
 }
 
@@ -211,7 +261,7 @@ header .navbar.nav-social {
     }
 }
 
-@media  screen and (max-width: 426px) {
+@media screen and (max-width: 426px) {
     html {
         font-size: 16px;
     }
@@ -219,15 +269,15 @@ header .navbar.nav-social {
     header .navbar.nav-social {
         display: none;
     }
-    
+
     .search-category form {
         display: none;
     }
-    
-    .navbar .user,.navbar .notify-mobile {
+
+    .navbar .user, .navbar .notify-mobile {
         display: block !important;
     }
-    
+
     .notify-render {
         width: 100vw;
         right: 0;
@@ -235,7 +285,7 @@ header .navbar.nav-social {
         top: calc(70px);
         left: 0;
     }
-    
+
     .notify-render::after {
         right: 100px;
     }
