@@ -5,26 +5,25 @@
     Layout = "_LoginLayout";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>form đăng kí </title>
-</head>
 <style>
     *{
         margin:0;
         padding:0;
         box-sizing: border-box;
     }
+    
+    .main {
+    display: flex;
+    padding: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    }
 
     .container {
-        max-width:600px;
-        height:593px;
+        width:400px;
         background-color: whitesmoke;
-        margin: 40px;
-        padding: 30px;
+        padding: 10px;
+        margin: 0;
         border-radius: 5px;
     }
 
@@ -44,59 +43,45 @@
     input[type="email"],
     input[type="password"]
     {
-        width: 500px     ;
+        width: 100%;     ;
         padding: 10px;
         margin-bottom: 10px;
         border: 1px solid #ccc;
         border-radius: 3px;
     }
 
-   
+ 
 
-    button[type="submit"] {
-        background-color:forestgreen;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 3px;
-        font-size: 20px;
-        width: 500px
-       
-    }
 
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
 </style>
-<body>
-    
+
+<form action="/Register/Index" method="post">
     <div class="container">
         <h1>ĐĂNG KÍ</h1>
         <div class="form-group">
-           
+
             <input type="text" placeholder="Enter Username" id="username" name="username" required>
         </div>
         <div class="form-group">
-           
+
             <input type="email" placeholder="Enter Email" id="email" name="email" required>
         </div>
         <div class="form-group">
-            
+
             <input type="text" placeholder="Enter phone" name="phone" id="phone" required>
         </div>
-       
+
         <div class="form-group">
-            
+
             <input type="password" placeholder="Enter Password" id="password" name="password" required>
         </div>
         <div class="form-group">
-            
+
             <input type="password" placeholder="Enter Confirm Password" id="confirm_password" name="confirm_password" required>
         </div>
 
         <div class="form-group">
-            <button type="submit">ĐĂNG KÍ</button>
-    
+            <button class="btn btn-danger w-100" type="submit">ĐĂNG KÍ</button>
+        </div>
     </div>
-</body>
-</html>
+</form>

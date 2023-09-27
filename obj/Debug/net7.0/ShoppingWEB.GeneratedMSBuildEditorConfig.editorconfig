@@ -9,69 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ShoppingWEB
 build_property.RootNamespace = ShoppingWEB
-build_property.ProjectDir = C:\Users\toản\Desktop\web clone\ShoppingWEB\
+build_property.ProjectDir = D:\projects\ASP.NET\ShoppingWEB\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\toản\Desktop\web clone\ShoppingWEB
+build_property.MSBuildProjectDirectory = D:\projects\ASP.NET\ShoppingWEB
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Admin/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Cart/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Home/AccessDeny.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Home/AccessDeny.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW55LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Home/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Home/Privacy.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Login/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Register/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Register/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Search/Index.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Search/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Shared/Error.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Shared/_AdminLayout.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Shared/_Layout.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Shared/_LoginLayout.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/_ViewImports.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/toản/Desktop/web clone/ShoppingWEB/Views/_ViewStart.cshtml]
+[D:/projects/ASP.NET/ShoppingWEB/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
