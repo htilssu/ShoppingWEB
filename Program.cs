@@ -19,24 +19,6 @@ builder.Services.AddIdentity<UserModel, RoleModel>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.Configure<IdentityOptions>(options =>
-{
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 0;
-});
-
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Login";
-    options.LogoutPath = "/";
-    options.Cookie.HttpOnly = true;
-    options.Cookie.MaxAge = TimeSpan.FromHours(6);
-});
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -57,10 +39,6 @@ app.UseStatusCodePagesWithReExecute("/Error");
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name : "areas",
-    pattern : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-);
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
