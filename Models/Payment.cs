@@ -1,4 +1,4 @@
-﻿namespace Shoppe_Clone.Models;
+﻿namespace ShoppingWEB.Models;
 
 public enum Payment
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shoppe_Clone.Models;
+using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
 

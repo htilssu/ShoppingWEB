@@ -2,8 +2,8 @@ using System.Collections.Immutable;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using Shoppe_Clone.Models;
 using ShoppingWEB;
+using ShoppingWEB.Models;
 
 var conf = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
