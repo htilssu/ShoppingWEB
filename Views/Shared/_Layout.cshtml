@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Microsoft.Build.Construction
-@inject UserManager<UserModel> _UserManager
-@inject SignInManager<UserModel> _SignInManager
+@inject UserManager<UserModel> UserManager
+@inject SignInManager<UserModel> SignInManager
 
 <!doctype html>
 <html lang="en">
@@ -62,10 +62,10 @@
             {
                 <div id="user-option" class="reg-log logged position-relative nav-item gap-1 d-flex">
                     @{
-                        var user = await _UserManager.GetUserAsync(User);
+                        var user = await UserManager.GetUserAsync(User);
 
                     }
-                    <img class="avatar" src="@user.avtPath" alt="avt">
+                    <img class="avatar" src="@user.AvtPath" alt="avt">
                     <span>@user.UserName</span>
                     <div id="option-area" class="position-absolute d-none op-hide bg-white option">
                         <ul>

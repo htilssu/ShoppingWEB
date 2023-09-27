@@ -6,9 +6,9 @@ namespace ShoppingWEB.Models;
 
 public class UserModel : IdentityUser
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public DateTime BirthDay { get; set; }
-    public bool Gender { get; set; }
-    public string avtPath { get; set; } = "/avatars/default-avatar.png";
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public DateTime? BirthDay { get; set; }
+    public bool? Gender { get; set; }
+    public string AvtPath { get; set; } = "/avatars/default-avatar.png";
 }

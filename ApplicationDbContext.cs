@@ -4,10 +4,11 @@ using ShoppingWEB.Models;
 
 namespace ShoppingWEB;
 
-public class ApplicationDbContext : IdentityDbContext<UserModel,RoleModel,string>
+public class ApplicationDbContext : IdentityDbContext<UserModel, RoleModel, string>
 {
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
-        
     }
+
+    public DbSet<Product> Products { get; set; }
 }
