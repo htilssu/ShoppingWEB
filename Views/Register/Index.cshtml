@@ -5,4 +5,83 @@
     Layout = "_LoginLayout";
 }
 
-<h2>title</h2>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    
+    .main {
+    display: flex;
+    padding: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    }
+
+    .container {
+        width:400px;
+        background-color: whitesmoke;
+        padding: 10px;
+        margin: 0;
+        border-radius: 5px;
+    }
+
+    h1 {
+        text-align: center;
+        color:black
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+        
+    }
+
+    
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"]
+    {
+        width: 100%;     ;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+ 
+
+
+</style>
+
+<form action="/Register/Index" method="post">
+    <div class="container">
+        <h1>ĐĂNG KÍ</h1>
+        <div class="form-group">
+
+            <input type="text" placeholder="Enter Username" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+
+            <input type="email" placeholder="Enter Email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+
+            <input type="text" placeholder="Enter phone" name="phone" id="phone" required>
+        </div>
+
+        <div class="form-group">
+
+            <input type="password" placeholder="Enter Password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+
+            <input type="password" placeholder="Enter Confirm Password" id="confirm_password" name="confirm_password" required>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-danger w-100" type="submit">ĐĂNG KÍ</button>
+        </div>
+    </div>
+</form>

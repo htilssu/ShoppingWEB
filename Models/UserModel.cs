@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
