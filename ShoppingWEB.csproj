@@ -46,6 +46,11 @@
         <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ValidationScriptsPartial.cshtml"/>
         <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewImports.cshtml"/>
         <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewStart.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\Logout.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Identity\Pages\_ViewStart.cshtml" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Migrations\"/>
