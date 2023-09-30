@@ -10,4 +10,7 @@ public class ApplicationDbContext : IdentityDbContext<UserModel, RoleModel, stri
     {
     }
 
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
 }
