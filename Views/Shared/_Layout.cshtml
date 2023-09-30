@@ -70,7 +70,7 @@
                     <div id="option-area" class="position-absolute d-none op-hide bg-white option">
                         <ul>
                             <li>
-                                <form method="post" id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <form method="post" id="logoutForm" class="form-inline" asp-controller="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                                     <button class="bg-transparent text-black nav-link p-0">Đăng xuất</button>
                                 </form>
                             </li>

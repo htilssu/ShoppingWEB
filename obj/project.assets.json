@@ -12622,5 +12622,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\projects\\ASP.NET\\ShoppingWEB\\obj\\project.nuget.cache : Found invalid data while decoding."
+    }
+  ]
 }
