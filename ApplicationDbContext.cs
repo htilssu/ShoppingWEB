@@ -10,5 +10,4 @@ public class ApplicationDbContext : IdentityDbContext<UserModel, RoleModel, stri
     {
     }
 
-    public DbSet<Product> Products { get; set; }
 }

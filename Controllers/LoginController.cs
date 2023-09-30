@@ -1,11 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingWEB.Models;
+using ShoppingWEB.Views.Login;
 
 namespace ShoppingWEB.Controllers;
 
 public class LoginController : Controller
 {
+    private ILogger<UserModel> _logger;
+    private RoleManager<RoleModel> _roleManager;
+    private readonly SignInManager<UserModel> _signInManager;
+
+    private UserManager<UserModel> _userManager;
+
     public LoginController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager,
         ILogger<UserModel> logger, RoleManager<RoleModel> roleManager)
     {
@@ -15,19 +22,11 @@ public class LoginController : Controller
         _roleManager = roleManager;
     }
 
-    private UserManager<UserModel> _userManager;
-    private SignInManager<UserModel> _signInManager;
-    private ILogger<UserModel> _logger;
-    private RoleManager<RoleModel> _roleManager;
-
 
     // GET
     public IActionResult Index()
     {
-        if (User.Identity.IsAuthenticated)
-        {
-            return RedirectToAction("Index", "Home");
-        }
+        if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
 
         return View();
     }
@@ -40,15 +39,11 @@ public class LoginController : Controller
         {
             var result = await
                 _signInManager.PasswordSignInAsync(logInfo.Username, logInfo.Password, logInfo.Remember,
-                    lockoutOnFailure: false);
+                    false);
             if (!result.Succeeded)
-            {
                 ModelState.AddModelError(string.Empty, "Sai tên đăng nhập hoặc mật khẩu");
-            }
             else
-            {
                 return RedirectToAction("Index", "Home");
-            }
         }
         else
         {

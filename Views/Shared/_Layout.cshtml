@@ -234,35 +234,37 @@
     
     
 //     User Option
-    
+    const status = @User.Identity.IsAuthenticated.ToString().ToLower();
+    if (status){
     const userArea = document.getElementById('user-option');
-    const userOption = document.getElementById('option-area');
-                                    
-                               
-                      
-    
-    function showUserOption() {
-        clearTimeout(timeOut[3])
-        clearTimeout(timeOut[4])
-            timeOut[5] =       setTimeout(()=> {
-                                                       userOption.classList.remove('d-none');
-                                                   },50)
-            timeOut[6] =  setTimeout(()=> {
-                                               userOption.classList.remove('op-hide');
-                                           },100)
+        const userOption = document.getElementById('option-area');
+                                        
+                                   
+                          
+        
+        function showUserOption() {
+            clearTimeout(timeOut[3])
+            clearTimeout(timeOut[4])
+                timeOut[5] =       setTimeout(()=> {
+                                                           userOption.classList.remove('d-none');
+                                                       },50)
+                timeOut[6] =  setTimeout(()=> {
+                                                   userOption.classList.remove('op-hide');
+                                               },100)
+        }
+        userArea.addEventListener('mouseover', showUserOption)
+        function hideUserOption() {
+              clearTimeout(timeOut[5])
+                    clearTimeout(timeOut[6])
+                timeOut[3] = setTimeout(()=> {
+                    userOption.classList.add('op-hide');
+                },100)
+                timeOut[4] = setTimeout(() => {
+                    userOption.classList.add('d-none');
+                },200);
+        }
+        userArea.addEventListener('mouseout', hideUserOption)    
     }
-    userArea.addEventListener('mouseover', showUserOption)
-    function hideUserOption() {
-          clearTimeout(timeOut[5])
-                clearTimeout(timeOut[6])
-            timeOut[3] = setTimeout(()=> {
-                userOption.classList.add('op-hide');
-            },100)
-            timeOut[4] = setTimeout(() => {
-                userOption.classList.add('d-none');
-            },200);
-    }
-    userArea.addEventListener('mouseout', hideUserOption)
 </script>
 </body>
 </html>

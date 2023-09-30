@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aaP5c26BT4mVOuy9WmbhXoss5SVUlN/lZUCcCbqlDiI=",
+  "Hash": "Sp6f51pcTWJtG2Ri3up+loz550L+9i8jsWt5YmFrvjs=",
   "Source": "ShoppingWEB",
   "BasePath": "_content/ShoppingWEB",
   "Mode": "Default",
@@ -1037,6 +1037,23 @@
       "OriginalItemSpec": "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.11\\staticwebassets\\V5\\lib\\jquery\\LICENSE.txt"
     },
     {
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\avatars\\default-avatar.png",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "avatars/default-avatar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\avatars\\default-avatar.png"
+    },
+    {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "SourceId": "ShoppingWEB",
       "SourceType": "Discovered",
@@ -1054,12 +1071,12 @@
       "OriginalItemSpec": "wwwroot\\css\\layouts\\adminlayout.css"
     },
     {
-      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\login\\style.css",
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\loginlayout.css",
       "SourceId": "ShoppingWEB",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
       "BasePath": "_content/ShoppingWEB",
-      "RelativePath": "css/login/style.css",
+      "RelativePath": "css/layouts/loginlayout.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1068,7 +1085,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\login\\style.css"
+      "OriginalItemSpec": "wwwroot\\css\\layouts\\loginlayout.css"
     },
     {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\site.css",
@@ -1120,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imgs\\404-bg.png"
+    },
+    {
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\accessdenied.png",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "imgs/accessdenied.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\accessdenied.png"
     },
     {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\Chuong_BG.svg",

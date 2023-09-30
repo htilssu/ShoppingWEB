@@ -1,87 +1,44 @@
-﻿@model dynamic
+﻿@model ShoppingWEB.Views.Register.RegistModel
 
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "_LoginLayout";
 }
 
-<style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing: border-box;
-    }
-    
-    .main {
-    display: flex;
-    padding: 2rem;
-    justify-content: flex-end;
-    align-items: center;
-    }
-
-    .container {
-        width:400px;
-        background-color: whitesmoke;
-        padding: 10px;
-        margin: 0;
-        border-radius: 5px;
-    }
-
-    h1 {
-        text-align: center;
-        color:black
-    }
-
-    .form-group {
-        margin-bottom: 10px;
-        
-    }
-
-    
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"]
-    {
-        width: 100%;     ;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
-
- 
-
-
-</style>
-
-<form action="/Register/Index" method="post">
-    <div class="container">
-        <h1>ĐĂNG KÍ</h1>
-        <div class="form-group">
-
-            <input type="text" placeholder="Enter Username" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-
-            <input type="email" placeholder="Enter Email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-
-            <input type="text" placeholder="Enter phone" name="phone" id="phone" required>
-        </div>
-
-        <div class="form-group">
-
-            <input type="password" placeholder="Enter Password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-
-            <input type="password" placeholder="Enter Confirm Password" id="confirm_password" name="confirm_password" required>
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-danger w-100" type="submit">ĐĂNG KÍ</button>
-        </div>
+<div class="main d-flex container-fluid">
+    <div class="bg-image"></div>
+    <div class="container-md d-flex justify-content-end align-items-center p-md-5">
+        <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Register" method="post">
+            <h4 class="title fw-normal mb-4">Đăng ký</h4>
+            <div asp-validation-summary="ModelOnly" class="summary text-danger" style="list-style: none">
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input type="text" asp-for="UserName" class="form-control" placeholder="Tên đăng nhập">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input style="border-left: none" type="text" asp-for="NumberPhone" class="form-control" placeholder="Số điện thoại">
+                <span asp-validation-for="NumberPhone" class="text-danger"></span>
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="pass mb-3 d-flex flex-column">
+                <div class="d-flex position-relative">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
+                    <div class="pass-toggle position-absolute"></div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="pass mb-3 d-flex flex-column">
+                <div class="d-flex position-relative">
+                    <input type="password" asp-for="RePassword" class="form-control" placeholder="Nhập lại mật khẩu">
+                    <div class="pass-toggle position-absolute"></div>
+                </div>
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-danger mb-2">Đăng ký</button>
+        </form>
     </div>
-</form>
+</div>

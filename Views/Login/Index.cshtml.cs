@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ShoppingWEB.Models;
+namespace ShoppingWEB.Views.Login;
+
 public class LoginModel
 {
-
     [Required(ErrorMessage = "Vui lòng nhập tên người dùng")]
     public string? Username { get; set; }
 
@@ -14,7 +11,5 @@ public class LoginModel
     [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
     public string? Password { get; set; }
 
-    [Display(Name = "Ghi nhớ đăng nhập?")]
-    public bool Remember { get; set; }
-    
+    [Display(Name = "Ghi nhớ đăng nhập?")] public bool Remember { get; set; }
 }

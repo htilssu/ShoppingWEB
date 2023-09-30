@@ -1,12 +1,16 @@
 {
   "Files": [
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\avatars\\default-avatar.png",
+      "PackagePath": "staticwebassets\\avatars\\default-avatar.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "PackagePath": "staticwebassets\\css\\layouts\\adminlayout.css"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\login\\style.css",
-      "PackagePath": "staticwebassets\\css\\login\\style.css"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\loginlayout.css",
+      "PackagePath": "staticwebassets\\css\\layouts\\loginlayout.css"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\site.css",
@@ -27,6 +31,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\Chuong_BG.svg",
       "PackagePath": "staticwebassets\\imgs\\Chuong_BG.svg"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\accessdenied.png",
+      "PackagePath": "staticwebassets\\imgs\\accessdenied.png"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\shopping-brand.png",
