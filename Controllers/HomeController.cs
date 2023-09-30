@@ -11,7 +11,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult AccessDeny()
+    public IActionResult AccessDenied()
     {
         return View();
     }

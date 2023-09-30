@@ -35,15 +35,31 @@ header .navbar h3.log-type {
 
 .main {
     background-color: #C1712A;
-    height: 80vh;
+    height: 83vh;
 }
 
 .main .form-login {
-    height: 100%;
     width: 400px;
+}
+
+input::-ms-reveal {
+    display: none;
+}
+.summary ul {
+    padding: 0;
+}
+.summary ul li {
+    list-style: none;
+    font-size: .8rem;
 }
 
 
 .main .form-login .action a {
     font-size: .8rem;
 }
+
+.main .form-login div:not(:last-child) span.text-danger {
+    font-size: .7rem;
+    min-height: 1.1rem;
+}
+

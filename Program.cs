@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using Shoppe_Clone.Models;
+using ShoppingWEB.Models;
 using ShoppingWEB;
 
 var conf = new ConfigurationBuilder()
@@ -10,14 +10,37 @@ var conf = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 
-var connectionString = conf["Database:ConnectionString"];
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<MySqlConnection>(new MySqlConnection(connectionString));
-builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder => { optionsBuilder.UseMySQL(connectionString); });
-builder.Services.AddIdentity<UserModel, RoleModel>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+var connectionString = conf["Database:ConnectionString"];
+
+//Regist Service
+builder.Services.AddSingleton(new MySqlConnection(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder =>
+{
+    optionsBuilder.UseMySQL(connectionString);
+    optionsBuilder.EnableSensitiveDataLogging(false);
+});
+builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 0;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Home/AccessDenied";
+    options.LoginPath = "/Login";
+    options.LogoutPath = "/";
+    options.Cookie.HttpOnly = true;
+    options.Cookie.MaxAge = TimeSpan.FromHours(6);
+    options.Cookie.Name = "Shopping_Cookie";
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -43,7 +66,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
-
+app.MapRazorPages();
 
 
 app.Run();

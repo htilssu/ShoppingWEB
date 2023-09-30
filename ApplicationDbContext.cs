@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Shoppe_Clone.Models;
+using ShoppingWEB.Models;
 
 namespace ShoppingWEB;
 
-public class ApplicationDbContext : IdentityDbContext<UserModel>
+public class ApplicationDbContext : IdentityDbContext<UserModel, RoleModel, string>
 {
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
-        
     }
+
+    public virtual DbSet<Category> Categories { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
 }

@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ShoppingWEB.Controllers;
 
-//TODO add Authorize
-// [Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {
     // GET

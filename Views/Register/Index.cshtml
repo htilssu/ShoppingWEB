@@ -1,8 +1,44 @@
-﻿@model dynamic
+﻿@model ShoppingWEB.Views.Register.RegistModel
 
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "_LoginLayout";
 }
 
-<h2>title</h2>
+<div class="main d-flex container-fluid">
+    <div class="bg-image"></div>
+    <div class="container-md d-flex justify-content-end align-items-center p-md-5">
+        <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Register" method="post">
+            <h4 class="title fw-normal mb-4">Đăng ký</h4>
+            <div asp-validation-summary="ModelOnly" class="summary text-danger" style="list-style: none">
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input type="text" asp-for="UserName" class="form-control" placeholder="Tên đăng nhập">
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input style="border-left: none" type="text" asp-for="NumberPhone" class="form-control" placeholder="Số điện thoại">
+                <span asp-validation-for="NumberPhone" class="text-danger"></span>
+            </div>
+            <div class="username mb-3 d-flex flex-column">
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="pass mb-3 d-flex flex-column">
+                <div class="d-flex position-relative">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
+                    <div class="pass-toggle position-absolute"></div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="pass mb-3 d-flex flex-column">
+                <div class="d-flex position-relative">
+                    <input type="password" asp-for="RePassword" class="form-control" placeholder="Nhập lại mật khẩu">
+                    <div class="pass-toggle position-absolute"></div>
+                </div>
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-danger mb-2">Đăng ký</button>
+        </form>
+    </div>
+</div>
