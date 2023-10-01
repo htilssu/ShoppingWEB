@@ -255,12 +255,5 @@
     "C:\\Users\\admin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\projects\\ASP.NET\\ShoppingWEB\\obj\\project.nuget.cache : Found invalid data while decoding."
-    }
-  ]
+  "logs": []
 }
