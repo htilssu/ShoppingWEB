@@ -7,8 +7,8 @@ namespace ShoppingWEB.Controllers;
 
 public class RegisterController : Controller
 {
-    private readonly UserManager<UserModel> _userManager;
     private readonly SignInManager<UserModel> _signInManager;
+    private readonly UserManager<UserModel> _userManager;
 
     public RegisterController(SignInManager<UserModel> signInManager, UserManager<UserModel> userManager)
     {
@@ -20,6 +20,7 @@ public class RegisterController : Controller
     // GET
     public IActionResult Index()
     {
+        if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
         return View();
     }
 
