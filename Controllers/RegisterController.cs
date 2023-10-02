@@ -30,17 +30,27 @@ public class RegisterController : Controller
     {
         if (ModelState.IsValid)
         {
-            var result = await _userManager.CreateAsync(new UserModel
+            var user = await _userManager.FindByNameAsync(registModel.UserName);
+            if (user == null)
             {
-                UserName = registModel.UserName,
-                Email = registModel.Email,
-                PhoneNumber = registModel.NumberPhone
-            }, registModel.Password);
+                var result = await _userManager.CreateAsync(new UserModel
+                {
+                    UserName = registModel.UserName,
+                    Email = registModel.Email,
+                    PhoneNumber = registModel.NumberPhone
+                }, registModel.Password);
 
-            if (result.Succeeded)
+                if (result.Succeeded)
+                {
+                    await _signInManager.PasswordSignInAsync(registModel.UserName, registModel.Password, false, false);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
             {
-                await _signInManager.PasswordSignInAsync(registModel.UserName, registModel.Password, false, false);
-                return RedirectToAction("Index", "Home");
+                ModelState.TryAddModelError("exist", "Người dùng đã tồn tại");
+                /*TODO error didn't display in View*/
+                return View();
             }
         }
 

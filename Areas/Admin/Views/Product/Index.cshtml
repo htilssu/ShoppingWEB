@@ -1,0 +1,82 @@
+@model IEnumerable<Product>
+@inject ApplicationDbContext _Context;
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "_AdminLayout";
+
+}
+
+<h1>Danh sách sản phẩm</h1>
+
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Tạo</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Published)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr style="vertical-align: middle">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @($"{item.Price:C0}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @(item.Published == 1 ? "True" : "False")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => _Context.Categories.Find(item.CategoryId)!.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
+                <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,9 +1,8 @@
-using System.Collections.Immutable;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
-using ShoppingWEB.Models;
 using ShoppingWEB;
+using ShoppingWEB.Models;
 
 var conf = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
@@ -63,9 +62,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
+    "Area",
+    "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
+
+app.MapControllerRoute(
+    "default",
+    "{controller=Home}/{action=Index}/{id?}"
+);
+
+
 app.MapRazorPages();
 
 

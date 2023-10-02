@@ -194,29 +194,29 @@ header .navbar.nav-social {
 .logged .option {
     right: 0;
     width: 100px;
-    opacity: 1 ;
+    opacity: 1;
     height: auto;
     top: 110%;
     transition: all .2s !important;
 }
 
-.logged button   {
+.logged button {
     display: flex;
     transition: all .2s !important;
     outline: none !important;
     border: none !important;
 }
 
-.logged  button:active {
+.logged button:active {
     outline: none !important;
     border: none !important;
 }
 
 .logged button:focus {
 
-        outline-color: transparent; /* Đặt màu sắc là trong suốt */
-        outline-width: 2px; /* Đặt độ dày */
-    
+    outline-color: transparent; /* Đặt màu sắc là trong suốt */
+    outline-width: 2px; /* Đặt độ dày */
+
 }
 
 .logged .option ul {
@@ -253,6 +253,10 @@ header .navbar.nav-social {
     font-size: .8rem
 }
 
+.user.user-mobile {
+    display: none !important;
+}
+
 
 @media screen and (max-width: 768px) {
     header .navbar {
@@ -266,6 +270,14 @@ header .navbar.nav-social {
         font-size: 16px;
     }
 
+    .avatar {
+        height: 26px;
+    }
+
+    .user.user-mobile {
+        display: flex !important;
+    }
+
     header .navbar.nav-social {
         display: none;
     }
@@ -274,7 +286,7 @@ header .navbar.nav-social {
         display: none;
     }
 
-    .navbar .user, .navbar .notify-mobile {
+    .navbar .notify-mobile {
         display: block !important;
     }
 
