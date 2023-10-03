@@ -11,7 +11,9 @@ public class Product
 
     public double? Price { get; set; }
 
-    [Column("discount_price")] public double? DiscountPrice { get; set; }
+    [Display(Name = "Discount")]
+    [Column("discount_percent")]
+    public double? DiscountPercent { get; set; } = 0;
 
     [Column("in_stock")] public int? InStock { get; set; }
 

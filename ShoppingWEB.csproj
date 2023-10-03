@@ -62,11 +62,13 @@
         <_ContentIncludedByDefault Remove="Views\Product\Details.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Product\Edit.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Product\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Image\Index.cshtml" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Areas\Admin\Data\"/>
         <Folder Include="Areas\Admin\Models\"/>
         <Folder Include="Migrations\"/>
+        <Folder Include="wwwroot\uploads\"/>
     </ItemGroup>
     <ItemGroup>
         <AdditionalFiles Include="Areas\Admin\Views\Category\Create.cshtml"/>

@@ -18,7 +18,7 @@ public class CategoryController : Controller
     public async Task<IActionResult> Index()
     {
         return _context.Categories != null
-            ? View(await _context.Categories.ToListAsync())
+            ? View(await _context.Categories.OrderBy(category => category.CategoryName).ToListAsync())
             : Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
     }
 
@@ -43,10 +43,28 @@ public class CategoryController : Controller
     // POST: Category/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Category category)
+    public async Task<IActionResult> Create(Category category, IFormFile imageFile)
     {
         if (ModelState.IsValid)
         {
+            if (imageFile != null && imageFile.Length > 0)
+                try
+                {
+                    var uploadFolder = Path.Combine("wwwroot", "uploads");
+                    var uniqueFileName = Guid.NewGuid() + "_" + imageFile.FileName;
+                    var filePath = Path.Combine(uploadFolder, uniqueFileName);
+                    category.ImagePath = filePath;
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(stream);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return View();
+                }
+
             category.UpdatedAt = DateTime.Now;
             category.CreatedAt = DateTime.Now;
             _context.Add(category);
@@ -72,17 +90,20 @@ public class CategoryController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id,
-        [Bind("Id,CategoryName,ImagePath,CreatedAt,UpdatedAt,UpdatedBy")]
-        Category category)
+    public async Task<IActionResult> Edit(string id, Category category)
     {
         if (id != category.Id) return NotFound();
+        var oldProduct = await _context.Categories.FindAsync(id)!;
+
+        oldProduct.UpdatedAt = DateTime.Now;
+        oldProduct.ImagePath = category.ImagePath;
+        oldProduct.CategoryName = category.CategoryName;
+
 
         if (ModelState.IsValid)
         {
             try
             {
-                _context.Update(category);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

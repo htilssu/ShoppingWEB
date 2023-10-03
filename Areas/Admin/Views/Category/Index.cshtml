@@ -11,46 +11,48 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Tạo</a>
 </p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr style="vertical-align: middle">
-            <td >
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td >
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td >
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                <a class="btn btn-danger text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
-                <a class="btn btn-danger text-decoration-none" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
-                <a class="btn btn-danger text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
-            </td>
+<div style="max-height: 500px; overflow-y: scroll">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th></th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="vertical-align: middle">
+                <td >
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td >
+                    <img src="@item.ImagePath?.Replace("wwwroot", "").Replace(@"\", "/")" height="50px" alt="Image"/>
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    <a class="btn btn-danger text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                    <a class="btn btn-danger text-decoration-none" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
+                    <a class="btn btn-danger text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

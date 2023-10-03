@@ -4,6 +4,13 @@
 
 @model List<Product>;
 
-<div class="product-list py-3 container-md">
-
+<div class="container-md">
+    <div class="product-list py-3 row">
+        @foreach (var product in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-2">
+                @product.ProductName
+            </div>
+        }
+    </div>
 </div>

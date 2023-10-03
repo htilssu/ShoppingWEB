@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingWEB.Models;
 
@@ -8,7 +9,9 @@ public class Category
 
     [Column("category_name")] public string? CategoryName { get; set; }
 
-    [Column("image_path")] public string? ImagePath { get; set; }
+    [Display(Name = "Image")]
+    [Column("image_path")]
+    public string? ImagePath { get; set; }
 
     [Column("created_at")] public DateTime? CreatedAt { get; set; }
 

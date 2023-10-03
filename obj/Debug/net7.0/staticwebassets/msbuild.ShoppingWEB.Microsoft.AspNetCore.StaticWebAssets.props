@@ -32528,5 +32528,85 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\92aafb0e-d4a9-4edc-a0aa-6042f23483e7_iphone-14-pro-max-tim-thumb-600x600.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>ShoppingWEB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ShoppingWEB</BasePath>
+      <RelativePath>uploads/92aafb0e-d4a9-4edc-a0aa-6042f23483e7_iphone-14-pro-max-tim-thumb-600x600.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\92aafb0e-d4a9-4edc-a0aa-6042f23483e7_iphone-14-pro-max-tim-thumb-600x600.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\aed017ef-2e95-4181-a681-675a4dcfa776_—Pngtree—cartoon patterned sweater_5578383.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>ShoppingWEB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ShoppingWEB</BasePath>
+      <RelativePath>uploads/aed017ef-2e95-4181-a681-675a4dcfa776_—Pngtree—cartoon patterned sweater_5578383.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\aed017ef-2e95-4181-a681-675a4dcfa776_—Pngtree—cartoon patterned sweater_5578383.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\ddf6f51a-45da-49cd-b593-17a4f56eeeb4_airpods.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>ShoppingWEB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ShoppingWEB</BasePath>
+      <RelativePath>uploads/ddf6f51a-45da-49cd-b593-17a4f56eeeb4_airpods.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\ddf6f51a-45da-49cd-b593-17a4f56eeeb4_airpods.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\e147463b-a179-47d3-bdce-5eda3bf62edc_—Pngtree—pants clip art jeans_6123483.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>ShoppingWEB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ShoppingWEB</BasePath>
+      <RelativePath>uploads/e147463b-a179-47d3-bdce-5eda3bf62edc_—Pngtree—pants clip art jeans_6123483.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\e147463b-a179-47d3-bdce-5eda3bf62edc_—Pngtree—pants clip art jeans_6123483.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\e29433d8-4db5-428a-9bb4-0787d475dcdf_laptop.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>ShoppingWEB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ShoppingWEB</BasePath>
+      <RelativePath>uploads/e29433d8-4db5-428a-9bb4-0787d475dcdf_laptop.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\e29433d8-4db5-428a-9bb4-0787d475dcdf_laptop.png))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

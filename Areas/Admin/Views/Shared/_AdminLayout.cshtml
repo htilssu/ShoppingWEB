@@ -43,7 +43,7 @@
         <div class="nav-item d-flex align-items-center justify-content-center">
             <div class="d-flex justify-content-start align-items-center gap-1">
                 <i class="bi bi-clipboard-data-fill"></i>
-                <a class="text-decoration-none text-black d-flex gap-1" href="">Status</a>
+                <a class="text-decoration-none text-black d-flex gap-1" asp-controller="Home" asp-action="Index">Status</a>
             </div>
         </div>
         <div class="nav-item align-items-center justify-content-center d-flex gap-1">
@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    <div class="content p-md-5 w-100">
+    <div class="content mh-100 p-md-5 w-100">
         @RenderBody()
     </div>
 </div>
@@ -94,6 +94,5 @@
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

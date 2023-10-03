@@ -46,7 +46,7 @@ public class ProductController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Product product)
     {
-        product.Id = Guid.NewGuid().ToString();
+        product.DiscountPercent = product.DiscountPercent ?? 0;
         product.CreatedAt = DateTime.Now;
         product.UpdatedAt = DateTime.Now;
         if (ModelState.IsValid)
@@ -86,6 +86,7 @@ public class ProductController : Controller
         {
             try
             {
+                product.UpdatedAt = DateTime.Now;
                 _context.Update(product);
                 await _context.SaveChangesAsync();
             }

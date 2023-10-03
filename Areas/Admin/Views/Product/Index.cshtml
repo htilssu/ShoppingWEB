@@ -1,3 +1,4 @@
+@using System.Globalization
 @model IEnumerable<Product>
 @inject ApplicationDbContext _Context;
 
@@ -23,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiscountPrice)
+            @Html.DisplayNameFor(model => model.DiscountPercent)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InStock)
@@ -48,13 +49,18 @@
     {
         <tr style="vertical-align: middle">
             <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
+                <div data-bs-toggle="title" title="@item.ProductName">@(item.ProductName!.Length >= 20 ? item.ProductName.Substring(0, 20) + "..." : item.ProductName)</div>
             </td>
             <td>
-                @($"{item.Price:C0}")
+                @{
+                    var info = CultureInfo.GetCultureInfo("vi-VN");
+                    var currency = string.Format(info, "{0:C0}", item.Price);
+                }
+                @currency
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DiscountPrice)
+                @($"{item.DiscountPercent}%")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InStock)
@@ -66,14 +72,15 @@
                 @Html.DisplayFor(modelItem => _Context.Categories.Find(item.CategoryId)!.CategoryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
+                @($"{item.CreatedAt:d}")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
+                @($"{item.UpdatedAt:d}")
             </td>
             <td>
-                <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
-                <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
+                <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                <a class="btn btn-danger" asp-controller="Image" asp-action="Index" asp-route-product="@item.Id">Sửa ảnh</a>
+                <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
                 <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
             </td>
         </tr>
