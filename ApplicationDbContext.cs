@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Models;
 
@@ -13,4 +13,6 @@ public class ApplicationDbContext : IdentityDbContext<UserModel, RoleModel, stri
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
+
+    public DbSet<ImageUrl> ImageUrl { get; set; } = default!;
 }
