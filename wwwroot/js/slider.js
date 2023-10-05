@@ -7,12 +7,13 @@ for (let sliderElement of slider) {
     sliderElement.append(cloneLast)
     slideAction(sliderElement, slideCol.length)
 }
+console.log('hi');
 
 
 function slideAction(slider, count) {
     let index = 0
     let trans = slider.style.transition
-    let t1 = setInterval(() => {
+    setInterval(() => {
         slider.style.transform = `translateX(-${index % count * 100}%)`
         if (index === count - 1) {
             setTimeout(() => {

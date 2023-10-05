@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<UserModel> UserManager
+
+@if (User.Identity is {IsAuthenticated: true })
+{
+    <div id="user-option" class="reg-log logged position-relative nav-item gap-1 d-flex">
+        @{
+            var user = await UserManager.GetUserAsync(User);
+
+        }
+        <img class="avatar" src="@user!.AvtPath" alt="avt">
+        <span>@user.UserName</span>
+        <div id="option-area" class="position-absolute d-none op-hide bg-white option">
+            <ul>
+                <li>
+                    <form method="post" id="logoutForm" class="form-inline" asp-controller="Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                        <button class="bg-transparent text-black nav-link p-0">Đăng xuất</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <div class="reg-log not-logged nav-item gap-1 d-flex">
+        <div class="reg">
+            <a href="/Register">Đăng ký</a>
+        </div>
+        <div class="log">
+            <a href="/Login">Đăng nhập</a>
+        </div>
+    </div>
+}
