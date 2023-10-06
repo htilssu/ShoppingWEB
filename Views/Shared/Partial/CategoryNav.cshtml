@@ -1,0 +1,15 @@
+﻿@using Microsoft.EntityFrameworkCore
+@inject ApplicationDbContext Context
+@{
+    var categoryList = await Context.Categories.ToListAsync();
+}
+
+
+<div class="container-md category">
+    @foreach (var category in categoryList)
+    {
+        <div class="ct-item">
+            <p>@category.CategoryName</p>
+        </div>
+    }
+</div>

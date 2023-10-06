@@ -8,6 +8,10 @@
     await Html.RenderPartialAsync("BannerPartial");
 }
 
+@{
+    await Html.RenderPartialAsync("Partial/CategoryNav");
+}
+
 <div class="container-md">
     <div class="product-list py-3 row">
         @foreach (var product in Model)
