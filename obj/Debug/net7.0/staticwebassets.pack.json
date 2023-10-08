@@ -13,6 +13,18 @@
       "PackagePath": "staticwebassets\\css\\layouts\\loginlayout.css"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\CategoryStyle.css",
+      "PackagePath": "staticwebassets\\css\\partials\\CategoryStyle.css"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\CategoryStyle.css.map",
+      "PackagePath": "staticwebassets\\css\\partials\\CategoryStyle.css.map"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\CategoryStyle.scss",
+      "PackagePath": "staticwebassets\\css\\partials\\CategoryStyle.scss"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -8157,28 +8169,56 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\192223b4-1dfe-430c-950e-6957e47055c1_airpods.png",
-      "PackagePath": "staticwebassets\\uploads\\192223b4-1dfe-430c-950e-6957e47055c1_airpods.png"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\0edbb2a1-6bb3-4d99-b2be-6e60d850a7f7_balo.png",
+      "PackagePath": "staticwebassets\\uploads\\0edbb2a1-6bb3-4d99-b2be-6e60d850a7f7_balo.png"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\92aafb0e-d4a9-4edc-a0aa-6042f23483e7_iphone-14-pro-max-tim-thumb-600x600.jpg",
-      "PackagePath": "staticwebassets\\uploads\\92aafb0e-d4a9-4edc-a0aa-6042f23483e7_iphone-14-pro-max-tim-thumb-600x600.jpg"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\0f219207-15c1-4ade-8756-d901ce72500d_dongho.png",
+      "PackagePath": "staticwebassets\\uploads\\0f219207-15c1-4ade-8756-d901ce72500d_dongho.png"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\aed017ef-2e95-4181-a681-675a4dcfa776_—Pngtree—cartoon patterned sweater_5578383.png",
-      "PackagePath": "staticwebassets\\uploads\\aed017ef-2e95-4181-a681-675a4dcfa776_—Pngtree—cartoon patterned sweater_5578383.png"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png",
+      "PackagePath": "staticwebassets\\uploads\\2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ddf6f51a-45da-49cd-b593-17a4f56eeeb4_airpods.png",
-      "PackagePath": "staticwebassets\\uploads\\ddf6f51a-45da-49cd-b593-17a4f56eeeb4_airpods.png"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\329a887e-6481-4fef-a4d9-1527669c4844_bongda-thethao.png",
+      "PackagePath": "staticwebassets\\uploads\\329a887e-6481-4fef-a4d9-1527669c4844_bongda-thethao.png"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\e147463b-a179-47d3-bdce-5eda3bf62edc_—Pngtree—pants clip art jeans_6123483.png",
-      "PackagePath": "staticwebassets\\uploads\\e147463b-a179-47d3-bdce-5eda3bf62edc_—Pngtree—pants clip art jeans_6123483.png"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\3b2f4114-37c3-4449-ac0e-8e6f0957695b_mevabe.png",
+      "PackagePath": "staticwebassets\\uploads\\3b2f4114-37c3-4449-ac0e-8e6f0957695b_mevabe.png"
     },
     {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\e29433d8-4db5-428a-9bb4-0787d475dcdf_laptop.png",
-      "PackagePath": "staticwebassets\\uploads\\e29433d8-4db5-428a-9bb4-0787d475dcdf_laptop.png"
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\53999872-b9c5-4deb-a4e4-81de20d5346e_trangsuc.png",
+      "PackagePath": "staticwebassets\\uploads\\53999872-b9c5-4deb-a4e4-81de20d5346e_trangsuc.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\667d35bd-b16f-4690-baa7-9a08232da3c6_thietbidientu.png",
+      "PackagePath": "staticwebassets\\uploads\\667d35bd-b16f-4690-baa7-9a08232da3c6_thietbidientu.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\787e2703-3413-490c-85c7-e7a8cc458a24_dochoi.png",
+      "PackagePath": "staticwebassets\\uploads\\787e2703-3413-490c-85c7-e7a8cc458a24_dochoi.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\a739b9fb-6582-43af-be72-14e59ee02e55_giaynam.png",
+      "PackagePath": "staticwebassets\\uploads\\a739b9fb-6582-43af-be72-14e59ee02e55_giaynam.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ac9dea20-2e23-446b-ac33-f5554f358fae_xemay.png",
+      "PackagePath": "staticwebassets\\uploads\\ac9dea20-2e23-446b-ac33-f5554f358fae_xemay.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\cf1d65d4-6dee-431c-9684-c40ee07ff705_sacdep.png",
+      "PackagePath": "staticwebassets\\uploads\\cf1d65d4-6dee-431c-9684-c40ee07ff705_sacdep.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ee0ff642-eb06-41ef-b51f-2067f95cf1e3_giaynu.png",
+      "PackagePath": "staticwebassets\\uploads\\ee0ff642-eb06-41ef-b51f-2067f95cf1e3_giaynu.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\fd04867b-5941-4147-823f-bf3525ef04d9_laptop.png",
+      "PackagePath": "staticwebassets\\uploads\\fd04867b-5941-4147-823f-bf3525ef04d9_laptop.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.ShoppingWEB.Microsoft.AspNetCore.StaticWebAssets.props",

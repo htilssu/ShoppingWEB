@@ -9,7 +9,10 @@
 html {
     font-size: 14px;
     color: black;
+}
 
+body {
+    background-color: #f5f5f5 !important;
 }
 
 a {

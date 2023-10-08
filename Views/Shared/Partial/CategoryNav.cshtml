@@ -1,15 +1,39 @@
 ﻿@using Microsoft.EntityFrameworkCore
+@using ShoppingWEB.Extension_Method
 @inject ApplicationDbContext Context
 @{
     var categoryList = await Context.Categories.ToListAsync();
 }
 
+<link rel="stylesheet" href="~/css/partials/CategoryStyle.css" asp-append-version="true"/>
 
-<div class="container-md category">
-    @foreach (var category in categoryList)
-    {
-        <div class="ct-item">
-            <p>@category.CategoryName</p>
+<div class="container-md m-0 p-0 mt-4 category bg-white">
+    <div class="category-title fw-bold p-md-3">
+        <div class="text-uppercase opacity-50">Danh mục</div>
+    </div>
+    <div class="position-relative">
+        <div class="category-item overflow-hidden">
+            <ul class="row item-list p-0 m-0">
+                @foreach (var category in categoryList)
+                {
+                    <li class="ct-item col-5 col-md-2 d-flex col-lg-1 p-0">
+                        <div class="h-100 w-100 d-flex flex-column align-items-center">
+                            <div class="d-flex item-image w-100" style="background-image: url(@category.GetWebPath()); background-repeat: no-repeat; background-size: contain;background-position: center"></div>
+                            <div class="item-display text-center p-1">
+                                <div class="">@category.CategoryName</div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
         </div>
-    }
+        <div class="redirect-item">
+            <div class="rounded-circle next-item-btn-right position-absolute text-center d-flex align-items-center justify-content-center">
+                <i class="bi bi-chevron-right fw-bold"></i>
+            </div>
+            <div class="rounded-circle next-item-btn-left position-absolute text-center d-flex align-items-center justify-content-center">
+                <i class="bi bi-chevron-left fw-bold"></i>
+            </div>
+        </div>
+    </div>
 </div>

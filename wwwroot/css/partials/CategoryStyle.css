@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.category .category-title {
+  font-size: 1.3rem;
+}
+.category .category-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.category .category-item .item-list {
+  width: 130%;
+  height: 301px;
+  transition: all 0.5s ease 0s;
+}
+.category .category-item .item-list .ct-item {
+  height: 150px;
+  font-size: 0.875rem;
+  flex: 0 0 150px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.category .category-item .item-list .ct-item .item-image {
+  height: 70%;
+}
+.category .category-item .item-list .ct-item .item-display {
+  height: 30%;
+}
+.category .redirect-item .next-item-btn-right {
+  right: -25px;
+  top: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 5px #5c636a;
+  background-color: white;
+}
+.category .redirect-item .next-item-btn-right i {
+  font-size: 1.4rem;
+}
+.category .redirect-item .next-item-btn-left {
+  left: -25px;
+  top: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 5px #5c636a;
+  background-color: white;
+}
+.category .redirect-item .next-item-btn-left i {
+  font-size: 1.4rem;
+}
+
+/*# sourceMappingURL=CategoryStyle.css.map */
