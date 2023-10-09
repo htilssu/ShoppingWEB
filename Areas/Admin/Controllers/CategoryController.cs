@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShoppingWEB.Areas.Admin.Models;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Areas.Admin.Controllers;
@@ -17,15 +18,13 @@ public class CategoryController : Controller
     // GET: Category
     public async Task<IActionResult> Index()
     {
-        return _context.Categories != null
-            ? View(await _context.Categories.OrderBy(category => category.CategoryName).ToListAsync())
-            : Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
+        return View(await _context.Categories.OrderBy(category => category.CategoryName).ToListAsync());
     }
 
     // GET: Category/Details/5
-    public async Task<IActionResult> Details(string id)
+    public async Task<IActionResult> Details(string? id)
     {
-        if (id == null || _context.Categories == null) return NotFound();
+        if (id == null) return NotFound();
 
         var category = await _context.Categories
             .FirstOrDefaultAsync(m => m.Id == id);
@@ -43,21 +42,19 @@ public class CategoryController : Controller
     // POST: Category/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Category category, IFormFile imageFile)
+    public async Task<IActionResult> Create(Category category, IFormFile? imageFile)
     {
         if (ModelState.IsValid)
         {
-            if (imageFile != null && imageFile.Length > 0)
+            if (imageFile is { Length: > 0 })
                 try
                 {
                     var uploadFolder = Path.Combine("wwwroot", "uploads");
                     var uniqueFileName = Guid.NewGuid() + "_" + imageFile.FileName;
                     var filePath = Path.Combine(uploadFolder, uniqueFileName);
                     category.ImagePath = filePath;
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(stream);
-                    }
+                    await using var stream = new FileStream(filePath, FileMode.Create);
+                    await imageFile.CopyToAsync(stream);
                 }
                 catch (Exception e)
                 {
@@ -76,9 +73,9 @@ public class CategoryController : Controller
     }
 
     // GET: Category/Edit/5
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> Edit(string? id)
     {
-        if (id == null || _context.Categories == null) return NotFound();
+        if (id == null) return NotFound();
 
         var category = await _context.Categories.FindAsync(id);
         if (category == null) return NotFound();
@@ -90,25 +87,53 @@ public class CategoryController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, Category category)
+    public async Task<IActionResult> Edit(string id, CategoryModel category)
     {
-        if (id != category.Id) return NotFound();
-        var oldProduct = await _context.Categories.FindAsync(id)!;
-
-        oldProduct.UpdatedAt = DateTime.Now;
-        oldProduct.ImagePath = category.ImagePath;
-        oldProduct.CategoryName = category.CategoryName;
-
-
+        var oldProduct = await _context.Categories.FindAsync(id);
         if (ModelState.IsValid)
         {
+            if (category.ImageFile.FileName is not (null or ""))
+            {
+                var oldPath = oldProduct!.ImagePath!;
+                var file = category.ImageFile;
+                var rootPath = Path.Combine("wwwroot", "uploads");
+                var fileName = Guid.NewGuid() + "_" + file.FileName;
+                var filePath = Path.Combine(rootPath, fileName);
+                await using var stream = new FileStream(filePath, FileMode.Create);
+                try
+                {
+                    await file.CopyToAsync(stream);
+                    oldProduct.ImagePath = filePath;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
+                //Delete old image
+                try
+                {
+                    System.IO.File.Delete(oldPath);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+
+
+            oldProduct!.UpdatedAt = DateTime.Now;
+            oldProduct.CategoryName = category.CategoryName;
+
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(category.Id))
+                if (!CategoryExists(id))
                     return NotFound();
                 throw;
             }
@@ -116,13 +141,13 @@ public class CategoryController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        return View(category);
+        return View(oldProduct);
     }
 
     // GET: Category/Delete/5
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> Delete(string? id)
     {
-        if (id == null || _context.Categories == null) return NotFound();
+        if (id == null) return NotFound();
 
         var category = await _context.Categories
             .FirstOrDefaultAsync(m => m.Id == id);
@@ -137,9 +162,18 @@ public class CategoryController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        if (_context.Categories == null) return Problem("Entity set 'ApplicationDbContext.Categories'  is null.");
         var category = await _context.Categories.FindAsync(id);
-        if (category != null) _context.Categories.Remove(category);
+        _context.Categories.Remove(category!);
+        
+        try
+        {
+            System.IO.File.Delete(category!.ImagePath!);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
 
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
