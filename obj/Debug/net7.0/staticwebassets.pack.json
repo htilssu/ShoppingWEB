@@ -8177,6 +8177,14 @@
       "PackagePath": "staticwebassets\\uploads\\0f219207-15c1-4ade-8756-d901ce72500d_dongho.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\18e1a545-ff92-4a6a-9a4e-903a5decbc2c_bachhoa.png",
+      "PackagePath": "staticwebassets\\uploads\\18e1a545-ff92-4a6a-9a4e-903a5decbc2c_bachhoa.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png",
+      "PackagePath": "staticwebassets\\uploads\\2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png",
       "PackagePath": "staticwebassets\\uploads\\2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png"
     },
@@ -8193,12 +8201,28 @@
       "PackagePath": "staticwebassets\\uploads\\53999872-b9c5-4deb-a4e4-81de20d5346e_trangsuc.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\5d96af78-f7c5-441b-8d85-1eb1b4e503e2_mayanh.png",
+      "PackagePath": "staticwebassets\\uploads\\5d96af78-f7c5-441b-8d85-1eb1b4e503e2_mayanh.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\62ff40d6-cd3b-4352-94e9-b2407351a927_dungcudoisong.png",
+      "PackagePath": "staticwebassets\\uploads\\62ff40d6-cd3b-4352-94e9-b2407351a927_dungcudoisong.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\667d35bd-b16f-4690-baa7-9a08232da3c6_thietbidientu.png",
       "PackagePath": "staticwebassets\\uploads\\667d35bd-b16f-4690-baa7-9a08232da3c6_thietbidientu.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\6e5b9315-aea4-4bc4-882b-f4ed2393986e_dungcu.png",
+      "PackagePath": "staticwebassets\\uploads\\6e5b9315-aea4-4bc4-882b-f4ed2393986e_dungcu.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\787e2703-3413-490c-85c7-e7a8cc458a24_dochoi.png",
       "PackagePath": "staticwebassets\\uploads\\787e2703-3413-490c-85c7-e7a8cc458a24_dochoi.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png",
+      "PackagePath": "staticwebassets\\uploads\\925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\a739b9fb-6582-43af-be72-14e59ee02e55_giaynam.png",
@@ -8215,6 +8239,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ee0ff642-eb06-41ef-b51f-2067f95cf1e3_giaynu.png",
       "PackagePath": "staticwebassets\\uploads\\ee0ff642-eb06-41ef-b51f-2067f95cf1e3_giaynu.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\f281a017-8078-4cc1-999b-e896980681cc_giatgiu.png",
+      "PackagePath": "staticwebassets\\uploads\\f281a017-8078-4cc1-999b-e896980681cc_giatgiu.png"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\fd04867b-5941-4147-823f-bf3525ef04d9_laptop.png",
