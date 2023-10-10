@@ -13,7 +13,6 @@ function slideAction(slider, count) {
     let index = 0
     let trans = slider.style.transition
     setInterval(() => {
-        console.log(index)
         slider.style.transform = `translateX(-${index % count * 100}%)`
         if (index === count - 1) {
             setTimeout(() => {

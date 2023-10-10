@@ -67,6 +67,7 @@
     <ItemGroup>
         <Folder Include="Areas\Admin\Data\"/>
         <Folder Include="Migrations\"/>
+        <Folder Include="wwwroot\js\admin\"/>
         <Folder Include="wwwroot\uploads\"/>
     </ItemGroup>
     <ItemGroup>
