@@ -1,0 +1,21 @@
+﻿@model Product
+
+@{
+    // ViewBag.Title = Model.ProductName!;
+    Layout = "_Layout";
+}
+
+@section Styles
+{
+    <link href="~/css/actions/DetailIndex.scss"/>
+}
+
+@section Scripts
+{}
+
+
+<div class="container-md">
+    @{
+        await Html.RenderPartialAsync("Partials/ProductBriefing");
+    }
+</div>
