@@ -5,7 +5,6 @@
     var categoryList = await Context.Categories.ToListAsync();
 }
 
-<link rel="stylesheet" href="~/css/partials/CategoryStyle.css" asp-append-version="true"/>
 
 <div class="container-md m-0 p-0 mt-4 category bg-white">
     <div class="category-title fw-bold p-md-3">
@@ -18,10 +17,12 @@
                 {
                     <li class="ct-item col-5 col-md-2 d-flex col-lg-1 p-0">
                         <div class="h-100 w-100 d-flex flex-column align-items-center">
-                            <div class="d-flex item-image w-100" style="background-image: url(@category.GetWebPath()); background-repeat: no-repeat; background-size: contain;background-position: center"></div>
-                            <div class="item-display text-center p-1">
-                                <div class="">@category.CategoryName</div>
-                            </div>
+                            <a class="h-100 w-100 text-decoration-none">
+                                <div class="d-flex item-image w-100" style="background-image: url(@category.GetWebPath()); background-repeat: no-repeat; background-size: contain;background-position: center"></div>
+                                <div class="item-display text-center p-1">
+                                    <div class="">@category.CategoryName</div>
+                                </div>
+                            </a>
                         </div>
                     </li>
                 }

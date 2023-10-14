@@ -2,14 +2,237 @@
 @model Product
 @inject ApplicationDbContext Db;
 @{
-    // var imageList = Db.ImageUrl.Where(_ => true);
+    var imageList = Db.ImageUrl.Where(_ => true);
 }
 
-<section class="product-briefing d-flex">
-    <div class="left-side p-2">
-        <img class="w-100" id="product-img-preview" src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
+<section class="product-briefing bg-white d-flex mt-5">
+<div class="left-side overflow-hidden p-2">
+    <div class="overflow-hidden">
+        <div class="picture-review">
+            @* TODO: Binding *@
+            <img class="w-100" id="product-img-preview" src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
+        </div>
+        <div class="w-100">
+            <div class="sub-image d-flex w-100">
+                @* TODO sub-image *@
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="sub-image-item">
+                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="right-side">
+</div>
+<div class="right-side p-5">
+    <div class="product-info d-flex flex-column">
+        <div class="product-name fs-5">
+            <span>Dép nữ, Dép nam quai ngang BALEN siêu rẻ, siêu bền giá tại xưởng</span>
+        </div>
+        <div class="product-analysis d-flex justify-content-between mt-2">
+            <div class="product-analysis-info d-flex">
+                <div class="star d-flex">
+                    <span>
+                        <a href="#comment">5</a>
+                    </span>
+                    @* TODO rate star *@
+                    <div class="star-count d-flex align-items-center">
+                        <svg height="15" width="15">
+                            <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                        </svg>
+                        <svg height="15" width="15">
+                            <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                        </svg>
+                        <svg height="15" width="15">
+                            <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                        </svg>
+                        <svg height="15" width="15">
+                            <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                        </svg>
+                        <svg height="15" width="15">
+                            <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="rate">
+                    <span>
+                        <a href="#comment">23k</a>
+                    </span>
+                    <span>đánh giá</span>
+                </div>
+                <div class="sold-info">
+                    @* TODO sold count *@
+                    <span>
+                        104,2k
+                    </span>
+                    <span class="opacity-75">Đã Bán</span>
+                </div>
+            </div>
+            <div class="product-report">
+                <span>Tố cáo</span>
+            </div>
+        </div>
+        <div class="product-price p-2 mt-2">
+            <div class="price">
+                1234đ
+            </div>
+        </div>
+    </div>
+    <div class="buy-info p-2">
 
+        <div class="shipping d-flex align-items-start mt-4">
+            <div class="display">
+                Vận Chuyển
+            </div>
+            <div class="data">
+                <div>
+                    <div class="d-flex align-items-center">
+                        <img src="~/imgs/freeship.png" alt="">
+                    </div>
+                </div>
+                <div>
+                    <div>Miễn phí vận chuyển</div>
+                </div>
+                <div>
+                    <i class="bi bi-truck"></i>
+                </div>
+                <div class="d-flex flex-column mt-1">
+                    <div class=" d-flex">
+                        <div class="shipping-address">
+                            Vận chuyển tới
+                        </div>
+                        <div class="shipping-address">Huyện Ba Vì</div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="shipping-address">Phí vận chuyển</div>
+                        <div class="shipping-address">0đ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="classify d-flex mt-3">
+            <div class="display d-flex justify-content-start">
+                Phân Loại
+            </div>
+            <div class="data d-flex">
+                <div class="classify-list d-flex flex-wrap">
+                    <button class="classify-item">
+                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 1 cốc
+                    </button>
+                    <button class="classify-item">
+                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">Kệ 3 cốc
+                    </button>
+                    <button class="classify-item">
+                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 5 cốc
+                    </button>
+                    <button class="classify-item">
+                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Hộp nhả kem
+                    </button>
+                    <button class="classify-item">
+                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Cái này không có gì
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="size d-flex mt-3">
+            <div class="display d-flex align-items-center justify-content-start">
+                Kích Cỡ
+            </div>
+            <div class="data d-flex ">
+                <div class="size-list d-flex flex-wrap">
+                    <button class="size-item">
+                        1
+                    </button>
+                    <button class="size-item">
+                        1
+                    </button>
+                    <button class="size-item">
+                        1
+                    </button>
+                    <button class="size-item">
+                        1
+                    </button>
+                    <button class="size-item">
+                        1
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="quantity d-flex align-items-center mt-4">
+            <div class="display d-flex justify-content-start align-items-center">Số Lượng</div>
+            <div class="data">
+                <div class="quantity-action d-flex">
+                    <div class="action d-flex justify-content-center align-items-center" id="decrease">
+                        <i class="bi bi-dash-lg"></i>
+                    </div>
+                    <div class="data-quantity">
+                        <input class="d-flex text-center h-100" value="1" min="0" type="text">
+                    </div>
+                    <div class="action d-flex justify-content-center align-items-center" id="increase">
+                        <i class="bi bi-plus-lg"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="remaining mx-3 opacity-75">
+                @* TODO remaining product *@
+                <span>2107644 sản phẩm có sẵn</span>
+            </div>
+        </div>
     </div>
+    <div class="action mt-3 w-100 d-flex justify-content-center p-2">
+        <div class="w-100 d-flex">
+            <button type="submit" class="btn btn-outline-danger">
+                <i class="bi bi-basket-fill"></i>
+                <span>Thêm Vào Giỏ Hàng</span>
+            </button>
+            <button type="submit" class="btn btn-danger">Mua Ngay</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="footer d-flex justify-content-between p-2">
+        <div class="d-flex gap-1">
+            <img src="~/imgs/return.png" alt="">
+            <div>7 ngày miễn phí trả hàng</div>
+        </div>
+        <div class="d-flex gap-1">
+            <img src="~/imgs/protect.png" alt="">
+            <div > Hàng chĩnh hãng 100%</div>
+        </div>
+        <div class="d-flex gap-1">
+            <img src="~/imgs/shipping.png" alt="">
+            <div >Miễn phí vận chuyển</div>
+        </div>
+    </div>
+</div>
 </section>

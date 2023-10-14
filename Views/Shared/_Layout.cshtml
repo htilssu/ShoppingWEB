@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true">
     <link rel="shortcut icon" href="~/imgs/shopping-brand.png" type="image/x-icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    @(await RenderSectionAsync("Styles", false))
     <title>@ViewBag.Title - Aetherix</title>
 </head>
 <body>
@@ -79,13 +80,13 @@
                 <i class="bi bi-cart-fill text-white fs-4"></i>
             </div>
             <div class="user user-mobile d-sm-none d-flex align-items-center justify-content-center pt-2">
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity!.IsAuthenticated)
                 {
                     <div id="user-option-mobile" class="reg-log logged position-relative nav-item gap-1 d-flex">
                         @{
                             var user = await UserManager.GetUserAsync(User);
                         }
-                        <img class="avatar" src="@user.AvtPath" alt="avt">
+                        <img class="avatar" src="@user!.AvtPath" alt="avt">
                         <div id="option-area" class="position-absolute d-none op-hide bg-white option">
                             <ul>
                                 <li>
@@ -111,7 +112,9 @@
     </div>
 </header>
 <div class="placeholder"></div>
-@RenderBody()
+<div class="main">
+    @RenderBody()
+</div>
 <footer class=" card-footer p-md-5">
     <div class="container-md">
         <hr>
@@ -249,8 +252,7 @@
         userArea.addEventListener('mouseout', hideUserOption)  
     }
 </script>
-<script src="~/js/slider.js"></script>
-<script src="~/js/index.js"></script>
 
+@(await RenderSectionAsync("Scripts", false))
 </body>
 </html>

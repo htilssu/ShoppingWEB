@@ -260,6 +260,19 @@ header .navbar.nav-social {
     display: none !important;
 }
 
+.product-section-title {
+    font-size: 1.3rem;
+}
+
+.product-list .product-name {
+    font-size: .9rem;
+}
+
+.product-list .product-item {
+    height: 200px;
+    background-color: #6c757d;
+}
+
 
 @media screen and (max-width: 768px) {
     header .navbar {

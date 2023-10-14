@@ -1,4 +1,4 @@
-@model ShoppingWEB.Models.Category
+@model ShoppingWEB.Areas.Admin.Models.CategoryModel
 
 @{
     ViewData["Title"] = "Categories";
@@ -18,9 +18,9 @@
                 <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
+                <label asp-for="ImageFile" class="control-label"></label>
                 <input name="imageFile" type="file" accept=".png, .jpeg, .jpg" class="form-control"/>
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Tạo" class="btn btn-success mt-2"/>

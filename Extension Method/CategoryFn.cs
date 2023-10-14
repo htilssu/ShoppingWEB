@@ -15,4 +15,9 @@ public static class Extension
         var path = image.ImagePath;
         return path![path.IndexOf('\\')..].Replace(@"\", "/");
     }
+
+    public static string GetWebPath(this string path)
+    {
+        return path![path.IndexOf('\\')..].Replace(@"\", "/");
+    }
 }

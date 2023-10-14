@@ -22,6 +22,13 @@
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
+.category .category-item .item-list .ct-item a {
+  color: rgba(0, 0, 0, 0.8);
+}
+.category .category-item .item-list .ct-item:hover {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
 .category .category-item .item-list .ct-item .item-image {
   height: 70%;
 }

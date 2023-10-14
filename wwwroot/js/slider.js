@@ -21,10 +21,10 @@ function slideAction(slider, count) {
             setTimeout(() => {
                 slider.style.transform = `translateX(0)`
 
-            }, 320)
+            }, 340)
             setTimeout(() => {
                 slider.style.transition = trans;
-            }, 340)
+            }, 380)
             index = 0;
         }
         index++

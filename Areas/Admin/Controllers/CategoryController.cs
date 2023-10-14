@@ -42,8 +42,10 @@ public class CategoryController : Controller
     // POST: Category/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Category category, IFormFile? imageFile)
+    public async Task<IActionResult> Create(CategoryModel cate)
     {
+        var imageFile = cate.ImageFile;
+        var category = new Category();
         if (ModelState.IsValid)
         {
             if (imageFile is { Length: > 0 })
@@ -69,7 +71,7 @@ public class CategoryController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        return View(category);
+        return View(cate);
     }
 
     // GET: Category/Edit/5
@@ -164,7 +166,7 @@ public class CategoryController : Controller
     {
         var category = await _context.Categories.FindAsync(id);
         _context.Categories.Remove(category!);
-        
+
         try
         {
             System.IO.File.Delete(category!.ImagePath!);

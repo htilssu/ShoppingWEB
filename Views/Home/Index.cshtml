@@ -1,9 +1,17 @@
-﻿@{
-    ViewBag.Title = "Trang chủ";
-}
-
+﻿@inject ApplicationDbContext Db;
+@using ShoppingWEB.Extension_Method
 @model List<Product>;
 
+@{
+    ViewBag.Title = "Trang chủ";
+    var imageList = Db.ImageUrl;
+
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/partials/CategoryStyle.css">
+}
 
 <div class="container-md">
     @{
@@ -14,12 +22,37 @@
         await Html.RenderPartialAsync("Partial/CategoryNav");
     }
 
-    <div class="product-list py-3 row">
-        @foreach (var product in Model)
-        {
-            <div class="col-6 col-md-4 col-lg-2">
-                @product.ProductName
-            </div>
-        }
+    <div class="product-section bg-white mt-3">
+        <div class="product-section-title text-uppercase p-3 fw-bold opacity-50">
+            sản phẩm
+        </div>
+        <div class="product-list py-1 row m-0">
+            @foreach (var product in Model.Where(product => product.Published == 1))
+            {
+                <div class="product-item col-6 col-md-4 col-lg-2 p-xl-2">
+                    <div class="w-100 h-100 d-flex flex-column">
+                        <div>
+                            @{
+                                var image = imageList.Where(x => x.ProductId == product.Id);
+                            }
+
+                            @{
+                                var item = image.Where(x => x.Thumnail == true);
+                                var path = item.FirstOrDefault()?.ImagePath;
+                            }
+                            <img src="@if (path != null) {@path.GetWebPath() }" alt="">
+                        </div>
+                        <div class="product-name">@product.ProductName</div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script src="~/js/slider.js"></script>
+    <script src="~/js/index.js"></script>
+}

@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\avatars\\default-avatar.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\actions\\DetailIndex.css",
+      "PackagePath": "staticwebassets\\css\\actions\\DetailIndex.css"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\actions\\DetailIndex.css.map",
+      "PackagePath": "staticwebassets\\css\\actions\\DetailIndex.css.map"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\actions\\DetailIndex.scss",
+      "PackagePath": "staticwebassets\\css\\actions\\DetailIndex.scss"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "PackagePath": "staticwebassets\\css\\layouts\\adminlayout.css"
     },
@@ -49,6 +61,22 @@
       "PackagePath": "staticwebassets\\imgs\\accessdenied.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\freeship.png",
+      "PackagePath": "staticwebassets\\imgs\\freeship.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\protect.png",
+      "PackagePath": "staticwebassets\\imgs\\protect.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\return.png",
+      "PackagePath": "staticwebassets\\imgs\\return.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\shipping.png",
+      "PackagePath": "staticwebassets\\imgs\\shipping.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\shopping-brand.png",
       "PackagePath": "staticwebassets\\imgs\\shopping-brand.png"
     },
@@ -79,6 +107,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\index.js",
       "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_briefing.js",
+      "PackagePath": "staticwebassets\\js\\partials\\product_briefing.js"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",
@@ -8235,10 +8267,6 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ac9dea20-2e23-446b-ac33-f5554f358fae_xemay.png",
       "PackagePath": "staticwebassets\\uploads\\ac9dea20-2e23-446b-ac33-f5554f358fae_xemay.png"
-    },
-    {
-      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\cf1d65d4-6dee-431c-9684-c40ee07ff705_sacdep.png",
-      "PackagePath": "staticwebassets\\uploads\\cf1d65d4-6dee-431c-9684-c40ee07ff705_sacdep.png"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\uploads\\ee0ff642-eb06-41ef-b51f-2067f95cf1e3_giaynu.png",

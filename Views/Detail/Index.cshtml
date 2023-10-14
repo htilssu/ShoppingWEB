@@ -7,15 +7,18 @@
 
 @section Styles
 {
-    <link href="~/css/actions/DetailIndex.scss"/>
+    <link rel="stylesheet" href="~/css/actions/DetailIndex.css" asp-append-version="true"/>
 }
 
 @section Scripts
-{}
+{
+    <script src="js/partials/product_briefing.js"></script>
+}
 
 
 <div class="container-md">
     @{
         await Html.RenderPartialAsync("Partials/ProductBriefing");
+        await Html.RenderPartialAsync("Partials/SellerInfo");
     }
 </div>

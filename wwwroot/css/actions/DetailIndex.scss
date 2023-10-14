@@ -1,4 +1,256 @@
 ﻿
-.left-side {
+.product-briefing > .left-side {
   width: 450px;
+
+  .sub-image {
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin: 0 -7px;
+
+    > div {
+      flex-shrink: 0;
+      flex-grow: 0;
+      width: calc(100% / 4);
+
+
+    }
+  }
+
+  .sub-image-item {
+    display: flex;
+
+    &.viewing {
+      border: 1px solid #C1712A;
+      box-shadow: 0 0 1px #C1712A;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.viewing {
+  border: 1px solid #C1712A !important;
+  color: #D27354;
+  box-shadow: 0 0 1px #C1712A !important;
+  background-color: #ffede0 !important;
+}
+
+.product-analysis-info {
+
+  > div:not(:first-child) {
+    padding: 0 10px;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+  }
+
+  > div:first-child {
+    padding-right: 9px;
+
+  }
+
+  a {
+    color: yellowgreen;
+  }
+}
+
+.product-briefing {
+  .right-side {
+
+    hr {
+      height: 1px;
+      border: none;
+      margin: 2rem 0;
+      background-color: rgba(0, 0, 0, 0);
+      border-top: 1px solid rgba(0, 0, 0, .5);
+    }
+
+    .product-info {
+      .product-price {
+        background-color: #FAFAFA;
+
+        .price {
+          font-size: 2rem;
+          color: #C1712A;
+        }
+      }
+    }
+
+    .buy-info {
+
+
+      .display {
+        width: 100px;
+        flex-shrink: 0;
+      }
+    }
+
+    .action button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-right: 20px;
+      padding: 10px 20px;
+      box-sizing: border-box !important;
+
+      &:first-child {
+        background-color: #FDEFEB;
+
+        &:hover {
+          background-color: #f3eeed;
+          color: #CB444A;
+        }
+      }
+    }
+
+    .quantity-action {
+      border: 1px solid rgba(0, 0, 0, .2);
+      height: 35px;
+
+      .action {
+        width: 35px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      input {
+        border-left: 1px solid rgba(0, 0, 0, .2);
+        border-right: 1px solid rgba(0, 0, 0, .2);
+        width: 50px;
+      }
+    }
+
+    .footer {
+      align-items: center;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 30px;
+        }
+      }
+    }
+  }
+
+  .classify {
+    align-items: baseline;
+
+    .display {
+      min-height: 2.5rem;
+    }
+
+    .data {
+
+      .classify-list {
+        margin-top: -.6rem;
+      }
+
+      button.classify-item {
+        border: 1px solid rgba(0, 0, 0, .3);
+        background-color: white;
+        margin-top: .6rem;
+        margin-right: .6rem;
+        border-radius: 2px;
+        padding: 0 1rem;
+        min-width: 4rem;
+        min-height: 2rem;
+
+        line-height: 1px;
+
+        img {
+          width: 35px;
+        }
+      }
+    }
+  }
+}
+
+.shipping {
+  .data {
+
+    div {
+      padding-right: 5px;
+      padding-bottom: 5px;
+
+      i {
+        font-size: 1.5rem;
+      }
+
+      &.shipping-address {
+        padding-right: 2rem;
+      }
+    }
+
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  img {
+    height: 25px;
+  }
+}
+
+
+.size {
+
+  .size-list {
+    margin-top: -.5rem;
+  }
+
+  button {
+    min-width: 40px;
+    min-height: 2rem;
+    border-radius: 2px;
+    margin-top: .5rem;
+    margin-right: .5rem;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .3);
+  }
+}
+
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.seller-info {
+  .shop-avt {
+    width: 60px;
+  }
+
+  .online-status {
+    font-size: .9rem;
+  }
+
+  .seller-introduce {
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    padding-right: 2rem;
+  }
+
+  .seller-action {
+    > div {
+      margin-right: 1rem;
+    }
+
+  }
+}
+
+.border-custom {
+  border: 1px solid rgba(0, 0, 0, .2) !important;
+}
+
+.text-primary-custom {
+  color: #D27354 !important;
 }

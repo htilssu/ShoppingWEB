@@ -39,35 +39,28 @@
 </header>
 <div class="placeholder"></div>
 <div class="main container-fluid p-0 d-flex">
-    <div class="nav-menu d-flex flex-column justify-content-center align-items-center pt-3 pb-3 bg-white bg-opacity-25 text-center">
-        <div class="nav-item d-flex align-items-center justify-content-center">
-            <div class="d-flex justify-content-start align-items-center gap-1">
-                <i class="bi bi-clipboard-data-fill"></i>
-                <a class="text-decoration-none text-black d-flex gap-1" asp-controller="Home" asp-action="Index">Status</a>
-            </div>
+    <div class="nav-menu border-top d-flex flex-column justify-content-start align-items-center pt-3 pb-3 bg-opacity-25 text-center">
+        <div class="navbar-title">
+            <a asp-controller="Home" class="d-flex text-decoration-none justify-content-center gap-2 text-white w-100">
+                <i class="bi bi-speedometer2"></i>
+                <div class="fw-bold">Dashboard</div>
+            </a>
         </div>
-        <div class="nav-item align-items-center justify-content-center d-flex gap-1">
-            <div class="d-flex justify-content-start align-items-center gap-1">
-                <i class="bi bi-box2-fill"></i>
-                <a class="text-decoration-none text-black" asp-controller="Category" asp-action="Index">Category</a>
+
+
+        <div class="w-100 px-5 d-flex flex-column align-items-start">
+            <hr class="w-100" style="border-top: 1px solid rgba(255,255,255,.7)">
+            <div class="nav-item">
+                <a class="text-decoration-none d-flex gap-2" asp-controller="Category">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <div>Categories</div>
+                </a>
             </div>
-        </div>
-        <div class="nav-item align-items-center justify-content-center d-flex gap-1">
-            <div class="d-flex justify-content-start align-items-center gap-1">
-                <i class="bi bi-archive-fill"></i>
-                <a class="text-decoration-none text-black" asp-controller="Product" asp-action="Index">Product</a>
-            </div>
-        </div>
-        <div class="nav-item align-items-center justify-content-center d-flex gap-1">
-            <div class="d-flex justify-content-start align-items-center gap-1">
-                <i class="bi bi-tag-fill"></i>
-                <a class="text-decoration-none text-black">Coupon</a>
-            </div>
-        </div>
-        <div class="nav-item align-items-center justify-content-center d-flex gap-1">
-            <div class="d-flex justify-content-start align-items-center gap-1">
-                <i class="bi bi-people-fill"></i>
-                <a class="text-decoration-none text-black" asp-controller="Home" asp-action="">User</a>
+            <div class="nav-item">
+                <a class="text-decoration-none d-flex gap-2" asp-controller="Product">
+                    <i class="bi bi-archive-fill"></i>
+                    <div>Products</div>
+                </a>
             </div>
         </div>
     </div>

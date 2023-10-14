@@ -8,28 +8,28 @@
 
 .main .nav-menu {
     width: 15% !important;
-    background-color: #F7F7F7 !important;
+    background-color: #D9712A !important;
     box-shadow: 1px -1px 1px #eae2e2;
+    border-color: #ce6c09 !important;
+    font-size: 1.3rem;
+    color: white;
 }
 
 .main .nav-menu .nav-item {
     height: 40px;
     line-height: 40px;
+    font-size: 1.1rem;
     width: 100%;
+}
+
+.main .nav-menu .nav-item a {
+    color: #f5e9e9;
+}
+
+.main .nav-menu .nav-item a:hover {
+    color: white;
 }
 
 .main .nav-menu .nav-item > div {
     width: 50%;
-}
-
-.main .nav-menu .nav-item i {
-    color: #855832;
-}
-
-.main .nav-menu .nav-item:not(:last-child) {
-    border-bottom: 1px solid #bcbebf;
-}
-
-.main .nav-menu .nav-item:hover {
-    background-color: #bcbebf;
 }
