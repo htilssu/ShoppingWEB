@@ -1,4 +1,8 @@
 ﻿
+html {
+  font-size: 14px;
+}
+
 .product-briefing > .left-side {
   width: 450px;
 
@@ -138,7 +142,7 @@
   }
 
   .classify {
-    align-items: baseline;
+    align-items: start;
 
     .display {
       min-height: 2.5rem;
@@ -154,6 +158,8 @@
         border: 1px solid rgba(0, 0, 0, .3);
         background-color: white;
         margin-top: .6rem;
+        display: flex;
+        align-items: center;
         margin-right: .6rem;
         border-radius: 2px;
         padding: 0 1rem;
@@ -227,7 +233,20 @@ input[type=number] {
 
 .seller-info {
   .shop-avt {
-    width: 60px;
+    margin-right: 1rem;
+    width: 100px;
+    height: 100%;
+
+    img {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      object-fit: cover;
+      height: 100%;
+      border-radius: 100%;
+      flex-shrink: 0;
+    }
   }
 
   .online-status {
@@ -235,7 +254,7 @@ input[type=number] {
   }
 
   .seller-introduce {
-    border-right: 1px solid rgba(0, 0, 0, .3);
+    border-right: 1px solid rgba(0, 0, 0, .1);
     padding-right: 2rem;
   }
 
@@ -247,10 +266,53 @@ input[type=number] {
   }
 }
 
+.seller-analysis {
+  padding-left: 2rem;
+  flex-grow: 1;
+  width: auto;
+  gap: 3rem;
+
+  > div {
+    flex-grow: 1;
+  }
+}
+
 .border-custom {
   border: 1px solid rgba(0, 0, 0, .2) !important;
 }
 
 .text-primary-custom {
   color: #D27354 !important;
+}
+
+.page-product-l {
+  .title {
+    font-size: 1.4rem;
+    background-color: #FAFAFA;
+  }
+
+  .product-detail {
+
+
+    .data {
+
+      margin-top: 2rem;
+
+      > div {
+        margin-bottom: 1rem;
+      }
+
+      .data-display {
+        overflow: hidden;
+        text-wrap: nowrap;
+        opacity: .7;
+        text-overflow: ellipsis;
+        width: 140px;
+      }
+
+      .data-content {
+        margin-left: 1rem;
+      }
+    }
+  }
 }

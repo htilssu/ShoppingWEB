@@ -1,9 +1,14 @@
 ﻿// Change preview image
 const subImageCol = $(".sub-image-item");
-subImageCol.on('mouseover', (e) => {
-    changePreviewImage(e.target.getAttribute('src'))
-    changeLastImage(e.target)
-})
+subImageCol.on('mouseover', subImageHandle)
+
+function subImageHandle() {
+    const target = $(this)
+    changePreviewImage(target.find('img').attr('src'))
+    changeLastImage(target)
+    lastImage = target.find('img').attr('src');
+}
+
 
 let lastImage = null
 let lastSubImage = null;
@@ -11,21 +16,14 @@ let firstSubImage = subImageCol.first();
 changeLastImage(firstSubImage)
 
 function changeLastImage(e) {
-    if (lastSubImage === firstSubImage) {
-        lastSubImage.removeClass('viewing');
-    } else if (lastSubImage !== null) {
-        lastSubImage.classList.remove("viewing")
-    }
 
-    if (e === firstSubImage) {
-        e.addClass("viewing")
-        lastSubImage = e;
+    if (lastSubImage) {
+        lastSubImage.removeClass('viewing')
     } else {
-        if (e.closest('.sub-image-item')) {
-            e.closest('.sub-image-item').classList.add("viewing")
-            lastSubImage = e.closest('.sub-image-item');
-        }
+        lastImage = e.find('img').attr('src')
     }
+    e.addClass('viewing')
+    lastSubImage = e;
 }
 
 
@@ -74,24 +72,16 @@ $("#increase").on('click', () => {
 //View classify 
 const classifyList = $(".classify-item");
 
-function changeClassifyPreviewImage(e) {
-    const target = e.target.closest('button').querySelector('img');
-    const attr = target.getAttribute('src');
+function changeClassifyPreviewImage() {
+    const target = $(this).find('img');
+    const attr = target.attr('src');
     changePreviewImage(attr)
 }
 
-function returnPreviewImage(e) {
-    const target = lastImage;
-    if (target === firstSubImage) {
-        const attr = target.find('img').attr('src')
-        changePreviewImage(attr)
-
-    } else {
-        if (target !== null) {
-            const attr = target.querySelector('img').getAttribute('src')
-            changePreviewImage(attr)
-        }
-
+function returnPreviewImage() {
+    console.log(lastImage)
+    if (lastImage) {
+        changePreviewImage(lastImage)
     }
 }
 
@@ -104,18 +94,19 @@ classifyList.on('mouseout', returnPreviewImage)
 //choose type
 let lastChoose = null;
 
-classifyList.on('click', (e) => {
-    if (lastChoose !== null) {
-        lastChoose.classList.remove('viewing')
+classifyList.on('click', classifyClickHandle)
+
+function classifyClickHandle(e) {
+    const target = $(this)
+    if (lastChoose) {
+        lastChoose.removeClass('viewing')
     }
     changeClassifyPreviewImage(e)
-    const button = e.target.closest('button');
-    button.classList.add('viewing')
-    lastImage = button;
-    lastChoose = button;
+    target.addClass('viewing')
+    lastImage = target.find('img').attr('src')
+    lastChoose = target;
     e.preventDefault()
-
-})
+}
 
 //Size item 
 const sizeItemList = $('.size-item');
@@ -125,7 +116,6 @@ sizeItemList.on('click', (e) => {
     if (sizeLastChoose !== null) {
         sizeLastChoose.classList.remove('viewing')
     }
-    changeClassifyPreviewImage(e)
 
     sizeLastChoose = e.target.closest('.size-item');
     sizeLastChoose.classList.add('viewing')
