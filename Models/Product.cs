@@ -1,34 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ShoppingWEB.Models;
 
-public class Product
+public partial class Product
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
 
-    [Column("product_name")] public string? ProductName { get; set; }
+    public string? ProductName { get; set; }
 
     public double? Price { get; set; }
 
-    [Display(Name = "Discount")]
-    [Column("discount_percent")]
-    public double? DiscountPercent { get; set; } = 0;
+    public double? DiscountPercent { get; set; }
 
-    [Column("in_stock")] public int? InStock { get; set; }
+    public int? InStock { get; set; }
 
-    [Column("short_description")] public string? ShortDescription { get; set; }
+    public string? ShortDescription { get; set; }
 
-    [Column("product_description")] public string? ProductDescription { get; set; }
+    public string? ProductDescription { get; set; }
 
     public sbyte? Published { get; set; }
 
-    [Display(Name = "Category")]
-    [Column("category_id")]
     public string? CategoryId { get; set; }
 
+    public DateTime? CreatedAt { get; set; }
 
-    [Column("created_at")] public DateTime? CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 
-    [Column("updated_at")] public DateTime? UpdatedAt { get; set; }
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
+    public virtual Category? Category { get; set; }
+
+    public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
+
+    public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();
 }
