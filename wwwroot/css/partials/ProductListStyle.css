@@ -2,6 +2,13 @@
   margin-left: -0.25rem;
   margin-right: -0.25rem;
 }
+.product-list__item .product-item__sold {
+  font-size: 0.7rem;
+}
+
+.text-primary-custom {
+  color: #D27354 !important;
+}
 
 .product-item > div {
   border-radius: 2px;

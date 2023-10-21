@@ -1,6 +1,15 @@
 ﻿.product-list__item {
   margin-left: -.25rem;
   margin-right: -.25rem;
+
+  .product-item__sold {
+    font-size: .7rem;
+  }
+}
+
+
+.text-primary-custom {
+  color: #D27354 !important;
 }
 
 .product-item {
@@ -19,6 +28,7 @@
     -webkit-box-orient: vertical;
   }
 
+
   .product-img {
     img {
       width: 100%;
@@ -30,4 +40,5 @@
   a {
     color: black;
   }
+
 }
