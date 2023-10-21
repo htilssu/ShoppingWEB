@@ -15,12 +15,12 @@ var connectionString = conf["Database:ConnectionString"];
 
 //Regist Service
 builder.Services.AddSingleton(new MySqlConnection(connectionString));
-builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder =>
+builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
     optionsBuilder.UseMySQL(connectionString);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });
-builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ShoppingContext>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = true;

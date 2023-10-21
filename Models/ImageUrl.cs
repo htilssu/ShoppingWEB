@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShoppingWEB.Models;
 
+[PrimaryKey("ImagePath", "ProductId")]
 public partial class ImageUrl
 {
     public string ImagePath { get; set; } = null!;

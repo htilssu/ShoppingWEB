@@ -37,6 +37,18 @@
       "PackagePath": "staticwebassets\\css\\partials\\CategoryStyle.scss"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\ProductListStyle.css",
+      "PackagePath": "staticwebassets\\css\\partials\\ProductListStyle.css"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\ProductListStyle.css.map",
+      "PackagePath": "staticwebassets\\css\\partials\\ProductListStyle.css.map"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\partials\\ProductListStyle.scss",
+      "PackagePath": "staticwebassets\\css\\partials\\ProductListStyle.scss"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

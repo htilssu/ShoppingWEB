@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-size: 14px;
 }
@@ -233,6 +234,25 @@ input[type=number] {
 }
 .page-product-l .product-detail .data .data-content {
   margin-left: 1rem;
+}
+
+.page-product-r {
+  margin-left: 2rem;
+}
+.page-product-r .product-hot-sale__list {
+  width: 180px;
+}
+.page-product-r .product-hot-sale__list .product-hot-sale__item {
+  margin-top: 1rem;
+}
+.page-product-r .product-hot-sale__list .product-hot-sale__item .product-hot-sale__name {
+  display: -webkit-box; /* Sử dụng cú pháp cũ để hỗ trợ trình duyệt Safari */
+  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 2 */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Ẩn phần văn bản bị tràn ra ngoài */
+}
+.page-product-r .product-hot-sale__list img {
+  width: 100%;
 }
 
 /*# sourceMappingURL=DetailIndex.css.map */

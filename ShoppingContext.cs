@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ShoppingWEB.Models;
 
-namespace ShoppingWEB.Models;
+namespace ShoppingWEB;
 
-public partial class ShoppingContext : DbContext
+public partial class ShoppingContext : IdentityDbContext
 {
     public ShoppingContext()
     {
@@ -56,7 +56,6 @@ public partial class ShoppingContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
-            
         });
 
         modelBuilder.Entity<CartItem>(entity =>
@@ -167,7 +166,6 @@ public partial class ShoppingContext : DbContext
             entity.Property(e => e.Ward)
                 .HasMaxLength(255)
                 .HasColumnName("ward");
-            
         });
 
         modelBuilder.Entity<DeliveryProvider>(entity =>
@@ -234,7 +232,6 @@ public partial class ShoppingContext : DbContext
             entity.HasOne(d => d.Coupon).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CouponId)
                 .HasConstraintName("Order_ibfk_2");
-            
 
             entity.HasOne(d => d.Payment).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.PaymentId)

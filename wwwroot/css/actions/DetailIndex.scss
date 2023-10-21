@@ -316,3 +316,27 @@ input[type=number] {
     }
   }
 }
+
+.page-product-r {
+  margin-left: 2rem;
+
+  .product-hot-sale__list {
+    width: 180px;
+
+    .product-hot-sale__item {
+      margin-top: 1rem;
+
+
+      .product-hot-sale__name {
+        display: -webkit-box; /* Sử dụng cú pháp cũ để hỗ trợ trình duyệt Safari */
+        -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 2 */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Ẩn phần văn bản bị tràn ra ngoài */
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

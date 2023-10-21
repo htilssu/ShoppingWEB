@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
 
 public class DetailController : Controller
 {
-    private readonly ApplicationDbContext _db;
+    private readonly ShoppingContext _db;
+    private UserManager<UserModel> _manager;
 
-    public DetailController(ApplicationDbContext db)
+    public DetailController(ShoppingContext db, UserManager<UserModel> manager)
     {
         _db = db;
+        _manager = manager;
     }
 
     // GET
@@ -18,4 +22,20 @@ public class DetailController : Controller
         // if (product is null) return RedirectToAction("Index", "Home");
         return View();
     }
+
+    public async Task<IActionResult> OnBuying(BuyingModel product)
+    {
+        var user = await _manager.GetUserAsync(User);
+        if (user != null)
+        {
+        }
+
+        return View("Index");
+    }
+}
+
+public class BuyingModel : Product
+{
+    public bool IsBuying { get; set; }
+    public Category Category { get; set; }
 }
