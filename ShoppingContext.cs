@@ -4,12 +4,8 @@ using ShoppingWEB.Models;
 
 namespace ShoppingWEB;
 
-public partial class ShoppingContext : IdentityDbContext
+public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, string>
 {
-    public ShoppingContext()
-    {
-    }
-
     public ShoppingContext(DbContextOptions<ShoppingContext> options)
         : base(options)
     {
@@ -26,8 +22,6 @@ public partial class ShoppingContext : IdentityDbContext
     public virtual DbSet<DeliveryInfo> DeliveryInfos { get; set; }
 
     public virtual DbSet<DeliveryProvider> DeliveryProviders { get; set; }
-
-    public virtual DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
 
     public virtual DbSet<ImageUrl> ImageUrls { get; set; }
 
@@ -46,6 +40,7 @@ public partial class ShoppingContext : IdentityDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Cart>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
