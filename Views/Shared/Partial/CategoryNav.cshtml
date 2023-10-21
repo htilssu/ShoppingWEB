@@ -1,6 +1,6 @@
 ﻿@using Microsoft.EntityFrameworkCore
 @using ShoppingWEB.Extension_Method
-@inject ApplicationDbContext Context
+@inject ShoppingContext Context
 @{
     var categoryList = await Context.Categories.ToListAsync();
 }

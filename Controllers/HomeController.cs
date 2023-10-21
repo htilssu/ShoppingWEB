@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ShoppingContext _context;
 
-    public HomeController(ApplicationDbContext context)
+    public HomeController(ShoppingContext context)
     {
         _context = context;
     }

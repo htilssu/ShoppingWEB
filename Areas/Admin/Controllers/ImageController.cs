@@ -8,9 +8,9 @@ namespace ShoppingWEB.Areas.Admin.Controllers;
 [Area("Admin")]
 public class ImageController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ShoppingContext _context;
 
-    public ImageController(ApplicationDbContext context)
+    public ImageController(ShoppingContext context)
     {
         _context = context;
     }
@@ -21,7 +21,7 @@ public class ImageController : Controller
     {
         if (string.IsNullOrEmpty(product)) return RedirectToAction("Index", "Product");
 
-        var productImageQ = _context.ImageUrl.Where(url => url.ProductId == product);
+        var productImageQ = _context.ImageUrls.Where(url => url.ProductId == product);
         var productImageList = await productImageQ.ToListAsync();
         ViewBag.ProductId = product;
 
@@ -31,13 +31,13 @@ public class ImageController : Controller
     // GET: Admin/Image/Details/5
     public async Task<IActionResult> Details(string id)
     {
-        if (id == null || _context.ImageUrl == null) return NotFound();
+        if (id == null || _context.ImageUrls == null) return NotFound();
 
-        var imageUrl = await _context.ImageUrl
+        var ImageUrls = await _context.ImageUrls
             .FirstOrDefaultAsync(m => m.ImagePath == id);
-        if (imageUrl == null) return NotFound();
+        if (ImageUrls == null) return NotFound();
 
-        return View(imageUrl);
+        return View(ImageUrls);
     }
 
     // GET: Admin/Image/Create
@@ -52,15 +52,15 @@ public class ImageController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(ImageModel imageUrl)
+    public async Task<IActionResult> Create(ImageModel ImageUrls)
     {
-        var imageFile = imageUrl.ImageFile;
+        var imageFile = ImageUrls.ImageFile;
         if (!string.IsNullOrEmpty(imageFile.FileName))
         {
             var uploadFolder = Path.Combine("wwwroot", "uploads");
             var fileName = Path.Combine(Guid.NewGuid() + "_" + imageFile.FileName);
             var filePath = Path.Combine(uploadFolder, fileName);
-            imageUrl.ImagePath = filePath;
+            ImageUrls.ImagePath = filePath;
             try
             {
                 using (Stream stream = new FileStream(filePath, FileMode.Create))
@@ -77,27 +77,27 @@ public class ImageController : Controller
 
         if (ModelState.IsValid)
         {
-            _context.Add(new ImageUrl
+            _context.Add(new ImageUrl()
             {
-                ImagePath = imageUrl.ImagePath!,
-                ProductId = imageUrl.ProductId,
-                Thumnail = imageUrl.Thumnail
+                ImagePath = ImageUrls.ImagePath!,
+                ProductId = ImageUrls.ProductId,
+                Thumnail = ImageUrls.Thumnail
             });
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        return Redirect($"/Admin/Image/Create?id={imageUrl.ProductId}");
+        return Redirect($"/Admin/Image/Create?id={ImageUrls.ProductId}");
     }
 
     // GET: Admin/Image/Edit/5
     public async Task<IActionResult> Edit(string id)
     {
-        if (id == null || _context.ImageUrl == null) return NotFound();
+        if (id == null || _context.ImageUrls == null) return NotFound();
 
-        var imageUrl = await _context.ImageUrl.FindAsync(id);
-        if (imageUrl == null) return NotFound();
-        return View(imageUrl);
+        var ImageUrls = await _context.ImageUrls.FindAsync(id);
+        if (ImageUrls == null) return NotFound();
+        return View(ImageUrls);
     }
 
     // POST: Admin/Image/Edit/5
@@ -105,20 +105,20 @@ public class ImageController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id, [Bind("ImagePath,ProductId,Thumnail")] ImageUrl imageUrl)
+    public async Task<IActionResult> Edit(string id, [Bind("ImagePath,ProductId,Thumnail")] ImageUrl ImageUrls)
     {
-        if (id != imageUrl.ImagePath) return NotFound();
+        if (id != ImageUrls.ImagePath) return NotFound();
 
         if (ModelState.IsValid)
         {
             try
             {
-                _context.Update(imageUrl);
+                _context.Update(ImageUrls);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ImageUrlExists(imageUrl.ImagePath))
+                if (!ImageUrlsExists(ImageUrls.ImagePath))
                     return NotFound();
                 throw;
             }
@@ -126,19 +126,19 @@ public class ImageController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        return View(imageUrl);
+        return View(ImageUrls);
     }
 
     // GET: Admin/Image/Delete/5
     public async Task<IActionResult> Delete(string id)
     {
-        if (id == null || _context.ImageUrl == null) return NotFound();
+        if (id == null || _context.ImageUrls == null) return NotFound();
 
-        var imageUrl = await _context.ImageUrl
+        var ImageUrls = await _context.ImageUrls
             .FirstOrDefaultAsync(m => m.ImagePath == id);
-        if (imageUrl == null) return NotFound();
+        if (ImageUrls == null) return NotFound();
 
-        return View(imageUrl);
+        return View(ImageUrls);
     }
 
     // POST: Admin/Image/Delete/5
@@ -147,16 +147,16 @@ public class ImageController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(string id)
     {
-        if (_context.ImageUrl == null) return Problem("Entity set 'ApplicationDbContext.ImageUrl'  is null.");
-        var imageUrl = await _context.ImageUrl.FindAsync(id);
-        if (imageUrl != null) _context.ImageUrl.Remove(imageUrl);
+        if (_context.ImageUrls == null) return Problem("Entity set 'ApplicationDbContext.ImageUrls'  is null.");
+        var ImageUrls = await _context.ImageUrls.FindAsync(id);
+        if (ImageUrls != null) _context.ImageUrls.Remove(ImageUrls);
 
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
 
-    private bool ImageUrlExists(string id)
+    private bool ImageUrlsExists(string id)
     {
-        return (_context.ImageUrl?.Any(e => e.ImagePath == id)).GetValueOrDefault();
+        return (_context.ImageUrls?.Any(e => e.ImagePath == id)).GetValueOrDefault();
     }
 }

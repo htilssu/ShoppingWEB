@@ -120,8 +120,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/PageProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFBhZ2VQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/ProductBriefing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RCcmllZmluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/ProductInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/SellerInfo.cshtml]
@@ -166,6 +174,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/NotifyPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcTm90aWZ5UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/ProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcUHJvZHVjdExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_EmptyLayout.cshtml]

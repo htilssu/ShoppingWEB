@@ -1,19 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ShoppingWEB.Models;
 
-public class Category
+public partial class Category
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
-    [Column("category_name")] public string? CategoryName { get; set; }
+    public string? CategoryName { get; set; }
 
-    [Display(Name = "Image")]
-    [Column("image_path")]
     public string? ImagePath { get; set; }
 
-    [Column("created_at")] public DateTime? CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
-    [Column("updated_at")] public DateTime? UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

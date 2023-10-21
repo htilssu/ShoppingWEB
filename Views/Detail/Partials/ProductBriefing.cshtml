@@ -1,8 +1,8 @@
 ﻿@using ShoppingWEB.Extension_Method
 @model Product
-@inject ApplicationDbContext Db;
+@inject ShoppingContext Db;
 @{
-    var imageList = Db.ImageUrl.Where(_ => true);
+    var imageList = Db.ImageUrls.Where(_ => true);
 }
 
 <section class="product-briefing bg-white d-flex mt-5">
@@ -108,117 +108,119 @@
             </div>
         </div>
     </div>
-    <div class="buy-info p-2">
+    <form asp-action="">
+        <div class="buy-info p-2">
 
-        <div class="shipping d-flex align-items-start mt-4">
-            <div class="display">
-                Vận Chuyển
-            </div>
-            <div class="data">
-                <div>
-                    <div class="d-flex align-items-center">
-                        <img src="~/imgs/freeship.png" alt="">
-                    </div>
+            <div class="shipping d-flex align-items-start mt-4">
+                <div class="display">
+                    Vận Chuyển
                 </div>
-                <div>
-                    <div>Miễn phí vận chuyển</div>
-                </div>
-                <div>
-                    <i class="bi bi-truck"></i>
-                </div>
-                <div class="d-flex flex-column mt-1">
-                    <div class=" d-flex">
-                        <div class="shipping-address">
-                            Vận chuyển tới
+                <div class="data">
+                    <div>
+                        <div class="d-flex align-items-center">
+                            <img src="~/imgs/freeship.png" alt="">
                         </div>
-                        <div class="shipping-address">Huyện Ba Vì</div>
                     </div>
-                    <div class="d-flex">
-                        <div class="shipping-address">Phí vận chuyển</div>
-                        <div class="shipping-address">0đ</div>
+                    <div>
+                        <div>Miễn phí vận chuyển</div>
+                    </div>
+                    <div>
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div class="d-flex flex-column mt-1">
+                        <div class=" d-flex">
+                            <div class="shipping-address">
+                                Vận chuyển tới
+                            </div>
+                            <div class="shipping-address">Huyện Ba Vì</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="shipping-address">Phí vận chuyển</div>
+                            <div class="shipping-address">0đ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="classify d-flex mt-3">
+                <div class="display d-flex justify-content-start align-items-center">
+                    Phân Loại
+                </div>
+                <div class="data d-flex">
+                    <div class="classify-list d-flex flex-wrap">
+                        <button class="classify-item">
+                            <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 1 cốc
+                        </button>
+                        <button class="classify-item">
+                            <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">Kệ 3 cốc
+                        </button>
+                        <button class="classify-item">
+                            <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 5 cốc
+                        </button>
+                        <button class="classify-item">
+                            <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Hộp nhả kem
+                        </button>
+                        <button class="classify-item">
+                            <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Cái này không có gì
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="classify d-flex mt-3">
-            <div class="display d-flex justify-content-start">
-                Phân Loại
-            </div>
-            <div class="data d-flex">
-                <div class="classify-list d-flex flex-wrap">
-                    <button class="classify-item">
-                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 1 cốc
-                    </button>
-                    <button class="classify-item">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">Kệ 3 cốc
-                    </button>
-                    <button class="classify-item">
-                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Kệ 5 cốc
-                    </button>
-                    <button class="classify-item">
-                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Hộp nhả kem
-                    </button>
-                    <button class="classify-item">
-                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">Cái này không có gì
-                    </button>
+            <div class="size d-flex mt-3">
+                <div class="display d-flex align-items-center justify-content-start">
+                    Kích Cỡ
                 </div>
-            </div>
-        </div>
-        <div class="size d-flex mt-3">
-            <div class="display d-flex align-items-center justify-content-start">
-                Kích Cỡ
-            </div>
-            <div class="data d-flex ">
-                <div class="size-list d-flex flex-wrap">
-                    <button class="size-item">
-                        1
-                    </button>
-                    <button class="size-item">
-                        1
-                    </button>
-                    <button class="size-item">
-                        1
-                    </button>
-                    <button class="size-item">
-                        1
-                    </button>
-                    <button class="size-item">
-                        1
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="quantity d-flex align-items-center mt-4">
-            <div class="display d-flex justify-content-start align-items-center">Số Lượng</div>
-            <div class="data">
-                <div class="quantity-action d-flex">
-                    <div class="action d-flex justify-content-center align-items-center" id="decrease">
-                        <i class="bi bi-dash-lg"></i>
-                    </div>
-                    <div class="data-quantity">
-                        <input class="d-flex text-center h-100" value="1" min="0" type="text">
-                    </div>
-                    <div class="action d-flex justify-content-center align-items-center" id="increase">
-                        <i class="bi bi-plus-lg"></i>
+                <div class="data d-flex ">
+                    <div class="size-list d-flex flex-wrap">
+                        <button class="size-item">
+                            1
+                        </button>
+                        <button class="size-item">
+                            2
+                        </button>
+                        <button class="size-item">
+                            3
+                        </button>
+                        <button class="size-item">
+                            4
+                        </button>
+                        <button class="size-item">
+                            5
+                        </button>
                     </div>
                 </div>
+            </div>
+            <div class="quantity d-flex align-items-center mt-4">
+                <div class="display d-flex justify-content-start align-items-center">Số Lượng</div>
+                <div class="data">
+                    <div class="quantity-action d-flex">
+                        <div class="action d-flex justify-content-center align-items-center" id="decrease">
+                            <i class="bi bi-dash-lg"></i>
+                        </div>
+                        <div class="data-quantity">
+                            <input class="d-flex text-center h-100" value="1" min="0" type="text">
+                        </div>
+                        <div class="action d-flex justify-content-center align-items-center" id="increase">
+                            <i class="bi bi-plus-lg"></i>
+                        </div>
+                    </div>
 
-            </div>
-            <div class="remaining mx-3 opacity-75">
-                @* TODO remaining product *@
-                <span>2107644 sản phẩm có sẵn</span>
+                </div>
+                <div class="remaining mx-3 opacity-75">
+                    @* TODO remaining product *@
+                    <span>2107644 sản phẩm có sẵn</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="action mt-3 w-100 d-flex justify-content-center p-2">
-        <div class="w-100 d-flex">
-            <button type="submit" class="btn btn-outline-danger">
-                <i class="bi bi-basket-fill"></i>
-                <span>Thêm Vào Giỏ Hàng</span>
-            </button>
-            <button type="submit" class="btn btn-danger">Mua Ngay</button>
+        <div class="action mt-3 w-100 d-flex justify-content-center p-2">
+            <div class="w-100 d-flex">
+                <button type="submit" class="btn btn-outline-danger">
+                    <i class="bi bi-basket-fill"></i>
+                    <span>Thêm Vào Giỏ Hàng</span>
+                </button>
+                <button type="submit" class="btn btn-danger">Mua Ngay</button>
+            </div>
         </div>
-    </div>
+    </form>
     <hr/>
     <div class="footer d-flex justify-content-between p-2">
         <div class="d-flex gap-1">

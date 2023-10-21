@@ -7,9 +7,9 @@ namespace ShoppingWEB.Areas.Admin.Controllers;
 [Area("Admin")]
 public class ProductController : Controller
 {
-    private readonly ApplicationDbContext _context;
+    private readonly ShoppingContext _context;
 
-    public ProductController(ApplicationDbContext context)
+    public ProductController(ShoppingContext context)
     {
         _context = context;
     }

@@ -8,6 +8,7 @@
 @section Styles
 {
     <link rel="stylesheet" href="~/css/actions/DetailIndex.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/partials/ProductListStyle.css" asp-append-version="true"/>
 }
 
 @section Scripts
@@ -20,5 +21,6 @@
     @{
         await Html.RenderPartialAsync("Partials/ProductBriefing");
         await Html.RenderPartialAsync("Partials/SellerInfo");
+        await Html.RenderPartialAsync("Partials/PageProduct");
     }
 </div>

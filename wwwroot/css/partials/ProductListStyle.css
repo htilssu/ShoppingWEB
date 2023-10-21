@@ -1,0 +1,32 @@
+.product-list__item {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+.product-list__item .product-item__sold {
+  font-size: 0.7rem;
+}
+
+.text-primary-custom {
+  color: #D27354 !important;
+}
+
+.product-item > div {
+  border-radius: 2px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+.product-item .product-item__name {
+  font-size: 0.8rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.product-item .product-img img {
+  width: 100%;
+}
+
+.product-list a {
+  color: black;
+}
+
+/*# sourceMappingURL=ProductListStyle.css.map */
