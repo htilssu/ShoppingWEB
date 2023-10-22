@@ -24,10 +24,10 @@
     }
 
     <div class="product-section bg-white mt-3">
-        <div class="product-section-title text-uppercase p-3 fw-bold opacity-50">
-            sản phẩm
+        <div class="product-section-title d-flex justify-content-center align-items-center">
+            <div class="text-uppercase fs-6 p-3 text-primary-custom">gợi ý hôm nay</div>
         </div>
-        <div class="bg-custom-primary mt-1">
+        <div class="bg-custom-primary">
             @{ await Html.RenderPartialAsync("Partial/ProductList"); }
         </div>
     </div>
@@ -36,6 +36,7 @@
 
 @section Scripts
 {
-    <script src="~/js/slider.js"></script>
-    <script src="~/js/index.js"></script>
+    <script src="~/js/slider.js" asp-append-version="true"></script>
+    <script src="~/js/index.js" asp-append-version="true"></script>
+    <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
 }

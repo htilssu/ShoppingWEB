@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FfljvbIJEKhZa5/FDhsEOS3j/QE4lq3Bb3mU2noCTFA=",
+  "Hash": "EiPFe+wvt/ZRzHGwIcSBB9tr0PoUaiv29snkXEzG+58=",
   "Source": "ShoppingWEB",
   "BasePath": "_content/ShoppingWEB",
   "Mode": "Default",
@@ -1360,6 +1360,23 @@
       "OriginalItemSpec": "wwwroot\\imgs\\freeship.png"
     },
     {
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\not-found.png",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "imgs/not-found.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imgs\\not-found.png"
+    },
+    {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\protect.png",
       "SourceId": "ShoppingWEB",
       "SourceType": "Discovered",
@@ -1562,6 +1579,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\partials\\product_briefing.js"
+    },
+    {
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_list.js",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "js/partials/product_list.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\partials\\product_list.js"
     },
     {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",
