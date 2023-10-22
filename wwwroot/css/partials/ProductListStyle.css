@@ -3,7 +3,7 @@
   margin-right: -0.25rem;
 }
 .product-list__item .product-item__sold {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .text-primary-custom {
@@ -15,7 +15,7 @@
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 }
 .product-item .product-item__name {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -24,9 +24,51 @@
 .product-item .product-img img {
   width: 100%;
 }
+.product-item .coupon-value {
+  background-color: #E89639;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.product-item .jagged-left {
+  left: -0.25rem;
+  top: 0;
+}
+.product-item .jagged-right {
+  right: -0.25rem;
+  top: 0;
+}
+.product-item .area-product-hover {
+  height: 35px;
+  left: -1px;
+  right: -1px;
+  top: 100%;
+  background-color: #C1712A;
+}
+.product-item .product-item__coupon {
+  color: rgb(232, 150, 57);
+}
 
 .product-list a {
   color: black;
+}
+
+.index-max {
+  z-index: 1;
+}
+
+.border-custom {
+  border: 2px solid #C1712A !important;
+}
+
+.product-item > div:hover {
+  border: 1px solid #C1712A !important;
+  transform: translateY(-2px);
+  transition: 0.3s;
+  z-index: 99;
+}
+
+.product-section-title {
+  border-bottom: 3px solid #C1712A;
 }
 
 /*# sourceMappingURL=ProductListStyle.css.map */

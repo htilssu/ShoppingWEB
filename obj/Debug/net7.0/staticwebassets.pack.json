@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\imgs\\freeship.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\not-found.png",
+      "PackagePath": "staticwebassets\\imgs\\not-found.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\protect.png",
       "PackagePath": "staticwebassets\\imgs\\protect.png"
     },
@@ -123,6 +127,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_briefing.js",
       "PackagePath": "staticwebassets\\js\\partials\\product_briefing.js"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_list.js",
+      "PackagePath": "staticwebassets\\js\\partials\\product_list.js"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",

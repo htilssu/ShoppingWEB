@@ -1,238 +1,59 @@
-﻿<div class="product-list">
-@* TODO binding product *@
-<div class="product-list__item row">
+﻿<div class="product-list py-3">
+    @* TODO binding product *@
+    <div class="product-list__item row">
 
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
+        @for (var i = 0; i < 20; i++)
+        {
+            <div class="product-item p-1 col-6 col-md-3 col-lg-2 ">
+                <div class="bg-white position-relative a">
+                    <a class="text-decoration-none bg-white" href="">
+                        <div class="product-item__content">
+                            <div class="d-flex flex-column">
+                                <div class="product-img">
+                                    <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
+                                </div>
+                                <div class="product-footer mt-3 px-2 py-1">
+                                    <div class="product-item__name mb-2">
+                                        Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
+                                    </div>
+                                    <div class="product-item__coupon d-flex mb-2">
+                                        <div class="product-item__coupon d-flex px-2">
+                                            <div class="mw-100 position-relative">
+                                                <svg class="jagged-left h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                    <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                </svg>
+                                                <div class="w-100 text-white coupon-value px-1">
+                                                    4% Giảm
+                                                </div>
+                                                <svg class="jagged-right h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                    <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="rotate(180) translate(-3 -15)" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
+                                        <div class="text-primary-custom product-item__price">
+                                            128.000đ
+                                        </div>
+                                        <div class="product-item__sold opacity-50">
+                                            Đã bán 194
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
+                    </a>
+                    <div class="position-absolute d-none justify-content-center align-items-center area-product-hover">
+                        <div class="text-white">
+                            @* TODO render similar link *@
+                            <a class="text-decoration-none text-white" href="">Sản phẩm tương tự</a>
                         </div>
                     </div>
                 </div>
+
             </div>
-        </a>
+        }
     </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<div class="product-item p-1 col-6 col-md-3 col-lg-2">
-    <div class="bg-white">
-        <a class="text-decoration-none" href="">
-            <div class="product-item__content">
-                <div class="d-flex flex-column">
-                    <div class="product-img">
-                        <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
-                    </div>
-                    <div class="product-footer mt-3 px-2 py-1">
-                        <div class="product-item__name">
-                            Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
-                        </div>
-                        <div class="product-item__coupon">
-                            hello
-                        </div>
-                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                            <div class="text-primary-custom product-item__price">
-                                128.000đ
-                            </div>
-                            <div class="product-item__sold opacity-50">
-                                Đã bán 194
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-</div>
 </div>

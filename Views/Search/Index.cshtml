@@ -1,8 +1,22 @@
-﻿@model String
+﻿@model List<Product>;
 
 @{
-    ViewBag.Title = $"{Model} giá tốt tháng {DateTime.Today.Month}";
+    ViewBag.Title = $"{ViewBag.Search} giá tốt tháng {DateTime.Today.Month}";
     Layout = "_Layout";
 }
 
-<h2>@Model</h2>
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/partials/ProductListStyle.css" asp-append-version="true"/>
+}
+
+@section Scripts
+{
+    <script src="~/js/partials/product_list.js"></script>
+}
+
+<div class="container-md py-3">
+    @{
+        await Html.RenderPartialAsync("Partials/ProductResult", Model);
+    }
+</div>

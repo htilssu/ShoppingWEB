@@ -3,7 +3,7 @@
   margin-right: -.25rem;
 
   .product-item__sold {
-    font-size: .7rem;
+    font-size: .8rem;
   }
 }
 
@@ -14,14 +14,19 @@
 
 .product-item {
 
+  a {
+
+
+  }
 
   > div {
     border-radius: 2px;
     box-shadow: 0 0 4px rgba(0, 0, 0, .05);
   }
 
+
   .product-item__name {
-    font-size: .8rem;
+    font-size: .9rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -34,11 +39,66 @@
       width: 100%;
     }
   }
+
+  .coupon-value {
+    background-color: #E89639;
+    font-size: .7rem;
+    font-weight: bold;
+  }
+
+  .jagged-left {
+    left: -.25rem;
+    top: 0;
+  }
+
+  .jagged-right {
+    right: -.25rem;
+    top: 0;
+  }
+
+  .area-product-hover {
+    height: 35px;
+    left: -1px;
+    right: -1px;
+    top: 100%;
+    background-color: #C1712A;
+
+  }
+
+  .product-item__coupon {
+    color: rgb(232, 150, 57);
+  }
 }
 
 .product-list {
   a {
     color: black;
+
   }
 
 }
+
+.index-max {
+  z-index: 1;
+}
+
+.border-custom {
+  border: 2px solid #C1712A !important;
+}
+
+.product-item {
+  > div {
+    &:hover {
+      border: 1px solid #C1712A !important;
+      transform: translateY(-2px);
+      transition: .3s;
+      z-index: 99;
+    }
+  }
+}
+
+.product-section-title {
+  border-bottom: 3px solid #C1712A;
+}
+
+
