@@ -133,6 +133,10 @@
       "PackagePath": "staticwebassets\\js\\partials\\product_list.js"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_rating.js",
+      "PackagePath": "staticwebassets\\js\\partials\\product_rating.js"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

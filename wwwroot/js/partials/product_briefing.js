@@ -79,7 +79,6 @@ function changeClassifyPreviewImage() {
 }
 
 function returnPreviewImage() {
-    console.log(lastImage)
     if (lastImage) {
         changePreviewImage(lastImage)
     }

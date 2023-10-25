@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EiPFe+wvt/ZRzHGwIcSBB9tr0PoUaiv29snkXEzG+58=",
+  "Hash": "kRlWALfkgL8APrqVCjtpvNhGgdfOQ6Qik8LhzPYGSvg=",
   "Source": "ShoppingWEB",
   "BasePath": "_content/ShoppingWEB",
   "Mode": "Default",
@@ -1596,6 +1596,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\partials\\product_list.js"
+    },
+    {
+      "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_rating.js",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "js/partials/product_rating.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\partials\\product_rating.js"
     },
     {
       "Identity": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",
