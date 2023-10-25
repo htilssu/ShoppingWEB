@@ -136,6 +136,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/ProductRating.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RSYXRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/SellerInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFNlbGxlckluZm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
