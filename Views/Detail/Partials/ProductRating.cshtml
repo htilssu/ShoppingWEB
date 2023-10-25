@@ -1,0 +1,49 @@
+﻿@{
+    var text = new string[]
+    {
+        "Tất cả",
+        "5 Sao",
+        "4 Sao",
+        "3 Sao",
+        "2 Sao",
+        "1 Sao",
+        "Có Hình Ảnh / Video"
+    };
+}
+
+<div class="product-rating-overview p-4">
+    <div>
+        <div class="d-flex align-items-center">
+            <div class="product-rating-overview__briefing">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="fs-4 text-primary-custom"><span class="fs-2">5</span> trên 5</div>
+                    <div class=" rating-stars product-rating-overview__stars mt-2">
+                        <div class="d-flex w-100">
+                            @for (var i = 0; i < 5; i++)
+                            {
+                                <div class="rating-stars__star-wrapper position-relative w-100">
+                                    <div class="rating-stars__lit" style="width: 100%;">
+                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid">
+                                            <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                        </svg>
+                                    </div>
+                                    <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
+                                        <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                    </svg>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-rating-overview__filters">
+                <div class="d-flex p-md-5 gap-3 flex-wrap justify-content-start align-items-center">
+                    @foreach (var t in text)
+                    {
+                        <div class="product-rating-filter__item border-light-custom px-4 py-2 bg-white">@t</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
