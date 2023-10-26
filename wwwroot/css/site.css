@@ -304,3 +304,7 @@ header .navbar.nav-social {
 .bg-custom-primary {
     background-color: #F5F5F5 !important;
 }
+
+.bg-custom-secondary {
+    background-color: #ce6c09 !important;
+}

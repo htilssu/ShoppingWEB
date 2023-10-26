@@ -17,6 +17,13 @@
     <script src="~/js/partials/product_rating.js"></script>
 }
 
+@section HeaderNav
+{
+    @{
+        await Html.RenderPartialAsync("Partial/HeaderPrimaryNav");
+    }
+}
+
 
 <div class="container-md">
     @{

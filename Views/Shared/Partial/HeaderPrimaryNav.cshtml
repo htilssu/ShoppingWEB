@@ -1,1 +1,64 @@
-﻿@model dynamic
+﻿@using Microsoft.AspNetCore.Identity
+@model dynamic
+@inject UserManager<UserModel> UserManager
+
+
+<div class="bg-custom-secondary">
+    <div class="container-md navbar flex-nowrap with-search">
+        <div class="navbar-brand">
+            <a asp-controller="Home" asp-action="Index" class="h-100 text-center align-items-center d-flex align-items-center text-decoration-none">
+                <img src="~/imgs/shopping-brand.svg" style="width: 40px" height="100%" class="text-center" alt="logo-brand">
+                <h2 class="m-0 pt-2 text-white fw-normal">Aetherix</h2>
+            </a>
+        </div>
+        <div class="search-category w-50">
+            <form method="get" action="@Url.Action("Index", "Search")" class="search-form w-100 h-75 pt-2">
+                <div class="h-100 bg-light d-flex align-items-center">
+                    <input class="w-100 px-2 h-75 fs-6 text-black-50" name="search" value="@(string.IsNullOrEmpty(ViewBag.Search) ? "" : ViewBag.Search)" placeholder="Tìm kiếm sản phẩm" type="text">
+                    <button type="submit" class="btn-search border-0">
+                        <i class="bi bi-search text-white fw-bolder"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="suggest-item">
+                @*TODO collect data from database and render it*@
+            </div>
+        </div>
+        <div class="d-flex gap-3">
+
+            <div class="notify-mobile pt-2 d-none">
+                <i class="bi bi-bell-fill fs-4" id="notify-toggle">
+                </i>
+            </div>
+            <div class="cart pt-2">
+                <i class="bi bi-cart-fill text-white fs-4"></i>
+            </div>
+            <div class="user user-mobile d-sm-none d-flex align-items-center justify-content-center pt-2">
+                @if (User.Identity!.IsAuthenticated)
+                {
+                    <div id="user-option-mobile" class="reg-log logged position-relative nav-item gap-1 d-flex">
+                        @{
+                            var user = await UserManager.GetUserAsync(User);
+                        }
+                        <img class="avatar" src="@user!.AvtPath" alt="avt">
+                        <div id="option-area" class="position-absolute d-none op-hide bg-white option">
+                            <ul>
+                                <li>
+                                    <form method="post" id="logoutForm" class="form-inline" asp-controller="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button class="bg-transparent text-black nav-link p-0">Đăng xuất</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    /*TODO add user avatar for mobile*/
+                }
+                else
+                {
+                    <i class="bi bi-person-circle fs-4"></i>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
