@@ -9,201 +9,205 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ShoppingWEB
 build_property.RootNamespace = ShoppingWEB
-build_property.ProjectDir = D:\projects\ASP.NET\ShoppingWEB\
+build_property.ProjectDir = D:\Đồ án Web\ShoppeWeb(git)\ShoppingWEB\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\projects\ASP.NET\ShoppingWEB
+build_property.MSBuildProjectDirectory = D:\Đồ án Web\ShoppeWeb(git)\ShoppingWEB
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Category/Create.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Category/Delete.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Category/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Category/Details.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Category/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Category/Edit.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Category/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Category/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Product/Create.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Product/Delete.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Product/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Product/Details.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Product/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Product/Edit.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Product/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Home/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Image/Create.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Image/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW1hZ2VcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Image/Delete.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Image/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW1hZ2VcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Image/Details.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Image/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW1hZ2VcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Image/Edit.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Image/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW1hZ2VcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Image/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Image/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSW1hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/_ViewImports.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Areas/Admin/Views/_ViewStart.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Cart/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Cart/NewFolder/HeadSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxOZXdGb2xkZXJcSGVhZFNlY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Detail/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/PageProduct.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Detail/Partials/PageProduct.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFBhZ2VQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/ProductBriefing.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Detail/Partials/ProductBriefing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RCcmllZmluZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/ProductInfo.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Detail/Partials/ProductInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFByb2R1Y3RJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Detail/Partials/SellerInfo.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Detail/Partials/SellerInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsXFBhcnRpYWxzXFNlbGxlckluZm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Home/AccessDenied.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Home/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Home/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Home/Privacy.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Login/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Register/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Register/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Search/Index.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Search/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Search/Partials/ProductResult.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Search/Partials/ProductResult.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFBhcnRpYWxzXFByb2R1Y3RSZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Error.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/BannerPartial.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/BannerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcQmFubmVyUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/CategoryNav.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/CategoryNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcQ2F0ZWdvcnlOYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/NotifyPartial.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/NotifyPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcTm90aWZ5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/Partial/ProductList.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/ProductList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcUHJvZHVjdExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_EmptyLayout.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/_EmptyLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FbXB0eUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_Layout.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_LoginLayout.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/_ViewImports.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/projects/ASP.NET/ShoppingWEB/Views/_ViewStart.cshtml]
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
