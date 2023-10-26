@@ -45,12 +45,6 @@ body {
     margin-bottom: 60px;
 }
 
-header {
-    background-color: #ce6c09;
-
-}
-
-
 header .navbar {
     height: 70px;
 }
@@ -59,6 +53,7 @@ header .navbar.nav-social {
     font-size: .9rem;
     height: 10%;
     z-index: 1000;
+    background-color: #ce6c09;
 }
 
 .navbar .btn-search {
