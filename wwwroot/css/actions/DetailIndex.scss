@@ -376,6 +376,7 @@ input[type=number] {
 .svg-icon {
   height: 100%;
   width: 1.2rem;
+
 }
 
 .rating-stars__hollow-star {
@@ -396,3 +397,35 @@ input[type=number] {
     cursor: pointer;
   }
 }
+
+.product-rating-comment__avatar {
+  width: 40px;
+  margin-right: 1rem;
+}
+
+.product-rating-comment__main {
+  .svg-icon {
+    width: 12px;
+  }
+
+  .posted-info {
+    font-size: .9rem;
+  }
+}
+
+.product-rating__comment {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+  .posted-content__sub-image {
+    max-width: 800px;
+    height: 88px;
+  }
+}
+
+.posted-content__preview-img {
+  height: 400px;
+  width: 300px;
+  background-color: red;
+  overflow: hidden;
+}
+

@@ -1,13 +1,13 @@
-﻿const ratingFilters = $(".product-rating-filter__item")
+﻿const ratingFilters = $(".product-rating-filter__item");
 
-ratingFilters.first().addClass("viewing")
+ratingFilters.on("click", handleFilterChange);
+
+ratingFilters.first().addClass("viewing");
 
 function handleFilterChange(e) {
-    ratingFilters.each(function (index, element) {
-        if ($(element).hasClass("viewing")) $(element).removeClass("viewing")
-    })
+  ratingFilters.each(function (index, element) {
+    if ($(element).hasClass("viewing")) $(element).removeClass("viewing");
+  });
 
-    $(this).addClass("viewing")
+  $(this).addClass("viewing");
 }
-
-ratingFilters.on("click", handleFilterChange)
