@@ -7,43 +7,126 @@
         "3 Sao",
         "2 Sao",
         "1 Sao",
+        "Có Bình Luận",
         "Có Hình Ảnh / Video"
     };
 }
 
-<div class="product-rating-overview p-4">
-    <div>
-        <div class="d-flex align-items-center">
-            <div class="product-rating-overview__briefing">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div class="fs-4 text-primary-custom"><span class="fs-2">5</span> trên 5</div>
-                    <div class=" rating-stars product-rating-overview__stars mt-2">
-                        <div class="d-flex w-100">
-                            @for (var i = 0; i < 5; i++)
-                            {
-                                <div class="rating-stars__star-wrapper position-relative w-100">
-                                    <div class="rating-stars__lit" style="width: 100%;">
-                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid">
-                                            <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+<div class="product-rating">
+    <div class="product-rating-overview p-4">
+        <div>
+            <div class="d-flex align-items-center">
+                <div class="product-rating-overview__briefing">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="fs-4 text-primary-custom"><span class="fs-2">5</span> trên 5</div>
+                        <div class=" rating-stars product-rating-overview__stars mt-2">
+                            <div class="d-flex w-100">
+                                @for (var i = 0; i < 5; i++)
+                                {
+                                    <div class="rating-stars__star-wrapper position-relative w-100">
+                                        <div class="rating-stars__lit" style="width: 100%;">
+                                            <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid">
+                                                <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                            </svg>
+                                        </div>
+                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
+                                            <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
                                         </svg>
                                     </div>
-                                    <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
-                                        <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
-                                    </svg>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-rating-overview__filters">
+                    <div class="d-flex p-md-5 gap-3 flex-wrap justify-content-start align-items-center">
+                        @foreach (var t in text)
+                        {
+                            <div class="product-rating-filter__item border-light-custom px-4 py-2 bg-white">@t</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-3">
+        @for (var i = 0; i < 5; i++)
+        {
+            <div class="mb-3 product-rating__comment mt-3">
+                <div class="d-flex ">
+                    <div class="product-rating-comment__avatar">
+                        <div>
+                            <img class="w-100 rounded-circle" src="/avatars/default-avatar.png" alt="">
+                        </div>
+                    </div>
+                    <div class="product-rating-comment__main">
+                        <div class="w-100">
+                            <div class="author-name">
+                                <div>htilssu</div>
+                            </div>
+                            <div class="d-flex w-100">
+                                <div class="d-flex">
+                                    @for (var j = 0; j < 5; j++)
+                                    {
+                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid m-0">
+                                            <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" fill="#DC593A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                        </svg>
+
+
+                                            @*
+                                            <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
+                                                <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                            </svg>
+                                            *@
+                                    }
                                 </div>
-                            }
+                            </div>
+                            <div class="posted-info">
+                                <div>
+                                    <div class="opacity-50">
+                                        @* TODO binding date *@
+                                        2023-08-02 10:32 | Phân loại hàng: RÊU,S
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="posted-content">
+                                <div class="posted-content__header">
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Chất liệu: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Màu sắc: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Đúng với mô tả: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                </div>
+                                <div class="posted-content__comment mt-2">
+                                    <p>Quần đẹp xịn tưởng mỏng nhưng không nhưng giao hàng hơi lâu khoảng tuần thôi thì thương shop vì 2/9 định đánh giá 3,4 sao nhưng thôi cho 5 sao luôn hơi nhiều chỉ thừa xíu nhưng ko đáng kể</p>
+                                </div>
+                                <div class="posted-content__image">
+                                    <div class="posted-content__sub-image">
+                                        <div class="d-flex h-100">
+                                            @for (var x = 0; x < 5; x++)
+                                            {
+                                                <div class="flex-grow-0">
+                                                    <img src="~/uploads/5d96af78-f7c5-441b-8d85-1eb1b4e503e2_mayanh.png" class="h-100" alt="anh san pham">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="posted-content__preview-img mt-2">
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-rating-overview__filters">
-                <div class="d-flex p-md-5 gap-3 flex-wrap justify-content-start align-items-center">
-                    @foreach (var t in text)
-                    {
-                        <div class="product-rating-filter__item border-light-custom px-4 py-2 bg-white">@t</div>
-                    }
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
