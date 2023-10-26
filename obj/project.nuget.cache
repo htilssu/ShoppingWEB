@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sgUomO0GufTMoiyod6jXKb8bFKMqXxpMrmTOwVcnhetebJsldek8kWmGe7a5jaYx4oeE3iciJPWg088wdW9Icg==",
+  "dgSpecHash": "7DEGrq9m6d1H6lKSXPtYAW0kkDBbDMgPGmV0+8wXt1QJpqD65ddYZleXo3e3wOGcAR+AjfI7352p/sEUr8Lsxw==",
   "success": true,
   "projectFilePath": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\ShoppingWEB.csproj",
   "expectedPackageFiles": [
@@ -85,7 +85,7 @@
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.diasymreader\\1.4.0\\microsoft.diasymreader.1.4.0.nupkg.sha512",
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.dotnet.scaffolding.shared\\7.0.10\\microsoft.dotnet.scaffolding.shared.7.0.10.nupkg.sha512",
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.12\\microsoft.entityframeworkcore.7.0.12.nupkg.sha512",
-    "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.12\\microsoft.entityframeworkcore.abstractions.7.0.12.nupkg.sha512",
+    "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.13\\microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.12\\microsoft.entityframeworkcore.analyzers.7.0.12.nupkg.sha512",
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.12\\microsoft.entityframeworkcore.design.7.0.12.nupkg.sha512",
     "C:\\Users\\TUAN\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.12\\microsoft.entityframeworkcore.relational.7.0.12.nupkg.sha512",

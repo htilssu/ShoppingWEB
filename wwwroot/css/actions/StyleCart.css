@@ -17,6 +17,10 @@ input[type=number] {
 }
 
 /* Header Styles */
+header{
+    position:relative !important; 
+}
+
 .shoppe-top {
     width: 100%;
     height: 40px;
@@ -24,10 +28,6 @@ input[type=number] {
     color: #fff;
     padding: 10px 0;
     text-align: center;
-}
-
-.header-top {
-    margin-top:20px;
 }
 
 .logo {
@@ -55,6 +55,7 @@ input[type=number] {
     display: flex;
     align-items: center;
 }
+
 /* Định dạng ô nhập liệu tìm kiếm và nút tìm kiếm */
 .search-bar {
     display: flex;
@@ -90,27 +91,30 @@ input[type=number] {
     cursor: pointer;
 }
 
-    #search-button i {
-        font-size: 15px;
-        color: white;
-    }
+#search-button i {
+    font-size: 15px;
+    color: white;
+}
 
 /*------------------------------------------------------------*/
 /* Global Styles */
+.placeholder {
+    height: 1px !important;
+}
+.main {
+    margin-top: -15px !important;
+}
+
 body {
     width: 100%;
     font-family: Arial, sans-serif;
 }
 
-.container {
+.cart-header {
     width: 100%;
     background-color: white;
-    width: 100%;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 5%;
-    padding-right: 5%;
     margin-bottom: 10px;
 }
 
@@ -148,9 +152,9 @@ body {
     font-size: large;
 }
 
-    #selectAllProducts input {
-        width: 14px;
-    }
+#selectAllProducts input {
+    width: 14px;
+}
 
 .tenshop {
     display: flex;
@@ -159,11 +163,11 @@ body {
     cursor: pointer;
 }
 
-    .tenshop img {
-        width: 33px;
-        border-radius: 2%;
-        cursor: pointer;
-    }
+.tenshop img {
+    width: 33px;
+    border-radius: 2%;
+    cursor: pointer;
+}
 
 .fa-regular {
     color: #ff6600;
@@ -194,10 +198,10 @@ body {
     font-size: 12px;
 }
 
-    .mienphi-trahang img {
-        width: 15.6px;
-        height: 14px;
-    }
+.mienphi-trahang img {
+    width: 15.6px;
+    height: 14px;
+}
 
 .phanloai {
     margin-left: 15px;
@@ -210,10 +214,10 @@ body {
     gap: 10px;
 }
 
-    .giamgia .gach {
-        text-decoration: line-through;
-        opacity: 50%;
-    }
+.giamgia .gach {
+    text-decoration: line-through;
+    opacity: 50%;
+}
 
 .footer-table1 {
     display: flex;
@@ -222,9 +226,9 @@ body {
     font-size: 15px;
 }
 
-    .footer-table1 img, .header1 img {
-        width: 30px;
-    }
+.footer-table1 img, .header1 img {
+    width: 30px;
+}
 
 #text-ship {
     margin-left: 0.9375rem;
@@ -272,18 +276,19 @@ body {
     border: none;
     border-collapse: collapse;
 }
-    /* Định dạng nội dung bảng */
-    #popup-content table th,
-    #popup-content table td {
-        border: none;
-        padding: 7px 14px;
-        font-style: inherit;
-        font-size: 15px;
-    }
 
-    #popup-content table th {
-        color: rgb(108, 108, 110);
-    }
+/* Định dạng nội dung bảng */
+#popup-content table th,
+#popup-content table td {
+    border: none;
+    padding: 7px 14px;
+    font-style: inherit;
+    font-size: 15px;
+}
+
+#popup-content table th {
+    color: rgb(108, 108, 110);
+}
 
 
 /* Định dạng ô đánh dấu */
@@ -331,6 +336,7 @@ table thead {
 
 /* Ô số lượng */
 .dc-soluong {
+    font-size: small;
     display: flex;
     margin: 0;
     justify-content: center;
@@ -348,9 +354,9 @@ table thead {
     border-radius: 7%;
 }
 
-    .decrement-soluong, .increment-soluong:hover {
-        cursor: pointer;
-    }
+.decrement-soluong, .increment-soluong:hover {
+    cursor: pointer;
+}
 
 .soluong-con-lai {
     margin-top: 5px;
@@ -371,9 +377,9 @@ table thead {
     cursor: pointer;
 }
 
-    .xoa:hover {
-        color: #ff6600;
-    }
+.xoa:hover {
+    color: #ff6600;
+}
 
 .timsanpham {
     display: flex;
@@ -420,16 +426,16 @@ input[type="number"] {
     padding: 10px;
 }
 
-    .voucher button {
-        color: #05a;
-        margin-right: 1.875rem;
-        font-size: .875rem;
-        white-space: nowrap;
-        cursor: pointer; /*con trỏ chuột sẽ thay đổi thành hình mũi tên trỏ*/
-        background: none;
-        padding: 0;
-        border: 0;
-    }
+.voucher button {
+    color: #05a;
+    margin-right: 1.875rem;
+    font-size: .875rem;
+    white-space: nowrap;
+    cursor: pointer; /*con trỏ chuột sẽ thay đổi thành hình mũi tên trỏ*/
+    background: none;
+    padding: 0;
+    border: 0;
+}
 
 .text-shopeevoucher {
     margin-inline-end: 24%;
@@ -441,9 +447,9 @@ input[type="number"] {
     align-items: center;
 }
 
-    .logovoucher img {
-        width: 35px;
-    }
+.logovoucher img {
+    width: 35px;
+}
 
 .shopee-xu {
     display: flex;
@@ -454,32 +460,33 @@ input[type="number"] {
     border-bottom: 2px dashed #a492b7;
 }
 
-    .shopee-xu #sotien {
-        padding-right: 30px;
-        font-weight: 500;
-        color: #d0d0d0;
-    }
+.shopee-xu #sotien {
+    padding-right: 30px;
+    font-weight: 500;
+    color: #d0d0d0;
+}
 
-    .shopee-xu #shopee-xu1 {
-        display: flex;
-    }
+.shopee-xu #shopee-xu1 {
+    display: flex;
+}
 
 .div-logodongtien, .div-logodauhoi {
     display: flex;
     align-items: center;
 }
 
-    .div-logodongtien img{
-        width: 18px;
-        margin-right: 4px;
-    }
 
-.div-logodongtien, #text-shopeexu {
-    opacity: .3;
+.div-logodongtien img {
+    width: 18px;
+    margin-right: 4px;
+}
+
+
+.div-logodongtien, #text-shopeexu, #text-xu{
+    opacity: .8;
 }
 
 #text-xu {
-    color: #d0d0d0;
     margin-left: 17px;
     margin-right: 8px;
 }
@@ -490,11 +497,11 @@ input[type="number"] {
     padding: 10px;
 }
 
-    .footer-mua .div1 {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
+.footer-mua .div1 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
 .div1-1 {
     padding: 0 0px 0 20px;
@@ -546,7 +553,7 @@ input[type="number"] {
     border-radius: 2px;
 }
 
-    .button-div2 div {
-        color: white;
-        text-transform: initial;
-    }
+.button-div2 div {
+    color: white;
+    text-transform: initial;
+}

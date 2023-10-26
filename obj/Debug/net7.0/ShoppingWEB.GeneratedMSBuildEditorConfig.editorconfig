@@ -180,6 +180,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcQ2F0ZWdvcnlOYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/HeaderPrimaryNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcSGVhZGVyUHJpbWFyeU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Đồ án Web/ShoppeWeb(git)/ShoppingWEB/Views/Shared/Partial/NotifyPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcTm90aWZ5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
