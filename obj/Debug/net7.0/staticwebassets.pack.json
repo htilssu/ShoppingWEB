@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\actions\\StyleCart.css"
     },
     {
+      "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\css\\actions\\StyleCheckout.css",
+      "PackagePath": "staticwebassets\\css\\actions\\StyleCheckout.css"
+    },
+    {
       "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "PackagePath": "staticwebassets\\css\\layouts\\adminlayout.css"
     },
@@ -151,6 +155,10 @@
     {
       "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\Actions\\JsCart.js",
       "PackagePath": "staticwebassets\\js\\Actions\\JsCart.js"
+    },
+    {
+      "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\Actions\\JsCheckout.js",
+      "PackagePath": "staticwebassets\\js\\Actions\\JsCheckout.js"
     },
     {
       "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\index.js",

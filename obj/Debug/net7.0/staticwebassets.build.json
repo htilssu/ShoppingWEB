@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yFbo2+Hl6gfFytl1MdkDJ4Y1VyYxvK5ysOrvtpXnBOo=",
+  "Hash": "qYc9yZtadLo2kFG1BdvIwevO2YLSfg8J54mR9IxFGVs=",
   "Source": "ShoppingWEB",
   "BasePath": "_content/ShoppingWEB",
   "Mode": "Default",
@@ -1122,6 +1122,23 @@
       "OriginalItemSpec": "wwwroot\\css\\actions\\StyleCart.css"
     },
     {
+      "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\css\\actions\\StyleCheckout.css",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "css/actions/StyleCheckout.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\actions\\StyleCheckout.css"
+    },
+    {
       "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "SourceId": "ShoppingWEB",
       "SourceType": "Discovered",
@@ -1681,6 +1698,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Actions\\JsCart.js"
+    },
+    {
+      "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\Actions\\JsCheckout.js",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "js/Actions/JsCheckout.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Actions\\JsCheckout.js"
     },
     {
       "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\index.js",
