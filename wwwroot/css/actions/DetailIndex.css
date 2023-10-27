@@ -382,7 +382,7 @@ input[type=number] {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 .nav-pages .pages-list .list_number.current-page {
   color: white;
