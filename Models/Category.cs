@@ -5,7 +5,7 @@ namespace ShoppingWEB.Models;
 
 public partial class Category
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
 
     public string? CategoryName { get; set; }
 

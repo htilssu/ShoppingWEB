@@ -5,9 +5,11 @@ namespace ShoppingWEB.Models;
 
 public partial class Cart
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
 
     public string? CustomerId { get; set; }
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
+    public virtual UserModel? Customer { get; set; }
 }
