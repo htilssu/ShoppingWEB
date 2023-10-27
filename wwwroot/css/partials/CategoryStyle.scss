@@ -13,18 +13,23 @@
     border-top: 1px solid rgba(0, 0, 0, .05);
 
     .item-list {
-      width: 130%;
-      height: 301px;
+      width: calc(100% / 9 * 14);
       transition: all .5s ease 0s;
-      //transform: translateX(-21%);
+      max-height: calc(180px * 2);
+      gap: 0;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: start;
 
 
       .ct-item {
-        height: 150px;
+        height: 180px;
         font-size: .875rem;
-        flex: 0 0 150px;
+        width: calc((100% / 14));
         border-right: 1px solid rgba(0, 0, 0, .05);
         border-bottom: 1px solid rgba(0, 0, 0, .05);
+        list-style: none;
+        align-self: start;
 
         a {
           color: rgba(0, 0, 0, .8);
@@ -41,6 +46,7 @@
 
         .item-display {
           height: 30%;
+          font-size: .8rem;
         }
       }
     }

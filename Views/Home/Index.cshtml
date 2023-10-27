@@ -1,6 +1,8 @@
 ﻿@inject ShoppingContext Db;
 @using ShoppingWEB.Extension_Method
+@using Microsoft.AspNetCore.Identity
 @model List<Product>;
+@inject UserManager<UserModel> UserManager
 
 @{
     ViewBag.Title = "Trang chủ";
@@ -12,6 +14,20 @@
 {
     <link rel="stylesheet" href="~/css/partials/CategoryStyle.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/partials/ProductListStyle.css" asp-append-version="true"/>
+}
+
+@section Scripts
+{
+    <script src="~/js/slider.js" asp-append-version="true"></script>
+    <script src="~/js/index.js" asp-append-version="true"></script>
+    <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
+}
+
+@section HeaderNav
+{
+    @{
+        await Html.RenderPartialAsync("Partial/HeaderPrimaryNav");
+    }
 }
 
 <div class="container-md">
@@ -32,11 +48,3 @@
         </div>
     </div>
 </div>
-
-
-@section Scripts
-{
-    <script src="~/js/slider.js" asp-append-version="true"></script>
-    <script src="~/js/index.js" asp-append-version="true"></script>
-    <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
-}

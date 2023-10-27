@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\actions\\DetailIndex.scss"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\actions\\StyleCart.css",
+      "PackagePath": "staticwebassets\\css\\actions\\StyleCart.css"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\css\\layouts\\adminlayout.css",
       "PackagePath": "staticwebassets\\css\\layouts\\adminlayout.css"
     },
@@ -77,6 +81,26 @@
       "PackagePath": "staticwebassets\\imgs\\freeship.png"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\logochat.png",
+      "PackagePath": "staticwebassets\\imgs\\logochat.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\logodongtien.png",
+      "PackagePath": "staticwebassets\\imgs\\logodongtien.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\logoduoisale10.10.png",
+      "PackagePath": "staticwebassets\\imgs\\logoduoisale10.10.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\logomall.png",
+      "PackagePath": "staticwebassets\\imgs\\logomall.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\logovoucher.png",
+      "PackagePath": "staticwebassets\\imgs\\logovoucher.png"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\not-found.png",
       "PackagePath": "staticwebassets\\imgs\\not-found.png"
     },
@@ -87,6 +111,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\return.png",
       "PackagePath": "staticwebassets\\imgs\\return.png"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\sale10.10.png",
+      "PackagePath": "staticwebassets\\imgs\\sale10.10.png"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\imgs\\shipping.png",
@@ -121,6 +149,10 @@
       "PackagePath": "staticwebassets\\imgs\\vn-50009109-f1a90606a58d4f4e9bd3a38337176257_xxhdpi.jpg"
     },
     {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\Actions\\JsCart.js",
+      "PackagePath": "staticwebassets\\js\\Actions\\JsCart.js"
+    },
+    {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\index.js",
       "PackagePath": "staticwebassets\\js\\index.js"
     },
@@ -131,6 +163,10 @@
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_list.js",
       "PackagePath": "staticwebassets\\js\\partials\\product_list.js"
+    },
+    {
+      "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\partials\\product_rating.js",
+      "PackagePath": "staticwebassets\\js\\partials\\product_rating.js"
     },
     {
       "Id": "D:\\projects\\ASP.NET\\ShoppingWEB\\wwwroot\\js\\site.js",
