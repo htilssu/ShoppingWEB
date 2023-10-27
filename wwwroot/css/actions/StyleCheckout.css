@@ -19,6 +19,12 @@ body {
 
 /* Header Styles */
 
+.header {
+    height: 6.5rem;
+    display: flex;
+    align-items: center;
+}
+
 .shoppe-top {
     background-color: #ff6600;
     color: #fff;
@@ -41,16 +47,19 @@ header {
 }
 
 .divider {
-    width: 2px;
+    margin-top:9px !important;
+    width: 3px;
     height: 24px;
-    background-color: #ff6600;
+    margin-top: 8px;
+    background-color: #EA3A4A;
     margin: 0 10px;
 }
 
 .cart1 {
+    margin-top:8px;
     font-size: 25px;
     background-color: #fff;
-    color: #ff6600;
+    color: #EA3A4A;
     cursor: pointer;
 }
 
