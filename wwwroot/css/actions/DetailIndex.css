@@ -3,6 +3,10 @@ html {
   font-size: 14px;
 }
 
+header .nav-social {
+  font-size: 1rem !important;
+}
+
 .product-briefing > .left-side {
   width: 450px;
 }
@@ -358,6 +362,9 @@ input[type=number] {
 
 .nav-pages {
   font-size: 1.4rem;
+}
+.nav-pages .pages-list {
+  color: rgba(0, 0, 0, 0.4);
 }
 .nav-pages .pages-list .pages-list__item {
   padding: 0 1rem;
