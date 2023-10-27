@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="p-3">
-        @for (var i = 0; i < 5; i++)
+        @for (var i = 0; i < 4; i++)
         {
             <div class="mb-3 product-rating__comment mt-3">
                 <div class="d-flex ">
@@ -118,8 +118,15 @@
                                             }
                                         </div>
                                     </div>
-                                    <div class="posted-content__preview-img mt-2">
-
+                                    <div class="posted-content__preview-img mt-2 d-flex">
+                                        @for (var x = 0; x < 5; x++)
+                                        {
+                                            <div class="flex-shrink-0 flex-grow-0 w-100 d-flex align-items-center">
+                                                <div>
+                                                    <img src="~/uploads/5d96af78-f7c5-441b-8d85-1eb1b4e503e2_mayanh.png" class="w-100" alt="anh san pham">
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>

@@ -59,15 +59,9 @@
             </div>
         </div>
 
-        <div class="maybe-like">
-            <div class="maybe-like__header mb-2">
-                <div class="text-uppercase opacity-75 fs-6">Có thể bạn cũng thích</div>
-            </div>
-            @{ await Html.RenderPartialAsync("Partial/ProductList"); }
-        </div>
 
     </div>
-    <div class="page-product-r">
+    <div class="page-product-r d-none d-lg-block">
         <div class="p-3 bg-white">
             <div class="product-hot-sales">
                 <div class="product-hot-sales__header opacity-75">
@@ -89,5 +83,13 @@
                 </div>
             }
         </div>
+    </div>
+</div>
+<div>
+    <div class="maybe-like">
+        <div class="maybe-like__header mb-2">
+            <div class="text-uppercase opacity-75 fs-6">Có thể bạn cũng thích</div>
+        </div>
+        @{ await Html.RenderPartialAsync("Partial/ProductList"); }
     </div>
 </div>
