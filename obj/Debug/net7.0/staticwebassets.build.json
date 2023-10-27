@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qYc9yZtadLo2kFG1BdvIwevO2YLSfg8J54mR9IxFGVs=",
+  "Hash": "omAK/lgQnFhfZ0/gRnrTQZfEzMiTGoYbw/zZPS3gzZQ=",
   "Source": "ShoppingWEB",
   "BasePath": "_content/ShoppingWEB",
   "Mode": "Default",
@@ -1766,6 +1766,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\partials\\product_list.js"
+    },
+    {
+      "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\partials\\product_rating.js",
+      "SourceId": "ShoppingWEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\",
+      "BasePath": "_content/ShoppingWEB",
+      "RelativePath": "js/partials/product_rating.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\partials\\product_rating.js"
     },
     {
       "Identity": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\site.js",

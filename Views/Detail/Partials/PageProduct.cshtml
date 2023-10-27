@@ -48,43 +48,48 @@
             </div>
         </div>
 
-        @{ await Html.RenderPartialAsync("Partial/ProductList"); }
+        <div class="product-rating my-3 p-4 bg-white">
+            <div>
+                <div class="product-rating__header mb-3">
+                    <div class="fs-5 text-uppercase">Đánh giá sản phẩm</div>
+                </div>
+                <div>
+                    @{ await Html.RenderPartialAsync("./ProductRating.cshtml"); }
+                </div>
+            </div>
+        </div>
+
 
     </div>
-    <div class="page-product-r p-3 bg-white">
-        <div class="product-hot-sales">
-            <div class="product-hot-sales__header opacity-75">
-                Top sản phẩm bán chạy
+    <div class="page-product-r d-none d-lg-block">
+        <div class="p-3 bg-white">
+            <div class="product-hot-sales">
+                <div class="product-hot-sales__header opacity-75">
+                    Top sản phẩm bán chạy
+                </div>
             </div>
+            @for (var i = 0; i < 4; i++)
+            {
+                <div class="product-hot-sale__list">
+                    <div class="product-hot-sale__item">
+                        <a class="text-decoration-none text-black" href="">
+                            <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
+                            <div class="px-3">
+                                <div class="product-hot-sale__name">WORKSOUT Quần Túi Hộp quần nam ống rộng quần 2023 NEW WS062098</div>
+                                <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">128.000đ</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
         </div>
-        <div class="product-hot-sale__list">
-            <div class="product-hot-sale__item">
-                <a class="text-decoration-none text-black" href="">
-                    <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
-                    <div class="px-3">
-                        <div class="product-hot-sale__name">WORKSOUT Quần Túi Hộp quần nam ống rộng quần 2023 NEW WS062098</div>
-                        <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">128.000đ</div>
-                    </div>
-                </a>
-            </div>
-            <div class="product-hot-sale__item">
-                <a class="text-decoration-none text-black" href="">
-                    <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
-                    <div class="px-3">
-                        <div class="product-hot-sale__name">WORKSOUT Quần Túi Hộp quần nam ống rộng quần 2023 NEW WS062098</div>
-                        <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">128.000đ</div>
-                    </div>
-                </a>
-            </div>
-            <div class="product-hot-sale__item">
-                <a class="text-decoration-none text-black" href="">
-                    <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
-                    <div class="px-3">
-                        <div class="product-hot-sale__name">WORKSOUT Quần Túi Hộp quần nam ống rộng quần 2023 NEW WS062098</div>
-                        <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">128.000đ</div>
-                    </div>
-                </a>
-            </div>
+    </div>
+</div>
+<div>
+    <div class="maybe-like">
+        <div class="maybe-like__header mb-2">
+            <div class="text-uppercase opacity-75 fs-6">Có thể bạn cũng thích</div>
         </div>
+        @{ await Html.RenderPartialAsync("Partial/ProductList"); }
     </div>
 </div>

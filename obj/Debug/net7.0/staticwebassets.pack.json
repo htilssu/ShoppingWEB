@@ -173,6 +173,10 @@
       "PackagePath": "staticwebassets\\js\\partials\\product_list.js"
     },
     {
+      "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\partials\\product_rating.js",
+      "PackagePath": "staticwebassets\\js\\partials\\product_rating.js"
+    },
+    {
       "Id": "D:\\Đồ án Web\\ShoppeWeb(git)\\ShoppingWEB\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -12,15 +12,15 @@
     </div>
     <div class="position-relative">
         <div class="category-item overflow-hidden">
-            <ul class="row item-list p-0 m-0">
+            <ul class="item-list p-0 m-0">
                 @foreach (var category in categoryList)
                 {
-                    <li class="ct-item col-5 col-md-2 d-flex col-lg-1 p-0">
+                    <li class="ct-item p-0">
                         <div class="h-100 w-100 d-flex flex-column align-items-center">
                             <a class="h-100 w-100 text-decoration-none">
                                 <div class="d-flex item-image w-100" style="background-image: url(@category.GetWebPath()); background-repeat: no-repeat; background-size: contain;background-position: center"></div>
-                                <div class="item-display text-center p-1">
-                                    <div class="">@category.CategoryName</div>
+                                <div class="item-display text-center p-2">
+                                    <div>@category.CategoryName</div>
                                 </div>
                             </a>
                         </div>
