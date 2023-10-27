@@ -471,7 +471,7 @@ input[type=number] {
 
   .pages-list {
     color: rgba(0, 0, 0, .4);
-    
+
 
     .pages-list__item {
       padding: 0 1rem;
@@ -496,7 +496,7 @@ input[type=number] {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 5px;
+      border-radius: 2px;
 
       &.current-page {
         color: white;
