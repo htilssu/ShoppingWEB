@@ -17,7 +17,6 @@ public partial class Order
 
     public virtual Coupon? Coupon { get; set; }
 
-
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     public virtual PaymentInfo? Payment { get; set; }

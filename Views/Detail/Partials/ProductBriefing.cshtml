@@ -3,6 +3,16 @@
 @inject ShoppingContext Db;
 @{
     var imageList = Db.ImageUrls.Where(_ => true);
+
+    var linkImageTest = new string[]
+    {
+        "/uploads/0edbb2a1-6bb3-4d99-b2be-6e60d850a7f7_balo.png",
+        "/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png",
+        "/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png",
+        "/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png",
+        "/uploads/3b2f4114-37c3-4449-ac0e-8e6f0957695b_mevabe.png",
+        "/uploads/5d96af78-f7c5-441b-8d85-1eb1b4e503e2_mayanh.png",
+    };
 }
 
 <section class="product-briefing bg-white d-flex mt-5">
@@ -15,41 +25,14 @@
         <div class="w-100">
             <div class="sub-image d-flex w-100">
                 @* TODO sub-image *@
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/2f69051c-db12-42d2-9678-0e55735a47dc_dienthoai.png" alt="">
+                @foreach (var s in linkImageTest)
+                {
+                    <div class="p-2 hover-pointer">
+                        <div class="sub-image-item">
+                            <img src="@s" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
-                    </div>
-                </div>
-                <div class="p-2">
-                    <div class="sub-image-item">
-                        <img src="~/uploads/925e4e67-b748-4064-8c47-af613eb2cd9a_giatgiu.png" alt="">
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
