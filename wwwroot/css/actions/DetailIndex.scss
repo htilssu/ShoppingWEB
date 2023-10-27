@@ -3,6 +3,12 @@ html {
   font-size: 14px;
 }
 
+header {
+  .nav-social {
+    font-size: 1rem !important;
+  }
+}
+
 .product-briefing > .left-side {
   width: 450px;
 
@@ -464,6 +470,9 @@ input[type=number] {
   font-size: 1.4rem;
 
   .pages-list {
+    color: rgba(0, 0, 0, .4);
+    
+
     .pages-list__item {
       padding: 0 1rem;
 
@@ -471,6 +480,7 @@ input[type=number] {
       > div {
         width: 50px;
         height: 40px;
+
 
         &:hover {
           cursor: pointer;
