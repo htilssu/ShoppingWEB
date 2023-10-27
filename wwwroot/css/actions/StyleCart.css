@@ -36,16 +36,17 @@ header{
 }
 
 .divider {
-    width: 2px;
+    margin-top:9px !important;
+    width: 3px;
     height: 24px;
-    background-color: #ff6600;
+    background-color: #EA3A4A;
     margin: 0 10px;
 }
 
 .cart1 {
+    margin-top:8px;
     font-size: 25px;
-    background-color: #fff;
-    color: #ff6600;
+    color: #EA3A4A;
     cursor: pointer;
 }
 
@@ -246,9 +247,11 @@ body {
 }
 
 .popup {
+    width: 500px;
+    margin-left: -195px;
     position: absolute;
     border-radius: 2%;
-    background: rgb(237, 229, 223);
+    background: rgb(243 243 243);
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;

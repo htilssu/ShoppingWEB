@@ -26,7 +26,7 @@
                 <div class="navbar-brand">
                     <a asp-controller="Home" asp-action="Index" class="h-100 text-center align-items-center d-flex align-items-center text-decoration-none">
                         <img class="logo" src="/imgs/shopping-brand.png" alt="logo-brand">
-                        <h2 class="m-0 pt-2 text-white fw-normal">Aetherix</h2>
+                        <h2 class="m-0 pt-2 fw-normal" style="color:#EA3A4A">Aetherix</h2>
                         <div class="divider"></div>
                         <div class="cart1">Giỏ hàng</div>
                     </a>
@@ -187,8 +187,32 @@
                         <div class="footer-table1">
                             <img src=".\imgs\freeship.png">
                             <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
-                            <div>
+                            <div style="position:relative;">
                                 <span class="learn-more" data-popup="popup-1">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-1">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </td>
@@ -372,6 +396,30 @@
                             <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
                             <div>
                                 <span class="learn-more" data-popup="popup-2">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-2">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </td>
@@ -447,7 +495,31 @@
                             <img src=".\imgs\freeship.png">
                             <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
                             <div>
-                                <span class="learn-more" data-popup="popup-2">Tìm hiểu thêm</span>
+                                <span class="learn-more" data-popup="popup-3">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-3">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </td>
@@ -481,7 +553,7 @@
             <div class="footer-mua">
                 <div class="div1">
                     <div class="div1-1" id="selectAllProducts">
-                        <input type="checkbox" id="selectAllCheckbox">
+                        <input type="checkbox" id="selectAllCheckbox1">
                     </div>
                     <button class="button1-1">Chọn tất cả (6)</button>
                     <button class="button1-2">Xóa</button>
@@ -503,76 +575,3 @@
         </section>
     </div>
 </section>
-
-<div class="popup hidden" id="popup-1">
-    <div id="popup-content">
-        <div id="popup-content1">
-            <h3>Khuyến mãi vận chuyển</h3>
-        </div>
-        <div id="popup-content2">Apple Flagship Store</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Đơn hàng tối thiểu</th>
-                    <th>Ưu đãi</th>
-                    <th>Phương thức vận chuyển</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>₫0</td>
-                    <td>₫300.000</td>
-                    <td>Nhanh</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="popup hidden" id="popup-2">
-    <div id="popup-content">
-        <div id="popup-content1">
-            <h3>Khuyến mãi vận chuyển</h3>
-        </div>
-        <div id="popup-content2">Apple Flagship Store</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Đơn hàng tối thiểu</th>
-                    <th>Ưu đãi</th>
-                    <th>Phương thức vận chuyển</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>₫0</td>
-                    <td>₫300.000</td>
-                    <td>Nhanh</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="popup hidden" id="popup-3">
-    <div id="popup-content">
-        <div id="popup-content1">
-            <h3>Khuyến mãi vận chuyển</h3>
-        </div>
-        <div id="popup-content2">Apple Flagship Store</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Đơn hàng tối thiểu</th>
-                    <th>Ưu đãi</th>
-                    <th>Phương thức vận chuyển</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>₫0</td>
-                    <td>₫300.000</td>
-                    <td>Nhanh</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>

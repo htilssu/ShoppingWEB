@@ -1,8 +1,14 @@
 ﻿const selectAllCheckbox = document.getElementById('selectAllCheckbox');
 const productCheckboxes = document.querySelectorAll('.product-checkbox');
 
+const selectAllCheckbox1 = document.getElementById('selectAllCheckbox1');
+
 productCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
+    checkbox.addEventListener('change', (e) => {
+        if (e.target.checked == false) {
+            selectAllCheckbox.checked = selectAllCheckbox1.checked = false;
+        }
+
         updateSelectedProductsAndTotalPrice();
     });
 });
@@ -42,6 +48,14 @@ selectAllCheckbox.addEventListener('change', () => {
     productCheckboxes.forEach(checkbox => {
         checkbox.checked = selectAllCheckbox.checked;
     });
+    selectAllCheckbox1.checked = selectAllCheckbox.checked;
+    updateSelectedProductsAndTotalPrice();
+});
+selectAllCheckbox1.addEventListener('change', () => {
+    productCheckboxes.forEach(checkbox => {
+        checkbox.checked = selectAllCheckbox1.checked;
+    });
+    selectAllCheckbox.checked = selectAllCheckbox1.checked;
     updateSelectedProductsAndTotalPrice();
 });
 
@@ -73,8 +87,6 @@ learnMoreElements.forEach((learnMoreElement, index) => {
     learnMoreElement.addEventListener('mouseover', () => {
         // Lấy vị trí của "Tìm hiểu thêm" để đặt vị trí cho bảng thông báo tương ứng
         const rect = learnMoreElement.getBoundingClientRect();
-        popups[index].style.top = rect.bottom + 'px';
-        popups[index].style.left = rect.left + 'px';
         popups[index].classList.remove('hidden');
     });
 
