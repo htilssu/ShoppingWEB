@@ -56,7 +56,7 @@ header {
 }
 
 .cart1 {
-    margin-top:8px;
+    margin-top:11px;
     font-size: 25px;
     background-color: #fff;
     color: #EA3A4A;
@@ -143,6 +143,7 @@ header {
 
 .main {
     margin-top: -17px;
+    background-color: #e9e6e6;
 }
 
     .main thead {
@@ -150,6 +151,7 @@ header {
     }
 
 .cot-dongia, .cot-soluong {
+    text-align:center;
     font-size: 15px;
     color: #bbb;
 }
@@ -340,16 +342,19 @@ th, td {
     align-items: center;
     padding: 16px 30px;
 }
+.loinhan span{
+    width:max-content;
+}
 
     .loinhan div input {
         border-radius: 2px;
         height: 40px;
-        width: 430px;
+        width: 380px;
         box-sizing: border-box;
         border: 0px;
-        margin: 0 15px;
-        padding: 4px 12px;
-        background-color: white;
+        margin: 0 10px;
+        padding: 4px 10px;
+        background-color: #dadada;
     }
 
 .vanchuyen {
