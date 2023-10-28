@@ -44,7 +44,7 @@ header{
 }
 
 .cart1 {
-    margin-top:8px;
+    margin-top:11px;
     font-size: 25px;
     color: #EA3A4A;
     cursor: pointer;
@@ -104,6 +104,7 @@ header{
 }
 .main {
     margin-top: -15px !important;
+    background-color: #e9e6e6;
 }
 
 body {
