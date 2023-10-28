@@ -63,9 +63,7 @@ public class CategoryController : Controller
                     Console.WriteLine(e);
                     return View();
                 }
-
-            category.UpdatedAt = DateTime.Now;
-            category.CreatedAt = DateTime.Now;
+            
             _context.Add(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -125,8 +123,7 @@ public class CategoryController : Controller
                 }
             }
 
-
-            oldProduct!.UpdatedAt = DateTime.Now;
+            
             oldProduct.CategoryName = category.CategoryName;
 
             try

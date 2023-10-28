@@ -63,6 +63,11 @@
         <_ContentIncludedByDefault Remove="Views\Product\Edit.cshtml"/>
         <_ContentIncludedByDefault Remove="Views\Product\Index.cshtml"/>
         <_ContentIncludedByDefault Remove="Areas\Admin\Views\Image\Index.cshtml"/>
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Create.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Delete.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Details.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Edit.cshtml" />
+        <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Index.cshtml" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Areas\Admin\Data\"/>
@@ -77,10 +82,5 @@
         <AdditionalFiles Include="Areas\Admin\Views\Category\Details.cshtml"/>
         <AdditionalFiles Include="Areas\Admin\Views\Category\Edit.cshtml"/>
         <AdditionalFiles Include="Areas\Admin\Views\Category\Index.cshtml"/>
-        <AdditionalFiles Include="Areas\Admin\Views\Product\Create.cshtml"/>
-        <AdditionalFiles Include="Areas\Admin\Views\Product\Delete.cshtml"/>
-        <AdditionalFiles Include="Areas\Admin\Views\Product\Details.cshtml"/>
-        <AdditionalFiles Include="Areas\Admin\Views\Product\Edit.cshtml"/>
-        <AdditionalFiles Include="Areas\Admin\Views\Product\Index.cshtml"/>
     </ItemGroup>
 </Project>

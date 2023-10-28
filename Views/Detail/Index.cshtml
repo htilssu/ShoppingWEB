@@ -20,8 +20,8 @@
 
 <div class="container-md">
     @{
-        await Html.RenderPartialAsync("Partials/ProductBriefing");
-        await Html.RenderPartialAsync("Partials/SellerInfo");
+        await Html.RenderPartialAsync("Partials/ProductBriefing", Model);
+        await Html.RenderPartialAsync("Partials/SellerInfo", Model);
         await Html.RenderPartialAsync("Partials/PageProduct");
     }
 </div>

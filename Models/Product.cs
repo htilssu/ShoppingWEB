@@ -9,23 +9,19 @@ public partial class Product
 
     public string? ProductName { get; set; }
 
-    public double? Price { get; set; }
-
     public double? DiscountPercent { get; set; }
-
-    public int? InStock { get; set; }
 
     public string? ShortDescription { get; set; }
 
-    public string? ProductDescription { get; set; }
+    public string? LongDescription { get; set; }
 
-    public sbyte? Published { get; set; }
+    public sbyte? Publish { get; set; }
 
     public string? CategoryId { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreateAt { get; set; }
 
-    public DateTime? UpdatedAt { get; set; }
+    public DateTime? UpdateAt { get; set; }
 
     public int Rating { get; set; }
 
@@ -34,6 +30,8 @@ public partial class Product
     public virtual Category? Category { get; set; }
 
     public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
+
+    public virtual ICollection<TypeProduct> TypeProducts { get; set; } = new List<TypeProduct>();
 
     public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();
 }

@@ -11,5 +11,11 @@ public partial class Bill
 
     public double Total { get; set; }
 
+    public string PaymentMethod { get; set; } = null!;
+
+    public virtual ICollection<Bill> InversePaymentMethodNavigation { get; set; } = new List<Bill>();
+
     public virtual CartItem Item { get; set; } = null!;
+
+    public virtual Bill PaymentMethodNavigation { get; set; } = null!;
 }

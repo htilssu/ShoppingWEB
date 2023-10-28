@@ -11,6 +11,20 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
     {
     }
 
+    public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+
+    public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
+
+    public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+
+    public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+
+    public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+
+    public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
+
+    public virtual DbSet<Bill> Bills { get; set; }
+
     public virtual DbSet<Cart> Carts { get; set; }
 
     public virtual DbSet<CartItem> CartItems { get; set; }
@@ -21,98 +35,175 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual DbSet<DeliveryInfo> DeliveryInfos { get; set; }
 
-    public virtual DbSet<DeliveryProvider> DeliveryProviders { get; set; }
+    public virtual DbSet<DeliveryProvIder> DeliveryProvIders { get; set; }
+
+    public virtual DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
 
     public virtual DbSet<ImageUrl> ImageUrls { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderItem> OrderItems { get; set; }
-
-    public virtual DbSet<PaymentInfo> PaymentInfos { get; set; }
+    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<Size> Sizes { get; set; }
+
+    public virtual DbSet<TypeProduct> TypeProducts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseMySQL("name=ConnectionStrings:Mysql");
-    }
+        => optionsBuilder.UseMySQL("name=ConnectionStrings:Mysql");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<AspNetRole>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.NormalizedName, "RoleNameIndex").IsUnique();
+
+            entity.Property(e => e.Name).HasMaxLength(256);
+            entity.Property(e => e.NormalizedName).HasMaxLength(256);
+        });
+
+        modelBuilder.Entity<AspNetRoleClaim>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.RoleId, "IX_AspNetRoleClaims_RoleId");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.AspNetRoleClaims).HasForeignKey(d => d.RoleId);
+        });
+
+        modelBuilder.Entity<AspNetUser>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.NormalizedEmail, "EmailIndex");
+
+            entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex").IsUnique();
+
+            entity.Property(e => e.BirthDay).HasMaxLength(6);
+            entity.Property(e => e.Email).HasMaxLength(256);
+            entity.Property(e => e.LockoutEnd).HasMaxLength(6);
+            entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+            entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+            entity.Property(e => e.UserName).HasMaxLength(256);
+
+            entity.HasMany(d => d.Roles).WithMany(p => p.Users)
+                .UsingEntity<Dictionary<string, object>>(
+                    "AspNetUserRole",
+                    r => r.HasOne<AspNetRole>().WithMany().HasForeignKey("RoleId"),
+                    l => l.HasOne<AspNetUser>().WithMany().HasForeignKey("UserId"),
+                    j =>
+                    {
+                        j.HasKey("UserId", "RoleId").HasName("PRIMARY");
+                        j.ToTable("AspNetUserRoles");
+                        j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
+                    });
+        });
+
+        modelBuilder.Entity<AspNetUserClaim>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.UserId, "IX_AspNetUserClaims_UserId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserClaims).HasForeignKey(d => d.UserId);
+        });
+
+        modelBuilder.Entity<AspNetUserLogin>(entity =>
+        {
+            entity.HasKey(e => new { e.LoginProvider, e.ProviderKey }).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.UserId, "IX_AspNetUserLogins_UserId");
+
+            entity.Property(e => e.LoginProvider).HasMaxLength(128);
+            entity.Property(e => e.ProviderKey).HasMaxLength(128);
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserLogins).HasForeignKey(d => d.UserId);
+        });
+
+        modelBuilder.Entity<AspNetUserToken>(entity =>
+        {
+            entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name }).HasName("PRIMARY");
+
+            entity.Property(e => e.LoginProvider).HasMaxLength(128);
+            entity.Property(e => e.Name).HasMaxLength(128);
+
+            entity.HasOne(d => d.User).WithMany(p => p.AspNetUserTokens).HasForeignKey(d => d.UserId);
+        });
+
+        modelBuilder.Entity<Bill>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("Bill");
+
+            entity.HasIndex(e => e.PaymentMethod, "Bill_Bill_Id_fk");
+
+            entity.HasIndex(e => e.ItemId, "Bill_CartItem_Id_fk");
+
+            entity.HasOne(d => d.Item).WithMany(p => p.Bills)
+                .HasForeignKey(d => d.ItemId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Bill_CartItem_Id_fk");
+
+            entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.InversePaymentMethodNavigation)
+                .HasForeignKey(d => d.PaymentMethod)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Bill_Bill_Id_fk");
+        });
+
         modelBuilder.Entity<Cart>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("Cart");
 
-            entity.HasIndex(e => e.CustomerId, "customer_id");
+            entity.HasIndex(e => e.CustomerId, "customer_Id");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CustomerId).HasColumnName("customer_id");
+            entity.HasOne(d => d.Customer).WithMany(p => p.Carts)
+                .HasForeignKey(d => d.CustomerId)
+                .HasConstraintName("Cart_ibfk_1");
         });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.HasIndex(e => e.CartId, "cart_id");
+            entity.ToTable("CartItem");
 
-            entity.HasIndex(e => e.ProductId, "product_id");
+            entity.HasIndex(e => e.CartId, "CartId");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CartId).HasColumnName("cart_id");
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
-            entity.Property(e => e.Quanity).HasColumnName("quanity");
+            entity.HasIndex(e => e.ProductId, "ProductId");
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
-                .HasConstraintName("CartItems_ibfk_2");
+                .HasConstraintName("CartItem_ibfk_2");
 
             entity.HasOne(d => d.Product).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("CartItems_ibfk_1");
+                .HasConstraintName("CartItem_ibfk_1");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CategoryName)
-                .HasMaxLength(255)
-                .HasColumnName("category_name");
-            entity.Property(e => e.CreatedAt)
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.ImagePath)
-                .HasMaxLength(255)
-                .HasColumnName("image_path");
-            entity.Property(e => e.UpdatedAt)
-                .HasColumnType("datetime")
-                .HasColumnName("updated_at");
+            entity.ToTable("Category");
+
+            entity.Property(e => e.CategoryName).HasMaxLength(255);
+            entity.Property(e => e.ImagePath).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Coupon>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Code)
-                .HasMaxLength(255)
-                .HasColumnName("code");
-            entity.Property(e => e.CouponDescription)
-                .HasMaxLength(255)
-                .HasColumnName("coupon_description");
-            entity.Property(e => e.DiscountValue).HasColumnName("discount_value");
-            entity.Property(e => e.EndAt)
-                .HasColumnType("datetime")
-                .HasColumnName("end_at");
-            entity.Property(e => e.Limited).HasColumnName("limited");
-            entity.Property(e => e.StartAt)
-                .HasColumnType("datetime")
-                .HasColumnName("start_at");
+            entity.Property(e => e.Code).HasMaxLength(255);
+            entity.Property(e => e.CouponDescription).HasMaxLength(255);
+            entity.Property(e => e.EndAt).HasColumnType("datetime");
+            entity.Property(e => e.StartAt).HasColumnType("datetime");
 
             entity.HasMany(d => d.Products).WithMany(p => p.Coupons)
                 .UsingEntity<Dictionary<string, object>>(
@@ -128,10 +219,8 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                     j =>
                     {
                         j.HasKey("CouponId", "ProductId").HasName("PRIMARY");
-                        j.ToTable("ProductCoupons");
-                        j.HasIndex(new[] { "ProductId" }, "product_id");
-                        j.IndexerProperty<string>("CouponId").HasColumnName("coupon_id");
-                        j.IndexerProperty<string>("ProductId").HasColumnName("product_id");
+                        j.ToTable("ProductCoupon");
+                        j.HasIndex(new[] { "ProductId" }, "ProductId");
                     });
         });
 
@@ -141,39 +230,27 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("Delivery_INFO");
 
-            entity.HasIndex(e => e.Receiver, "receiver");
+            entity.HasIndex(e => e.ReceiverId, "Receiver");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.City)
-                .HasMaxLength(255)
-                .HasColumnName("city");
+            entity.Property(e => e.City).HasMaxLength(255);
             entity.Property(e => e.Default).HasColumnName("default");
-            entity.Property(e => e.District)
-                .HasMaxLength(255)
-                .HasColumnName("district");
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(255)
-                .HasColumnName("phone_number");
-            entity.Property(e => e.Receiver).HasColumnName("receiver");
-            entity.Property(e => e.Street)
-                .HasMaxLength(255)
-                .HasColumnName("street");
-            entity.Property(e => e.Ward)
-                .HasMaxLength(255)
-                .HasColumnName("ward");
+            entity.Property(e => e.District).HasMaxLength(255);
+            entity.Property(e => e.PhoneNumber).HasMaxLength(255);
+            entity.Property(e => e.Street).HasMaxLength(255);
+            entity.Property(e => e.Ward).HasMaxLength(255);
+
+            entity.HasOne(d => d.Receiver).WithMany(p => p.DeliveryInfos)
+                .HasForeignKey(d => d.ReceiverId)
+                .HasConstraintName("Delivery_INFO_ibfk_1");
         });
 
-        modelBuilder.Entity<DeliveryProvider>(entity =>
+        modelBuilder.Entity<DeliveryProvIder>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DeliveryProvider");
+            entity.ToTable("DeliveryProvIder");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DeliveryproviderName)
-                .HasMaxLength(255)
-                .HasColumnName("deliveryprovider_name");
-            entity.Property(e => e.Price).HasColumnName("price");
+            entity.Property(e => e.ProvIderName).HasMaxLength(255);
         });
 
         modelBuilder.Entity<EfmigrationsHistory>(entity =>
@@ -192,113 +269,63 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("ImageURL");
 
-            entity.HasIndex(e => e.ProductId, "ImageURL_Products_id_fk");
-
-            entity.Property(e => e.ImagePath).HasColumnName("image_path");
-            entity.Property(e => e.ProductId).HasColumnName("product_id");
-            entity.Property(e => e.Thumnail).HasColumnName("thumnail");
+            entity.HasIndex(e => e.ProductId, "ImageURL_Product_Id_fk");
 
             entity.HasOne(d => d.Product).WithMany(p => p.ImageUrls)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("ImageURL_Products_id_fk");
+                .HasConstraintName("ImageURL_Product_Id_fk");
         });
 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<PaymentMethod>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("Order");
+            entity.ToTable("PaymentMethod");
 
-            entity.HasIndex(e => e.CouponId, "coupon_id");
-
-            entity.HasIndex(e => e.CustomerId, "customer_id");
-
-            entity.HasIndex(e => e.PaymentId, "payment_id");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CouponId).HasColumnName("coupon_id");
-            entity.Property(e => e.CreatedAt)
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.CustomerId).HasColumnName("customer_id");
-            entity.Property(e => e.PaymentId).HasColumnName("payment_id");
-
-            entity.HasOne(d => d.Coupon).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.CouponId)
-                .HasConstraintName("Order_ibfk_2");
-
-            entity.HasOne(d => d.Payment).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.PaymentId)
-                .HasConstraintName("Order_ibfk_1");
-        });
-
-        modelBuilder.Entity<OrderItem>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("OrderItem");
-
-            entity.HasIndex(e => e.DeliveryProviderId, "delivery_provider_id");
-
-            entity.HasIndex(e => e.OrderId, "order_id");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DeliveryProviderId).HasColumnName("delivery_provider_id");
-            entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.Quanity).HasColumnName("quanity");
-            entity.Property(e => e.Total).HasColumnName("total");
-
-            entity.HasOne(d => d.DeliveryProvider).WithMany(p => p.OrderItems)
-                .HasForeignKey(d => d.DeliveryProviderId)
-                .HasConstraintName("OrderItem_ibfk_2");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("OrderItem_ibfk_1");
-        });
-
-        modelBuilder.Entity<PaymentInfo>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("PaymentINFO");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.PaymentMethod)
-                .HasColumnType("enum('VISA','MASTERCARD','BANKING')")
-                .HasColumnName("payment_method");
+            entity.Property(e => e.PaymentName).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.HasIndex(e => e.CategoryId, "category_id");
+            entity.ToTable("Product");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.CategoryId).HasColumnName("category_id");
-            entity.Property(e => e.CreatedAt)
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.DiscountPercent).HasColumnName("discount_percent");
-            entity.Property(e => e.InStock).HasColumnName("in_stock");
-            entity.Property(e => e.Price).HasColumnName("price");
-            entity.Property(e => e.ProductDescription).HasColumnName("product_description");
-            entity.Property(e => e.ProductName)
-                .HasMaxLength(255)
-                .HasColumnName("product_name");
-            entity.Property(e => e.Published).HasColumnName("published");
-            entity.Property(e => e.ShortDescription)
-                .HasColumnType("text")
-                .HasColumnName("short_description");
-            entity.Property(e => e.UpdatedAt)
-                .HasColumnType("datetime")
-                .HasColumnName("updated_at");
+            entity.HasIndex(e => e.CategoryId, "CategoryId");
+
+            entity.Property(e => e.CreateAt).HasColumnType("datetime");
+            entity.Property(e => e.ProductName).HasMaxLength(255);
+            entity.Property(e => e.ShortDescription).HasColumnType("text");
+            entity.Property(e => e.UpdateAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("Products_ibfk_1");
+                .HasConstraintName("Product_ibfk_1");
+        });
+
+        modelBuilder.Entity<Size>(entity =>
+        {
+            entity.HasKey(e => new { e.TypeProductId, e.SizeNumber }).HasName("PRIMARY");
+
+            entity.ToTable("Size");
+        });
+
+        modelBuilder.Entity<TypeProduct>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("TypeProduct");
+
+            entity.HasIndex(e => e.ProductId, "TypeProduct_ibdk_1");
+
+            entity.Property(e => e.ImagePath).HasMaxLength(255);
+            entity.Property(e => e.TypeName).HasMaxLength(255);
+
+            entity.HasOne(d => d.Product).WithMany(p => p.TypeProducts)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("TypeProduct_ibdk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);

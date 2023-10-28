@@ -47,8 +47,6 @@ public class ProductController : Controller
     public async Task<IActionResult> Create(Product product)
     {
         product.DiscountPercent = product.DiscountPercent ?? 0;
-        product.CreatedAt = DateTime.Now;
-        product.UpdatedAt = DateTime.Now;
         if (ModelState.IsValid)
         {
             _context.Add(product);
@@ -86,7 +84,7 @@ public class ProductController : Controller
         {
             try
             {
-                product.UpdatedAt = DateTime.Now;
+
                 _context.Update(product);
                 await _context.SaveChangesAsync();
             }
