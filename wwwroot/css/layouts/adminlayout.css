@@ -1,41 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 14px;
 }
 
-.placeholder {
-  height: 70px !important;
+body {
+  max-width: 100vw;
+  overflow: hidden;
 }
 
-header {
-  background-color: #C1712A;
+.left-side {
+  width: 300px;
+  z-index: 1;
+  background-color: antiquewhite;
+  min-height: 100vh;
 }
 
-.main .nav-menu {
-  width: 15% !important;
-  background-color: #C1712A !important;
-  box-shadow: 1px -1px 1px #eae2e2;
-  border-color: #ce6c09 !important;
-  font-size: 1.3rem;
-  color: white;
-}
-
-.main .nav-menu .nav-item {
-  height: 40px;
-  line-height: 40px;
+.right-side .navbar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   font-size: 1.1rem;
-  width: 100%;
+  height: 70px;
+  padding-left: 1rem;
 }
-
-.main .nav-menu .nav-item a {
-  color: #f5e9e9;
-}
-
-.main .nav-menu .nav-item a:hover {
-  color: white;
-}
-
-.main .nav-menu .nav-item > div {
-  width: 50%;
+.right-side .navbar .brand-name {
+  color: #EA3A4A;
 }
 
 /*# sourceMappingURL=adminlayout.css.map */

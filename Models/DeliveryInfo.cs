@@ -20,6 +20,4 @@ public partial class DeliveryInfo
     public string? PhoneNumber { get; set; }
 
     public bool? Default { get; set; }
-
-    public virtual AspNetUser? Receiver { get; set; }
 }

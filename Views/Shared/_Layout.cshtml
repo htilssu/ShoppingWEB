@@ -80,7 +80,9 @@
                     </i>
                 </div>
                 <div class="cart pt-2">
-                    <i class="bi bi-cart-fill text-white fs-4"></i>
+                    <a asp-controller="Cart" asp-action="Index">
+                        <i class="bi bi-cart-fill text-white fs-4"></i>
+                    </a>
                 </div>
                 <div class="user user-mobile d-sm-none d-flex align-items-center justify-content-center pt-2">
                     @if (User.Identity!.IsAuthenticated)
@@ -191,7 +193,7 @@
            
     }
     
-        var statusToggle = false;
+        let statusToggle = false;
     
     function toggleNotify(e) {
        

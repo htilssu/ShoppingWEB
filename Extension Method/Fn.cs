@@ -13,10 +13,19 @@ public static class Extension
         return path![path.IndexOf('\\')..].Replace(@"\", "/");
     }
 
-    public static string GetWebPath(this ImageUrl image)
+    public static void DeleteFile(this string path)
     {
-        var path = image.ImagePath;
-        return path![path.IndexOf('\\')..].Replace(@"\", "/");
+        path = "wwwroot" + path.Replace("/", "\\");
+
+        try
+        {
+            System.IO.File.Delete(path);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public static string GetWebPath(this string path)
