@@ -12,7 +12,7 @@ function slideAction(slider, count) {
   let index = 0;
   let trans = slider.style.transition;
   setInterval(() => {
-    slider.style.transform = `translateX(-${144 * 4}px)`;
+    slider.style.transform = `translateX(calc(-${100 * index}%))`;
     if (index === count - 1) {
       setTimeout(() => {
         slider.style.transition = "";
