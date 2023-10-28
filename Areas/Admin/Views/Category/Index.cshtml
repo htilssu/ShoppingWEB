@@ -21,12 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ImagePath)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
             <th></th>
         </tr>
         </thead>
@@ -40,16 +34,14 @@
                 <td >
                     <img src="@item.ImagePath?.Replace("wwwroot", "").Replace(@"\", "/")" height="50px" alt="Image"/>
                 </td>
-                <td >
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UpdatedAt)
-                </td>
-                <td>
-                    <a class="btn btn-danger text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                    <a class="btn btn-danger text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
                     <a class="btn btn-danger text-decoration-none" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
-                    <a class="btn btn-danger text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                    <a class="btn btn-danger text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
                 </td>
             </tr>
         }

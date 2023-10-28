@@ -7,7 +7,7 @@ public partial class DeliveryInfo
 {
     public string Id { get; set; } = null!;
 
-    public string? Receiver { get; set; }
+    public string? ReceiverId { get; set; }
 
     public string? Street { get; set; }
 
@@ -20,5 +20,4 @@ public partial class DeliveryInfo
     public string? PhoneNumber { get; set; }
 
     public bool? Default { get; set; }
-
 }

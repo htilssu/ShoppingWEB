@@ -1,0 +1,81 @@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<UserModel> UserManager
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true">
+    <link rel="shortcut icon" href="~/imgs/shopping-brand.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    @(await RenderSectionAsync("Styles", false))
+    <title>@ViewBag.Title - Aetherix</title>
+</head>
+<body>
+<header class="fixed-top">
+    <div class="navbar nav-social">
+        <div class="container-md">
+            <div class="nav-left d-flex text-white">
+                <div class="nav-item become-seller">
+                    <a class="text-decoration-none text-white" href="">Trở thành người bán</a>
+                </div>
+                <div class="nav-item download-app">
+                    <a class="text-decoration-none text-white" href="">Tải ứng dụng</a>
+                </div>
+                <div class="social nav-item d-flex gap-2 position-relative">
+                    <span class="text-white">Kết nối</span>
+                    <a target="_blank" href="https://github.com/htilssu/ShoppingWEB">
+                        <i class="bi bi-github text-white"></i>
+                    </a>
+                    <a target="_blank" href="https://www.facebook.com/htilssu.88">
+                        <i class="bi bi-facebook text-white"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-right d-flex justify-content-center align-items-center">
+                <div id="notify" class="nav-item position-relative">
+                    <i class="bi bi-bell-fill">
+                    </i>
+                    <span>Thông báo</span>
+
+                </div>
+                <div class="nav-item">
+                    <i class="bi bi-question-circle"></i>
+                    <span>Hỗ trợ</span>
+                </div>
+                @{ await Html.RenderPartialAsync("Partial/LoginPartial"); }
+            </div>
+
+        </div>
+    </div>
+    <div class="main-nav">@await RenderSectionAsync("HeaderNav", false)</div>
+</header>
+<div class="placeholder"></div>
+<div class="main">
+    @RenderBody()
+</div>
+<footer class=" card-footer p-md-5">
+    <div class="container-md">
+        <hr>
+        <div class="copyright d-flex justify-content-between fs-6 text-muted flex-wrap align-items-center text-center">
+            <p>&copy; @DateTime.Today.Year Aetherix. Tất cả các quyền được bảo lưu</p>
+            <p>Quốc gia & Khu vực: Việt Nam</p>
+        </div>
+        <hr>
+        <div class="info-company d-flex flex-column flex-md-wrap justify-content-center align-items-center">
+            <p>Công ty TNHH Aetherix</p>
+            <br>
+            <p>Địa chỉ: Tầng 1-2-3-4, Tòa nhà HUFLIT, số 828 đường Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh, Việt Nam. Tổng đài hỗ trợ: 0123456789 - Email: cskh@hotro.aetherix.vn</p>
+            <p>Chịu Trách Nhiệm Quản Lý Nội Dung: Hihihi - Điện thoại liên hệ: 0123456789</p>
+            <p>© 2023 - Bản quyền thuộc về Công ty TNHH Aetherix</p>
+        </div>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@(await RenderSectionAsync("Scripts", false))
+</body>
+</html>

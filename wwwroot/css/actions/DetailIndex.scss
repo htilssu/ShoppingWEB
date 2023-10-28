@@ -3,6 +3,12 @@ html {
   font-size: 14px;
 }
 
+header {
+  .nav-social {
+    font-size: 1rem !important;
+  }
+}
+
 .product-briefing > .left-side {
   width: 450px;
 
@@ -425,7 +431,80 @@ input[type=number] {
 .posted-content__preview-img {
   height: 400px;
   width: 300px;
-  background-color: red;
-  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, .1);
+
+  .action-preview-img {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .next-img {
+    right: -15px;
+
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+  }
+
+  .previous-img {
+    left: -15px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+
+  }
 }
 
+.hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.nav-pages {
+
+  font-size: 1.4rem;
+
+  .pages-list {
+    color: rgba(0, 0, 0, .4);
+
+
+    .pages-list__item {
+      padding: 0 1rem;
+
+
+      > div {
+        width: 50px;
+        height: 40px;
+
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+
+    }
+
+    .list_number {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 2px;
+
+      &.current-page {
+        color: white;
+        background-color: #C1712A;
+      }
+    }
+
+  }
+
+
+}

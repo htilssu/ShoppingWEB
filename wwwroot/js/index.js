@@ -1,7 +1,7 @@
 ﻿//slide category to right
 $(".next-item-btn-right").on("click", () => {
   $(".item-list").css({
-    transform: `translateX(calc(-144px * 1))`,
+    transform: `translateX(calc(-144px * 4))`,
   });
 });
 

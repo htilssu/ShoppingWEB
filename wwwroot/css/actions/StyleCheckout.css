@@ -141,9 +141,9 @@ header {
         margin-left: 20px;
     }
 
-.main {
+.main1 {
     margin-top: -17px;
-    background-color: #e9e6e6;
+    background-color: white;
 }
 
     .main thead {
@@ -332,7 +332,7 @@ th, td {
 .ship-main {
     display: flex;
     justify-content: flex-end;
-    background-color: #f2f5f6c5;
+    background-color: #e1eff4c5;
     border-bottom: 1px dashed rgba(0,0,0,.09);
     border: 1px dashed rgba(0,0,0,.09);
 }

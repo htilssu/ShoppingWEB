@@ -13,6 +13,8 @@ public partial class CartItem
 
     public int? Quanity { get; set; }
 
+    public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
+
     public virtual Cart? Cart { get; set; }
 
     public virtual Product? Product { get; set; }

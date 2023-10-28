@@ -17,8 +17,8 @@ input[type=number] {
 }
 
 /* Header Styles */
-header{
-    position:relative !important; 
+header {
+    position: relative !important;
 }
 
 .shoppe-top {
@@ -36,7 +36,7 @@ header{
 }
 
 .divider {
-    margin-top:9px !important;
+    margin-top: 9px !important;
     width: 3px;
     height: 24px;
     background-color: #EA3A4A;
@@ -44,10 +44,14 @@ header{
 }
 
 .cart1 {
-    margin-top:11px;
+    margin-top: 11px;
     font-size: 25px;
     color: #EA3A4A;
     cursor: pointer;
+}
+
+.navbar-brand a {
+    color: #EA3A4A;
 }
 
 .header {
@@ -102,6 +106,7 @@ header{
 .placeholder {
     height: 1px !important;
 }
+
 .main {
     margin-top: -15px !important;
     background-color: #e9e6e6;
@@ -486,7 +491,7 @@ input[type="number"] {
 }
 
 
-.div-logodongtien, #text-shopeexu, #text-xu{
+.div-logodongtien, #text-shopeexu, #text-xu {
     opacity: .8;
 }
 

@@ -23,13 +23,6 @@
     <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
 }
 
-@section HeaderNav
-{
-    @{
-        await Html.RenderPartialAsync("Partial/HeaderPrimaryNav");
-    }
-}
-
 <div class="container-md">
     @{
         await Html.RenderPartialAsync("Partial/BannerPartial");
