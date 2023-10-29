@@ -11,31 +11,31 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
     {
     }
 
-    public virtual DbSet<Bill> Bills { get; set; }
+    public virtual required DbSet<Bill> Bills { get; set; }
 
-    public virtual DbSet<Cart> Carts { get; set; }
+    public virtual required DbSet<Cart> Carts { get; set; }
 
-    public virtual DbSet<CartItem> CartItems { get; set; }
+    public virtual required DbSet<CartItem> CartItems { get; set; }
 
-    public virtual DbSet<Category> Categories { get; set; }
+    public virtual required DbSet<Category> Categories { get; set; }
 
-    public virtual DbSet<Coupon> Coupons { get; set; }
+    public virtual required DbSet<Coupon> Coupons { get; set; }
 
-    public virtual DbSet<DeliveryInfo> DeliveryInfos { get; set; }
+    public virtual required DbSet<DeliveryInfo> DeliveryInfos { get; set; }
 
-    public virtual DbSet<DeliveryProvider> DeliveryProviders { get; set; }
+    public virtual required DbSet<DeliveryProvider> DeliveryProviders { get; set; }
 
-    public virtual DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
+    public virtual required DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
 
-    public virtual DbSet<ImageUrl> ImageUrls { get; set; }
+    public virtual required DbSet<ImageUrl> ImageUrls { get; set; }
 
-    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+    public virtual required DbSet<PaymentMethod> PaymentMethods { get; set; }
 
-    public virtual DbSet<Product> Products { get; set; }
+    public virtual required DbSet<Product> Products { get; set; }
 
-    public virtual DbSet<Size> Sizes { get; set; }
+    public virtual required DbSet<Size> Sizes { get; set; }
 
-    public virtual DbSet<TypeProduct> TypeProducts { get; set; }
+    public virtual required DbSet<TypeProduct> TypeProducts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseMySQL("name=ConnectionStrings:Mysql");

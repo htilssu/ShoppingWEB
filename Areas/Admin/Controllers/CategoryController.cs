@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,8 +13,8 @@ namespace ShoppingWEB.Areas.Admin.Controllers;
 public class CategoryController : Controller
 {
     private readonly ShoppingContext _context;
-    private RoleManager<RoleModel> _roleManager;
-    private UserManager<UserModel> _userManager;
+    private readonly RoleManager<RoleModel> _roleManager;
+    private readonly UserManager<UserModel> _userManager;
 
     public CategoryController(ShoppingContext context, RoleManager<RoleModel> roleManager,
         UserManager<UserModel> userManager)

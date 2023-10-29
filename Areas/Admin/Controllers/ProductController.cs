@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Org.BouncyCastle.Tsp;
-using Org.BouncyCastle.Utilities.IO.Pem;
 using ShoppingWEB.Areas.Admin.Models;
 using ShoppingWEB.Extension_Method;
 using ShoppingWEB.Models;

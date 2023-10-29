@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -18,7 +17,7 @@ var connectionString = conf["Database:ConnectionString"];
 builder.Services.AddSingleton(new MySqlConnection(connectionString));
 builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
-    optionsBuilder.UseMySQL(connectionString);
+    optionsBuilder.UseMySQL(connectionString!);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });
 builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ShoppingContext>();
