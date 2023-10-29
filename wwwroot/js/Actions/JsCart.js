@@ -23,12 +23,33 @@ const products = {
   6: { price: 1400, quantity: 1, remainingQuantity: 30 },
 };
 
+function updateQuantity(productNumber) {
+        const soluong = document.getElementById(`quantity-${productNumber}`);
+        const sotien = document.getElementById(`sotien-${productNumber}`);
+        // Lấy giá trị số lượng từ ô nhập liệu
+        const newQuantity = parseInt(soluong.value);
+        // Kiểm tra xem số lượng nhập liệu có hợp lệ không
+        if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= products[productNumber].remainingQuantity) {
+            products[productNumber].quantity = newQuantity;
+            // Cập nhật tổng số tiền
+            sotien.textContent = `$${(newQuantity * products[productNumber].price).toLocaleString()}`;
+            updateSelectedProductsAndTotalPrice();
+        }
+        else{
+            // Nếu số lượng không hợp lệ, gán giá trị mặc định là 1 sản phẩm
+             products[productNumber].quantity = 0;
+
+            // Cập nhật giá trị trên giao diện
+            soluong.value = 0;
+            sotien.textContent = `$${(1 * products[productNumber].price).toLocaleString()}`;
+            updateSelectedProductsAndTotalPrice();
+        }
+    }
+
 function dieuchinh_sl(productNumber, change) {
   const soluong = document.getElementById(`quantity-${productNumber}`);
   const sotien = document.getElementById(`sotien-${productNumber}`);
-  const remainingQuantityElement = document.getElementById(
-    `remaining-quantity-${productNumber}`,
-  );
+  const remainingQuantityElement = document.getElementById(`remaining-quantity-${productNumber}`);
 
   // Số lượng còn lại là số lượng hiện tại trừ đi sự thay đổi.
   const remainingQuantity = products[productNumber].quantity + change;
@@ -81,12 +102,8 @@ function updateSelectedProductsAndTotalPrice() {
   });
 
   // Cập nhật nội dung các thẻ div
-  document.getElementById(
-    "selected-products",
-  ).textContent = `Tổng thanh toán(${selectedCount} sản phẩm):`;
-  document.getElementById("total-price").textContent = `$${totalPrice.toFixed(
-    2,
-  )}`;
+  document.getElementById('selected-products').textContent = `Tổng thanh toán(${selectedCount} sản phẩm):`;
+  document.getElementById('total-price').textContent = `$${totalPrice.toFixed(2)}`;
 }
 
 /*--------------------------FreeShip-----------------------------*/
