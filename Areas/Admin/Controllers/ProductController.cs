@@ -68,5 +68,34 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Product");
         }
+
+        public IActionResult Edit(string? id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+            return View();
+        }
+
+        public IActionResult Detail(string? id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+            return View();
+        }
+
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult OnPostDelete(string? id)
+        {
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

@@ -37,5 +37,4 @@ public class DetailController : Controller
 public class BuyingModel : Product
 {
     public bool IsBuying { get; set; }
-    public Category Category { get; set; }
 }
