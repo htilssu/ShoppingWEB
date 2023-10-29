@@ -212,6 +212,9 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.HasKey(e => new { e.TypeProductId, e.SizeNumber }).HasName("PRIMARY");
 
             entity.ToTable("Size");
+            entity.HasOne(s => s.TypeProduct)
+                .WithMany(t => t.Sizes)
+                .HasForeignKey("Size_TypeProduct_Id_fk");
         });
 
         modelBuilder.Entity<TypeProduct>(entity =>

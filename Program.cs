@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -30,6 +31,10 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 6;
     options.Password.RequiredUniqueChars = 0;
 });
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.FromSeconds(20);
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -40,6 +45,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.MaxAge = TimeSpan.FromHours(6);
     options.Cookie.Name = "Shopping_Cookie";
 });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

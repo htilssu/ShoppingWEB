@@ -15,7 +15,6 @@ public partial class TypeProduct
 
     public string? ImagePath { get; set; }
 
-    public int? Size { get; set; }
-
     public virtual Product Product { get; set; } = null!;
+    public ICollection<Size> Sizes { get; set; } = new List<Size>();
 }
