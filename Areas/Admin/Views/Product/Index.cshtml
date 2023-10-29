@@ -1,0 +1,80 @@
+@model System.Collections.Generic.List<ShoppingWEB.Models.Product>
+
+@{
+    ViewBag.Title = "Danh Sách Sản Phẩm";
+    ViewBag.Page = "Product";
+    Layout = "_AdminLayout";
+}
+
+<div class="bg-white product-container">
+    <div class="d-flex overflow-hidden h-100">
+        <div class="product-item d-flex flex-column flex-grow-1">
+            <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                <div class="d-flex align-items-center">Danh Mục Sản Phẩm</div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-success" asp-action="Create">Thêm</a>
+                </div>
+            </div>
+            <div class="product-item__content">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Công Khai</th>
+                            <th>Tùy Chỉnh</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>@Model[i].ProductName</td>
+                                @if (Model[i].Publish == 0)
+                                {
+                                    <td>Không công khai</td>
+                                }
+                                else
+                                {
+                                    <td>Công khai</td>
+                                }
+                                <td></td>
+
+                            </tr>
+                        }
+                        @for (int i = 0; i < 30; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>aaaaaaaaaa</td>
+                                @if (true)
+                                {
+                                    <td>Không công khai</td>
+                                }
+                                else
+                                {
+                                    <td>Công khai</td>
+                                }
+                                <td>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

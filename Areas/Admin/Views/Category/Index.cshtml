@@ -1,50 +1,103 @@
-@model IEnumerable<Category>
+@model List<Category>
 
 @{
-    ViewData["Title"] = "Các loại mặt hàng";
+    ViewBag.Title = "Các Loại Mặt Hàng";
+    ViewBag.Page = "Category";
     Layout = "_AdminLayout";
 
 }
 
-<h1>Danh sách mặt hàng</h1>
 
-<p>
-    <a class="btn btn-success" asp-action="Create">Tạo</a>
-</p>
-<div style="max-height: 500px; overflow-y: scroll">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
-            <tr style="vertical-align: middle">
-                <td >
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                <td >
-                    <img src="@item.ImagePath?.Replace("wwwroot", "").Replace(@"\", "/")" height="50px" alt="Image"/>
-                </td>
-                <td>
-                    <a class="btn btn-danger text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
-                        <i class="bi bi-pencil-fill"></i>
-                    </a>
-                    <a class="btn btn-danger text-decoration-none" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
-                    <a class="btn btn-danger text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">
-                        <i class="bi bi-trash3-fill"></i>
-                    </a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+<div class="bg-white product-container position-relative">
+    <div class="d-flex overflow-hidden h-100">
+        <div class="product-item d-flex flex-column flex-grow-1">
+            <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                <div class="d-flex align-items-center">Danh Sách Mặt Hàng</div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-success" asp-action="Create">Thêm</a>
+                </div>
+            </div>
+            <div class="product-item__content">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Mặt Hàng</th>
+                            <th>Số Sản Phẩm</th>
+                            <th>Tùy Chỉnh</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>@Model[i].CategoryName</td>
+                                <td>@Model[i].Products.Count</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none delete">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
+                                <td >
+                                    <div class="delete-confirm-pop p-0 position-absolute d-none">
+                                        <form asp-action="Delete" asp-route-id="@Model[i].Id">
+                                            <div class="form-header">
+                                                Xóa
+                                            </div>
+                                            <div class="form-content">
+                                                Bạn có xác nhận muốn xóa không?
+                                            </div>
+                                            <div class="form-action">
+                                                <div class="btn btn-primary cancel">Không</div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                        @*@for (int i = 0; i < 30; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>aaaaaaaaaa</td>
+                                @if (true)
+                                {
+                                    <td>Không công khai</td>
+                                }
+                                else
+                                {
+                                    <td>Công khai</td>
+                                }
+                                <td>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

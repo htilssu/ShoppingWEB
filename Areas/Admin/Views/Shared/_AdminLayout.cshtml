@@ -1,4 +1,11 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<UserModel> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,8 +21,145 @@
 <body>
 <div class="d-flex">
     <div class="left-side position-relative">
+        <div class="nav-header">
+            <div class="nav-header__title text-uppercase fs-1 p-3">
+                <div class="d-flex justify-content-center align-items-center">panel</div>
+            </div>
+        </div>
+        <div class="nav-content mt-2">
 
+            @if (ViewBag.Page == "Admin")
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
+                    <div class="nav-item__item">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-speedometer2"></i>
+                                <div>DashBoard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute selected-field"></div>
+                </div>
+            }
+            else
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
+                    <div class="nav-item__item">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-speedometer2"></i>
+                                <div>DashBoard</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute"></div>
+                </div>
+            }
+
+
+
+            @if (ViewBag.Page == "Category")
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
+
+                    <div class="nav-item__item">
+                        <a asp-controller="Category" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-box-fill"></i>
+                                <div>Category</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute selected-field"></div>
+                </div>
+            }
+            else
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
+
+                    <div class="nav-item__item">
+                        <a asp-controller="Category" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-box-fill"></i>
+                                <div>Category</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute"></div>
+                </div>
+            }
+
+
+
+
+            @if (ViewBag.Page == "Product")
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
+
+                    <div class="nav-item__item">
+                        <a asp-controller="Product" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-inbox-fill"></i>
+                                <div>Product</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute selected-field"></div>
+                </div>
+            }
+            else
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
+
+                    <div class="nav-item__item">
+                        <a asp-controller="Product" asp-action="Index" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-inbox-fill"></i>
+                                <div>Product</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute"></div>
+                </div>
+            }
+
+
+            @if (ViewBag.Page == "Invoice")
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
+                    <div class="nav-item__item">
+                        <a asp-controller="" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-receipt"></i>
+                                <div>Invoice</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute selected-field"></div>
+                </div>
+            }
+            else
+            {
+                <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
+                    <div class="nav-item__item">
+                        <a asp-controller="" class="text-decoration-none text-white">
+                            <div class="d-flex justify-content-start gap-3">
+                                <i class="bi bi-receipt"></i>
+                                <div>Invoice</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="position-absolute"></div>
+                </div>
+            }
+
+
+
+        </div>
     </div>
+
+
     <div class="right-side w-100 flex-shrink-1 flex-grow-0 position-relative">
         <div class="navbar">
             <div class="navbar-brand h-100 p-0">
@@ -24,12 +168,22 @@
                     <h2 class="brand-name m-0 pt-2  fw-normal">Aetherix</h2>
                 </a>
             </div>
+            <div class="user-section">
+                <div class="avt d-flex justify-content-center align-items-center gap-3 px-4">
+                    <img width="40px" src="@user?.AvtPath" alt="">
+                    <div class="">@(user?.LastName + " " + user?.FirstName)</div>
+                </div>
+            </div>
         </div>
-        <div class="mt-5">@RenderBody()</div>
+        <div class="mt-3">
+            <div class="p-4">@RenderBody()</div>
+        </div>
     </div>
 </div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/Actions/category.js" asp-append-version="true"></script>
+
 @(await RenderSectionAsync("Scripts", false))
 </body>
 </html>

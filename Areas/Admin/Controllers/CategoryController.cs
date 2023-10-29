@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Areas.Admin.Models;
@@ -7,14 +10,34 @@ using ShoppingWEB.Models;
 namespace ShoppingWEB.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class CategoryController : Controller
 {
     private readonly ShoppingContext _context;
+    private RoleManager<RoleModel> _roleManager;
+    private UserManager<UserModel> _userManager;
 
-    public CategoryController(ShoppingContext context)
+    public CategoryController(ShoppingContext context, RoleManager<RoleModel> roleManager,
+        UserManager<UserModel> userManager)
     {
         _context = context;
+        _roleManager = roleManager;
+        _userManager = userManager;
     }
+
+    public async Task Setup()
+    {
+        var role = new RoleModel()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Admin"
+        };
+        var result = await _roleManager.CreateAsync(role);
+        if (!result.Succeeded) return;
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null) await _userManager.AddToRoleAsync(user, "Admin");
+    }
+
 
     // GET: Category
     public async Task<IActionResult> Index()
@@ -55,13 +78,7 @@ public class CategoryController : Controller
             if (imageFile is { Length: > 0 })
                 try
                 {
-                    var uploadFolder = Path.Combine("wwwroot", "uploads");
-                    var uniqueFileName = Guid.NewGuid() + "_" + imageFile.FileName;
-                    var filePath = Path.Combine(uploadFolder, uniqueFileName);
-                    category.ImagePath = filePath[(filePath.IndexOf("uploads", StringComparison.Ordinal) - 1)..]
-                        .Replace(@"\", "/");
-                    await using var stream = new FileStream(filePath, FileMode.Create);
-                    await imageFile.CopyToAsync(stream);
+                    category.ImagePath = await imageFile.SaveImage();
                 }
                 catch (Exception e)
                 {
