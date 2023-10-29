@@ -1,0 +1,99 @@
+@using Microsoft.EntityFrameworkCore
+@model Product
+@inject ShoppingContext ShoppingContext
+
+@{
+    ViewBag.Title = "Thêm Sản Phẩm";
+    ViewBag.Page = "Product";
+    Layout = "_AdminLayout";
+    var categoryList = await ShoppingContext.Categories.ToListAsync();
+}
+
+<div class="bg-white main-container">
+    <form enctype="multipart/form-data" asp-action="Create" method="post">
+        <div class="d-flex overflow-hidden">
+            <div class="item d-flex flex-column flex-grow-1">
+                <div class="main-container__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                    <div class="d-flex align-items-center">Thêm Sản Phẩm</div>
+                    <div class="d-flex align-items-center gap-3">
+                        <a class="btn btn-primary" asp-action="Index">Quay Lại</a>
+                        <button class="btn btn-success" type="submit">Lưu</button>
+                    </div>
+                </div>
+                <div class="main-container__main p-3">
+                    <div class="d-flex">
+                        <div class="row p-2 flex-grow-1">
+                            <div class="col-6 mt-2">
+                                <div class="fw-bold">
+                                    @Html.DisplayNameFor(category => category.ProductName)
+                                </div>
+                                <div class="">
+                                    <input asp-for="ProductName" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <div class="fw-bold mt-2">
+                                    <label class="form-label">Chọn ảnh</label>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="file" name="ImageFile" class="form-control-sm" id="imageFile">
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <div class="fw-bold">
+                                    @Html.DisplayNameFor(category => category.ShortDescription)
+                                </div>
+                                <div class="">
+                                    <input asp-for="ShortDescription" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <div class="fw-bold mt-2">
+                                    @Html.DisplayNameFor(category => category.DiscountPercent)
+                                </div>
+                                <div class="">
+                                    <input asp-for="DiscountPercent" value="0" class="form-control"/>
+                                </div>
+
+                                <div></div>
+                                <div class="fw-bold mt-2">
+                                    @Html.DisplayNameFor(category => category.Publish)
+                                </div>
+                                <div class="">
+                                    <select asp-for="Publish" class="form-select">
+                                        <option value="0">Không công khai</option>
+                                        <option value="1">Công khai</option>
+                                    </select>
+                                </div>
+                                <div class="fw-bold mt-2">
+                                    @Html.DisplayNameFor(category => category.CategoryId)
+                                </div>
+                                <div class="">
+                                    <select asp-for="CategoryId" class="form-select">
+                                        @foreach (var category in categoryList)
+                                        {
+                                            <option value="@category.Id">@category.CategoryName</option>
+                                        }
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <div class="fw-bold">
+                                    @Html.DisplayNameFor(category => category.LongDescription)
+                                </div>
+                                <div class="">
+                                    <textarea asp-for="LongDescription" style="height: 200px; -webkit-user-drag: none;resize: none" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="img-preview">
+                            <img src="~/imgs/404-bg.png" width="300px" id="display-img" alt="Ảnh">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
