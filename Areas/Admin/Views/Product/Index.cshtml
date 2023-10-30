@@ -1,89 +1,90 @@
-@using System.Globalization
-@model IEnumerable<Product>
-@inject ShoppingContext _Context;
+@model System.Collections.Generic.List<ShoppingWEB.Models.Product>
 
 @{
-    ViewData["Title"] = "Products";
+    ViewBag.Title = "Danh Sách Sản Phẩm";
+    ViewBag.Page = "Product";
     Layout = "_AdminLayout";
-
 }
 
-<h1>Danh sách sản phẩm</h1>
+<div class="bg-white product-container">
+    <div class="d-flex overflow-hidden h-100">
+        <div class="product-item d-flex flex-column flex-grow-1">
+            <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                <div class="d-flex align-items-center">Danh Mục Sản Phẩm</div>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-success" asp-action="Create">Thêm</a>
+                </div>
+            </div>
+            <div class="product-item__content">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Công Khai</th>
+                            <th>Tùy Chỉnh</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>@Model[i].ProductName</td>
+                                @if (Model[i].Publish == 0)
+                                {
+                                    <td>Không công khai</td>
+                                }
+                                else
+                                {
+                                    <td>Công khai</td>
+                                }
+                                <td>
+                                    <a asp-action="Edit" class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a asp-action="Detail" class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a asp-action="Delete" class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
 
+                            </tr>
+                        }
+                        @for (int i = 0; i < 30; i++)
+                        {
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>aaaaaaaaaa</td>
+                                @if (true)
+                                {
+                                    <td>Không công khai</td>
+                                }
+                                else
+                                {
+                                    <td>Công khai</td>
+                                }
+                                <td>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <a class="btn btn-danger text-decoration-none">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
 
-<p>
-    <a class="btn btn-success" asp-action="Create">Tạo</a>
-</p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiscountPercent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Published)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr style="vertical-align: middle">
-            <td>
-                <div data-bs-toggle="title" title="@item.ProductName">@(item.ProductName!.Length >= 20 ? item.ProductName.Substring(0, 20) + "..." : item.ProductName)</div>
-            </td>
-            <td>
-                @{
-                    var info = CultureInfo.GetCultureInfo("vi-VN");
-                    var currency = string.Format(info, "{0:C0}", item.Price);
-                }
-                @currency
-
-            </td>
-            <td>
-                @($"{item.DiscountPercent}%")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InStock)
-            </td>
-            <td>
-                @(item.Published == 1 ? "True" : "False")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => _Context.Categories.Find(item.CategoryId)!.CategoryName)
-            </td>
-            <td>
-                @($"{item.CreatedAt:d}")
-            </td>
-            <td>
-                @($"{item.UpdatedAt:d}")
-            </td>
-            <td>
-                <a class="btn btn-danger" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
-                <a class="btn btn-danger" asp-controller="Image" asp-action="Index" asp-route-product="@item.Id">Sửa ảnh</a>
-                <a class="btn btn-danger" asp-action="Details" asp-route-id="@item.Id">Chi tiết</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

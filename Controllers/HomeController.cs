@@ -16,7 +16,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var productList = _context.Products.ToList();
-        return productList != null ? View(productList) : Problem("");
+        return View(productList);
     }
 
     public IActionResult AccessDenied()

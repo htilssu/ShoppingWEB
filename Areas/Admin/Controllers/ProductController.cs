@@ -1,136 +1,101 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShoppingWEB.Areas.Admin.Models;
+using ShoppingWEB.Extension_Method;
 using ShoppingWEB.Models;
 
-namespace ShoppingWEB.Areas.Admin.Controllers;
 
-[Area("Admin")]
-public class ProductController : Controller
+namespace ShoppingWEB.Areas.Admin.Controllers
 {
-    private readonly ShoppingContext _context;
-
-    public ProductController(ShoppingContext context)
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    public class ProductController : Controller
     {
-        _context = context;
-    }
+        private readonly ShoppingContext _context;
 
-    // GET: Product
-    public async Task<IActionResult> Index()
-    {
-        return _context.Products != null
-            ? View(await _context.Products.ToListAsync())
-            : Problem("Entity set 'ApplicationDbContext.Products'  is null.");
-    }
-
-    // GET: Product/Details/5
-    public async Task<IActionResult> Details(string id)
-    {
-        if (id == null || _context.Products == null) return NotFound();
-
-        var product = await _context.Products
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (product == null) return NotFound();
-
-        return View(product);
-    }
-
-    // GET: Product/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: Product/Create
-    [HttpPost]
-    [ActionName("Create")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Product product)
-    {
-        product.DiscountPercent = product.DiscountPercent ?? 0;
-        product.CreatedAt = DateTime.Now;
-        product.UpdatedAt = DateTime.Now;
-        if (ModelState.IsValid)
+        public ProductController(ShoppingContext context)
         {
-            _context.Add(product);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index(string? categoryId)
+        {
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                var categoryProduct =
+                    await _context.Products
+                        .Where(product => product.CategoryId == categoryId)
+                        .ToListAsync();
+                return View(categoryProduct);
+            }
+
+            var productList = await _context.Products.ToListAsync();
+            return View(productList);
         }
 
 
-        return View(product);
-    }
-
-    // GET: Product/Edit/5
-    public async Task<IActionResult> Edit(string id)
-    {
-        if (id == null || _context.Products == null) return NotFound();
-
-        var product = await _context.Products.FindAsync(id);
-        if (product == null) return NotFound();
-        return View(product);
-    }
-
-    // POST: Product/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(string id,
-        [Bind(
-            "ProductName,Price,DiscountPrice,InStock,ShortDescription,ProductDescription,Published,CategoryId")]
-        Product product)
-    {
-        if (id != product.Id) return NotFound();
-
-        if (ModelState.IsValid)
+        [HttpGet]
+        public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OnPostCreate(ProductModel product)
+        {
+            if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
             try
             {
-                product.UpdatedAt = DateTime.Now;
-                _context.Update(product);
+                var pathImage = await product.ImageFile.SaveImage();
+                product.ImageUrls.Add(new ImageUrl()
+                {
+                    Product = product,
+                    ImagePath = pathImage,
+                    ProductId = product.Id,
+                });
+                await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!ProductExists(product.Id))
-                    return NotFound();
+                Console.WriteLine(e);
                 throw;
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Product");
         }
 
-        return View(product);
-    }
+        public IActionResult Edit(string? id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Product");
+            }
 
-    // GET: Product/Delete/5
-    public async Task<IActionResult> Delete(string id)
-    {
-        if (id == null || _context.Products == null) return NotFound();
+            return View();
+        }
 
-        var product = await _context.Products
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (product == null) return NotFound();
+        public IActionResult Detail(string? id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Product");
+            }
 
-        return View(product);
-    }
+            return View();
+        }
 
-    // POST: Product/Delete/5
-    [HttpPost]
-    [ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string id)
-    {
-        if (_context.Products == null) return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
-        var product = await _context.Products.FindAsync(id);
-        if (product != null) _context.Products.Remove(product);
 
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
-    }
-
-    private bool ProductExists(string id)
-    {
-        return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult OnPostDelete(string? id)
+        {
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

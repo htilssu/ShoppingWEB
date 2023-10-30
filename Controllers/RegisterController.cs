@@ -20,7 +20,7 @@ public class RegisterController : Controller
     // GET
     public IActionResult Index()
     {
-        if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Home");
+        if (User.Identity!.IsAuthenticated) return RedirectToAction("Index", "Home");
         return View();
     }
 
@@ -30,7 +30,7 @@ public class RegisterController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = await _userManager.FindByNameAsync(registModel.UserName);
+            var user = await _userManager.FindByNameAsync(registModel.UserName!);
             if (user == null)
             {
                 var result = await _userManager.CreateAsync(new UserModel
@@ -38,11 +38,11 @@ public class RegisterController : Controller
                     UserName = registModel.UserName,
                     Email = registModel.Email,
                     PhoneNumber = registModel.NumberPhone
-                }, registModel.Password);
+                }, registModel.Password!);
 
                 if (result.Succeeded)
                 {
-                    await _signInManager.PasswordSignInAsync(registModel.UserName, registModel.Password, false, false);
+                    await _signInManager.PasswordSignInAsync(registModel.UserName!, registModel.Password!, false, false);
                     return RedirectToAction("Index", "Home");
                 }
             }

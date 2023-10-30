@@ -6,6 +6,6 @@ public class ImageModel
 
     public string? ImagePath { get; set; }
 
-    public IFormFile ImageFile { get; set; }
+    public IFormFile ImageFile { get; set; } = null!;
     public bool? Thumnail { get; set; }
 }

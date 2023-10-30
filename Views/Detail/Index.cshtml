@@ -13,14 +13,15 @@
 
 @section Scripts
 {
-    <script src="js/partials/product_briefing.js"></script>
+    <script src="~/js/partials/product_briefing.js"></script>
+    <script src="~/js/partials/product_rating.js"></script>
 }
 
 
 <div class="container-md">
     @{
-        await Html.RenderPartialAsync("Partials/ProductBriefing");
-        await Html.RenderPartialAsync("Partials/SellerInfo");
+        await Html.RenderPartialAsync("Partials/ProductBriefing", Model);
+        await Html.RenderPartialAsync("Partials/SellerInfo", Model);
         await Html.RenderPartialAsync("Partials/PageProduct");
     }
 </div>

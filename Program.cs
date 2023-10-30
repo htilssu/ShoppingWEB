@@ -17,7 +17,7 @@ var connectionString = conf["Database:ConnectionString"];
 builder.Services.AddSingleton(new MySqlConnection(connectionString));
 builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
-    optionsBuilder.UseMySQL(connectionString);
+    optionsBuilder.UseMySQL(connectionString!);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });
 builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ShoppingContext>();
@@ -30,6 +30,10 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 6;
     options.Password.RequiredUniqueChars = 0;
 });
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.FromSeconds(20);
+});
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -40,6 +44,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.MaxAge = TimeSpan.FromHours(6);
     options.Cookie.Name = "Shopping_Cookie";
 });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

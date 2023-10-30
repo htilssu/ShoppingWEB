@@ -1,45 +1,47 @@
-@using ShoppingWEB.Extension_Method
 @model Category
 
 @{
-    ViewData["Title"] = "Details";
+    ViewBag.Title = "Các Loại Mặt Hàng";
+    ViewBag.Page = "Category";
     Layout = "_AdminLayout";
 
 }
 
-<h1>Chi tiết mặt hàng</h1>
 
-<div>
-    <hr/>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class="col-sm-10">
-            <img loading="lazy" src="@Model.GetWebPath()" height="50px" alt="Image"/>
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model?.Id">Chỉnh sửa</a>
-    <a class="btn btn-primary" asp-action="Index">Quay trở về danh sách</a>
+<div class="bg-white main-container">
+    <div class="d-flex overflow-hidden">
+        <div class="item d-flex flex-column flex-grow-1">
+            <div class="main-container__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                <div class="d-flex align-items-center">Chi Tiết</div>
+                <div class="d-flex align-items-center gap-3">
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model?.Id">Chỉnh sửa</a>
+                    <a class="btn btn-primary" asp-action="Index">Quay lại</a>
+                    <a class="btn btn-primary" asp-controller="Product" asp-action="Index" asp-route-categoryId="@Model?.Id">Danh sách sản phẩm</a>
+                </div>
+            </div>
+            <div class="main-container__main p-3">
+                <div class="d-flex">
+                    <div class="row p-2 flex-grow-1">
+                        <div class="col-sm-2 fw-bold">
+                            @Html.DisplayNameFor(category => category.CategoryName)
+                        </div>
+                        <div class="col-sm-10">
+                            <input asp-for="CategoryName" class="form-control" readonly/>
+                        </div>
+                        <div class="col-sm-2 fw-bold mt-2">
+                            <label class="form-label">Số lượng sản phẩm</label>
+                        </div>
+                        <div class="col-sm-10 mt-2">
+                            @Html.DisplayFor(category => category.Products.Count)
+                        </div>
+                    </div>
+                    <div class="img-preview">
+                        <img src="@Model.ImagePath" width="300px" id="display-img" alt="Ảnh">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>

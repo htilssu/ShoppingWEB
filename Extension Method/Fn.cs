@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Extension_Method;
@@ -13,15 +12,24 @@ public static class Extension
         return path![path.IndexOf('\\')..].Replace(@"\", "/");
     }
 
-    public static string GetWebPath(this ImageUrl image)
+    public static void DeleteFile(this string path)
     {
-        var path = image.ImagePath;
-        return path![path.IndexOf('\\')..].Replace(@"\", "/");
+        path = "wwwroot" + path.Replace("/", "\\");
+
+        try
+        {
+            File.Delete(path);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public static string GetWebPath(this string path)
     {
-        return path![path.IndexOf('\\')..].Replace(@"\", "/");
+        return path[path.IndexOf('\\')..].Replace(@"\", "/");
     }
 
     public static string RemoveSpecialMark(this string text)
@@ -33,5 +41,28 @@ public static class Extension
             newText.Append(c);
 
         return newText.ToString();
+    }
+
+    public static async Task<string> SaveImage(this IFormFile formFile)
+    {
+        var filePath = "";
+        if (formFile is { Length: > 0 })
+            try
+            {
+                var uploadFolder = Path.Combine("wwwroot", "uploads");
+                var uniqueFileName = Guid.NewGuid() + "_" + formFile.FileName;
+                filePath = Path.Combine(uploadFolder, uniqueFileName);
+                await using var stream = new FileStream(filePath, FileMode.Create);
+                await formFile.CopyToAsync(stream);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+        filePath = filePath[(filePath.IndexOf("uploads", StringComparison.Ordinal) - 1)..]
+            .Replace(@"\", "/");
+        return filePath;
     }
 }

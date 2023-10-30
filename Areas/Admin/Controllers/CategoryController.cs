@@ -1,19 +1,42 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Areas.Admin.Models;
+using ShoppingWEB.Extension_Method;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class CategoryController : Controller
 {
     private readonly ShoppingContext _context;
+    private readonly RoleManager<RoleModel> _roleManager;
+    private readonly UserManager<UserModel> _userManager;
 
-    public CategoryController(ShoppingContext context)
+    public CategoryController(ShoppingContext context, RoleManager<RoleModel> roleManager,
+        UserManager<UserModel> userManager)
     {
         _context = context;
+        _roleManager = roleManager;
+        _userManager = userManager;
     }
+
+    public async Task Setup()
+    {
+        var role = new RoleModel()
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Admin"
+        };
+        var result = await _roleManager.CreateAsync(role);
+        if (!result.Succeeded) return;
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null) await _userManager.AddToRoleAsync(user, "Admin");
+    }
+
 
     // GET: Category
     public async Task<IActionResult> Index()
@@ -45,18 +68,16 @@ public class CategoryController : Controller
     public async Task<IActionResult> Create(CategoryModel cate)
     {
         var imageFile = cate.ImageFile;
-        var category = new Category();
+        var category = new Category()
+        {
+            CategoryName = cate.CategoryName,
+        };
         if (ModelState.IsValid)
         {
             if (imageFile is { Length: > 0 })
                 try
                 {
-                    var uploadFolder = Path.Combine("wwwroot", "uploads");
-                    var uniqueFileName = Guid.NewGuid() + "_" + imageFile.FileName;
-                    var filePath = Path.Combine(uploadFolder, uniqueFileName);
-                    category.ImagePath = filePath;
-                    await using var stream = new FileStream(filePath, FileMode.Create);
-                    await imageFile.CopyToAsync(stream);
+                    category.ImagePath = await imageFile.SaveImage();
                 }
                 catch (Exception e)
                 {
@@ -64,8 +85,6 @@ public class CategoryController : Controller
                     return View();
                 }
 
-            category.UpdatedAt = DateTime.Now;
-            category.CreatedAt = DateTime.Now;
             _context.Add(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -84,9 +103,7 @@ public class CategoryController : Controller
         return View(category);
     }
 
-    // POST: Category/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(string id, CategoryModel category)
@@ -94,7 +111,7 @@ public class CategoryController : Controller
         var oldProduct = await _context.Categories.FindAsync(id);
         if (ModelState.IsValid)
         {
-            if (category.ImageFile.FileName is not (null or ""))
+            if (category.ImageFile?.FileName is not (null or ""))
             {
                 var oldPath = oldProduct!.ImagePath!;
                 var file = category.ImageFile;
@@ -105,7 +122,8 @@ public class CategoryController : Controller
                 try
                 {
                     await file.CopyToAsync(stream);
-                    oldProduct.ImagePath = filePath;
+                    oldProduct.ImagePath = filePath[(filePath.IndexOf("uploads", StringComparison.Ordinal) - 1)..]
+                        .Replace(@"\", "/");
                 }
                 catch (Exception e)
                 {
@@ -114,48 +132,25 @@ public class CategoryController : Controller
                 }
 
                 //Delete old image
+                oldPath.DeleteFile();
+
+
+                oldProduct.CategoryName = category.CategoryName;
+
                 try
                 {
-                    System.IO.File.Delete(oldPath);
+                    await _context.SaveChangesAsync();
                 }
-                catch (Exception e)
+                catch
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    // ignored
                 }
+
+                return RedirectToAction(nameof(Index));
             }
-
-
-            oldProduct!.UpdatedAt = DateTime.Now;
-            oldProduct.CategoryName = category.CategoryName;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                    return NotFound();
-                throw;
-            }
-
-            return RedirectToAction(nameof(Index));
         }
 
         return View(oldProduct);
-    }
-
-    // GET: Category/Delete/5
-    public async Task<IActionResult> Delete(string? id)
-    {
-        if (id == null) return NotFound();
-
-        var category = await _context.Categories
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (category == null) return NotFound();
-
-        return View(category);
     }
 
     // POST: Category/Delete/5
@@ -167,22 +162,9 @@ public class CategoryController : Controller
         var category = await _context.Categories.FindAsync(id);
         _context.Categories.Remove(category!);
 
-        try
-        {
-            System.IO.File.Delete(category!.ImagePath!);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        category?.ImagePath?.DeleteFile();
 
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
-    }
-
-    private bool CategoryExists(string id)
-    {
-        return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
     }
 }

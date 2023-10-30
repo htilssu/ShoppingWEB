@@ -1,8 +1,626 @@
-﻿@model dynamic
+﻿@using System.Configuration
+@model Cart
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = "_SecondaryLayout";
 }
 
-<h2>title</h2>
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/actions/StyleCart.css" asp-append-version="true">
+}
+
+@section Scripts
+{
+    <script src="~/js/Actions/JsCart.js" asp-append-version="true"></script>
+    <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
+
+}
+
+@section HeaderNav {
+    <div class="bg-white">
+        <div class="d-flex cart-header container-md">
+            <div class="header">
+                <div class="navbar-brand">
+                    <a asp-controller="Home" asp-action="Index" class="h-100 text-center align-items-center d-flex align-items-center text-decoration-none">
+                        <img class="logo" src="/imgs/shopping-brand.png" alt="logo-brand">
+                        <h2 class="m-0 pt-2 fw-normal">Aetherix</h2>
+                        <div class="divider"></div>
+                        <div class="cart1">Giỏ hàng</div>
+                    </a>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Tìm sản phẩm">
+                <button id="search-button">
+                    <i class="fa-solid fa-magnifying-glass fa-beat" id="icon-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+
+<section class="header-top">
+<div class="container1">
+<div class="header1">
+    <img src="/imgs/freeship.png" alt=""> Nhấn vào mục Mã giảm giá ở cuối trang để hưởng miễn phí vận chuyển bạn nhé!
+</div>
+<table>
+<thead>
+<tr>
+    <th>
+        <div id="selectAllProducts">
+            <input type="checkbox" id="selectAllCheckbox"> Tất Cả Sản phẩm
+        </div>
+    </th>
+    <th class="op-50">Đơn giá</th>
+    <th class="op-50">Số lượng</th>
+    <th class="op-50">Số tiền</th>
+    <th class="op-50">Thao tác</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td colspan="5" class="checkbox-tenshop">
+        <div class="tenshop">
+            <img src="/imgs/logomall.png">
+            <div> Apple Flagship Store </div>
+            <i class="fa-regular fa-message"></i>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/uploads/329a887e-6481-4fef-a4d9-1527669c4844_bongda-thethao.png">
+            <div class="ten-sanpham">
+                Điện thoại Apple iPhone 14 Pro Max 128GB
+                <div>
+                    <img class="logo-sale" src="">
+                </div>
+                <div class="mienphi-trahang"><img src="~/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Gold</option>
+                    <option value="2">Deep Purple</option>
+                    <option value="3">Silver</option>
+                    <option value="4">Space_Black</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="dongia">$1.500</div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(1, -1)">-</button>
+                <input class="soluong" type="number" value="01" id="quantity-1" oninput="updateQuantity(1)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(1, 1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-1">Còn 9 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-1">$1,500</div>
+    </td>
+
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/imgs/sanpham2.png">
+            <div class="ten-sanpham">
+                Điện thoại Apple iPhone 15 128GB
+                <div>
+                    <img class="logo-sale" src="/imgs/sale10.10.png">
+                </div>
+                <div class="mienphi-trahang"><img src="/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Xanh dương</option>
+                    <option value="2">Hồng</option>
+                    <option value="3">Vàng</option>
+                    <option value="4">Xanh lá</option>
+                    <option value="4">Đen</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="giamgia">
+            <div class="gach">$2.000</div>
+            <div class="dongia">$1,700</div>
+        </div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(2,-1)">-</button>
+                                <input class="soluong" type="number" value="01" id="quantity-2" oninput="updateQuantity(2)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(2,1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-2">Còn 19 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-2">$1,700</div>
+    </td>
+
+
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="5" class="footer-table">
+        <div class="footer-table1">
+            <img src=".\imgs\freeship.png">
+            <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
+            <div>
+                <span class="learn-more" data-popup="popup-1">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-1">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="5"></td>
+</tr>
+
+<tr>
+    <td colspan="5" class="checkbox-tenshop">
+        <div class="tenshop">
+            <img src="/imgs/logomall.png">
+            <div> ASUS OFFICIAL STORE </div>
+            <i class="fa-regular fa-message"></i>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/imgs/sanpham3.png">
+            <div class="ten-sanpham">
+                Laptop ASUS VivoBook 14 X1404VA-NK125W i5-1335U
+                <div>
+                    <img class="logo-sale" src="/imgs/sale10.10.png">
+                </div>
+                <div class="mienphi-trahang"><img src="/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Xanh BotanicĐen</option>
+                    <option value="2">PhantomTím</option>
+                    <option value="3">LilacKem</option>
+                    <option value="4">Cotton</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="dongia">$1,500</div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(3,-1)">-</button>
+                <input class="soluong" type="number" value="01" id="quantity-3" oninput="updateQuantity(3)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(3,1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-3">Còn 20 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-3">$1,500</div>
+    </td>
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/imgs/sanpham4.png">
+            <div class="ten-sanpham">
+                Laptop Asus TUF Dash FX517ZC-HN077W i5|Win 11
+                <div>
+                    <img class="logo-sale" src="/imgs/sale10.10.png">
+                </div>
+                <div class="mienphi-trahang"><img src="/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Xanh BotanicĐen</option>
+                    <option value="2">PhantomTím</option>
+                    <option value="3">LilacKem</option>
+                    <option value="4">Cotton</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="giamgia">
+            <div class="gach">$2.000</div>
+            <div class="dongia">$1,300</div>
+        </div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(4,-1)">-</button>
+                <input class="soluong" type="number" value="01" id="quantity-4" oninput="updateQuantity(4)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(4,1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-4">Còn 3 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-4">$1,300</div>
+    </td>
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/imgs/sanpham5.png">
+            <div class="ten-sanpham">
+                Laptop Asus VivoBook A515EA-BQ1530W i3|Win11|BẠC
+                <div>
+                    <img class="logo-sale" src="/imgs/sale10.10.png">
+                </div>
+                <div class="mienphi-trahang"><img src=".\imgs\freeship.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Xanh BotanicĐen</option>
+                    <option value="2">PhantomTím</option>
+                    <option value="3">LilacKem</option>
+                    <option value="4">Cotton</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="dongia">$1,200</div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(5,-1)">-</button>
+                <input class="soluong" type="number" value="01" id="quantity-5" oninput="updateQuantity(5)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(5,1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-5">Còn 25 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-5">$1,200</div>
+    </td>
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="5" class="footer-table">
+        <div class="footer-table1">
+            <img src=".\imgs\freeship.png">
+            <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
+            <div>
+                <span class="learn-more" data-popup="popup-2">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-3">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="5"></td>
+</tr>
+
+<tr>
+    <td colspan="5" class="checkbox-tenshop">
+        <div class="tenshop">
+            <img src="imgs/logomall.png">
+            <div> Apple Flagship Store </div>
+            <i class="fa-regular fa-message"></i>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td class="o-sanpham">
+        <div class="o-sanpham1">
+            <input type="checkbox" class="product-checkbox">
+            <img class="img-sanpham" src="/imgs/sanpham6.png">
+            <div class="ten-sanpham">
+                ĐIỆN THOẠI SAMSUNG S23ULTRA - HÀNG CHÍNH HÃNG
+                <div>
+                    <img class="logo-sale" src="/imgs/sale10.10.png">
+                </div>
+                <div class="mienphi-trahang"><img src="/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+            </div>
+            <div class="phanloai">
+                <div>Phân loại hàng:</div>
+                <select id="loaimau" name="loaimau">
+                    <option value="1">Xanh BotanicĐen</option>
+                    <option value="2">PhantomTím</option>
+                    <option value="3">LilacKem</option>
+                    <option value="4">Cotton</option>
+                </select>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="dongia">$1,400</div>
+    </td>
+    <td>
+        <div>
+            <div class="dc-soluong">
+                <button class="decrement-soluong" onclick="dieuchinh_sl(6,-1)">-</button>
+                <input class="soluong" type="number" value="01" id="quantity-6" oninput="updateQuantity(6)">
+                <button class="increment-soluong" onclick="dieuchinh_sl(6,1)">+</button>
+            </div>
+            <div class="soluong-con-lai" id="remaining-quantity-6">Còn 30 sản phẩm</div>
+        </div>
+    </td>
+    <td>
+        <div class="sotien-phaitra" id="sotien-6">$1,400</div>
+    </td>
+    <td class="o-xoasanpham">
+        <div>
+            <button class="xoa">Xóa</button>
+            <div class="timsanpham">
+                <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                <div>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+<tr>
+    <td colspan="5" class="footer-table">
+        <div class="footer-table1">
+            <img src=".\imgs\freeship.png">
+            <div id="text-ship">Giảm ₫300.000 phí vận chuyển đơn tối thiểu ₫0 </div>
+            <div>
+                <span class="learn-more" data-popup="popup-2">Tìm hiểu thêm</span>
+                                <div class="popup hidden" id="popup-3">
+                                    <div id="popup-content">
+                                        <div id="popup-content1">
+                                            <h3>Khuyến mãi vận chuyển</h3>
+                                        </div>
+                                        <div id="popup-content2">Apple Flagship Store</div>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Đơn hàng tối thiểu</th>
+                                                    <th>Ưu đãi</th>
+                                                    <th>Phương thức vận chuyển</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>₫0</td>
+                                                    <td>₫300.000</td>
+                                                    <td>Nhanh</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<section class="footer">
+    <div class="voucher">
+        <button>Chọn hoặc nhập mã</button>
+        <div class="text-shopeevoucher">Shopee Voucher</div>
+        <div class="logovoucher">
+            <img src="/imgs/logovoucher.png">
+        </div>
+    </div>
+    <div class="shopee-xu">
+        <div id="sotien">
+            <div>-₫0</div>
+        </div>
+        <div id="shopee-xu1">
+            <div class="div-logodongtien">
+                <img src="/imgs/logodongtien.png">
+            </div>
+            <div id="text-shopeexu">Shopee Xu</div>
+            <div id="text-xu">Bạn chưa có Shopee Xu</div>
+            <div class="div-logodauhoi">
+                <i class="fa-regular fa-circle-question fa-bounce"></i>
+            </div>
+        </div>
+    </div>
+    <div class="footer-mua">
+        <div class="div1">
+            <div class="div1-1" id="selectAllProducts">
+                <input type="checkbox" id="selectAllCheckbox1">
+            </div>
+            <button class="button1-1">Chọn tất cả (6)</button>
+            <button class="button1-2">Xóa</button>
+            <button class="button1-3">Lưu vào mục Đã thích</button>
+        </div>
+
+        <div class="div2">
+            <div class="div2-1">
+                <div class="div2-1-1" id="selected-products">Tổng thanh toán(0 sản phẩm): </div>
+                <div class="div2-1-2" id="total-price">$0.00</div>
+            </div>
+            <a href="./checkout.html">
+                <button class="button-div2">
+                    <div>Mua Hàng</div>
+                </button>
+            </a>
+        </div>
+    </div>
+</section>
+</div>
+</section>
+
+<div class="popup hidden" id="popup-2">
+    <div id="popup-content">
+        <div id="popup-content1">
+            <h3>Khuyến mãi vận chuyển</h3>
+        </div>
+        <div id="popup-content2">Apple Flagship Store</div>
+        <table>
+            <thead>
+            <tr>
+                <th>Đơn hàng tối thiểu</th>
+                <th>Ưu đãi</th>
+                <th>Phương thức vận chuyển</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>₫0</td>
+                <td>₫300.000</td>
+                <td>Nhanh</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="popup hidden" id="popup-3">
+    <div id="popup-content">
+        <div id="popup-content1">
+            <h3>Khuyến mãi vận chuyển</h3>
+        </div>
+        <div id="popup-content2">Apple Flagship Store</div>
+        <table>
+            <thead>
+            <tr>
+                <th>Đơn hàng tối thiểu</th>
+                <th>Ưu đãi</th>
+                <th>Phương thức vận chuyển</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>₫0</td>
+                <td>₫300.000</td>
+                <td>Nhanh</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
