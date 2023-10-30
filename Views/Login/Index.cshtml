@@ -4,24 +4,37 @@
     ViewBag.Title = "Đăng nhập";
     Layout = "_LoginLayout";
 }
+<style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        display: none;
+    }
+
+    .error {
+        border: 1px solid red;
+    }
+</style>
 
 <div class="main d-flex container-fluid">
     <div class="bg-image"></div>
     <div class="container-md d-flex justify-content-end align-items-center p-md-5">
-        <form class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Login" method="post">
+        <form id="login-form" class="form-login form bg-white p-4 d-flex flex-column" asp-controller="Login" method="post">
             <h4 class="title fw-normal mb-4">Đăng nhập</h4>
             <div asp-validation-summary="ModelOnly" class="summary text-danger" style="list-style: none">
             </div>
             <div class="username mb-3 d-flex flex-column">
-                <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập">
+                <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập" id="username">
                 <span asp-validation-for="Username" class="text-danger"></span>
+                <small class="error-message" id="username-error"></small>
             </div>
             <div class="pass mb-2 d-flex flex-column">
                 <div class="d-flex position-relative">
-                    <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu" id="password">
                     <div class="pass-toggle position-absolute"></div>
                 </div>
                 <span asp-validation-for="Password" class="text-danger"></span>
+                <small class="error-message" id="password-error"></small>
             </div>
             <div class="remember mb-4">
                 <input type="checkbox" asp-for="Remember">
@@ -71,3 +84,6 @@
         </form>
     </div>
 </div>
+@section Scripts{
+    <script src="~/js/actions/jsdangnhap.js"></script>
+}
