@@ -62,4 +62,13 @@ input::-ms-reveal {
     font-size: .7rem;
     min-height: 1.1rem;
 }
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.error {
+    border: 1px solid red;
+}
 
