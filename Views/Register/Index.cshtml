@@ -4,18 +4,6 @@
     ViewBag.Title = "Đăng ký";
     Layout = "_LoginLayout";
 }
-<style>
-    .error-message {
-        color:red;
-        font-size: 12px;
-        display: none;
-    }
-
-    .error {
-        border: 1px solid red;
-    }
-</style>
-
 <div class="main d-flex container-fluid">
     <div class="bg-image"></div>
     <div class="container-md d-flex justify-content-end align-items-center p-md-5">
@@ -72,3 +60,8 @@
         </form>
     </div>
 </div>
+@section Scripts
+{
+    <script src="~/js/actions/login.js" asp-append-version="true"></script>
+}
+

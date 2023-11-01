@@ -4,18 +4,6 @@
     ViewBag.Title = "Đăng nhập";
     Layout = "_LoginLayout";
 }
-<style>
-    .error-message {
-        color: red;
-        font-size: 12px;
-        display: none;
-    }
-
-    .error {
-        border: 1px solid red;
-    }
-</style>
-
 <div class="main d-flex container-fluid">
     <div class="bg-image"></div>
     <div class="container-md d-flex justify-content-end align-items-center p-md-5">
@@ -26,7 +14,7 @@
             <div class="username mb-3 d-flex flex-column">
                 <input type="text" asp-for="Username" class="form-control" placeholder="Tên đăng nhập" id="username">
                 <span asp-validation-for="Username" class="text-danger"></span>
-                <small class="error-message" id="username-error"></small>
+                
             </div>
             <div class="pass mb-2 d-flex flex-column">
                 <div class="d-flex position-relative">
@@ -34,7 +22,7 @@
                     <div class="pass-toggle position-absolute"></div>
                 </div>
                 <span asp-validation-for="Password" class="text-danger"></span>
-                <small class="error-message" id="password-error"></small>
+                
             </div>
             <div class="remember mb-4">
                 <input type="checkbox" asp-for="Remember">
@@ -84,6 +72,3 @@
         </form>
     </div>
 </div>
-@section Scripts{
-    <script src="~/js/actions/jsdangnhap.js"></script>
-}
