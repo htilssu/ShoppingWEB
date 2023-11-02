@@ -50,13 +50,38 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
             try
             {
-                var pathImage = await product.ImageFile.SaveImage();
+                //Binding ProductTypeId for size
+                foreach (var productTypeProduct in product.TypeProducts)
+                {
+                    var typeImagePath = await productTypeProduct.ImageFile.SaveImage();
+                    productTypeProduct.ImagePath = typeImagePath;
+                    foreach (var size in productTypeProduct.Sizes)
+                    {
+                        size.TypeProductId = productTypeProduct.Id;
+                    }
+                }
+
+                foreach (var formFile in product.ImageFile)
+                {
+                    var pathImage = await formFile.SaveImage();
+                    product.ImageUrls.Add(new ImageUrl()
+                    {
+                        Product = product,
+                        ImagePath = pathImage,
+                        Thumbnail = false,
+                        ProductId = product.Id,
+                    });
+                }
+
+                var thumbnailPath = await product.Thumbnail.SaveImage();
                 product.ImageUrls.Add(new ImageUrl()
                 {
                     Product = product,
-                    ImagePath = pathImage,
+                    ImagePath = thumbnailPath,
+                    Thumbnail = true,
                     ProductId = product.Id,
                 });
+
                 await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
             }
@@ -93,8 +118,16 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult OnPostDelete(string? id)
+        public async Task<IActionResult> OnPostDelete(string? id)
         {
+            var targetProduct = await _context.Products.FindAsync(id);
+            foreach (var targetProductImageUrl in targetProduct.ImageUrls)
+            {
+                targetProductImageUrl.ImagePath.DeleteFile();
+            }
+
+            if (targetProduct != null) _context.Products.Remove(targetProduct);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Product");
         }
     }

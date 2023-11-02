@@ -8,7 +8,6 @@ closeBtn.on("click", handleClosePopup);
 
 function handleClosePopup() {
   const parent = $(this).closest(".delete-confirm-pop");
-  console.log(parent);
   parent.addClass("d-none");
 }
 
@@ -20,7 +19,6 @@ function handleConfirmDelete() {
 function handleChangeImage(e) {
   const display = $("#display-img");
   const file = e.target.value;
-  console.log(file);
   if (file) {
     const fileReader = new FileReader();
     fileReader.onload = function (e) {

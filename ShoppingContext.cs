@@ -56,12 +56,12 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasOne(d => d.Item).WithMany(p => p.Bills)
                 .HasForeignKey(d => d.ItemId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("Bill_CartItem_Id_fk");
 
             entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.InversePaymentMethodNavigation)
                 .HasForeignKey(d => d.PaymentMethod)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("Bill_Bill_Id_fk");
         });
 
@@ -117,11 +117,11 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                     "ProductCoupon",
                     r => r.HasOne<Product>().WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("ProductCoupons_ibfk_1"),
                     l => l.HasOne<Coupon>().WithMany()
                         .HasForeignKey("CouponId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("ProductCoupons_ibfk_2"),
                     j =>
                     {
@@ -176,7 +176,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasOne(d => d.Product).WithMany(p => p.ImageUrls)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("ImageURL_Product_Id_fk");
         });
 
@@ -197,10 +197,8 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasIndex(e => e.CategoryId, "CategoryId");
 
-            entity.Property(e => e.CreateAt).HasColumnType("datetime");
             entity.Property(e => e.ProductName).HasMaxLength(255);
             entity.Property(e => e.ShortDescription).HasColumnType("text");
-            entity.Property(e => e.UpdateAt).HasColumnType("datetime");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
@@ -209,12 +207,12 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
         modelBuilder.Entity<Size>(entity =>
         {
-            entity.HasKey(e => new { e.TypeProductId, e.SizeNumber }).HasName("PRIMARY");
+            entity.HasKey(e => new { e.TypeProductId, e.SizeType }).HasName("PRIMARY");
 
             entity.ToTable("Size");
             entity.HasOne(s => s.TypeProduct)
                 .WithMany(t => t.Sizes)
-                .HasForeignKey("Size_TypeProduct_Id_fk");
+                .HasConstraintName("Size_TypeProduct_Id_fk");
         });
 
         modelBuilder.Entity<TypeProduct>(entity =>
@@ -230,7 +228,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasOne(d => d.Product).WithMany(p => p.TypeProducts)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("TypeProduct_ibdk_1");
         });
 

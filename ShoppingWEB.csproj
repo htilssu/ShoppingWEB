@@ -73,7 +73,6 @@
         <Folder Include="Areas\Admin\Data\"/>
         <Folder Include="Migrations\"/>
         <Folder Include="Views\Home\Partials\"/>
-        <Folder Include="wwwroot\js\admin\"/>
         <Folder Include="wwwroot\uploads\"/>
     </ItemGroup>
     <ItemGroup>
