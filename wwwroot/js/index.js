@@ -1,5 +1,5 @@
 ﻿const itemListCategory = $(".item-list .ct-item");
-const overFlowCount = itemListCategory.length / 2 - 9;
+const overFlowCount = Math.ceil(itemListCategory.length / 2) - 9;
 
 console.log(overFlowCount);
 //slide category to right
