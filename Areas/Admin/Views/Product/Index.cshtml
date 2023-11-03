@@ -46,7 +46,11 @@
                                 {
                                     <tr>
                                         <td>@(i + 1)</td>
-                                        <td>@Model[i].ProductName</td>
+                                        <td class="align-middle">
+                                            <div >
+                                                <div class="h-100 d-flex justify-content-center align-items-center" style="width: 500px;text-overflow: ellipsis;overflow: hidden; white-space: nowrap">@Model[i].ProductName</div>
+                                            </div>
+                                        </td>
                                         @if (Model[i].Publish == 0)
                                         {
                                             <td>Không công khai</td>
