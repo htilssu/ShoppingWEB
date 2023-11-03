@@ -6,6 +6,7 @@ public partial class Product
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
+    [Display(Name = "Đại Lý Bán Hàng")] public string? SellerId { get; set; }
     [Display(Name = "Tên Sản Phẩm")] public string? ProductName { get; set; }
 
     [Display(Name = "Giá")] public double? Price { get; set; }
@@ -20,13 +21,15 @@ public partial class Product
 
     [Display(Name = "Mặt Hàng")] public string? CategoryId { get; set; }
 
-    public int Rating { get; set; } = 0;
+    public Seller? Seller { get; set; }
+
+    public int? Rating { get; set; } = 0;
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public virtual Category? Category { get; set; }
 
-
+    public int? Sold { get; set; } = 0;
     public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
 
     [Display(Name = "Loại Sản Phẩm")]

@@ -1,20 +1,23 @@
-﻿<div class="product-list py-3">
+﻿@model List<Product>
+
+<div class="product-list py-3">
     @* TODO binding product *@
     <div class="product-list__item row">
 
-        @for (var i = 0; i < 20; i++)
+
+        @foreach (var product in Model.Where(product => product.Publish == 1))
         {
             <div class="product-item p-1 col-6 col-sm-6 col-md-3 col-lg-2 ">
                 <div class="bg-white position-relative a">
-                    <a class="text-decoration-none bg-white" href="">
+                    <a class="text-decoration-none bg-white" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
                         <div class="product-item__content">
                             <div class="d-flex flex-column">
                                 <div class="product-img">
-                                    <img src="~/uploads/2dde6bcf-a150-407d-8d63-9d08c3f5c5eb_sach.png" alt="">
+                                    <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="">
                                 </div>
                                 <div class="product-footer mt-3 px-2 py-1">
                                     <div class="product-item__name mb-2">
-                                        Chuột Cơ Gaming Chuyên Chơi Game Máy Tính PC Laptop M1 PRO 2023 Thế Hệ Mới LED RGB Nhiều Chế Độ, DPI 6 Mức
+                                        @product.ProductName
                                     </div>
                                     <div class="product-item__coupon d-flex mb-2">
                                         <div class="product-item__coupon d-flex px-2">
@@ -33,10 +36,10 @@
                                     </div>
                                     <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
                                         <div class="text-primary-custom product-item__price">
-                                            128.000đ
+                                            đ@($"{product.Price:###,###}")
                                         </div>
                                         <div class="product-item__sold opacity-50">
-                                            Đã bán 194
+                                            Đã bán @product.Sold
                                         </div>
                                     </div>
                                 </div>

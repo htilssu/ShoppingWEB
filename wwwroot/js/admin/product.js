@@ -111,7 +111,7 @@ function handleAddType() {
                .find("input")
                .val()}" class="form-control" name="TypeProducts[${
                productQuantityForm.length
-             }].TypeName" type="himdden">
+             }].TypeName" type="hidden">
              </div>
             <div>                                                       
                 <label class="form-label">Chọn ảnh</label>
@@ -156,12 +156,12 @@ function handleAddType() {
         .find(".btn.btn-outline-primary")
         .text()
         .trim()}
-<input type="hidden" name="TypeProducts[${
+<input type="text" name="TypeProducts[${
         productQuantityForm.length - 1
       }].Sizes[${index}].SizeType" value="${$(item)
         .find(".btn.btn-outline-primary")
         .text()
-        .trim()}">
+        .trim()}" hidden="hidden">
 </div>
         
         <div class="col-6 ">
@@ -219,3 +219,5 @@ function handleCloseProductPopup() {
   productTypeForm.find("input").val("");
   productTypeSizeForm.find("input").val("");
 }
+
+function checkValidate() {}

@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using ShoppingWEB.Models;
 namespace ShoppingWEB.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly ShoppingContext _context;
@@ -22,12 +23,16 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string? s, string? categoryId)
         {
+            var url = HttpContext.Request.Path;
             if (!string.IsNullOrEmpty(categoryId))
             {
                 var products = await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
                 if (!string.IsNullOrEmpty(s))
                 {
-                    var resultProduct = products.Where(p => p.ProductName!.Contains(s) || p.ProductName == s).ToList();
+                    var resultProduct = products
+                        .Where(p => p.ProductName!.Contains(s) || p.ProductName == s)
+                        .ToList();
+
                     return View(resultProduct);
                 }
                 else
@@ -106,7 +111,12 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
-            var product = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ImageUrls)
+                .Include(p => p.TypeProducts)
+                .ThenInclude(t => t.Sizes)
+                .FirstOrDefaultAsync(x => x.Id == id);
             if (product != null)
             {
                 return View(product);
