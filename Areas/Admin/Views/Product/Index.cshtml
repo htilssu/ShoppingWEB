@@ -12,6 +12,18 @@
             <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
                 <div class="d-flex align-items-center">Danh Mục Sản Phẩm</div>
                 <div class="d-flex align-items-center">
+                    <form asp-action="Index" method="get">
+                        <div class="d-flex gap-3">
+                            <div >
+                                <input name="s" class="form-control" placeholder="Tìm kiếm sản phẩm..." type="search">
+                            </div>
+                            <div >
+                                <button type="submit" class="btn btn-success">Tìm Kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="d-flex align-items-center">
                     <a class="btn btn-success" asp-action="Create">Thêm</a>
                 </div>
             </div>
@@ -44,7 +56,7 @@
                                             <td>Công khai</td>
                                         }
                                         <td>
-                                            <a asp-action="Edit" class="btn btn-danger text-decoration-none">
+                                            <a asp-action="Edit" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
                                                 <i class="bi bi-pencil-fill"></i>
                                             </a>
                                             <a asp-action="Detail" class="btn btn-danger text-decoration-none">

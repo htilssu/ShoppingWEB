@@ -32,7 +32,6 @@ public class SearchController : Controller
             break;
         }
 
-        ;
 
         return View(listProduct);
     }

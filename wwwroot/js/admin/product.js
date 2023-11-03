@@ -26,6 +26,7 @@ imageSelector.on("change", handleChangeListImage);
 
 function handleChangeListImage(ev) {
   const files = ev.target.files;
+  imageList.find("img").remove();
   for (const file of files) {
     const stream = new FileReader();
     stream.onload = (e) => {
@@ -139,7 +140,8 @@ function handleAddType() {
         .trim()}">
 </div>
         
-        <div class="col-6 "><input class="form-control" name="TypeProducts[${
+        <div class="col-6 ">
+        <input class="form-control" name="TypeProducts[${
           productQuantityForm.length - 1
         }].Sizes[${index}].Quantity" value="0"></div>`,
     );
@@ -152,6 +154,10 @@ function handleAddType() {
   btnClosePop.on("click", handleCloseProductPopup);
   productTypeForm.find("input").val("");
   btnDeleteType.on("click", handleDeleteType);
+  $(".btn-save__quantity").on("click", function () {
+    $(this).closest(".product-quantity-form__list").addClass("d-none");
+    $(this).closest(".popup-form").addClass("d-none");
+  });
 }
 
 function handleAddSize() {
