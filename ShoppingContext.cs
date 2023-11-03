@@ -207,7 +207,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                 .HasConstraintName("Product_ibfk_1");
 
             entity.HasOne(p => p.Seller).WithMany(c => c.Products)
-                .HasForeignKey("Product_Seller_Id_fk");
+                .HasForeignKey(d => d.CategoryId).HasConstraintName("Product_Seller_Id_fk");
         });
 
         modelBuilder.Entity<Size>(entity =>
@@ -216,8 +216,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("Size");
             entity.HasOne(s => s.TypeProduct)
-                .WithMany(t => t.Sizes)
-                .HasConstraintName("Size_TypeProduct_Id_fk");
+                .WithMany(t => t.Sizes);
         });
 
         modelBuilder.Entity<Seller>(entity =>
