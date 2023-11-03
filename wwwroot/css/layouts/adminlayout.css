@@ -67,7 +67,7 @@ body {
 }
 .product-container .product-item__content .table-container {
   height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .product-container .product-item__content table {
   width: 100%;
@@ -142,6 +142,108 @@ body {
   gap: 1rem;
   justify-content: center;
   align-items: center;
+}
+
+.product-type-list__size .size__item span {
+  width: 20px;
+  height: 20px;
+}
+.product-type-list__size .size__item span:hover {
+  cursor: pointer;
+}
+
+.product-type-size__form {
+  left: 0;
+  right: 0;
+  top: 30%;
+  z-index: 100;
+  width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+.product-type-size__form .size-form__header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.product-type-list__size .size__item span {
+  width: 20px;
+  height: 20px;
+}
+.product-type-list__size .size__item span:hover {
+  cursor: pointer;
+}
+
+.product-type__form {
+  left: 0;
+  right: 0;
+  top: 30%;
+  width: 300px;
+  background-color: white;
+  z-index: 100;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+.product-type__form .type-form__header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.product-type-list .type__item span {
+  width: 20px;
+  height: 20px;
+}
+.product-type-list .type__item span:hover {
+  cursor: pointer;
+}
+
+.product-quantity__form {
+  left: 0;
+  right: 0;
+  top: 30%;
+  width: 500px;
+  z-index: 100;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+}
+.product-quantity__form .quantity-form__header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.product-quantity-form__list {
+  left: 0;
+  right: 0;
+  top: 25%;
+  width: 500px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-quantity-form__list .quantity-form__body {
+  max-height: 100%;
+  overflow-y: hidden;
+}
+
+.main-container__main {
+  overflow-y: auto;
+  max-height: 520px;
+}
+
+.image-list span {
+  width: 20px;
+  height: 20px;
+  z-index: 100;
+}
+.image-list span:hover {
+  cursor: pointer;
+}
+.image-list img {
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=adminlayout.css.map */

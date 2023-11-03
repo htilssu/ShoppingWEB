@@ -4,5 +4,6 @@ namespace ShoppingWEB.Areas.Admin.Models;
 
 public class ProductModel : Product
 {
-    public IFormFile ImageFile { get; set; } = null!;
+    public List<IFormFile> ImageFile { get; set; } = null!;
+    public IFormFile Thumbnail { get; set; } = null!;
 }

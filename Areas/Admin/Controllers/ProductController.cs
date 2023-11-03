@@ -20,15 +20,20 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string? categoryId)
+        public async Task<IActionResult> Index(string? s, string? categoryId)
         {
             if (!string.IsNullOrEmpty(categoryId))
             {
-                var categoryProduct =
-                    await _context.Products
-                        .Where(product => product.CategoryId == categoryId)
-                        .ToListAsync();
-                return View(categoryProduct);
+                var products = await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+                if (!string.IsNullOrEmpty(s))
+                {
+                    var resultProduct = products.Where(p => p.ProductName!.Contains(s) || p.ProductName == s).ToList();
+                    return View(resultProduct);
+                }
+                else
+                {
+                    return View(products);
+                }
             }
 
             var productList = await _context.Products.ToListAsync();
@@ -50,13 +55,38 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             if (!ModelState.IsValid) return RedirectToAction("Index", "Product");
             try
             {
-                var pathImage = await product.ImageFile.SaveImage();
+                //Binding ProductTypeId for size
+                foreach (var productTypeProduct in product.TypeProducts)
+                {
+                    var typeImagePath = await productTypeProduct.ImageFile.SaveImage();
+                    productTypeProduct.ImagePath = typeImagePath;
+                    foreach (var size in productTypeProduct.Sizes)
+                    {
+                        size.TypeProductId = productTypeProduct.Id;
+                    }
+                }
+
+                foreach (var formFile in product.ImageFile)
+                {
+                    var pathImage = await formFile.SaveImage();
+                    product.ImageUrls.Add(new ImageUrl()
+                    {
+                        Product = product,
+                        ImagePath = pathImage,
+                        Thumbnail = false,
+                        ProductId = product.Id,
+                    });
+                }
+
+                var thumbnailPath = await product.Thumbnail.SaveImage();
                 product.ImageUrls.Add(new ImageUrl()
                 {
                     Product = product,
-                    ImagePath = pathImage,
+                    ImagePath = thumbnailPath,
+                    Thumbnail = true,
                     ProductId = product.Id,
                 });
+
                 await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync();
             }
@@ -69,14 +99,39 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             return RedirectToAction("Index", "Product");
         }
 
-        public IActionResult Edit(string? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return RedirectToAction("Index", "Product");
             }
 
-            return View();
+            var product = await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(x => x.Id == id);
+            if (product != null)
+            {
+                return View(product);
+            }
+
+            return RedirectToAction("Index", "Product");
+        }
+
+        public async Task<IActionResult> OnEditPost(ProductModel productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var product = await _context.Products.FindAsync(productModel.Id);
+                if (product != null)
+                {
+                    var field = typeof(Product).GetFields();
+                    foreach (var fieldInfo in field)
+                    {
+                        var value = fieldInfo.GetValue(productModel);
+                        fieldInfo.SetValue(product, value);
+                    }
+                }
+            }
+
+            return View("Edit", productModel);
         }
 
         public IActionResult Detail(string? id)
@@ -93,8 +148,30 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult OnPostDelete(string? id)
+        public async Task<IActionResult> OnPostDelete(string? id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+            var targetProduct = await _context.Products.FindAsync(id);
+            if (targetProduct != null)
+            {
+                foreach (var targetProductImageUrl in targetProduct.ImageUrls)
+                {
+                    targetProductImageUrl.ImagePath.DeleteFile();
+                }
+
+                foreach (var targetProductTypeProduct in targetProduct.TypeProducts)
+                {
+                    targetProductTypeProduct.ImagePath!.DeleteFile();
+                }
+            }
+
+
+            if (targetProduct != null) _context.Products.Remove(targetProduct);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Product");
         }
     }

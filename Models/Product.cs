@@ -8,7 +8,9 @@ public partial class Product
 
     [Display(Name = "Tên Sản Phẩm")] public string? ProductName { get; set; }
 
-    [Display(Name = "Giảm Giá")] public double? DiscountPercent { get; set; }
+    [Display(Name = "Giá")] public double? Price { get; set; }
+
+    [Display(Name = "Giảm Giá (%)")] public double? DiscountPercent { get; set; }
 
     [Display(Name = "Mô Tả Ngắn")] public string? ShortDescription { get; set; }
 
@@ -18,11 +20,7 @@ public partial class Product
 
     [Display(Name = "Mặt Hàng")] public string? CategoryId { get; set; }
 
-    [Display(Name = "Tạo Vào")] public DateTime? CreateAt { get; set; }
-
-    [Display(Name = "Cập Nhật Vào")] public DateTime? UpdateAt { get; set; }
-
-    public int Rating { get; set; }
+    public int Rating { get; set; } = 0;
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
@@ -31,6 +29,7 @@ public partial class Product
 
     public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
 
+    [Display(Name = "Loại Sản Phẩm")]
     public virtual ICollection<TypeProduct> TypeProducts { get; set; } = new List<TypeProduct>();
 
     public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();

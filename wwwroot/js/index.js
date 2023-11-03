@@ -1,13 +1,17 @@
-﻿//slide category to right
+﻿const itemListCategory = $(".item-list .ct-item");
+const overFlowCount = Math.ceil(itemListCategory.length / 2) - 9;
+
+console.log(overFlowCount);
+//slide category to right
 $(".next-item-btn-right").on("click", () => {
-    $(".item-list").css({
-        transform: `translateX(calc(-144px * 3))`,
-    });
+  $(".item-list").css({
+    transform: `translateX(calc(-144px * ${overFlowCount}))`,
+  });
 });
 
 //slide category to left
 $(".next-item-btn-left").on("click", () => {
-    $(".item-list").css({
-        transform: "translateX(0)",
-    });
+  $(".item-list").css({
+    transform: "translateX(0)",
+  });
 });
