@@ -20,7 +20,7 @@ public partial class Product
 
     [Display(Name = "Mặt Hàng")] public string? CategoryId { get; set; }
 
-    public int Rating { get; set; }
+    public int Rating { get; set; } = 0;
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
