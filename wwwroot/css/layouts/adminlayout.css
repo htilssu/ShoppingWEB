@@ -234,6 +234,14 @@ body {
   max-height: 520px;
 }
 
+.image-list span {
+  width: 20px;
+  height: 20px;
+  z-index: 100;
+}
+.image-list span:hover {
+  cursor: pointer;
+}
 .image-list img {
   object-fit: cover;
 }

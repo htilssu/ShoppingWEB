@@ -1,8 +1,10 @@
+let deleteImageArr = [];
 let btnClosePop = $(".btn-close__popup");
 const btnShowSizePop = $(".btn-show__size");
 const btnShowTypePop = $(".btn-show__type");
 const btnAddSize = $(".btn-add__size");
 const btnAddType = $(".btn-add__type");
+const btnSubmitEdit = $(".submit-edit").first();
 const productTypeListSize = $(".product-type-list__size");
 const productQuantityFormList = $(".product-quantity-form__list");
 const productTypeSizeForm = $(".product-type-size__form");
@@ -10,11 +12,13 @@ const imageList = $(".image-list");
 const imageSelector = $("input[name='ImageFile']");
 const btnDeleteSize = $(".delete__size");
 let btnDeleteType = $(".delete__type");
+const btnDeleteImage = $(".delete__image");
 const productListType = $(".product-type-list");
 const productTypeForm = $(".product-type__form");
 let productQuantityForm = $(".product-quantity__form");
-let btnShowQuantity = null;
+let btnShowQuantity = $(".showQuantity");
 
+btnShowQuantity.on("click", handleShowQuantityForm);
 btnClosePop.on("click", handleCloseProductPopup);
 btnShowSizePop.on("click", handleShowProductSizePop);
 btnAddSize.on("click", handleAddSize);
@@ -23,6 +27,26 @@ btnDeleteType.on("click", handleDeleteType);
 btnAddType.on("click", handleAddType);
 btnShowTypePop.on("click", handleShowProductTypePopup);
 imageSelector.on("change", handleChangeListImage);
+btnDeleteImage.on("click", handleDeleteImage);
+btnSubmitEdit.on("click", handleSubmitEdit);
+
+function handleSubmitEdit() {
+  deleteImageArr.forEach((item, index) => {
+    $.ajax({
+      url: `https://localhost:7278/api/image/${item}`,
+      type: "DELETE",
+      headers: {
+        cookie: document.cookie,
+      },
+    });
+  });
+}
+
+function handleDeleteImage() {
+  const parentDiv = $(this).closest(".col-2");
+  deleteImageArr.push(parentDiv.find("img").first().attr("src"));
+  parentDiv.remove();
+}
 
 function handleChangeListImage(ev) {
   const files = ev.target.files;
@@ -87,7 +111,7 @@ function handleAddType() {
                .find("input")
                .val()}" class="form-control" name="TypeProducts[${
                productQuantityForm.length
-             }].TypeName" type="hidden">
+             }].TypeName" type="himdden">
              </div>
             <div>                                                       
                 <label class="form-label">Chọn ảnh</label>

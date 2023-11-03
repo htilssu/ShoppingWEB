@@ -101,6 +101,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.Property(e => e.CategoryName).HasMaxLength(255);
             entity.Property(e => e.ImagePath).HasMaxLength(255);
+            
         });
 
         modelBuilder.Entity<Coupon>(entity =>
@@ -203,6 +204,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("Product_ibfk_1");
+            
         });
 
         modelBuilder.Entity<Size>(entity =>
@@ -230,6 +232,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("TypeProduct_ibdk_1");
+
         });
 
         OnModelCreatingPartial(modelBuilder);
