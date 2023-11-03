@@ -46,9 +46,9 @@
                                 {
                                     <tr>
                                         <td>@(i + 1)</td>
-                                        <td class="align-middle">
-                                            <div >
-                                                <div class="h-100 d-flex justify-content-center align-items-center" style="width: 500px;text-overflow: ellipsis;overflow: hidden; white-space: nowrap">@Model[i].ProductName</div>
+                                        <td class="align-middle" style="width: 800px">
+                                            <div class="h-100 d-flex justify-content-center">
+                                                <div class="w-75" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">@Model[i].ProductName</div>
                                             </div>
                                         </td>
                                         @if (Model[i].Publish == 0)

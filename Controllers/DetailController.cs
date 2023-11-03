@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
@@ -16,11 +17,20 @@ public class DetailController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index(string id)
+    public async Task<IActionResult> Index(string? id)
     {
-        var product = await _db.Products.FindAsync(id);
-        // if (product is null) return RedirectToAction("Index", "Home");
-        return View();
+        if (string.IsNullOrEmpty(id))
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        var product = _db.Products
+            .Include(p => p.TypeProducts)
+            .ThenInclude(t => t.Sizes)
+            .Include(p => p.ImageUrls)
+            .Include(p => p.Coupons)
+            .FirstOrDefault(p => p.Id == id)!;
+        return View(product);
     }
 
     public async Task<IActionResult> OnBuying(BuyingModel product)
