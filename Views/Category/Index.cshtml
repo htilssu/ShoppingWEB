@@ -14,7 +14,7 @@
 
 @section Scripts
 {
-    <script src="~/js/actions/" asp-append-version="true"></script>
+    <script src="~/js/actions/jscate.js" asp-append-version="true"></script>
 }
 
 <div class="banner">
@@ -29,33 +29,57 @@
             <svg class="category_heading-img" xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 0 512 512">
                 <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
             </svg>
-            Tất cả danh mục
+            TẤT CẢ DANH MỤC
         </h3>
-        <ul class="category-list">
-            <li class="category-item category-item-header">
-                <a href="#" class="category-item-link ">Ô Tô & Xe Máy & Xe Đạp</a>
-            </li>
-            <li class="category-item category-item-active">
-                <a href="#" class="category-item-link"> Xe đạp, xe điện</a>
-            </li>
-            <li class="category-item">
-                <a href="#" class="category-item-link">Mô tô,xe máy</a>
-            </li>
-            <li class="category-item">
-                <a href="#" class="category-item-link">Xe Ô tô</a>
-            </li>
-            <li class="category-item">
-                <a href="#" class="category-item-link">Mũ bảo hiểm</a>
-            </li>
-        </ul>
+                    <ul class="category-list">
+                        <li class="category-item category-item-header">
+                            <a href="#" class="category-item-link ">Thời Trang Nam</a>
+                        </li>
+                        <li class="category-item category-item-active">
+                            <a href="#" class="category-item-link"> Áo Khoác</a>
+                        </li>
+                        <li class="category-item">
+                            <a href="#" class="category-item-link">Áo Vest và Blazer</a>
+                        </li>
+                        <li class="category-item">
+                            <a href="#" class="category-item-link">Áo hoodie,Áo len & Áo nỉ</a>
+                        </li>
+                        <li class="category-item">
+                            <a href="#" class="category-item-link">Quần Dài/Quần Âu</a>
+                        </li>
+                    </ul>
         <h3 class="category_heading-2">
             <svg enable-background="new 0 0 15 15" height="14px" viewBox="0 0 15 15" x="0" y="0" class="category_heading--img">
                 <g>
                     <polyline fill="black" points="5.5 13.2 5.5 5.8 1.5 1.2 13.5 1.2 9.5 5.8 9.5 10.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polyline>
                 </g>
             </svg>
-            Bộ Lọc Tìm Kiếm
+            BỘ LỌC TÌM KIẾM
         </h3>
+                    <div class="category-group">
+                        <div class="category-group-title">Theo Danh Mục</div>
+                        <ul class="category-group-list">
+                            <li class="category-group-item">
+                                <input type="checkbox" class="category-group-item-check">
+                                <span class="category-group-item-label">Áo thun</span>
+                            </li>
+                            <li class="category-group-item">
+                                <input type="checkbox" class="category-group-item-check">
+                                <span class="category-group-item-label">Áo khoác</span>
+
+                            </li>
+                            <li class="category-group-item">
+                                <input type="checkbox" class="category-group-item-check">
+                                <span class="category-group-item-label">Hoodie & Áo nỉ </span>
+
+                            </li>
+                            <li class="category-group-item">
+                                <input type="checkbox" class="category-group-item-check">
+                                <span class="category-group-item-label">Áo sơ mi </span>
+
+                            </li>
+                        </ul>
+                    </div>
         <div class="category-group">
             <div class="category-group-title">Nơi Bán</div>
             <ul class="category-group-list">
@@ -71,8 +95,12 @@
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
                     <span class="category-group-item-label">Đà Nẵng</span>
-
                 </li>
+                 <li class="category-group-item">
+                     <input type="checkbox" class="category-group-item-check">
+                     <span class="category-group-item-label">Thái Nguyên</span>
+
+                 </li>
             </ul>
         </div>
         <div class="category-group">
@@ -100,19 +128,24 @@
             <ul class="category-group-list">
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
-                    <span class="category-group-item-label">THONGNHAT</span>
+                    <span class="category-group-item-label">TeeLab</span>
 
                 </li>
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
-                    <span class="category-group-item-label">GIANT</span>
+                    <span class="category-group-item-label">Levents</span>
     
                 </li>
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
-                    <span class="category-group-item-label">GALAXY</span>
+                    <span class="category-group-item-label">Bad Rabbit</span>
 
                 </li>
+                  <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Nicolas</span>
+
+                  </li>
             </ul>
         </div>
         <div class="category-group">
