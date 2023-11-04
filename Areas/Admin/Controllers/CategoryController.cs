@@ -9,7 +9,7 @@ using ShoppingWEB.Models;
 namespace ShoppingWEB.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Authorize(Roles = "Admin")]
+// [Authorize(Roles = "Admin")]
 public class CategoryController : Controller
 {
     private readonly ShoppingContext _context;
@@ -41,7 +41,8 @@ public class CategoryController : Controller
     // GET: Category
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Categories.OrderBy(category => category.CategoryName).ToListAsync());
+        return View(await _context.Categories.Include(c => c.Products).OrderBy(category => category.CategoryName)
+            .ToListAsync());
     }
 
     // GET: Category/Details/5
@@ -50,6 +51,7 @@ public class CategoryController : Controller
         if (id == null) return NotFound();
 
         var category = await _context.Categories
+            .Include(c => c.Products)
             .FirstOrDefaultAsync(m => m.Id == id);
         if (category == null) return NotFound();
 

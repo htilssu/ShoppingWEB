@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ using ShoppingWEB.Models;
 namespace ShoppingWEB.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly ShoppingContext _context;
@@ -20,15 +21,24 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string? s)
+        public async Task<IActionResult> Index(string? s, string? categoryId)
         {
-            if (!string.IsNullOrEmpty(s))
+            var url = HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(categoryId))
             {
-                var categoryProduct =
-                    await _context.Products
-                        .Where(product => product.ProductName == s || product.ProductName!.Contains(s))
-                        .ToListAsync();
-                return View(categoryProduct);
+                var products = await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+                if (!string.IsNullOrEmpty(s))
+                {
+                    var resultProduct = products
+                        .Where(p => p.ProductName!.Contains(s) || p.ProductName == s)
+                        .ToList();
+
+                    return View(resultProduct);
+                }
+                else
+                {
+                    return View(products);
+                }
             }
 
             var productList = await _context.Products.ToListAsync();
@@ -94,14 +104,25 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             return RedirectToAction("Index", "Product");
         }
 
-        public IActionResult Edit(string? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return RedirectToAction("Index", "Product");
             }
 
-            return View();
+            var product = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ImageUrls)
+                .Include(p => p.TypeProducts)
+                .ThenInclude(t => t.Sizes)
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (product != null)
+            {
+                return View(product);
+            }
+
+            return RedirectToAction("Index", "Product");
         }
 
         public async Task<IActionResult> OnEditPost(ProductModel productModel)
@@ -120,7 +141,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Product");
+            return View("Edit", productModel);
         }
 
         public IActionResult Detail(string? id)

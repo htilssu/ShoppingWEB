@@ -17,6 +17,8 @@ public class SearchController : Controller
 
     public async Task<IActionResult> Index(string? search)
     {
+        //TODO fix null product list
+
         if (string.IsNullOrEmpty(search)) return RedirectToAction("Index", "Home");
         ViewBag.Search = search;
         var listProduct = await FindProductByName(search);

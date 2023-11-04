@@ -35,6 +35,8 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual required DbSet<Size> Sizes { get; set; }
 
+    public virtual required DbSet<Seller> Sellers { get; set; }
+
     public virtual required DbSet<TypeProduct> TypeProducts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -203,6 +205,9 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .HasConstraintName("Product_ibfk_1");
+
+            entity.HasOne(p => p.Seller).WithMany(c => c.Products)
+                .HasForeignKey(d => d.CategoryId).HasConstraintName("Product_Seller_Id_fk");
         });
 
         modelBuilder.Entity<Size>(entity =>
@@ -211,8 +216,14 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("Size");
             entity.HasOne(s => s.TypeProduct)
-                .WithMany(t => t.Sizes)
-                .HasConstraintName("Size_TypeProduct_Id_fk");
+                .WithMany(t => t.Sizes);
+        });
+
+        modelBuilder.Entity<Seller>(entity =>
+        {
+            entity.HasKey(s => s.Id).HasName("PRIMARY");
+            entity.ToTable("Seller");
+            entity.Property(c => c.SellerName).HasMaxLength(255);
         });
 
         modelBuilder.Entity<TypeProduct>(entity =>

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
@@ -13,9 +14,9 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var productList = _context.Products.ToList();
+        var productList = await _context.Products.Include(p => p.ImageUrls).ToListAsync();
         return View(productList);
     }
 

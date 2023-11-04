@@ -1,4 +1,7 @@
-﻿<div class="mt-3 d-flex">
+﻿@model List<Product>
+
+
+<div class="mt-3 d-flex">
     <div class="page-product-l flex-grow-1">
         <div class="p-4 bg-white">
             <div class="product-detail">
@@ -90,6 +93,6 @@
         <div class="maybe-like__header mb-2">
             <div class="text-uppercase opacity-75 fs-6">Có thể bạn cũng thích</div>
         </div>
-        @{ await Html.RenderPartialAsync("Partial/ProductList"); }
+        @{ await Html.RenderPartialAsync("Partial/ProductList", Model); }
     </div>
 </div>
