@@ -1,1 +1,49 @@
-﻿
+﻿@model Product
+
+<div class="product-detail">
+    <div class="title text-uppercase p-3">
+        chi tiết sản phẩm
+    </div>
+    <div class="data p-3">
+        <div class="d-flex">
+            <div class="data-display">Phong cách</div>
+            <div class="data-content">Hàn Quốc</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Xuất xứ</div>
+            <div class="data-content">Việt Nam</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Chất liệu</div>
+            <div class="data-content">kaki</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Tên tổ chức chịu trách nhiệm sản xuất</div>
+            <div class="data-content">Minh Anh</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Địa chỉ tổ chức chịu trách nhiệm sản xuất</div>
+            <div class="data-content">Hà Nội</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Kho hàng</div>
+            <div class="data-content">119509</div>
+        </div>
+        <div class="d-flex">
+            <div class="data-display">Gửi từ</div>
+            <div class="data-content">Hà Nội</div>
+        </div>
+    </div>
+</div>
+<div class="product-description">
+    <div class="title text-uppercase p-3">
+        mô tả sản phẩm
+    </div>
+    <div class="content p-3 mt-4">
+        @foreach (var s in Model.LongDescription!.Split('\n'))
+        {
+            <p>@s</p>
+            <p></p>
+        }
+    </div>
+</div>
