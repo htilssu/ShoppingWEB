@@ -33,6 +33,8 @@ public class CartController : Controller
     }
 
     //Action thêm product vào giỏ hàng
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddToCard(CartItem cartItem)
     {
         if (ModelState.IsValid) //kiem tra cartItem co null khong

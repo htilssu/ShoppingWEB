@@ -56,10 +56,6 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasIndex(e => e.ItemId, "Bill_CartItem_Id_fk");
 
-            entity.HasOne(d => d.Item).WithMany(p => p.Bills)
-                .HasForeignKey(d => d.ItemId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("Bill_CartItem_Id_fk");
 
             entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.InversePaymentMethodNavigation)
                 .HasForeignKey(d => d.PaymentMethod)
@@ -79,14 +75,14 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
         modelBuilder.Entity<CartItem>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
+
             entity.ToTable("CartItem");
-            // entity.HasIndex(e => e.CartId, "CartId");
-            // entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
-            //     .HasForeignKey(d => d.CartId)
-            //     .HasConstraintName("CartItem_ibfk_2");
-            // entity.HasOne(d => d.TypeProduct).WithMany(p => p.CartItems)
-            //     .HasForeignKey(d => d.TypeProductId)
-            //     .HasConstraintName("CartItem_TypeProduct_Id_fk");
+
+            entity.HasIndex(e => e.CartId, "CartId");
+
+            entity.HasIndex(e => e.TypeProductId, "CartItem_TypeProduct_Id_fk");
+
+            entity.Property(e => e.SizeType).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Category>(entity =>

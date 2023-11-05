@@ -1,52 +1,329 @@
-﻿@model List<Product>;
-
+﻿@using Microsoft.EntityFrameworkCore
+@model List<Product>;
+@inject ShoppingContext Context
+@{
+    var maybeLike = Context.Products
+        .Include(p => p.ImageUrls)
+        .Take(12).ToList();
+}
 
 <div class="search-result">
-    @if (Model.Count != 0)
+@if (Model.Count != 0)
+{
+    <div class="search-result__header d-flex gap-1">
+    <div>
+        <i class="text-success bi bi-exclamation-circle-fill"></i>
+    </div>
+    <div class="title">
+    @if (ViewBag.IsFindOut)
     {
-        <div class="search-result__header d-flex gap-1">
-            <div>
-                <i class="text-success bi bi-exclamation-circle-fill"></i>
-            </div>
-            <div class="title">
-                @if (ViewBag.IsFindOut)
-                {
-                    <div>
-                        Kết quả tìm kiếm cho từ khóa '<span class="text-danger">@ViewBag.Search</span>'
-                    </div>
-                }
-                else
-                {
-                    <div>
-                        Chúng tôi không tìm thấy sản phẩm @ViewBag.Search nào. Hiển thị kết quả của từ khóa '@ViewBag.SearchAddition'.
-                    </div>
-                }
-
-            </div>
+        <div>
+            Kết quả tìm kiếm cho từ khóa '<span class="text-danger">@ViewBag.Search</span>'
         </div>
     }
     else
     {
-        <div class="search-result__not-found">
-            <div class="d-flex flex-column align-items-center justify-content-center p-5">
-                <div >
-                    <img style="max-height: 150px" src="~/imgs/not-found.png" alt="">
-                </div>
-                <div>
-                    Không tìm thấy kết quả nào
-                </div>
-                <div class="opacity-75">Hãy sử dụng từ khóa chung chung hơn</div>
+        <div>
+            Chúng tôi không tìm thấy sản phẩm @ViewBag.Search nào. Hiển thị kết quả của từ khóa '@ViewBag.SearchAddition'.
+        </div>
+    }
+
+    @section Styles
+    {
+        <link rel="stylesheet" href="~/css/actions/HomeCategory.css" asp-append-version="true">
+        <link rel="stylesheet" href="~/css/partials/ProductListStyle.css" asp-append-version="true"/>
+    }
+
+    @section Scripts
+    {
+        <script src="~/js/actions/jscate.js" asp-append-version="true"></script>
+    }
+
+    <div class="banner">
+        <img src="https://cf.shopee.vn/file/856d76a2fb06e2fbf00a82d2e37151d9" class="img-banner" alt="image"/>
+    </div>
+    <div class="container">
+    <div class="grid">
+    <div class="grid_row content">
+    <div class="grid_column-2">
+        <nav class="category">
+            <h3 class="category_heading">
+                <svg class="category_heading-img" xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 0 512 512">
+                    <path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/>
+                </svg>
+                TẤT CẢ DANH MỤC
+            </h3>
+            <ul class="category-list">
+                <li class="category-item category-item-header">
+                    <a href="#" class="category-item-link ">Thời Trang Nam</a>
+                </li>
+                <li class="category-item category-item-active">
+                    <a href="#" class="category-item-link"> Áo Khoác</a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-item-link">Áo Vest và Blazer</a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-item-link">Áo hoodie,Áo len & Áo nỉ</a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-item-link">Quần Dài/Quần Âu</a>
+                </li>
+            </ul>
+            <h3 class="category_heading-2">
+                <svg enable-background="new 0 0 15 15" height="14px" viewBox="0 0 15 15" x="0" y="0" class="category_heading--img">
+                    <g>
+                        <polyline fill="black" points="5.5 13.2 5.5 5.8 1.5 1.2 13.5 1.2 9.5 5.8 9.5 10.2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polyline>
+                    </g>
+                </svg>
+                BỘ LỌC TÌM KIẾM
+            </h3>
+            <div class="category-group">
+                <div class="category-group-title">Theo Danh Mục</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Áo thun</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Áo khoác</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Hoodie & Áo nỉ </span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Áo sơ mi </span>
+
+                    </li>
+                </ul>
             </div>
-            <div class="search-result__maybe-like mt-5">
-                <div>
-                    <div class="text-uppercase">Có thể bạn cũng thích</div>
-                    <div class="">
-                        @{
-                            await Html.RenderPartialAsync("Partial/ProductList", ViewBag.MaybeLikeList, null);
-                        }
-                    </div>
+            <div class="category-group">
+                <div class="category-group-title">Nơi Bán</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Hà Nội</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Hồ Chí Minh</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Đà Nẵng</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Thái Nguyên</span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="category-group">
+                <div class="category-group-title">Đơn Vị Vận Chuyển</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Hỏa Tốc</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Nhanh</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Tiết Kiệm</span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="category-group">
+                <div class="category-group-title">Thương Hiệu</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">TeeLab</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Levents</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Bad Rabbit</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Nicolas</span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="category-group">
+                <div class="category-group-title">Khoảng Giá</div>
+                <div class="category-group-filter">
+                    <input type="number" placeholder="đ TỪ" class="category-group-filter-input" maxlength="13" value="" id="priceFrom" min="0">
+                    <div class="category-group-filter-gach">-</div>
+                    <input type="number" placeholder="đ ĐẾN" class="category-group-filter-input" maxlength="13" value="" id="priceTo" min="0"/>
+                </div>
+                <button class="btn btn-apply category-group-filter-btn category-group--margin" id="applyFilter">Áp dụng</button>
+            </div>
+
+            <div class="category-group">
+                <div class="category-group-title">Loại Shop</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Shopee</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Shopee Mall</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Shop Yêu Thích</span>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="category-group">
+                <div class="category-group-title">Tình Trạng</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Mới</span>
+
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Đã sử dụng</span>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category-group">
+                <div class="category-group-title">Dịch Vụ & Khuyến Mãi</div>
+                <ul class="category-group-list">
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Voucher Xtra</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Đang giảm giá</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Gì cũng rẻ</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Miễn phí ship</span>
+                    </li>
+                    <li class="category-group-item">
+                        <input type="checkbox" class="category-group-item-check">
+                        <span class="category-group-item-label">Hàng có sẵn</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="category-group">
+                <button class="btn btn-clear category-group-filter-btn category-group--margin" id="clearAll">Xoá Tất Cả</button>
+            </div>
+        </nav>
+    </div>
+    <div class="grid_column-10">
+        <div class="home-filter">
+            <span class="home-filter-label">Sắp xếp theo</span>
+            <button class="home-filter-btn btn-active"> Phổ Biến </button>
+            <button class="home-filter-btn "> Mới nhất </button>
+            <button class="home-filter-btn"> Bán chạy </button>
+            <div class="select-input">
+                <span class="select-input-label">Giá</span>
+                <svg viewBox="0 0 10 6" class="select-input-img" height="10px" width="10px">
+                    <path d="M9.7503478 1.37413402L5.3649665 5.78112957c-.1947815.19574157-.511363.19651982-.7071046.00173827a.50153763.50153763 0 0 1-.0008702-.00086807L.2050664 1.33007451l.0007126-.00071253C.077901 1.18820749 0 1.0009341 0 .79546595 0 .35614224.3561422 0 .7954659 0c.2054682 0 .3927416.07790103.5338961.20577896l.0006632-.00066318.0226101.02261012a.80128317.80128317 0 0 1 .0105706.0105706l3.3619016 3.36190165c.1562097.15620972.4094757.15620972.5656855 0a.42598723.42598723 0 0 0 .0006944-.00069616L8.6678481.20650022l.0009529.0009482C8.8101657.07857935 8.9981733 0 9.2045341 0 9.6438578 0 10 .35614224 10 .79546595c0 .20495443-.077512.39180497-.2048207.53283641l.0003896.00038772-.0096728.00972053a.80044712.80044712 0 0 1-.0355483.03572341z" fill-rule="nonzero"></path>
+                </svg>
+                <ul class="select-input-list">
+                    <li class="select-input-item">
+                        <a href="" class="select-input-link">Giá:Thấp đến Cao</a>
+                    </li>
+                    <li class="select-input-item">
+                        <a href="" class="select-input-link">Giá:Cao đến Thấp</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="home-filter-page">
+                <span class="home-filter-page-num">
+                    <span class="home-filter-page-num-HT">1</span>/9
+                </span>
+                <div class="home-filter-page-chuyen">
+
+                    <a href="" class="home-filter-page-btn home-filter-page-btn-disabled">
+                        <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                            <path fill="#ccc" d="M4.694078 9.8185598L.2870824 5.4331785c-.1957415-.1947815-.1965198-.511363-.0017382-.7071046a.50867033.50867033 0 0 1 .000868-.0008702L4.7381375.2732784 4.73885.273991c.1411545-.127878.3284279-.205779.5338961-.205779.4393237 0 .7954659.3561422.7954659.7954659 0 .2054682-.077901.3927416-.205779.5338961l.0006632.0006632-.0226101.0226101a.80174653.80174653 0 0 1-.0105706.0105706L2.4680138 4.7933195c-.1562097.1562097-.1562097.4094757 0 .5656855a.45579485.45579485 0 0 0 .0006962.0006944l3.3930018 3.3763607-.0009482.0009529c.128869.1413647.2074484.3293723.2074484.5357331 0 .4393237-.3561422.7954659-.7954659.7954659-.2049545 0-.391805-.077512-.5328365-.2048207l-.0003877.0003896-.0097205-.0096728a.80042023.80042023 0 0 1-.0357234-.0355483z" fill-rule="nonzero"></path>
+                        </svg>
+                    </a>
+                    <a href="" class="home-filter-page-btn">
+                        <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                            <path d="M2.305922 9.81856l4.4069956-4.385381c.1957415-.194782.1965198-.511364.0017382-.707105a.26384055.26384055 0 0 0-.000868-.00087L2.2618625.273278 2.26115.273991C2.1199955.146113 1.9327221.068212 1.7272539.068212c-.4393237 0-.7954659.356142-.7954659.795466 0 .205468.077901.392741.205779.533896l-.0006632.000663.0226101.02261c.0034906.003557.0070143.00708.0105706.010571L4.5319862 4.79332c.1562097.156209.1562097.409475 0 .565685-.0002318.000232-.0004639.000463-.0006962.000694L1.1382882 8.73606l.0009482.000953c-.128869.141365-.2074484.329372-.2074484.535733 0 .439324.3561422.795466.7954659.795466.2049545 0 .391805-.077512.5328365-.204821l.0003877.00039.0097205-.009673c.012278-.011471.0241922-.023327.0357234-.035548z" fill-rule="nonzero"></path>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="product-list">
+            @{
+                await Html.RenderPartialAsync("~/Views/Category/Partials/CategoryProductList.cshtml", Model);
+            }
+        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+}
+else
+{
+    <div class="search-result__not-found">
+        <div class="d-flex flex-column align-items-center justify-content-center p-5">
+            <div >
+                <img style="max-height: 150px" src="~/imgs/not-found.png" alt="">
+            </div>
+            <div>
+                Không tìm thấy kết quả nào
+            </div>
+            <div class="opacity-75">Hãy sử dụng từ khóa chung chung hơn</div>
+        </div>
+        <div class="search-result__maybe-like mt-5">
+            <div>
+                <div class="text-uppercase">Có thể bạn cũng thích</div>
+                <div class="">
+                    @{
+                        await Html.RenderPartialAsync("Partial/ProductList", maybeLike);
+                    }
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 </div>

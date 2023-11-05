@@ -42,6 +42,7 @@ public class SearchController : Controller
     {
         var result1 = await _context
             .Products
+            .Include(p => p.ImageUrls)
             .Where(product => product.ProductName!.Contains(name)).ToListAsync();
         var listResult = new List<Product>();
         listResult.AddRange(result1);
