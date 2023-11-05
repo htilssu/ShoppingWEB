@@ -7,9 +7,9 @@ public partial class ImageUrl
 {
     public string ImagePath { get; set; } = null!;
 
-    public string ProductId { get; set; } = null!;
+    public string? ProductId { get; set; }
 
     public bool? Thumbnail { get; set; }
 
-    public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; }
 }

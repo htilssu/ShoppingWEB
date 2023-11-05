@@ -1,8 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
 namespace ShoppingWEB.Models;
 
-public class Seller
+public partial class Seller
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
+
     public string? SellerName { get; set; }
-    public ICollection<Product> Products { get; set; } = new List<Product>();
+
+    public int? ReplyPercent { get; set; }
+
+    public DateTime? JoinAt { get; set; }
+
+    public int? Follower { get; set; }
+
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
