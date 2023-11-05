@@ -1,5 +1,3 @@
-using System.Net;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Areas.Admin.Models;
@@ -23,7 +21,6 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string? s, string? categoryId)
         {
-            var url = HttpContext.Request.Path;
             if (!string.IsNullOrEmpty(categoryId))
             {
                 ViewBag.CategoryId = categoryId;
@@ -40,6 +37,12 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 {
                     return View(products);
                 }
+            }
+
+            if (!string.IsNullOrEmpty(s))
+            {
+                var productQ = await _context.Products.Where(p => p.ProductName!.Contains(s)).ToListAsync();
+                return View(productQ);
             }
 
             var productList = await _context.Products.ToListAsync();
@@ -72,7 +75,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     }
                 }
 
-                foreach (var formFile in product.ImageFile)
+                foreach (var formFile in product.ImageFile!)
                 {
                     var pathImage = await formFile.SaveImage();
                     product.ImageUrls.Add(new ImageUrl()
@@ -84,7 +87,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     });
                 }
 
-                var thumbnailPath = await product.Thumbnail.SaveImage();
+                var thumbnailPath = await product.Thumbnail!.SaveImage();
                 product.ImageUrls.Add(new ImageUrl()
                 {
                     Product = product,
@@ -133,19 +136,56 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var product = await _context.Products.FindAsync(productModel.Id);
+                var product = await _context.Products
+                    .Include(p => p.ImageUrls)
+                    .Include(p => p.TypeProducts).FirstOrDefaultAsync(p => p.Id == productModel.Id);
+
                 if (product != null)
                 {
+                    if (productModel.Thumbnail != null)
+                    {
+                        var thumbnailPath = await productModel.Thumbnail.SaveImage();
+                        var thumbnailImage = await _context.ImageUrls
+                            .FirstOrDefaultAsync(i => i.ProductId == product.Id && i.Thumbnail == true);
+                        thumbnailImage!.ImagePath.DeleteFile();
+                        _context.ImageUrls.Add(new ImageUrl()
+                        {
+                            Product = product,
+                            ImagePath = thumbnailPath,
+                            Thumbnail = true
+                        });
+                    }
+
+                    if (productModel.ImageFile != null)
+                    {
+                        foreach (var formFile in productModel.ImageFile)
+                        {
+                            var imagePath = await formFile.SaveImage();
+                            _context.ImageUrls.Add(new ImageUrl()
+                            {
+                                Product = product,
+                                ImagePath = imagePath,
+                                Thumbnail = false,
+                            });
+                        }
+                    }
+
                     var field = typeof(Product).GetFields();
                     foreach (var fieldInfo in field)
                     {
                         var value = fieldInfo.GetValue(productModel);
                         fieldInfo.SetValue(product, value);
                     }
+
+                    return View("Edit", product);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Product");
                 }
             }
 
-            return View("Edit", productModel);
+            return RedirectToAction("Index", "Product");
         }
 
         public async Task<IActionResult> Detail(string? id)
@@ -159,6 +199,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 .Include(p => p.ImageUrls)
                 .Include(p => p.TypeProducts)
                 .ThenInclude(p => p.Sizes)
+                .Include(p => p.Category)
                 .FirstOrDefaultAsync(p => p.Id == id);
             return View(product);
         }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace ShoppingWEB.Models;
 
-public partial class CartItem
+public  class CartItem
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
