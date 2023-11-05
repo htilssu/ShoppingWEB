@@ -1,22 +1,23 @@
-﻿@model Cart
+﻿@using System.Configuration.Internal
+@model Cart
 
 @{
     ViewBag.Title = "Giỏ Hàng";
     Layout = "_SecondaryLayout";
-    var sellerGroupBy = Model.CartItems.GroupBy(c => c.Product!.SellerId);
+    var sellerGroupBy = Model.CartItems.GroupBy(c => c.TypeProduct!.Product!.SellerId);
 }
 
 
 @foreach (var cartItems in sellerGroupBy)
 {
     var listCartItem = cartItems.ToList();
-    var seller = listCartItem[0].Product!.Seller;
+    var seller = listCartItem[0].TypeProduct!.Product!.Seller;
     <div>@seller!.SellerName</div>
     <div>
         @foreach (var cartItem in listCartItem)
         {
             <div>
-                <div class="name">@cartItem.Product.ProductName</div>
+                <div class="name">@cartItem.TypeProduct!.Product!.ProductName</div>
                 <div class="quantity">@cartItem.Quantity</div>
             </div>
         }
