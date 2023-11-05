@@ -19,6 +19,7 @@ public partial class TypeProduct : IEnumerable
     [NotMapped] public IFormFile ImageFile { get; set; } = null!;
     public virtual Product? Product { get; set; }
     public ICollection<Size> Sizes { get; set; } = new List<Size>();
+    public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public IEnumerator GetEnumerator()
     {

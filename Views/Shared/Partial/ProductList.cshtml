@@ -8,14 +8,14 @@
         @foreach (var product in Model.Where(product => product.Publish == 1))
         {
             <div class="product-item p-1 col-6 col-sm-6 col-md-3 col-lg-2 ">
-                <div class="bg-white position-relative a">
-                    <a class="text-decoration-none bg-white" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
-                        <div class="product-item__content">
-                            <div class="d-flex flex-column">
+                <div class="bg-white position-relative a h-100">
+                    <a class="text-decoration-none bg-white h-100" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
+                        <div class="product-item__content h-100">
+                            <div class="d-flex flex-column h-100">
                                 <div class="product-img">
                                     <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="">
                                 </div>
-                                <div class="product-footer mt-3 px-2 py-1">
+                                <div class="product-footer mt-3 px-2 py-1 h-100 d-flex flex-column justify-content-between">
                                     <div class="product-item__name mb-2">
                                         @product.ProductName
                                     </div>

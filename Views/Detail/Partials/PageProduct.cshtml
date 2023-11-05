@@ -35,15 +35,15 @@
                     Top sản phẩm bán chạy
                 </div>
             </div>
-            @for (var i = 0; i < 4; i++)
+            @foreach (var product in topProduct)
             {
                 <div class="product-hot-sale__list">
                     <div class="product-hot-sale__item">
                         <a class="text-decoration-none text-black" href="">
-                            <img src="~/uploads/0f219207-15c1-4ade-8756-d901ce72500d_dongho.png" alt="">
+                            <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="@product.ProductName">
                             <div class="px-3">
-                                <div class="product-hot-sale__name">WORKSOUT Quần Túi Hộp quần nam ống rộng quần 2023 NEW WS062098</div>
-                                <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">128.000đ</div>
+                                <div class="product-hot-sale__name">@product.ProductName</div>
+                                <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">đ@($"{product.Price:###,###}")</div>
                             </div>
                         </a>
                     </div>
