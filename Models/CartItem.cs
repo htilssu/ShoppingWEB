@@ -11,7 +11,7 @@ public partial class CartItem
 
     public string? CartId { get; set; }
 
-    public int? Quanity { get; set; }
+    public int? Quantity { get; set; }
 
     public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
 

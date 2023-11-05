@@ -1,9 +1,28 @@
-﻿@using System.Configuration
-@model Cart
+﻿@model Cart
 
 @{
     ViewBag.Title = "Giỏ Hàng";
     Layout = "_SecondaryLayout";
+    var sellerGroupBy = Model.CartItems.GroupBy(c => c.Product!.SellerId);
+}
+
+
+@foreach (var cartItems in sellerGroupBy)
+{
+    var listCartItem = cartItems.ToList();
+    var seller = listCartItem[0].Product!.Seller;
+    <div>@seller!.SellerName</div>
+    <div>
+        @foreach (var cartItem in listCartItem)
+        {
+            <div>
+                <div class="name">@cartItem.Product.ProductName</div>
+                <div class="quantity">@cartItem.Quantity</div>
+            </div>
+        }
+    </div>
+    
+  
 }
 
 @section Styles
@@ -41,6 +60,7 @@
         </div>
     </div>
 }
+
 
 
 <section class="header-top">
