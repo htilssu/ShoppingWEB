@@ -13,7 +13,6 @@
             </div>
             <div class="w-100">
                 <div class="sub-image d-flex w-100">
-                    @* TODO sub-image *@
                     @foreach (var s in Model.ImageUrls)
                     {
                         <div class="p-2 hover-pointer">
@@ -63,7 +62,6 @@
                         <span>đánh giá</span>
                     </div>
                     <div class="sold-info">
-                        @* TODO sold count *@
                         <span>
                             @Model.Sold
                         </span>
@@ -121,7 +119,7 @@
                         <div class="classify-list d-flex flex-wrap">
                             @foreach (var modelTypeProduct in Model.TypeProducts)
                             {
-                                <button typ class="classify-item">
+                                <button type="button" class="classify-item" id="@modelTypeProduct.Id">
                                     <img src="@modelTypeProduct.ImagePath" alt="@modelTypeProduct.TypeName">@modelTypeProduct.TypeName
                                 </button>
                             }
@@ -134,7 +132,7 @@
                     </div>
                     <div class="data d-flex ">
                         <div class="size-list d-flex flex-wrap">
-                            @foreach (var o in Model.TypeProducts.FirstOrDefault().Sizes)
+                            @foreach (var o in Model.TypeProducts.FirstOrDefault()!.Sizes)
                             {
                                 // TODO each typeproduct has own quantity
                                 <button type="button" class="size-item">
@@ -153,7 +151,7 @@
                                 <i class="bi bi-dash-lg"></i>
                             </div>
                             <div class="data-quantity">
-                                <input class="d-flex text-center h-100" value="1" min="0" type="text">
+                                <input class="d-flex text-center h-100" name="Quantity" value="1" min="0" type="text">
                             </div>
                             <div class="action d-flex justify-content-center align-items-center" id="increase">
                                 <i class="bi bi-plus-lg"></i>
@@ -174,6 +172,8 @@
                         <span>Thêm Vào Giỏ Hàng</span>
                     </button>
                     <button type="submit" class="btn btn-danger">Mua Ngay</button>
+                    <input type="hidden" value="" name="TypeProductId">
+                    <input type="hidden" value="" name="SizeType">
                 </div>
             </div>
         </form>

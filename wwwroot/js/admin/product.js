@@ -12,7 +12,7 @@ const imageList = $(".image-list");
 const imageSelector = $("input[name='ImageFile']");
 const btnDeleteSize = $(".delete__size");
 let btnDeleteType = $(".delete__type");
-const btnDeleteImage = $(".delete__image");
+let btnDeleteImage = $(".delete__image");
 const productListType = $(".product-type-list");
 const productTypeForm = $(".product-type__form");
 let productQuantityForm = $(".product-quantity__form");
@@ -44,26 +44,74 @@ function handleSubmitEdit() {
 
 function handleDeleteImage() {
   const parentDiv = $(this).closest(".col-2");
+
+  if (parentDiv.hasClass("addition-image")) {
+    const targetBase64 = parentDiv.find("img").attr("src");
+    const files = imageSelector[0].files;
+    const dt = new DataTransfer();
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target.result !== targetBase64) {
+          dt.items.add(file);
+          imageSelector[0].files = dt.files;
+        } else {
+          imageSelector[0].files = dt.files;
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    parentDiv.remove();
+  }
   deleteImageArr.push(parentDiv.find("img").first().attr("src"));
   parentDiv.remove();
 }
 
 function handleChangeListImage(ev) {
   const files = ev.target.files;
-  imageList.find("img").remove();
+
+  imageList.find("img").each((index, item) => {
+    if (!$(item).attr("src").includes("upload")) {
+      $(item).remove();
+    }
+  });
   for (const file of files) {
     const stream = new FileReader();
     stream.onload = (e) => {
-      const imageItem = $("<img>");
-      imageItem.addClass("col-2 mt-2");
-      imageItem.attr("src", e.target.result);
+      const imageItem = $("<div>");
+      const image = $("<img>");
+      image.addClass("w-100");
+      imageItem.addClass("col-2 mt-2 position-relative addition-image");
+      image.attr("src", e.target.result);
+      imageItem.append(image);
+      imageItem.append(
+        `<span class="delete__image d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                <i class="bi bi-x-lg"></i>
+           </span>
+            `,
+      );
+
       imageList.append(imageItem);
     };
     stream.readAsDataURL(file);
   }
+
+  setTimeout(() => {
+    $(".delete__image").on("click", handleDeleteImage);
+  }, 1000);
 }
 
 function handleDeleteType() {
+  productQuantityForm.each((index, item) => {
+    if (
+      $(item).find("label").first().text().trim() ===
+      $(this).closest(".type__item").find(".btn").text().trim()
+    ) {
+      $(item).remove();
+    }
+  });
   $(this).closest(".type__item").remove();
 }
 

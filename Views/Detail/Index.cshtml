@@ -1,9 +1,21 @@
-﻿@model Product
-
+﻿@using Microsoft.EntityFrameworkCore
+@using NuGet.Packaging
+@model Product
+@inject ShoppingContext Context
 @{
-    // ViewBag.Title = Model.ProductName!;
+    ViewBag.Title = Model.ProductName!;
     Layout = "_Layout";
+    var getProductLetter = Model.ProductName!.Split();
+    var listProduct = await Context.Products
+        .Include(p => p.ImageUrls)
+        .Where(p => p.CategoryId == Model.CategoryId)
+        .ToListAsync();
+    var suggestProduct = new HashSet<Product>();
+    foreach (var s in getProductLetter)
+        suggestProduct.AddRange(listProduct.Where(l => l.ProductName!.Contains(s)).ToList());
+
 }
+
 
 @section Styles
 {
@@ -21,7 +33,7 @@
 <div class="container-md">
     @{
         await Html.RenderPartialAsync("Partials/ProductBriefing", Model);
-        await Html.RenderPartialAsync("Partials/SellerInfo", Model);
-        // await Html.RenderPartialAsync("Partials/PageProduct");
+        await Html.RenderPartialAsync("Partials/SellerInfo", Model.Seller);
+        await Html.RenderPartialAsync("Partials/PageProduct", Model);
     }
 </div>

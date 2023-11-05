@@ -84,15 +84,14 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasIndex(e => e.CartId, "CartId");
 
-            entity.HasIndex(e => e.ProductId, "ProductId");
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
                 .HasConstraintName("CartItem_ibfk_2");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.CartItems)
-                .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("CartItem_ibfk_1");
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.CartItems)
+                .HasForeignKey(d => d.TypeProductId)
+                .HasConstraintName("CartItem_TypeProduct_Id_fk");
         });
 
         modelBuilder.Entity<Category>(entity =>

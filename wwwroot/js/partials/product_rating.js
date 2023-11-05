@@ -6,6 +6,7 @@ const nextPage = $(".next-page");
 let currentPage = 0;
 
 //TODO handle request to server go to next page
+//BUG asdassa
 previousPage.on("click", handlePreviousPage);
 nextPage.on("click", handleNextPage);
 pageItems.on("click", handleSelectPage);

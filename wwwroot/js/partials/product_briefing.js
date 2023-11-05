@@ -5,6 +5,8 @@ const firstSubImage = subImageCol.first();
 const quantityInp = $(".data-quantity input");
 const sizeValue = $("#size");
 const btnSizes = $(".size-item");
+const typeProductInp = $("input[name='TypeProductId']");
+const sizeTypeInp = $("input[name='SizeType']");
 let lastImage = null;
 let lastSubImage = null;
 let sizeLastChoose = null;
@@ -94,6 +96,8 @@ function returnPreviewImage() {
 
 function classifyClickHandle(e) {
   const target = $(this);
+  console.log($(this).attr("id"));
+  typeProductInp.attr("value", $(this).attr("id"));
   if (lastChoose) {
     lastChoose.removeClass("viewing");
   }
@@ -108,10 +112,10 @@ function handleChangeSize() {
   if (sizeLastChoose !== null) {
     sizeLastChoose.removeClass("viewing");
   }
-
+  sizeTypeInp.attr("value", $(this).text().trim());
+  console.log(sizeTypeInp);
   sizeLastChoose = $(this);
   sizeLastChoose.addClass("viewing");
   const value = $(this).text().trim();
-  console.log(value);
   sizeValue.val(value);
 }

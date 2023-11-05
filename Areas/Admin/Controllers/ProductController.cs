@@ -26,6 +26,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             var url = HttpContext.Request.Path;
             if (!string.IsNullOrEmpty(categoryId))
             {
+                ViewBag.CategoryId = categoryId;
                 var products = await _context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
                 if (!string.IsNullOrEmpty(s))
                 {
@@ -125,6 +126,9 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             return RedirectToAction("Index", "Product");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Edit")]
         public async Task<IActionResult> OnEditPost(ProductModel productModel)
         {
             if (ModelState.IsValid)
@@ -144,14 +148,19 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             return View("Edit", productModel);
         }
 
-        public IActionResult Detail(string? id)
+        public async Task<IActionResult> Detail(string? id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return RedirectToAction("Index", "Product");
             }
 
-            return View();
+            var product = await _context.Products
+                .Include(p => p.ImageUrls)
+                .Include(p => p.TypeProducts)
+                .ThenInclude(p => p.Sizes)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            return View(product);
         }
 
 
@@ -165,7 +174,11 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
-            var targetProduct = await _context.Products.FindAsync(id);
+            var targetProduct = await _context.Products
+                .Include(p => p.ImageUrls)
+                .Include(p => p.TypeProducts)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (targetProduct != null)
             {
                 foreach (var targetProductImageUrl in targetProduct.ImageUrls)
