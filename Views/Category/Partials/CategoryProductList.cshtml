@@ -1,6 +1,19 @@
 @model List<Product>
 
-<div class="product-list py-3">
+@if (Model.Count == 0)
+{
+    <div class="d-flex flex-column align-items-center justify-content-center bg-white p-5">
+        <div >
+            <img style="max-height: 150px" src="~/imgs/not-found.png" alt="">
+        </div>
+        <div>
+            Không có sản phẩm nào
+        </div>
+    </div>
+}
+else
+{
+    <div class="product-list py-3">
     @* TODO binding product *@
     <div class="product-list__item row">
 
@@ -36,7 +49,7 @@
                                     </div>
                                     <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
                                         <div class="text-primary-custom product-item__price">
-                                            <span style="font-size:.7rem">đ</span>@($"{product.Price:###,###}")
+                                            <span style="font-size:.8rem">đ</span>@($"{product.Price:###,###}")
                                         </div>
                                         <div class="product-item__sold opacity-50">
                                             Đã bán @product.Sold
@@ -60,3 +73,4 @@
         }
     </div>
 </div>
+}
