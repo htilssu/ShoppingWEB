@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ShoppingWEB.Models.Category>
+﻿@model List<Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,6 +10,7 @@
 @section Styles
 {
     <link rel="stylesheet" href="~/css/actions/HomeCategory.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/partials/ProductListStyle.css" asp-append-version="true"/>
 }
 
 @section Scripts
@@ -31,6 +32,7 @@
             </svg>
             TẤT CẢ DANH MỤC
         </h3>
+
                     <ul class="category-list">
                         <li class="category-item category-item-header">
                             <a href="#" class="category-item-link ">Thời Trang Nam</a>
@@ -48,6 +50,25 @@
                             <a href="#" class="category-item-link">Quần Dài/Quần Âu</a>
                         </li>
                     </ul>
+
+        <ul class="category-list">
+            <li class="category-item category-item-header">
+                <a href="#" class="category-item-link ">Thời Trang Nam</a>
+            </li>
+            <li class="category-item category-item-active">
+                <a href="#" class="category-item-link"> Áo Khoác</a>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-item-link">Áo Vest và Blazer</a>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-item-link">Áo hoodie,Áo len & Áo nỉ</a>
+            </li>
+            <li class="category-item">
+                <a href="#" class="category-item-link">Quần Dài/Quần Âu</a>
+            </li>
+        </ul>
+
         <h3 class="category_heading-2">
             <svg enable-background="new 0 0 15 15" height="14px" viewBox="0 0 15 15" x="0" y="0" class="category_heading--img">
                 <g>
@@ -81,6 +102,30 @@
                         </ul>
                     </div>
         <div class="category-group">
+            <div class="category-group-title">Theo Danh Mục</div>
+            <ul class="category-group-list">
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Áo thun</span>
+                </li>
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Áo khoác</span>
+
+                </li>
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Hoodie & Áo nỉ </span>
+
+                </li>
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Áo sơ mi </span>
+
+                </li>
+            </ul>
+        </div>
+        <div class="category-group">
             <div class="category-group-title">Nơi Bán</div>
             <ul class="category-group-list">
                 <li class="category-group-item">
@@ -95,6 +140,14 @@
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
                     <span class="category-group-item-label">Đà Nẵng</span>
+
+
+                </li>
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Thái Nguyên</span>
+
+
                 </li>
                  <li class="category-group-item">
                      <input type="checkbox" class="category-group-item-check">
@@ -134,11 +187,22 @@
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
                     <span class="category-group-item-label">Levents</span>
+
     
+
+
+
                 </li>
                 <li class="category-group-item">
                     <input type="checkbox" class="category-group-item-check">
                     <span class="category-group-item-label">Bad Rabbit</span>
+
+
+
+                </li>
+                <li class="category-group-item">
+                    <input type="checkbox" class="category-group-item-check">
+                    <span class="category-group-item-label">Nicolas</span>
 
                 </li>
                   <li class="category-group-item">
@@ -264,6 +328,12 @@
 
             </div>
         </div>
+
+    </div>
+    <div class="product-list">
+        @{
+            await Html.RenderPartialAsync("Partials/CategoryProductList", Model);
+        }
     </div>
 
 </div>

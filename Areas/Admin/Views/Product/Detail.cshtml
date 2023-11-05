@@ -1,8 +1,138 @@
-﻿@model dynamic
+﻿@model Product
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Chi Tiết Sản Phẩm";
+    ViewBag.Page = "Product";
+    Layout = "_AdminLayout";
 }
 
-<h2>title</h2>
+<div class="bg-white main-container">
+    <div class="d-flex overflow-hidden">
+        <div class="item d-flex flex-column flex-grow-1">
+            <div class="main-container__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
+                <div class="d-flex align-items-center">Chi Tiết Sản Phẩm</div>
+                <div class="d-flex align-items-center gap-3">
+                    <a class="btn btn-primary" asp-action="Index">Quay Lại</a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success submit-edit" type="submit">Chỉnh Sửa</a>
+                </div>
+            </div>
+            <div class="main-container__main p-3">
+                <div class="d-flex">
+                    <div class="row p-2 flex-grow-1">
+                        <div class="col-6 mt-2">
+                            <div class="fw-bold">
+                                @Html.DisplayNameFor(p => p.ProductName)
+                            </div>
+                            <div class="">
+                                <input asp-for="ProductName" class="form-control" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-2">
+
+                        </div>
+                        <div class="col-12">
+                            <div class="fw-bold">
+                                @Html.DisplayNameFor(p => p.ShortDescription)
+                            </div>
+                            <div class="">
+                                <input asp-for="ShortDescription" class="form-control" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <div class="fw-bold mt-2">
+                                @Html.DisplayNameFor(p => p.Price)
+                            </div>
+                            <div class="">
+                                <input asp-for="Price" class="form-control" readonly="readonly"/>
+                            </div>
+                            <div class="fw-bold mt-2">
+                                @Html.DisplayNameFor(p => p.DiscountPercent)
+                            </div>
+                            <div class="">
+                                <input asp-for="DiscountPercent" class="form-control" readonly="readonly"/>
+                            </div>
+
+                            <div></div>
+                            <div class="fw-bold mt-2">
+                                @Html.DisplayNameFor(p => p.Publish)
+                            </div>
+                            <div class="">
+                                <input class="form-control" asp-for="Publish" readonly="readonly"/>
+                            </div>
+                            <div class="fw-bold mt-2">
+                                @Html.DisplayNameFor(p => p.CategoryId)
+                            </div>
+                            <div class="">
+                                <input class="form-control" asp-for="Category!.CategoryName" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-2 d-flex flex-column">
+                            <div class="fw-bold mt-2">
+                                @Html.DisplayNameFor(p => p.LongDescription)
+                            </div>
+                            <div class="h-100">
+                                <textarea asp-for="LongDescription" style="-webkit-user-drag: none;resize: none" class="form-control h-100" readonly="readonly"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="fw-bold mt-2 col-6">
+                                    <label class="form-label">Size</label>
+                                </div>
+
+
+                                <div class="product-type-list__size d-flex flex-wrap gap-3">
+                                    @foreach (var size in Model.TypeProducts.ToList()[0].Sizes)
+                                    {
+                                        <div class="size__item">
+                                            <div class="position-relative">
+                                                <div class="btn btn-outline-primary">
+                                                    @size.SizeType
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="fw-bold mt-2 col-6">
+                                    <label class="form-label">Loại Sản Phẩm</label>
+                                </div>
+
+                                <div class="product-type-list d-flex flex-wrap gap-3">
+                                    @foreach (var modelTypeProduct in Model.TypeProducts)
+                                    {
+                                        <div class="type__item">
+                                            <div class="position-relative">
+                                                <div class="btn showQuantity btn-outline-primary">
+                                                    @modelTypeProduct.TypeName
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <div class="d-flex row justify-content-between">
+                                <div class="col-12 row image-list mt-3">
+                                    @foreach (var imageUrl in Model.ImageUrls.ToList())
+                                    {
+                                        <div class="position-relative col-2 mt-2">
+                                            <img src="@imageUrl.ImagePath" class="w-100" alt="anh san pham"/>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img-preview">
+                        <img src="@Model.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" width="300px" id="display-img" alt="Ảnh">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -50,7 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('password-error').style.display = 'none';
             document.getElementById('password').classList.remove('error');
         }
-       
+        
+        window.location.href = https://localhost:7278/login
     });
 });
     

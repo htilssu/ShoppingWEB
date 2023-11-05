@@ -22,7 +22,10 @@ namespace ShoppingWEB.Controllers
         // GET: Category
         public async Task<IActionResult> Index(string? id)
         {
-            return View(await _context.Categories.ToListAsync());
+            var productList = await _context.Products
+                .Include(p => p.ImageUrls)
+                .Where(p => p.CategoryId == id).ToListAsync();
+            return View(productList);
         }
     }
 }
