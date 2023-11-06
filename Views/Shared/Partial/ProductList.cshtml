@@ -22,7 +22,7 @@ else
 
             @foreach (var product in Model.Where(product => product.Publish == 1))
             {
-                <div class="product-item p-1 col-6 col-sm-6 col-md-3 col-lg-2 ">
+                <div class="product-item p-1 col-6 col-sm-3 col-lg-2 ">
                     <div class="bg-white position-relative a h-100">
                         <a class="text-decoration-none bg-white h-100" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
                             <div class="product-item__content h-100">

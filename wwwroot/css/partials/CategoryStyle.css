@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+@media screen and (max-width: 675px) {
+  .category {
+    display: none;
+  }
+}
 .category .category-title {
   font-size: 1.3rem;
 }
@@ -18,6 +23,16 @@
   display: flex;
   flex-flow: column wrap;
   align-content: start;
+}
+@media screen and (max-width: 768px) {
+  .category .category-item .item-list {
+    width: 280%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .category .category-item .item-list {
+    width: 233.3333333333%;
+  }
 }
 .category .category-item .item-list .ct-item {
   height: 180px;
