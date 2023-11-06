@@ -27,7 +27,7 @@ namespace ShoppingWEB.Controllers
             var productList = await _context.Products
                 .Include(p => p.ImageUrls)
                 .Where(p => p.CategoryId == id).ToListAsync();
-           var result= await productList.ToPagedListAsync(pageNum, 18);
+           var result= await productList.ToPagedListAsync(pageNum, 16);
             ViewBag.Controller = "Category";
             ViewBag.CategoryId = id;
             return View(result);
