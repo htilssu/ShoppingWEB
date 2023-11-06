@@ -8,12 +8,11 @@ namespace ShoppingWEB.Controllers;
 public class LoginController : Controller
 {
     private readonly SignInManager<UserModel> _signInManager;
-    
+
 
     public LoginController(SignInManager<UserModel> signInManager)
     {
         _signInManager = signInManager;
-
     }
 
 

@@ -22,7 +22,7 @@ public class HomeController : Controller
         ViewBag.Controller = "Home";
         int pageNum = (page ?? 1);
         var productList = await _context.Products.Include(p => p.ImageUrls).ToListAsync();
-        return View(await productList.ToPagedListAsync(pageNum,pageSize));
+        return View(await productList.ToPagedListAsync(pageNum, pageSize));
     }
 
     public IActionResult AccessDenied()

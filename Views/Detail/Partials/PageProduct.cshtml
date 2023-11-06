@@ -10,7 +10,7 @@
 
 
     var maybeLike = await Shopping.Products.Include(p => p.ImageUrls)
-        .Take(50).ToPagedListAsync((int)ViewBag.Page,18);
+        .Take(50).ToPagedListAsync((int)ViewBag.Page, 18);
 }
 
 <div class="mt-3 d-flex">

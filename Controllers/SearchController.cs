@@ -15,7 +15,7 @@ public class SearchController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index(string? search,int?page)
+    public async Task<IActionResult> Index(string? search, int? page)
     {
         ViewBag.Page = page ?? 1;
         if (string.IsNullOrEmpty(search)) return RedirectToAction("Index", "Home");
