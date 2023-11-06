@@ -1,4 +1,6 @@
-﻿@model List<Product>
+﻿@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IPagedList<Product>
 
 @if (Model.Count == 0)
 {
@@ -76,4 +78,10 @@ else
             }
         </div>
     </div>
+    <div class="page">
+    <div class="MenuPage">
+       @Html.PagedListPager(Model,page=>Url.Action("Index", (string)ViewBag.Controller, new{page=page, id= ViewBag.ProductId}))
+    </div>
+    </div>
+    
 }

@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("btn-register")
     .addEventListener("click", function (event) {
@@ -49,6 +49,5 @@
         document.getElementById("password-error").style.display = "none";
         document.getElementById("password").classList.remove("error");
       }
-      console.log(111);
     });
 });

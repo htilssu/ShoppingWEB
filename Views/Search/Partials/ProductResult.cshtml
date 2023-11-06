@@ -1,10 +1,10 @@
 ﻿@using Microsoft.EntityFrameworkCore
-@model List<Product>;
+@model IPagedList<Product>;
 @inject ShoppingContext Context
 @{
-    var maybeLike = Context.Products
+    var maybeLike = await Context.Products
         .Include(p => p.ImageUrls)
-        .Take(12).ToList();
+        .Take(12).ToPagedListAsync((int)ViewBag.Page,16);
 }
 
 <div class="search-result">
