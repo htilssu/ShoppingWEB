@@ -15,32 +15,32 @@
                 <input type="text" asp-for="UserName" class="form-control" placeholder="Tên đăng nhập" id="username">
                 <span asp-validation-for="UserName" class="text-danger"></span>
                 <small class="error-message" id="username-error">Tên đăng nhập không hợp lệ.Vui lòng kiểm tra lại</small>
+                <small class="error-message">@(ViewBag.UserExist ?? "")</small>
 
-             
-                
+
             </div>
             <div class="username mb-3 d-flex flex-column">
                 <input type="text" asp-for="NumberPhone" class="form-control" placeholder="Số điện thoại" id="phone">
-                
+
                 <span asp-validation-for="NumberPhone" class="text-danger"></span>
                 <small class="error-message" id="phone-error">Số điện thoại không hợp lệ.Vui lòng kiểm tra lại</small>
-                
-                
+
+
             </div>
             <div class="username mb-3 d-flex flex-column">
                 <input type="text" asp-for="Email" class="form-control" placeholder="Email" id="email">
-                
+
                 <span asp-validation-for="Email" class="text-danger"></span>
-                
+
                 <small class="error-message" id="email-error">Email không hợp lệ.Vui lòng kiểm tra lại</small>
-                
+
             </div>
             <div class="pass mb-3 d-flex flex-column">
                 <div class="d-flex position-relative">
                     <input type="password" asp-for="Password" class="form-control" placeholder="Mật khẩu" id="password">
-                    
+
                     <div class="pass-toggle position-absolute"></div>
-                    
+
                 </div>
                 <span asp-validation-for="Password" class="text-danger"></span>
                 <small class="error-message" id="password-error">Mật khẩu không hợp lệ.Vui lòng kiểm tra lại</small>
@@ -48,20 +48,20 @@
             <div class="pass mb-3 d-flex flex-column">
                 <div class="d-flex position-relative">
                     <input type="password" asp-for="RePassword" class="form-control" placeholder="Nhập lại mật khẩu" id="repassword">
-                   
+
                     <div class="pass-toggle position-absolute"></div>
                 </div>
                 <span asp-validation-for="RePassword" class="text-danger"></span>
                 <small class="error-message" id="repassword-error">Mật khẩu không trùng khớp</small>
-               
-                
+
+
             </div>
             <button type="submit" class="btn btn-danger mb-2" id="btn-register">Đăng ký</button>
         </form>
     </div>
 </div>
+
 @section Scripts
 {
     <script src="~/js/actions/login.js" asp-append-version="true"></script>
 }
-

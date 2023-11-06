@@ -61,8 +61,7 @@ public class RegisterController : Controller
             }
             else
             {
-                ModelState.TryAddModelError("exist", "Người dùng đã tồn tại");
-                /*TODO error didn't display in View*/
+                ViewBag.UserExist = "Người dùng đã tồn tại";
                 return View();
             }
         }

@@ -135,7 +135,9 @@
                         <div class="btn btn-outline-primary">
                             @size.SizeType
                         </div>
-                        <span class="delete__size d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                        <span class="delete__size d-flex justify-content-center align-items-center position-absolute
+                             top-0 start-100 translate-middle badge rounded-circle bg-danger"
+                              id="@size.SizeType">
                             <i class="bi bi-x-lg"></i>
                         </span>
                     </div>
@@ -211,6 +213,7 @@
                             </div>
                             <div>
                                 <label class="form-label">Chọn ảnh</label>
+                                <input type="file" accept="image/png,image/jpeg,image/jpg,image/svg" class="form-control" name="@typeList[i].ImageFile"/>
                             </div>
                         </div>
 
@@ -221,12 +224,12 @@
                                 var sizeList = typeList[i].Sizes.ToList();
                                 for (var i1 = 0; i1 < sizeList.Count; i1++)
                                 {
-                                    <div class="col-6 mt-2">
+                                    <div class="col-6 mt-2 @sizeList[i1].SizeType">
                                         @sizeList[i1].SizeType
                                         <input type="hidden" name="TypeProducts[@i].Sizes[@i1].SizeType" value="@sizeList[i1].SizeType"/>
 
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6 @sizeList[i1].SizeType">
                                         <input class="form-control" name="TypeProducts[@i].Sizes[@i1].Quantity" value="@sizeList[i1].Quantity">
                                     </div>
                                 }
@@ -253,7 +256,7 @@
             </div>
         </div>
         <div class="col-12 row image-list mt-3">
-            @foreach (var imageUrl in Model.ImageUrls.ToList())
+            @foreach (var imageUrl in Model.ImageUrls.Where(i => i.Thumbnail == false).ToList())
             {
                 <div class="position-relative col-2 mt-2">
                     <img src="@imageUrl.ImagePath" class="w-100" alt="anh san pham"/>

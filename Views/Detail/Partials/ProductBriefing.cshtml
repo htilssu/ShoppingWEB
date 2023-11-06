@@ -134,7 +134,6 @@
                         <div class="size-list d-flex flex-wrap">
                             @foreach (var o in Model.TypeProducts.FirstOrDefault()!.Sizes)
                             {
-                                // TODO each typeproduct has own quantity
                                 <button type="button" class="size-item">
                                     @o.SizeType
                                 </button>
@@ -161,6 +160,7 @@
                     </div>
                     <div class="remaining mx-3 opacity-75">
                         @* TODO remaining product *@
+                        @* TODO each typeproduct has own quantity *@
                         <span>@totalRemainingQuantity sản phẩm có sẵn</span>
                     </div>
                 </div>

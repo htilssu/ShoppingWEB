@@ -14,7 +14,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 {
     [Route("api/image")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class ImageUrlController : ControllerBase
     {
         private readonly ShoppingContext _context;
@@ -26,8 +26,8 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
 
         // DELETE: api/ImageUrlController/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteImageUrl(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteImageUrl([FromQuery] string id)
         {
             var imageUrl = _context.ImageUrls.FirstOrDefault(x => x.ImagePath == id);
             if (imageUrl == null)

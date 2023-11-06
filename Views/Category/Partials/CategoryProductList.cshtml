@@ -14,63 +14,65 @@
 else
 {
     <div class="product-list py-3">
-    @* TODO binding product *@
-    <div class="product-list__item row">
+        <div class="product-list__item row">
 
 
-        @foreach (var product in Model.Where(product => product.Publish == 1))
-        {
-            <div class="product-item p-1 col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="bg-white position-relative a h-100">
-                    <a class="text-decoration-none bg-white h-100" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
-                        <div class="product-item__content h-100">
-                            <div class="d-flex flex-column h-100">
-                                <div class="product-img">
-                                    <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="">
-                                </div>
-                                <div class="product-footer mt-3 px-2 py-1 h-100 d-flex flex-column justify-content-between">
-                                    <div class="product-item__name mb-2">
-                                        @product.ProductName
+            @foreach (var product in Model.Where(product => product.Publish == 1))
+            {
+                <div class="product-item p-1 col-6 col-sm-6 col-md-4 col-lg-3">
+                    <div class="bg-white position-relative a h-100">
+                        <a class="text-decoration-none bg-white h-100" asp-controller="Detail" asp-action="Index" asp-route-id="@product.Id">
+                            <div class="product-item__content h-100">
+                                <div class="d-flex flex-column h-100">
+                                    <div class="product-img">
+                                        <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="">
                                     </div>
-                                    <div class="product-item__coupon d-flex mb-2">
-                                        <div class="product-item__coupon d-flex px-2">
-                                            <div class="mw-100 position-relative">
-                                                <svg class="jagged-left h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
-                                                    <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
-                                                </svg>
-                                                <div class="w-100 text-white coupon-value px-1">
-                                                    4% Giảm
+                                    <div class="product-footer mt-3 px-2 py-1 h-100 d-flex flex-column justify-content-between">
+                                        <div class="product-item__name mb-2">
+                                            @product.ProductName
+                                        </div>
+                                        <div class="product-item__coupon d-flex mb-2">
+                                            @if (product.DiscountPercent != 0)
+                                            {
+                                                <div class="product-item__coupon d-flex px-2">
+                                                    <div class="mw-100 position-relative">
+                                                        <svg class="jagged-left h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                            <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                        </svg>
+                                                        <div class="w-100 text-white coupon-value px-1">
+                                                            @product.DiscountPercent% Giảm
+                                                        </div>
+                                                        <svg class="jagged-right h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                            <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="rotate(180) translate(-3 -15)" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                                <svg class="jagged-right h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
-                                                    <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="rotate(180) translate(-3 -15)" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
-                                                </svg>
+                                            }
+                                        </div>
+                                        <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
+                                            <div class="text-primary-custom product-item__price">
+                                                <span style="font-size:.8rem">đ</span>@($"{product.Price:###,###}")
+                                            </div>
+                                            <div class="product-item__sold opacity-50">
+                                                Đã bán @product.Sold
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
-                                        <div class="text-primary-custom product-item__price">
-                                            <span style="font-size:.8rem">đ</span>@($"{product.Price:###,###}")
-                                        </div>
-                                        <div class="product-item__sold opacity-50">
-                                            Đã bán @product.Sold
-                                        </div>
-                                    </div>
+
+
                                 </div>
-
-
+                            </div>
+                        </a>
+                        <div class="position-absolute d-none justify-content-center align-items-center area-product-hover">
+                            <div class="text-white">
+                                @* TODO render similar link *@
+                                <a class="text-decoration-none text-white" href="">Sản phẩm tương tự</a>
                             </div>
                         </div>
-                    </a>
-                    <div class="position-absolute d-none justify-content-center align-items-center area-product-hover">
-                        <div class="text-white">
-                            @* TODO render similar link *@
-                            <a class="text-decoration-none text-white" href="">Sản phẩm tương tự</a>
-                        </div>
                     </div>
-                </div>
 
-            </div>
-        }
+                </div>
+            }
+        </div>
     </div>
-</div>
 }

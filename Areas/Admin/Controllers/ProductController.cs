@@ -1,3 +1,4 @@
+using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Areas.Admin.Models;
@@ -67,7 +68,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 //Binding ProductTypeId for size
                 foreach (var productTypeProduct in product.TypeProducts)
                 {
-                    var typeImagePath = await productTypeProduct.ImageFile.SaveImage();
+                    var typeImagePath = await productTypeProduct.ImageFile!.SaveImage();
                     productTypeProduct.ImagePath = typeImagePath;
                     foreach (var size in productTypeProduct.Sizes)
                     {
@@ -170,13 +171,20 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                         }
                     }
 
-                    var field = typeof(Product).GetFields();
-                    foreach (var fieldInfo in field)
+                    var propertyInfos = typeof(Product).GetProperties();
+                    foreach (var propertyInfo in propertyInfos)
                     {
-                        var value = fieldInfo.GetValue(productModel);
-                        fieldInfo.SetValue(product, value);
+                        var value = propertyInfo.GetValue(productModel);
+                        if (value == null || value is IList { Count: 0 })
+                        {
+                            continue;
+                        }
+
+                        propertyInfo.SetValue(product, value);
                     }
 
+                    // TODO set delay for api delete image
+                    await _context.SaveChangesAsync();
                     return View("Edit", product);
                 }
                 else
