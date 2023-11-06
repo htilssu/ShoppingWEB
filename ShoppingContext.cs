@@ -226,6 +226,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.Property(e => e.JoinAt).HasColumnType("date");
             entity.Property(e => e.SellerName).HasMaxLength(255);
+            entity.Property(e => e.Address).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Size>(entity =>

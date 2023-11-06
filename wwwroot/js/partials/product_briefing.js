@@ -5,6 +5,7 @@ const firstSubImage = subImageCol.first();
 const quantityInp = $(".data-quantity input");
 const sizeValue = $("#size");
 const btnSizes = $(".size-item");
+const form = $("form .btn");
 const typeProductInp = $("input[name='TypeProductId']");
 const sizeTypeInp = $("input[name='SizeType']");
 let lastImage = null;
@@ -24,8 +25,17 @@ quantityInp.on("input", handleQuantityOnInput);
 quantityInp.on("change", handleQuantityInputChange);
 $("#decrease").on("click", handleQuantityDecrease);
 $("#increase").on("click", handleQuantityIncrease);
+form.on("click", handleSubmit);
 
 //Function
+
+function handleSubmit(e) {
+  console.log("hi");
+  if (typeProductInp.val() === "" || sizeTypeInp.val() === "") {
+    e.preventDefault();
+  }
+}
+
 function subImageHandle() {
   const target = $(this);
   changePreviewImage(target.find("img").attr("src"));
@@ -96,7 +106,6 @@ function returnPreviewImage() {
 
 function classifyClickHandle(e) {
   const target = $(this);
-  console.log($(this).attr("id"));
   typeProductInp.attr("value", $(this).attr("id"));
   if (lastChoose) {
     lastChoose.removeClass("viewing");
