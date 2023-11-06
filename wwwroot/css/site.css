@@ -308,3 +308,36 @@ header .navbar.nav-social {
 .bg-custom-secondary {
     background-color: #ce6c09 !important;
 }
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    align-items: center!important;
+    justify-content: center!important;
+    font-size: 1.4rem;
+    gap:2rem;
+   
+}
+.pagination a{
+    text-decoration: none;
+    padding: 0  14px;
+    color: rgba(0, 0, 0, 0.4)!important;
+}
+.MenuPage{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.active{
+    width: 100%;
+    height: 100%;
+    background-color: #c1712a;
+    padding: 4px 16px;
+    color: white;
+}
+
+
+
+

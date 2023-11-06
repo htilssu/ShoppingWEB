@@ -1,4 +1,6 @@
-﻿@model List<Product>
+﻿@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model IPagedList<Product>
 
 @if (Model.Count == 0)
 {
@@ -33,19 +35,22 @@ else
                                             @product.ProductName
                                         </div>
                                         <div class="product-item__coupon d-flex mb-2">
-                                            <div class="product-item__coupon d-flex px-2">
-                                                <div class="mw-100 position-relative">
-                                                    <svg class="jagged-left h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
-                                                        <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
-                                                    </svg>
-                                                    <div class="w-100 text-white coupon-value px-1">
-                                                        4% Giảm
+                                            @if (product.DiscountPercent != 0)
+                                            {
+                                                <div class="product-item__coupon d-flex px-2">
+                                                    <div class="mw-100 position-relative">
+                                                        <svg class="jagged-left h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                            <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                        </svg>
+                                                        <div class="w-100 text-white coupon-value px-1">
+                                                            @product.DiscountPercent% Giảm
+                                                        </div>
+                                                        <svg class="jagged-right h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
+                                                            <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="rotate(180) translate(-3 -15)" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
+                                                        </svg>
                                                     </div>
-                                                    <svg class="jagged-right h-100 position-absolute" viewBox="-0.5 -0.5 4 16">
-                                                        <path d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3" stroke-width="1" transform="rotate(180) translate(-3 -15)" stroke="currentColor" fill="rgb(232, 150, 57)"></path>
-                                                    </svg>
                                                 </div>
-                                            </div>
+                                            }
                                         </div>
                                         <div class="product-item__analysis-info d-flex justify-content-between align-items-center">
                                             <div class="text-primary-custom product-item__price">
@@ -73,4 +78,10 @@ else
             }
         </div>
     </div>
+    <div class="page">
+    <div class="MenuPage">
+       @Html.PagedListPager(Model,page=>Url.Action("Index", (string)ViewBag.Controller, new{page=page, id= ViewBag.ProductId}))
+    </div>
+    </div>
+    
 }

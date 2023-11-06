@@ -12,7 +12,8 @@ public class CartController : Controller
     private UserManager<UserModel> _userManager;
     private SignInManager<UserModel> _signInManager;
 
-    public CartController(ShoppingContext context, UserManager<UserModel> userManager, SignInManager<UserModel> signInManager)
+    public CartController(ShoppingContext context, UserManager<UserModel> userManager,
+        SignInManager<UserModel> signInManager)
     {
         _context = context;
         _userManager = userManager;
@@ -27,19 +28,25 @@ public class CartController : Controller
             .ThenInclude(i => i.TypeProduct)
             .ThenInclude(i => i!.Product)
             .FirstOrDefault(c => c.CustomerId == user!.Id);
-        
+
         return View(cartUser);
     }
 
     //Action thêm product vào giỏ hàng
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddToCard(CartItem cartItem)
     {
-        if (ModelState.IsValid)  //kiem tra cartItem co null khong
+        if (ModelState.IsValid) //kiem tra cartItem co null khong
         {
+            var user = await _userManager.GetUserAsync(User);
+            var cartUser = _context.Carts
+                .FirstOrDefault(c => c.CustomerId == user!.Id);
+            cartItem.CartId = cartUser!.Id;
             _context.CartItems.Add(cartItem);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
-        
+
         return View("Index");
     }
 

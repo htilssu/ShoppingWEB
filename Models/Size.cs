@@ -7,8 +7,9 @@ public partial class Size
 {
     public string? TypeProductId { get; set; }
 
-    public string SizeType { get; set; } = null!;
-    public int Quantity { get; set; } = 0;
+    public string? SizeType { get; set; }
+
+    public int? Quantity { get; set; }
 
     public virtual TypeProduct? TypeProduct { get; set; }
 }

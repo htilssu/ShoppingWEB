@@ -17,8 +17,12 @@ public class DetailController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index(string? id)
+    public async Task<IActionResult> Index(string? id,int?page)
     {
+        ViewBag.Page = page ?? 1;
+        ViewBag.Controller = "Detail";
+        ViewBag.ProductId = id ?? "";
+        
         if (string.IsNullOrEmpty(id))
         {
             return RedirectToAction("Index", "Home");

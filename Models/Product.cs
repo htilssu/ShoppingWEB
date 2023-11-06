@@ -11,26 +11,31 @@ public partial class Product
 
     [Display(Name = "Giá")] public double? Price { get; set; }
 
-    [Display(Name = "Giảm Giá (%)")] public double? DiscountPercent { get; set; }
+    [Display(Name = "Giảm Giá (%)")] public double? DiscountPercent { get; set; } = 0;
 
     [Display(Name = "Mô Tả Ngắn")] public string? ShortDescription { get; set; }
 
     [Display(Name = "Mô Tả Chi Tiết")] public string? LongDescription { get; set; }
 
-    [Display(Name = "Công Khai")] public sbyte? Publish { get; set; }
+    [Display(Name = "Công Khai")] public sbyte? Publish { get; set; } = 1;
 
     [Display(Name = "Mặt Hàng")] public string? CategoryId { get; set; }
 
-    public Seller? Seller { get; set; }
 
     public int? Rating { get; set; } = 0;
 
-    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+    public string? MadeIn { get; set; }
+    public string? Style { get; set; }
+
+    public string? Material { get; set; }
+    public int? Sold { get; set; } = 0;
+
 
     public virtual Category? Category { get; set; }
 
-    public int? Sold { get; set; } = 0;
     public virtual ICollection<ImageUrl> ImageUrls { get; set; } = new List<ImageUrl>();
+
+    public virtual Seller? Seller { get; set; }
 
     [Display(Name = "Loại Sản Phẩm")]
     public virtual ICollection<TypeProduct> TypeProducts { get; set; } = new List<TypeProduct>();

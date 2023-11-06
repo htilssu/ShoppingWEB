@@ -7,6 +7,10 @@
         .Where(p => p.CategoryId == Model.CategoryId)
         .OrderByDescending(p => p.Sold)
         .Take(6);
+
+
+    var maybeLike = await Shopping.Products.Include(p => p.ImageUrls)
+        .Take(50).ToPagedListAsync((int)ViewBag.Page,18);
 }
 
 <div class="mt-3 d-flex">
@@ -57,6 +61,6 @@
         <div class="maybe-like__header mb-2">
             <div class="text-uppercase opacity-75 fs-6">Có thể bạn cũng thích</div>
         </div>
-        @{ await Html.RenderPartialAsync("Partial/ProductList", topProduct.ToList()); }
+        @{ await Html.RenderPartialAsync("Partial/ProductList", maybeLike); }
     </div>
 </div>

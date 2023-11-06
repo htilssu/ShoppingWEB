@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB;
 using ShoppingWEB.Models;
+using X.PagedList;
 
 namespace ShoppingWEB.Controllers
 {
@@ -20,12 +21,16 @@ namespace ShoppingWEB.Controllers
         }
 
         // GET: Category
-        public async Task<IActionResult> Index(string? id)
+        public async Task<IActionResult> Index(string? id,int?page)
         {
+            var pageNum = page ?? 1;
             var productList = await _context.Products
                 .Include(p => p.ImageUrls)
                 .Where(p => p.CategoryId == id).ToListAsync();
-            return View(productList);
+           var result= await productList.ToPagedListAsync(pageNum, 18);
+            ViewBag.Controller = "Category";
+            ViewBag.CategoryId = id;
+            return View(result);
         }
     }
 }

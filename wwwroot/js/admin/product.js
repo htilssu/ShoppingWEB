@@ -1,5 +1,8 @@
 let deleteImageArr = [];
+let sizeArr = [];
+let typeArr = [];
 let btnClosePop = $(".btn-close__popup");
+const btnSubmit = $('button[type="submit"]');
 const btnShowSizePop = $(".btn-show__size");
 const btnShowTypePop = $(".btn-show__type");
 const btnAddSize = $(".btn-add__size");
@@ -17,6 +20,7 @@ const productListType = $(".product-type-list");
 const productTypeForm = $(".product-type__form");
 let productQuantityForm = $(".product-quantity__form");
 let btnShowQuantity = $(".showQuantity");
+let btnSaveQuantity = $(".btn-save__quantity");
 
 btnShowQuantity.on("click", handleShowQuantityForm);
 btnClosePop.on("click", handleCloseProductPopup);
@@ -29,14 +33,20 @@ btnShowTypePop.on("click", handleShowProductTypePopup);
 imageSelector.on("change", handleChangeListImage);
 btnDeleteImage.on("click", handleDeleteImage);
 btnSubmitEdit.on("click", handleSubmitEdit);
+btnSaveQuantity.on("click", handleSaveQuantity);
+
+function handleSaveQuantity() {
+  $(this).closest(".product-quantity-form__list").addClass("d-none");
+  $(this).closest(".popup-form").addClass("d-none");
+}
 
 function handleSubmitEdit() {
   deleteImageArr.forEach((item, index) => {
     $.ajax({
-      url: `https://localhost:7278/api/image/${item}`,
+      url: `https://localhost:7278/api/image?id=${item}`,
       type: "DELETE",
-      headers: {
-        cookie: document.cookie,
+      xhrFields: {
+        withCredentials: true,
       },
     });
   });
@@ -126,7 +136,7 @@ function handleShowQuantityForm() {
 
 function handleAddType() {
   const sizeList = $(".size__item");
-
+  // TODO prevent user add if dont have any size
   productListType.append(`
   <div class="type__item">
         <div class="position-relative">
@@ -245,11 +255,13 @@ function handleAddSize() {
         </div>
     </div>
   `);
-  productTypeSizeForm.find("input").val("");
+  const rowSize = productTypeSizeForm.find("input").val("");
   $(".delete__size").on("click", handleDeleteSize);
 }
 
 function handleDeleteSize() {
+  const size = $(this).attr("id");
+  productQuantityFormList.find(`.${size}`).remove();
   $(this).closest(".size__item").remove();
 }
 
@@ -268,4 +280,22 @@ function handleCloseProductPopup() {
   productTypeSizeForm.find("input").val("");
 }
 
-function checkValidate() {}
+function checkValidate() {
+  if ($(".product-type-list__size").find(".size__item").length === 0) {
+    return;
+  }
+  if ($(".product-type-list").find(".btn").length === 0) {
+    return;
+  }
+  $('input[type="text"]').each((index, item) => {
+    if ($(item).val() === "") return;
+  });
+
+  $('input[type="file"]').each((index, item) => {
+    if (item.values.length === 0) {
+      return;
+    }
+  });
+
+  btnSubmit.removeAttr("disable");
+}

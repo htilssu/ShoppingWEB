@@ -15,10 +15,9 @@ public class SearchController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index(string? search)
+    public async Task<IActionResult> Index(string? search,int?page)
     {
-        //TODO fix null product list
-
+        ViewBag.Page = page ?? 1;
         if (string.IsNullOrEmpty(search)) return RedirectToAction("Index", "Home");
         ViewBag.Search = search;
         var listProduct = await FindProductByName(search);
@@ -42,6 +41,7 @@ public class SearchController : Controller
     {
         var result1 = await _context
             .Products
+            .Include(p => p.ImageUrls)
             .Where(product => product.ProductName!.Contains(name)).ToListAsync();
         var listResult = new List<Product>();
         listResult.AddRange(result1);
