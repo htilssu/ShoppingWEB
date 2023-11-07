@@ -1,6 +1,6 @@
 let deleteImageArr = [];
 let sizeArr = [];
-let typeArr = [];
+let typeProduct = [];
 let btnClosePop = $(".btn-close__popup");
 const btnSubmit = $('button[type="submit"]');
 const btnShowSizePop = $(".btn-show__size");
@@ -96,12 +96,10 @@ function handleChangeListImage(ev) {
       imageItem.addClass("col-2 mt-2 position-relative addition-image");
       image.attr("src", e.target.result);
       imageItem.append(image);
-      imageItem.append(
-        `<span class="delete__image d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+      imageItem.append(`<span class="delete__image d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                 <i class="bi bi-x-lg"></i>
            </span>
-            `,
-      );
+            `);
 
       imageList.append(imageItem);
     };
@@ -114,44 +112,35 @@ function handleChangeListImage(ev) {
 }
 
 function handleDeleteType() {
-  productQuantityForm.each((index, item) => {
-    if (
-      $(item).find("label").first().text().trim() ===
-      $(this).closest(".type__item").find(".btn").text().trim()
-    ) {
-      $(item).remove();
-    }
-  });
-  $(this).closest(".type__item").remove();
+  const deleteTarget = $(this).closest(".type__item");
+  const deleteId = deleteTarget.attr("id");
+  productQuantityFormList.find(`#${deleteId}`).remove();
 }
 
 function handleShowQuantityForm() {
   productQuantityFormList.removeClass("d-none");
-  productQuantityForm.each((index, item) => {
-    if ($(item).find("label").first().text().trim() === $(this).text().trim()) {
-      $(item).removeClass("d-none");
-    }
-  });
+  const targetId = $(this).attr("id");
+
+  productQuantityFormList.find(`#${targetId}`).removeClass("d-none");
 }
 
 function handleAddType() {
-  const sizeList = $(".size__item");
-  // TODO prevent user add if dont have any size
-  productListType.append(`
-  <div class="type__item">
-        <div class="position-relative">
-            <div class="btn showQuantity btn-outline-primary">
-                ${productTypeForm.find("input").first().val()}
-            </div>
-            <span class="delete__type d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
-                <i class="bi bi-x-lg"></i>
-            </span>
-        </div>
-    </div>
-  `);
+  const newTypeName = productTypeForm.find("input").first().val();
+  for (const item of typeProduct) {
+    if (item.name === newTypeName) return;
+  }
+  typeProduct.push({
+    id: CreateUUID(),
+    name: newTypeName,
+    size: [...sizeArr],
+  });
 
-  productQuantityFormList.append(
-    `<div class="product-quantity__form d-none popup-form position-absolute">
+  const newType = typeProduct[typeProduct.length - 1];
+  const indexProduct = typeProduct.length - 1;
+  console.log(typeProduct);
+
+  productQuantityFormList.append(`
+  <div class="product-quantity__form d-none popup-form position-absolute" id="${newType.id}">
       <div class="quantity-form__header p-2">
           <div class="text-uppercase fw-bold">
               Thêm số lượng sản phẩm
@@ -160,26 +149,19 @@ function handleAddType() {
       <div class="quantity-form__main p-2">
           <div class="row">
              <div> 
-             <label class="form-label fw-bold fs-5">${$(this)
-               .closest(".popup-form")
-               .find("input")
-               .val()}</label>
-             <input value="${$(this)
-               .closest(".popup-form")
-               .find("input")
-               .val()}" class="form-control" name="TypeProducts[${
-               productQuantityForm.length
-             }].TypeName" type="hidden">
+             <label class="form-label fw-bold fs-5">${newType.name}</label>
+             <input value="${newType.name}" class="form-control" name="TypeProducts[${indexProduct}].TypeName" type="hidden">
              </div>
             <div>                                                       
                 <label class="form-label">Chọn ảnh</label>
-              
+               <input name="TypeProducts[${indexProduct}].ImageFile" class="form-control" accept="image/png, image/jpeg, image/bmp, image/jpg, image/svg" type="file">
          </div>
-</div>
+  </div>
         
           <div class="row mt-2">
              <div class="col-6">Size</div>
           <div class="col-6">Số Lượng</div>
+          
           </div>
                                                
                                               
@@ -193,41 +175,40 @@ function handleAddType() {
                                             </div>
                                             
                                             
-                                        </div>`,
-  );
+                                        </div>
+  `);
+
+  productListType.append(`
+  <div class="type__item" id="${newType.id}">
+        <div class="position-relative">
+            <div class="btn showQuantity btn-outline-primary" id="${newType.id}">
+                ${newType.name}
+            </div>
+            <span class="delete__type d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                <i class="bi bi-x-lg"></i>
+            </span>
+        </div>
+    </div>
+  `);
 
   productQuantityForm = $(".product-quantity__form");
-  const imgTypeProduct = productTypeForm
-    .find("input")
-    .eq(1)
-    .clone()
-    .attr("name", `TypeProducts[${productQuantityForm.length - 1}].ImageFile`);
   const lastForm = productQuantityForm.last();
-  const rowHide = lastForm.find(".row").eq(0).find("div").last();
-  rowHide.append(imgTypeProduct);
-
   const row = lastForm.find(".row").eq(1);
+  console.log(row);
 
-  sizeList.map((index, item) => {
+  newType.size.forEach((item, index) => {
     row.append(
-      `<div class="col-6 mt-2">${$(item)
-        .find(".btn.btn-outline-primary")
-        .text()
-        .trim()}
-<input type="text" name="TypeProducts[${
-        productQuantityForm.length - 1
-      }].Sizes[${index}].SizeType" value="${$(item)
-        .find(".btn.btn-outline-primary")
-        .text()
-        .trim()}" hidden="hidden">
+      `<div class="row" id="${item.id}">
+<div class="col-6 mt-2">${item.size}
+<input type="text" name="TypeProducts[${indexProduct}].Sizes[${index}].SizeType" value="${item.size}" hidden="hidden">
 </div>
         
         <div class="col-6 ">
-        <input class="form-control" name="TypeProducts[${
-          productQuantityForm.length - 1
-        }].Sizes[${index}].Quantity" value="0"></div>`,
+        <input class="form-control" name="TypeProducts[${indexProduct}].Sizes[${index}].Quantity" value="0"></div>
+</div>`,
     );
   });
+
   btnDeleteType = $(".delete__type");
   btnShowQuantity = $(".showQuantity");
   btnClosePop = $(".btn-close__popup");
@@ -243,11 +224,44 @@ function handleAddType() {
 }
 
 function handleAddSize() {
+  console.log(sizeArr);
+  const size = productTypeSizeForm.find("input").val();
+  if (size !== "") {
+    for (const item of sizeArr) {
+      if (item.size === size) return;
+    }
+    sizeArr.push({
+      id: CreateUUID(),
+      size: size,
+      quantity: 0,
+    });
+  }
+
+  productTypeSizeForm.find("input").val("");
+  const newSize = sizeArr[sizeArr.length - 1];
+  if (productQuantityForm.length !== 0) {
+    productQuantityForm.each((index, item) => {
+      $(item).find(".row").eq(1).append(`
+<div class="row" id="${newSize.id}">
+<div class="col-6 mt-2">${newSize.size}
+<input type="text" name="TypeProducts[${index}].Sizes[${
+        sizeArr.length - 1
+      }].SizeType" value="${item.size}" hidden="hidden">
+</div>
+        
+        <div class="col-6 ">
+        <input class="form-control" name="TypeProducts[${index}].Sizes[${
+          sizeArr.length - 1
+        }].Quantity" value="0"></div>
+</div>
+`);
+    });
+  }
   productTypeListSize.append(`
-     <div class="size__item">
+  <div class="size__item" id="${newSize.id}">
         <div class="position-relative">
             <div class="btn btn-outline-primary">
-                ${productTypeSizeForm.find("input").val()}
+                ${newSize.size}
             </div>
             <span class="delete__size d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
                 <i class="bi bi-x-lg"></i>
@@ -255,13 +269,18 @@ function handleAddSize() {
         </div>
     </div>
   `);
-  const rowSize = productTypeSizeForm.find("input").val("");
+
   $(".delete__size").on("click", handleDeleteSize);
 }
 
 function handleDeleteSize() {
-  const size = $(this).attr("id");
-  productQuantityFormList.find(`.${size}`).remove();
+  const sizeId = $(this).closest(".size__item").attr("id");
+  productQuantityFormList.find(`#${sizeId}`).remove();
+  sizeArr = sizeArr.filter((item) => item.id !== sizeId);
+  typeProduct = typeProduct.map((item) => ({
+    ...item,
+    size: item.size.filter((sizeItem) => sizeItem.id !== sizeId),
+  }));
   $(this).closest(".size__item").remove();
 }
 
@@ -282,20 +301,72 @@ function handleCloseProductPopup() {
 
 function checkValidate() {
   if ($(".product-type-list__size").find(".size__item").length === 0) {
+    btnSubmit.removeAttr("disable");
     return;
   }
   if ($(".product-type-list").find(".btn").length === 0) {
+    btnSubmit.removeAttr("disable");
     return;
   }
-  $('input[type="text"]').each((index, item) => {
-    if ($(item).val() === "") return;
-  });
 
-  $('input[type="file"]').each((index, item) => {
-    if (item.values.length === 0) {
+  for (const item of $('input[type="text"]')) {
+    if ($(item).val() === "") {
+      btnSubmit.removeAttr("disable");
       return;
     }
-  });
+  }
+
+  for (const item of $('input[type="file"]')) {
+    if (item.values.length === 0) {
+      btnSubmit.removeAttr("disable");
+      return;
+    }
+  }
 
   btnSubmit.removeAttr("disable");
+}
+
+function renderSize() {
+  productTypeListSize.empty();
+  sizeArr.forEach((item) => {
+    productTypeListSize.append(`
+        < div
+
+        class
+
+        = "size__item"
+        id = "${CreateUUID()}"
+            >
+            < div
+
+        class
+
+        = "position-relative" >
+            < div
+
+        class
+
+        = "btn btn-outline-primary" >
+            ${item.size}
+            < /div>
+        <span
+            class="delete__size d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
+                <i class="bi bi-x-lg"></i>
+            </span>
+    </div>
+    </div>
+        `);
+  });
+  $(".delete__size").on("click", handleDeleteSize);
+}
+
+function removeSize() {}
+
+function CreateUUID() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (
+      c ^
+      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+    ).toString(16),
+  );
 }
