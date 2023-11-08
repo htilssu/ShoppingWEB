@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ShoppingWEB.Models;
+﻿namespace ShoppingWEB.Models;
 
 public partial class Comment
 {
@@ -20,6 +17,6 @@ public partial class Comment
     public string? Color { get; set; }
 
     public string? LikeDetail { get; set; }
-    public UserModel? User { get; set; }
-    public TypeProduct? TypeProduct { get; set; }
+
+    public virtual TypeProduct? TypeProduct { get; set; }
 }

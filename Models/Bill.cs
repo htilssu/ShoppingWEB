@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ShoppingWEB.Models;
+﻿namespace ShoppingWEB.Models;
 
 public partial class Bill
 {
     public string Id { get; set; } = null!;
 
-    public string ItemId { get; set; } = null!;
+    public string? TypeProductId { get; set; }
 
-    public double Total { get; set; }
+    public double? Total { get; set; }
 
-    public string PaymentMethod { get; set; } = null!;
+    public string? PaymentMethod { get; set; }
 
-    public virtual ICollection<Bill> InversePaymentMethodNavigation { get; set; } = new List<Bill>();
+    public int? Quantity { get; set; }
 
-    public virtual CartItem Item { get; set; } = null!;
+    public virtual PaymentMethod? PaymentMethodNavigation { get; set; }
 
-    public virtual Bill PaymentMethodNavigation { get; set; } = null!;
+    public virtual TypeProduct? TypeProduct { get; set; }
 }
