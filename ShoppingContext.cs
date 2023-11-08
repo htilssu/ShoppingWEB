@@ -134,6 +134,25 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                         j.HasIndex(new[] { "ProductId" }, "ProductId");
                     });
         });
+        
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("Comment");
+
+            entity.HasIndex(e => e.UserId, "Comment_AspNetUsers_Id_fk");
+
+            entity.HasIndex(e => e.TypeProductId, "Comment_TypeProduct_Id_fk");
+
+            entity.Property(e => e.Color).HasMaxLength(20);
+            entity.Property(e => e.Content).HasColumnType("text");
+            entity.Property(e => e.LikeDetail).HasMaxLength(255);
+            entity.Property(e => e.Material).HasMaxLength(100);
+            entity.Property(e => e.Time).HasColumnType("datetime");
+
+            entity.HasOne(e => e.TypeProduct).WithMany(p => p.Comments);
+        });
 
         modelBuilder.Entity<DeliveryInfo>(entity =>
         {
