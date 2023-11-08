@@ -183,7 +183,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                         propertyInfo.SetValue(product, value);
                     }
 
-                    // TODO set delay for api delete image
+                    await Task.Delay(100);
                     await _context.SaveChangesAsync();
                     return View("Edit", product);
                 }
