@@ -19,6 +19,8 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Comment> Comments { get; set; }
+
     public virtual DbSet<Coupon> Coupons { get; set; }
 
     public virtual DbSet<DeliveryInfo> DeliveryInfos { get; set; }
@@ -52,19 +54,17 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("Bill");
 
-            entity.HasIndex(e => e.PaymentMethod, "Bill_Bill_Id_fk");
+            entity.HasIndex(e => e.PaymentMethod, "Bill_PaymentMethod_Id_fk");
 
-            entity.HasIndex(e => e.ItemId, "Bill_CartItem_Id_fk");
+            entity.HasIndex(e => e.TypeProductId, "Bill_TypeProduct_Id_fk");
 
-            entity.HasOne(d => d.Item).WithMany(p => p.Bills)
-                .HasForeignKey(d => d.ItemId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("Bill_CartItem_Id_fk");
-
-            entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.InversePaymentMethodNavigation)
+            entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.Bills)
                 .HasForeignKey(d => d.PaymentMethod)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("Bill_Bill_Id_fk");
+                .HasConstraintName("Bill_PaymentMethod_Id_fk");
+
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Bills)
+                .HasForeignKey(d => d.TypeProductId)
+                .HasConstraintName("Bill_TypeProduct_Id_fk");
         });
 
         modelBuilder.Entity<Cart>(entity =>
@@ -134,7 +134,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                         j.HasIndex(new[] { "ProductId" }, "ProductId");
                     });
         });
-        
+
         modelBuilder.Entity<Comment>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -151,7 +151,10 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.Property(e => e.Material).HasMaxLength(100);
             entity.Property(e => e.Time).HasColumnType("datetime");
 
-            entity.HasOne(e => e.TypeProduct).WithMany(p => p.Comments);
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.TypeProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("Comment_TypeProduct_Id_fk");
         });
 
         modelBuilder.Entity<DeliveryInfo>(entity =>

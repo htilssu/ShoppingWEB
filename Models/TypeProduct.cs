@@ -20,5 +20,6 @@ public partial class TypeProduct
 
     public virtual ICollection<Size> Sizes { get; set; } = new List<Size>();
     [NotMapped] public IFormFile? ImageFile { get; set; }
-    public IEnumerable<Comment> Comments { get; set; } = new List<Comment>();
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
 }
