@@ -11,7 +11,6 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
     {
     }
 
-    public virtual DbSet<Bill> Bills { get; set; }
 
     public virtual DbSet<Cart> Carts { get; set; }
 
@@ -25,13 +24,18 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual DbSet<DeliveryInfo> DeliveryInfos { get; set; }
 
-    public virtual DbSet<DeliveryProvider> DeliveryProviders { get; set; }
 
-    public virtual DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
+    public virtual DbSet<Bill> Bills { get; set; }
+
+    public virtual DbSet<DeliveryType> DeliveryTypes { get; set; }
+
+    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+
+    public virtual DbSet<TypeProduct> TypeProducts { get; set; }
+    
 
     public virtual DbSet<ImageUrl> ImageUrls { get; set; }
 
-    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 
@@ -39,7 +43,6 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual DbSet<Size> Sizes { get; set; }
 
-    public virtual DbSet<TypeProduct> TypeProducts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseMySQL("name=ConnectionStrings:Mysql");
@@ -48,15 +51,22 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
     {
         base.OnModelCreating(modelBuilder);
 
+       
         modelBuilder.Entity<Bill>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("Bill");
 
+            entity.HasIndex(e => e.DeliveryId, "Bill_DeliveryType_Id_fk");
+
             entity.HasIndex(e => e.PaymentMethod, "Bill_PaymentMethod_Id_fk");
 
             entity.HasIndex(e => e.TypeProductId, "Bill_TypeProduct_Id_fk");
+
+            entity.HasOne(d => d.Delivery).WithMany(p => p.Bills)
+                .HasForeignKey(d => d.DeliveryId)
+                .HasConstraintName("Bill_DeliveryType_Id_fk");
 
             entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.Bills)
                 .HasForeignKey(d => d.PaymentMethod)
@@ -74,6 +84,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.ToTable("Cart");
 
             entity.HasIndex(e => e.CustomerId, "customer_Id");
+
         });
 
         modelBuilder.Entity<CartItem>(entity =>
@@ -90,10 +101,12 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("CartItem_ibfk_2");
 
             entity.HasOne(d => d.TypeProduct).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.TypeProductId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("CartItem_TypeProduct_Id_fk");
         });
 
@@ -105,6 +118,29 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.Property(e => e.CategoryName).HasMaxLength(255);
             entity.Property(e => e.ImagePath).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("Comment");
+
+            entity.HasIndex(e => e.UserId, "Comment_AspNetUsers_Id_fk");
+
+            entity.HasIndex(e => e.TypeProductId, "Comment_TypeProduct_Id_fk");
+
+            entity.Property(e => e.Color).HasMaxLength(20);
+            entity.Property(e => e.Content).HasColumnType("text");
+            entity.Property(e => e.LikeDetail).HasMaxLength(255);
+            entity.Property(e => e.Material).HasMaxLength(100);
+            entity.Property(e => e.Time).HasColumnType("datetime");
+
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.TypeProductId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("Comment_TypeProduct_Id_fk");
+            
         });
 
         modelBuilder.Entity<Coupon>(entity =>
@@ -135,28 +171,6 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                     });
         });
 
-        modelBuilder.Entity<Comment>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("Comment");
-
-            entity.HasIndex(e => e.UserId, "Comment_AspNetUsers_Id_fk");
-
-            entity.HasIndex(e => e.TypeProductId, "Comment_TypeProduct_Id_fk");
-
-            entity.Property(e => e.Color).HasMaxLength(20);
-            entity.Property(e => e.Content).HasColumnType("text");
-            entity.Property(e => e.LikeDetail).HasMaxLength(255);
-            entity.Property(e => e.Material).HasMaxLength(100);
-            entity.Property(e => e.Time).HasColumnType("datetime");
-
-            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Comments)
-                .HasForeignKey(d => d.TypeProductId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("Comment_TypeProduct_Id_fk");
-        });
-
         modelBuilder.Entity<DeliveryInfo>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
@@ -171,25 +185,17 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.Property(e => e.PhoneNumber).HasMaxLength(255);
             entity.Property(e => e.Street).HasMaxLength(255);
             entity.Property(e => e.Ward).HasMaxLength(255);
+
+         
         });
 
-        modelBuilder.Entity<DeliveryProvider>(entity =>
+        modelBuilder.Entity<DeliveryType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("DeliveryProvider");
+            entity.ToTable("DeliveryType");
 
             entity.Property(e => e.ProviderName).HasMaxLength(255);
-        });
-
-        modelBuilder.Entity<EfmigrationsHistory>(entity =>
-        {
-            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
-
-            entity.ToTable("__EFMigrationsHistory");
-
-            entity.Property(e => e.MigrationId).HasMaxLength(150);
-            entity.Property(e => e.ProductVersion).HasMaxLength(32);
         });
 
         modelBuilder.Entity<ImageUrl>(entity =>
@@ -233,10 +239,12 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("Product_ibfk_1");
 
             entity.HasOne(d => d.Seller).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SellerId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("Product_Seller_Id_fk");
         });
 
@@ -246,9 +254,9 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
             entity.ToTable("Seller");
 
+            entity.Property(e => e.Address).HasMaxLength(255);
             entity.Property(e => e.JoinAt).HasColumnType("date");
             entity.Property(e => e.SellerName).HasMaxLength(255);
-            entity.Property(e => e.Address).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Size>(entity =>

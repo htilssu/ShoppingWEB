@@ -125,14 +125,14 @@
             }
 
 
-            @if (ViewBag.Page == "Invoice")
+            @if (ViewBag.Page == "Bill")
             {
                 <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
                     <div class="nav-item__item">
                         <a asp-controller="" class="text-decoration-none text-white">
                             <div class="d-flex justify-content-start gap-3">
                                 <i class="bi bi-receipt"></i>
-                                <div>Invoice</div>
+                                <div>Bill</div>
                             </div>
                         </a>
                     </div>
@@ -143,10 +143,10 @@
             {
                 <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
                     <div class="nav-item__item">
-                        <a asp-controller="" class="text-decoration-none text-white">
+                        <a asp-controller="Bill" class="text-decoration-none text-white">
                             <div class="d-flex justify-content-start gap-3">
                                 <i class="bi bi-receipt"></i>
-                                <div>Invoice</div>
+                                <div>Bill</div>
                             </div>
                         </a>
                     </div>

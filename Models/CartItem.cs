@@ -15,8 +15,6 @@ public partial class CartItem
 
     public string? SizeType { get; set; }
 
-    public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
-
     public virtual Cart? Cart { get; set; }
 
     public virtual TypeProduct? TypeProduct { get; set; }
