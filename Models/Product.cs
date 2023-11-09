@@ -1,35 +1,37 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ShoppingWEB.Models;
 
 public partial class Product
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
 
-    [Display(Name = "Đại Lý Bán Hàng")] public string? SellerId { get; set; }
-    [Display(Name = "Tên Sản Phẩm")] public string? ProductName { get; set; }
+    public string? CategoryId { get; set; }
 
-    [Display(Name = "Giá")] public double? Price { get; set; }
+    public string? ProductName { get; set; }
 
-    [Display(Name = "Giảm Giá (%)")] public double? DiscountPercent { get; set; } = 0;
+    public double? Price { get; set; }
 
-    [Display(Name = "Mô Tả Ngắn")] public string? ShortDescription { get; set; }
+    public double? DiscountPercent { get; set; }
 
-    [Display(Name = "Mô Tả Chi Tiết")] public string? LongDescription { get; set; }
+    public string? ShortDescription { get; set; }
 
-    [Display(Name = "Công Khai")] public sbyte? Publish { get; set; } = 1;
+    public string? LongDescription { get; set; }
 
-    [Display(Name = "Mặt Hàng")] public string? CategoryId { get; set; }
+    public byte? Publish { get; set; }
 
+    public int? Rating { get; set; }
 
-    public int? Rating { get; set; } = 0;
+    public int? Sold { get; set; }
 
-    public string? MadeIn { get; set; }
+    public string? SellerId { get; set; }
+
     public string? Style { get; set; }
 
-    public string? Material { get; set; }
-    public int? Sold { get; set; } = 0;
+    public string? MadeIn { get; set; }
 
+    public string? Material { get; set; }
 
     public virtual Category? Category { get; set; }
 
@@ -37,7 +39,6 @@ public partial class Product
 
     public virtual Seller? Seller { get; set; }
 
-    [Display(Name = "Loại Sản Phẩm")]
     public virtual ICollection<TypeProduct> TypeProducts { get; set; } = new List<TypeProduct>();
 
     public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();

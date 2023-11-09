@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using MySql.Data.MySqlClient;
 using ShoppingWEB;
 using ShoppingWEB.Models;
@@ -14,11 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = conf["Database:ConnectionString"];
 
 //Regist Service
-builder.Services.AddSingleton(new MySqlConnection(connectionString));
 builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
-    optionsBuilder.UseLazyLoadingProxies();
-    optionsBuilder.UseMySQL(connectionString!);
+    optionsBuilder.UseSqlServer(connectionString!);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });
 builder.Services.AddDefaultIdentity<UserModel>().AddRoles<RoleModel>().AddEntityFrameworkStores<ShoppingContext>();

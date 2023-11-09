@@ -44,7 +44,7 @@
                 <div class="product-hot-sale__list">
                     <div class="product-hot-sale__item">
                         <a class="text-decoration-none text-black" href="">
-                            <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == true)!.ImagePath" alt="@product.ProductName">
+                            <img src="@product.ImageUrls.FirstOrDefault(i => i.Thumbnail == 1)!.ImagePath" alt="@product.ProductName">
                             <div class="px-3">
                                 <div class="product-hot-sale__name">@product.ProductName</div>
                                 <div class="product-hot-sale__price text-primary-custom fs-5 mt-2">đ@($"{product.Price:###,###}")</div>

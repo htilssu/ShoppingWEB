@@ -8,7 +8,7 @@
     Layout = "_AdminLayout";
     var categoryList = await ShoppingContext.Categories.ToListAsync();
     var imagePath = "";
-    imagePath = Model.ImageUrls.FirstOrDefault(p => p.Thumbnail == true)!.ImagePath;
+    imagePath = Model.ImageUrls.FirstOrDefault(p => p.Thumbnail == 1)!.ImagePath;
     var typeList = Model.TypeProducts.ToList();
 
 }
@@ -254,7 +254,7 @@
             </div>
         </div>
         <div class="col-12 row image-list mt-3">
-            @foreach (var imageUrl in Model.ImageUrls.Where(i => i.Thumbnail == false).ToList())
+            @foreach (var imageUrl in Model.ImageUrls.Where(i => i.Thumbnail == 1).ToList())
             {
                 <div class="position-relative col-2 mt-2">
                     <img src="@imageUrl.ImagePath" class="w-100" alt="anh san pham"/>

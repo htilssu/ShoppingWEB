@@ -83,7 +83,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     {
                         Product = product,
                         ImagePath = pathImage,
-                        Thumbnail = false,
+                        Thumbnail = 0,
                         ProductId = product.Id,
                     });
                 }
@@ -93,7 +93,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 {
                     Product = product,
                     ImagePath = thumbnailPath,
-                    Thumbnail = true,
+                    Thumbnail = 1,
                     ProductId = product.Id,
                 });
 
@@ -147,13 +147,13 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     {
                         var thumbnailPath = await productModel.Thumbnail.SaveImage();
                         var thumbnailImage = await _context.ImageUrls
-                            .FirstOrDefaultAsync(i => i.ProductId == product.Id && i.Thumbnail == true);
+                            .FirstOrDefaultAsync(i => i.ProductId == product.Id && i.Thumbnail == 1);
                         thumbnailImage!.ImagePath.DeleteFile();
                         _context.ImageUrls.Add(new ImageUrl()
                         {
                             Product = product,
                             ImagePath = thumbnailPath,
-                            Thumbnail = true
+                            Thumbnail = 1
                         });
                     }
 
@@ -166,7 +166,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                             {
                                 Product = product,
                                 ImagePath = imagePath,
-                                Thumbnail = false,
+                                Thumbnail = 0,
                             });
                         }
                     }

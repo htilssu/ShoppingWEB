@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ShoppingWEB.Models;
 using X.PagedList;
 
 namespace ShoppingWEB.Controllers

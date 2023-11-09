@@ -9,7 +9,7 @@ public partial class ImageUrl
 
     public string? ProductId { get; set; }
 
-    public bool? Thumbnail { get; set; }
+    public byte? Thumbnail { get; set; }
 
     public virtual Product? Product { get; set; }
 }

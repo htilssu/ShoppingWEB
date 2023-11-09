@@ -16,5 +16,6 @@ public partial class Seller
     public int? Follower { get; set; }
 
     public string? Address { get; set; }
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

@@ -1,4 +1,7 @@
-﻿namespace ShoppingWEB.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace ShoppingWEB.Models;
 
 public partial class Comment
 {

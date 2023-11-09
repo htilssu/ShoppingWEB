@@ -30,7 +30,6 @@ form.on("click", handleSubmit);
 //Function
 
 function handleSubmit(e) {
-  console.log("hi");
   if (typeProductInp.val() === "" || sizeTypeInp.val() === "") {
     e.preventDefault();
   }

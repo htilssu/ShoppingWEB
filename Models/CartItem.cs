@@ -5,7 +5,7 @@ namespace ShoppingWEB.Models;
 
 public partial class CartItem
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = null!;
 
     public string? CartId { get; set; }
 

@@ -18,6 +18,4 @@ public partial class DeliveryInfo
     public string? City { get; set; }
 
     public string? PhoneNumber { get; set; }
-
-    public bool? Default { get; set; }
 }
