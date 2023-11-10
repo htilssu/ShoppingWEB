@@ -1,7 +1,7 @@
 @model List<Bill>
 @inject ShoppingContext Context;
 @{
-    ViewBag.Title = "Danh sách bill";
+    ViewBag.Title = "Danh Sách Bill";
     ViewBag.Page = "Bill";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     var listUser = Context.Users.ToList();
@@ -22,6 +22,7 @@
                             <th>STT</th>
                             <th>Người Mua</th>
                             <th>Tổng Tiền</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,7 @@
                                                 <div class="w-75" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">@user!.UserName</div>
                                             </div>
                                         </td>
+                                        <td>@($"{Model[i].Total:#,###}")</td>
                                         <td>
                                             <a asp-action="Detail" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
                                                 <i class="bi bi-eye-fill"></i>

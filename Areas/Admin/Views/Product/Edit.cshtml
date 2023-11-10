@@ -183,7 +183,7 @@
             {
                 <div class="type__item">
                     <div class="position-relative">
-                        <div class="btn showQuantity btn-outline-primary">
+                        <div class="btn showQuantity btn-outline-primary" id="@modelTypeProduct.Id">
                             @modelTypeProduct.TypeName
                         </div>
                         <span class="delete__type d-flex justify-content-center align-items-center position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
@@ -197,7 +197,7 @@
         <div class="product-quantity-form__list d-none position-absolute">
             @for (var i = 0; i < typeList.Count; i++)
             {
-                <div class="product-quantity__form d-none popup-form position-absolute">
+                <div class="product-quantity__form d-none popup-form position-absolute" id="@typeList[i].Id">
                     <div class="quantity-form__header p-2">
                         <div class="text-uppercase fw-bold">
                             Thêm số lượng sản phẩm
