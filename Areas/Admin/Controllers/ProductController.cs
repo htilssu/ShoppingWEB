@@ -175,7 +175,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     foreach (var propertyInfo in propertyInfos)
                     {
                         var value = propertyInfo.GetValue(productModel);
-                        if (value == null || value is IList { Count: 0 })
+                        if (value is null or IList { Count: 0 })
                         {
                             continue;
                         }

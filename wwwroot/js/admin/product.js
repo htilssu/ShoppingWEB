@@ -1,5 +1,6 @@
 let deleteImageArr = [];
 let sizeArr = [];
+collectSizeArr();
 let typeProduct = [];
 let btnClosePop = $(".btn-close__popup");
 const btnSubmit = $('button[type="submit"]');
@@ -114,6 +115,7 @@ function handleChangeListImage(ev) {
 function handleDeleteType() {
   const deleteTarget = $(this).closest(".type__item");
   const deleteId = deleteTarget.attr("id");
+  deleteTarget.remove();
   productQuantityFormList.find(`#${deleteId}`).remove();
 }
 
@@ -360,8 +362,6 @@ function renderSize() {
   $(".delete__size").on("click", handleDeleteSize);
 }
 
-function removeSize() {}
-
 function CreateUUID() {
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
     (
@@ -369,4 +369,17 @@ function CreateUUID() {
       (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
     ).toString(16),
   );
+}
+
+function collectSizeArr() {
+  const sizeItem = $(".product-type-list__size").find(".size__item");
+  if (sizeItem.length !== 0) {
+    sizeItem.each((index, item) => {
+      sizeArr.push({
+        id: CreateUUID(),
+        size: $(item).find(".btn").text().trim(),
+        quantity: 0,
+      });
+    });
+  }
 }
