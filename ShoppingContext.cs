@@ -76,6 +76,27 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
                 .HasForeignKey(d => d.TypeProductId)
                 .HasConstraintName("Bill_TypeProduct_Id_fk");
         });
+        
+        modelBuilder.Entity<BillItem>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("BillItem");
+
+            entity.HasIndex(e => e.BillId, "BillItem_Bill_Id_fk");
+
+            entity.HasIndex(e => e.TypeProductId, "BillItem_TypeProduct_Id_fk");
+
+            entity.Property(e => e.SizeName).HasMaxLength(20);
+
+            entity.HasOne(d => d.Bill).WithMany(p => p.BillItems)
+                .HasForeignKey(d => d.BillId)
+                .HasConstraintName("BillItem_Bill_Id_fk");
+
+            entity.HasOne(d => d.TypeProduct).WithMany(p => p.BillItems)
+                .HasForeignKey(d => d.TypeProductId)
+                .HasConstraintName("BillItem_TypeProduct_Id_fk");
+        });
 
         modelBuilder.Entity<Cart>(entity =>
         {

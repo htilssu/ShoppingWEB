@@ -21,4 +21,5 @@ public partial class Bill
     public virtual PaymentMethod? PaymentMethodNavigation { get; set; }
 
     public virtual TypeProduct? TypeProduct { get; set; }
+    public virtual ICollection<BillItem> BillItems { get; set; } = new List<BillItem>();
 }
