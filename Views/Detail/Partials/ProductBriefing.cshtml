@@ -1,5 +1,4 @@
-﻿@using Org.BouncyCastle.Crypto.Engines
-@model Product
+﻿@model Product
 @{
     var totalRemainingQuantity = Model.TypeProducts.
         Sum(product => product.Sizes.Sum(size => size.Quantity));
@@ -73,9 +72,19 @@
                 </div>
             </div>
             <div class="product-price p-2 mt-2">
-                <div class="price">
-                    đ@($"{Model.Price:###,###}")
-                </div>
+                @if (Model.DiscountPercent == 0)
+                {
+                    <div class="price">
+                        đ@($"{Model.Price:###,###}")
+                    </div>
+                }
+                else
+                {
+                    <div class="text-decoration-line-through">@Model.Price</div>
+                    <div class="price">
+                        đ@($"{Model.Price:###,###}")
+                    </div>
+                }
             </div>
         </div>
         <form asp-action="AddToCard" asp-controller="Cart" method="post">

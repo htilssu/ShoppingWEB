@@ -200,7 +200,7 @@ function handleAddType() {
 
   newType.size.forEach((item, index) => {
     row.append(
-      `<div class="row" id="${item.id}">
+      `<div class="row m-0" id="${item.id}">
 <div class="col-6 mt-2">${item.size}
 <input type="text" name="TypeProducts[${indexProduct}].Sizes[${index}].SizeType" value="${item.size}" hidden="hidden">
 </div>
@@ -246,7 +246,7 @@ function handleAddSize() {
   if (productQuantityForm.length !== 0) {
     productQuantityForm.each((index, item) => {
       $(item).find(".row").eq(1).append(`
-<div class="row" id="${newSize.id}">
+<div class="row m-0 p-0" id="${newSize.id}">
 <div class="col-6 mt-2">${newSize.size}
 <input type="text" name="TypeProducts[${index}].Sizes[${
         sizeArr.length - 1

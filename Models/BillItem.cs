@@ -12,6 +12,7 @@ public partial class BillItem
 
     public int? Quantity { get; set; }
 
+
     public double? Total { get; set; }
     
     public sbyte? IsComment { get; set; }

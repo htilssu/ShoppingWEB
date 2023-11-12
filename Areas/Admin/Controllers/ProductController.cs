@@ -117,12 +117,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
-            var product = await _context.Products
-                .Include(p => p.Category)
-                .Include(p => p.ImageUrls)
-                .Include(p => p.TypeProducts)
-                .ThenInclude(t => t.Sizes)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
             if (product != null)
             {
                 return View(product);
@@ -200,6 +195,10 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                                 if (modelTypeProduct.ImageFile != null && modelTypeProduct.ImageFile.Length > 0)
                                 {
                                     modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImage();
+                                }
+                                foreach (var size in modelTypeProduct.Sizes)
+                                {
+                                    size.TypeProductId = typeProduct.Id;
                                 }
 
                                 typeProduct.Sizes = modelTypeProduct.Sizes;
