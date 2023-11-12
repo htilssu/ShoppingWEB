@@ -12,7 +12,7 @@ public partial class BillItem
 
     public int? Quantity { get; set; }
 
-    public virtual aaa.Bill? Bill { get; set; }
+    public virtual Bill? Bill { get; set; }
 
-    public virtual aaa.TypeProduct? TypeProduct { get; set; }
+    public virtual TypeProduct? TypeProduct { get; set; }
 }
