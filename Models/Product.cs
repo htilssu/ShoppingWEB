@@ -40,6 +40,4 @@ public partial class Product
     public virtual Seller? Seller { get; set; }
 
     public virtual ICollection<TypeProduct> TypeProducts { get; set; } = new List<TypeProduct>();
-
-    public virtual ICollection<Coupon> Coupons { get; set; } = new List<Coupon>();
 }

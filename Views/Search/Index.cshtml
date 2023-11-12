@@ -1,4 +1,4 @@
-﻿@model List<Product>;
+﻿@model IPagedList<Product>;
 
 @{
     ViewBag.Title = $"{ViewBag.Search} giá tốt tháng {DateTime.Today.Month}";
@@ -19,6 +19,6 @@
 
 <div class="container-md py-3">
     @{
-        await Html.RenderPartialAsync("Partials/ProductResult", await Model.ToPagedListAsync((int)ViewBag.Page, 16));
+        await Html.RenderPartialAsync("Partials/ProductResult", Model);
     }
 </div>

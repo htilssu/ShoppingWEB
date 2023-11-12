@@ -209,7 +209,7 @@ html {
     background-color: rgba(0, 0, 0, .03);
     padding: 12px 22px;
     border-radius: 2px;
- 
+
 }
 
 .home-filter-label {
@@ -281,7 +281,7 @@ html {
 
 .btn-active {
     background-color: #f7452f;
-    color: white;
+    color: white !important;
 }
 
 .select-input {
@@ -323,7 +323,7 @@ html {
 }
 
 .select-input-link:hover {
-    color: #f7452f; 
+    color: #f7452f;
 }
 
 .select-input:hover .select-input-list {

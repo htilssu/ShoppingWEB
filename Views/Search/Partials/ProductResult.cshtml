@@ -1,11 +1,7 @@
 ﻿@using Microsoft.EntityFrameworkCore
 @model IPagedList<Product>;
 @inject ShoppingContext Context
-@{
-    var maybeLike = await Context.Products
-        .Include(p => p.ImageUrls)
-        .Take(12).ToPagedListAsync((int)ViewBag.Page, 16);
-}
+
 
 @* TODO query product *@
 <div class="search-result">
@@ -62,82 +58,61 @@
                                         </svg>
                                         BỘ LỌC TÌM KIẾM
                                     </h3>
-                                    <div class="category-group">
-                                        <div class="category-group-title">Theo Danh Mục</div>
-                                        <ul class="category-group-list">
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Áo thun</span>
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Áo khoác</span>
+                                    <form asp-controller="Search" asp-action="SearchFilter" method="get">
+                                        <div class="category-group">
+                                            <div class="category-group-title">Nơi Bán</div>
+                                            <ul class="category-group-list">
+                                                <li class="category-group-item">
+                                                    <input type="checkbox" value="Hà Nội" name="Location" class="category-group-item-check">
+                                                    <span class="category-group-item-label">Hà Nội</span>
+                                                </li>
+                                                <li class="category-group-item">
+                                                    <input type="checkbox" value="Hồ Chí Minh" name="Location" class="category-group-item-check">
+                                                    <span class="category-group-item-label">Hồ Chí Minh</span>
 
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Hoodie & Áo nỉ </span>
-
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Áo sơ mi </span>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="category-group">
-                                        <div class="category-group-title">Nơi Bán</div>
-                                        <ul class="category-group-list">
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Hà Nội</span>
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Hồ Chí Minh</span>
-
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Đà Nẵng</span>
-                                            </li>
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Thái Nguyên</span>
-
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="category-group">
-                                        <div class="category-group-title">Khoảng Giá</div>
-                                        <div class="category-group-filter">
-                                            <input type="number" placeholder="đ TỪ" class="category-group-filter-input" maxlength="13" value="" id="priceFrom" min="0">
-                                            <div class="category-group-filter-gach">-</div>
-                                            <input type="number" placeholder="đ ĐẾN" class="category-group-filter-input" maxlength="13" value="" id="priceTo" min="0"/>
+                                                </li>
+                                                <li class="category-group-item">
+                                                    <input type="checkbox" value="Đà Nẵng" name="Location" class="category-group-item-check">
+                                                    <span class="category-group-item-label">Đà Nẵng</span>
+                                                </li>
+                                                <li class="category-group-item">
+                                                    <input type="checkbox" value="Thái Nguyên" name="Location" class="category-group-item-check">
+                                                    <span class="category-group-item-label">Thái Nguyên</span>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <button class="btn btn-apply category-group-filter-btn category-group--margin" id="applyFilter">Áp dụng</button>
-                                    </div>
+                                        <div class="category-group">
+                                            <div class="category-group-title">Khoảng Giá</div>
+                                            <div class="category-group-filter">
+                                                <input type="number" placeholder="đ TỪ" class="category-group-filter-input" maxlength="13" name="PriceFrom" id="PriceFrom" min="0">
+                                                <div class="category-group-filter-gach">-</div>
+                                                <input type="number" placeholder="đ ĐẾN" class="category-group-filter-input" maxlength="13" name="PriceTo" id="PriceTo" min="0"/>
+                                            </div>
+                                        </div>
 
-                                    <div class="category-group">
-                                        <div class="category-group-title">Dịch Vụ & Khuyến Mãi</div>
-                                        <ul class="category-group-list">
-                                            <li class="category-group-item">
-                                                <input type="checkbox" class="category-group-item-check">
-                                                <span class="category-group-item-label">Đang giảm giá</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="category-group">
-                                        <button class="btn btn-clear category-group-filter-btn category-group--margin" id="clearAll">Xoá Tất Cả</button>
-                                    </div>
+                                        <div class="category-group">
+                                            <div class="category-group-title">Dịch Vụ & Khuyến Mãi</div>
+                                            <ul class="category-group-list">
+                                                <li class="category-group-item">
+                                                    <input name="IsDiscount" type="checkbox" class="category-group-item-check">
+                                                    <span class="category-group-item-label">Đang giảm giá</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="category-group">
+                                            <input type="hidden" name="search" value="@ViewBag.Search">
+                                            <button class="btn btn-apply category-group-filter-btn category-group--margin" id="applyFilter">Áp dụng</button>
+                                            <button type="reset" class="btn mt-3 btn-clear category-group-filter-btn category-group--margin" id="clearAll">Xoá Tất Cả</button>
+                                        </div>
+                                    </form>
                                 </nav>
                             </div>
                             <div class="grid_column-10">
                                 <div class="home-filter">
+
                                     <span class="home-filter-label">Sắp xếp theo</span>
-                                    <button class="home-filter-btn btn-active"> Phổ Biến </button>
-                                    <button class="home-filter-btn"> Bán chạy </button>
+                                    <a href="@Url.Action("Index", (string)ViewBag.Controller, new { search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location })" class="home-filter-btn @(ViewBag.OrderBy == null ? "btn-active" : "")"> Phổ Biến </a>
+                                    <a href="@Url.Action("Index", (string)ViewBag.Controller, new { search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location, orderBy = 2 })" class="home-filter-btn text-black @(ViewBag.OrderBy != null && ViewBag.OrderBy == 2 ? "btn-active" : "")"> Bán chạy </a>
                                     <div class="select-input">
                                         <span class="select-input-label">Giá</span>
                                         <svg viewBox="0 0 10 6" class="select-input-img" height="10px" width="10px">
@@ -145,38 +120,60 @@
                                         </svg>
                                         <ul class="select-input-list">
                                             <li class="select-input-item">
-                                                <a href="" class="select-input-link">Giá:Thấp đến Cao</a>
+                                                <a href="@Url.Action("Index", (string)ViewBag.Controller, new { search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location, orderBy = 1 })" class="select-input-link">Giá:Thấp đến Cao</a>
                                             </li>
                                             <li class="select-input-item">
-                                                <a href="" class="select-input-link">Giá:Cao đến Thấp</a>
+                                                <a href="@Url.Action("Index", (string)ViewBag.Controller, new { search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location, orderBy = 0 })" class="select-input-link">Giá:Cao đến Thấp</a>
                                             </li>
 
                                         </ul>
                                     </div>
                                     <div class="home-filter-page">
                                         <span class="home-filter-page-num">
-                                            <span class="home-filter-page-num-HT">1</span>/9
+                                            <span class="home-filter-page-num-HT">@Model.PageNumber</span>/@Model.PageCount
                                         </span>
                                         <div class="home-filter-page-chuyen">
 
-                                            <a href="" class="home-filter-page-btn home-filter-page-btn-disabled">
-                                                <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
-                                                    <path fill="#ccc" d="M4.694078 9.8185598L.2870824 5.4331785c-.1957415-.1947815-.1965198-.511363-.0017382-.7071046a.50867033.50867033 0 0 1 .000868-.0008702L4.7381375.2732784 4.73885.273991c.1411545-.127878.3284279-.205779.5338961-.205779.4393237 0 .7954659.3561422.7954659.7954659 0 .2054682-.077901.3927416-.205779.5338961l.0006632.0006632-.0226101.0226101a.80174653.80174653 0 0 1-.0105706.0105706L2.4680138 4.7933195c-.1562097.1562097-.1562097.4094757 0 .5656855a.45579485.45579485 0 0 0 .0006962.0006944l3.3930018 3.3763607-.0009482.0009529c.128869.1413647.2074484.3293723.2074484.5357331 0 .4393237-.3561422.7954659-.7954659.7954659-.2049545 0-.391805-.077512-.5328365-.2048207l-.0003877.0003896-.0097205-.0096728a.80042023.80042023 0 0 1-.0357234-.0355483z" fill-rule="nonzero"></path>
-                                                </svg>
-                                            </a>
-                                            <a href="" class="home-filter-page-btn">
-                                                <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
-                                                    <path d="M2.305922 9.81856l4.4069956-4.385381c.1957415-.194782.1965198-.511364.0017382-.707105a.26384055.26384055 0 0 0-.000868-.00087L2.2618625.273278 2.26115.273991C2.1199955.146113 1.9327221.068212 1.7272539.068212c-.4393237 0-.7954659.356142-.7954659.795466 0 .205468.077901.392741.205779.533896l-.0006632.000663.0226101.02261c.0034906.003557.0070143.00708.0105706.010571L4.5319862 4.79332c.1562097.156209.1562097.409475 0 .565685-.0002318.000232-.0004639.000463-.0006962.000694L1.1382882 8.73606l.0009482.000953c-.128869.141365-.2074484.329372-.2074484.535733 0 .439324.3561422.795466.7954659.795466.2049545 0 .391805-.077512.5328365-.204821l.0003877.00039.0097205-.009673c.012278-.011471.0241922-.023327.0357234-.035548z" fill-rule="nonzero"></path>
-                                                </svg>
-                                            </a>
+                                            @if (Model.HasPreviousPage)
+                                            {
+                                                <a href="@Url.Action("Index", (string)ViewBag.Controller, new { page = Model.PageNumber - 1, search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location, orderBy = ViewBag.OrderBy })" class="home-filter-page-btn border-0">
+                                                    <svg fill="#000000" viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                                                        <path fill="#000000" d="M4.694078 9.8185598L.2870824 5.4331785c-.1957415-.1947815-.1965198-.511363-.0017382-.7071046a.50867033.50867033 0 0 1 .000868-.0008702L4.7381375.2732784 4.73885.273991c.1411545-.127878.3284279-.205779.5338961-.205779.4393237 0 .7954659.3561422.7954659.7954659 0 .2054682-.077901.3927416-.205779.5338961l.0006632.0006632-.0226101.0226101a.80174653.80174653 0 0 1-.0105706.0105706L2.4680138 4.7933195c-.1562097.1562097-.1562097.4094757 0 .5656855a.45579485.45579485 0 0 0 .0006962.0006944l3.3930018 3.3763607-.0009482.0009529c.128869.1413647.2074484.3293723.2074484.5357331 0 .4393237-.3561422.7954659-.7954659.7954659-.2049545 0-.391805-.077512-.5328365-.2048207l-.0003877.0003896-.0097205-.0096728a.80042023.80042023 0 0 1-.0357234-.0355483z" fill-rule="nonzero"></path>
+                                                    </svg>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <button class="home-filter-page-btn home-filter-page-btn-disabled border-0">
+                                                    <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                                                        <path fill="#ccc" d="M4.694078 9.8185598L.2870824 5.4331785c-.1957415-.1947815-.1965198-.511363-.0017382-.7071046a.50867033.50867033 0 0 1 .000868-.0008702L4.7381375.2732784 4.73885.273991c.1411545-.127878.3284279-.205779.5338961-.205779.4393237 0 .7954659.3561422.7954659.7954659 0 .2054682-.077901.3927416-.205779.5338961l.0006632.0006632-.0226101.0226101a.80174653.80174653 0 0 1-.0105706.0105706L2.4680138 4.7933195c-.1562097.1562097-.1562097.4094757 0 .5656855a.45579485.45579485 0 0 0 .0006962.0006944l3.3930018 3.3763607-.0009482.0009529c.128869.1413647.2074484.3293723.2074484.5357331 0 .4393237-.3561422.7954659-.7954659.7954659-.2049545 0-.391805-.077512-.5328365-.2048207l-.0003877.0003896-.0097205-.0096728a.80042023.80042023 0 0 1-.0357234-.0355483z" fill-rule="nonzero"></path>
+                                                    </svg>
+                                                </button>
+                                            }
+                                            @if (Model.HasNextPage)
+                                            {
+                                                <a href="@Url.Action("Index", (string)ViewBag.Controller, new { page = Model.PageNumber + 1, search = ViewBag.Search, previous = true, PriceFrom = ViewBag.PriceFrom, PriceTo = ViewBag.PriceTo, IsDiscount = ViewBag.IsDiscount, Location = ViewBag.Location, orderBy = ViewBag.OrderBy })" class="home-filter-page-btn">
+                                                    <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                                                        <path d="M2.305922 9.81856l4.4069956-4.385381c.1957415-.194782.1965198-.511364.0017382-.707105a.26384055.26384055 0 0 0-.000868-.00087L2.2618625.273278 2.26115.273991C2.1199955.146113 1.9327221.068212 1.7272539.068212c-.4393237 0-.7954659.356142-.7954659.795466 0 .205468.077901.392741.205779.533896l-.0006632.000663.0226101.02261c.0034906.003557.0070143.00708.0105706.010571L4.5319862 4.79332c.1562097.156209.1562097.409475 0 .565685-.0002318.000232-.0004639.000463-.0006962.000694L1.1382882 8.73606l.0009482.000953c-.128869.141365-.2074484.329372-.2074484.535733 0 .439324.3561422.795466.7954659.795466.2049545 0 .391805-.077512.5328365-.204821l.0003877.00039.0097205-.009673c.012278-.011471.0241922-.023327.0357234-.035548z" fill-rule="nonzero"></path>
+                                                    </svg>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <button class="home-filter-page-btn home-filter-page-btn-disabled border-0">
+                                                    <svg viewBox="0 0 7 11" class="home-filter-page-btn-img" height="10px">
+                                                        <path fill="#ccc" d="M2.305922 9.81856l4.4069956-4.385381c.1957415-.194782.1965198-.511364.0017382-.707105a.26384055.26384055 0 0 0-.000868-.00087L2.2618625.273278 2.26115.273991C2.1199955.146113 1.9327221.068212 1.7272539.068212c-.4393237 0-.7954659.356142-.7954659.795466 0 .205468.077901.392741.205779.533896l-.0006632.000663.0226101.02261c.0034906.003557.0070143.00708.0105706.010571L4.5319862 4.79332c.1562097.156209.1562097.409475 0 .565685-.0002318.000232-.0004639.000463-.0006962.000694L1.1382882 8.73606l.0009482.000953c-.128869.141365-.2074484.329372-.2074484.535733 0 .439324.3561422.795466.7954659.795466.2049545 0 .391805-.077512.5328365-.204821l.0003877.00039.0097205-.009673c.012278-.011471.0241922-.023327.0357234-.035548z" fill-rule="nonzero"></path>
+                                                    </svg>
+                                                </button>
+                                            }
+
 
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="product-list">
                                     @{
-                                        await Html.RenderPartialAsync("~/Views/Category/Partials/CategoryProductList.cshtml", Model);
+                                        await Html.RenderPartialAsync("./ProductListPartial.cshtml", Model);
                                     }
                                 </div>
 
@@ -204,7 +201,11 @@
                 <div>
                     <div class="text-uppercase">Có thể bạn cũng thích</div>
                     <div class="">
-                        @{
+                        @if (ViewBag.IsFindOut == false)
+                        {
+                            var maybeLike = await Context.Products
+                                .Include(p => p.ImageUrls)
+                                .Take(12).ToPagedListAsync((int)ViewBag.Page, 16);
                             await Html.RenderPartialAsync("Partial/ProductList", maybeLike);
                         }
                     </div>

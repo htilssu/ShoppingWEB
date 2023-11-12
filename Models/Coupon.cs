@@ -18,6 +18,4 @@ public partial class Coupon
     public DateTime? StartAt { get; set; }
 
     public DateTime? EndAt { get; set; }
-
-    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

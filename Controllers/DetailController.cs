@@ -28,13 +28,7 @@ public class DetailController : Controller
             return RedirectToAction("Index", "Home");
         }
 
-        var product = _db.Products
-            .Include(p => p.TypeProducts)
-            .ThenInclude(t => t.Sizes)
-            .Include(p => p.ImageUrls)
-            .Include(p => p.Coupons)
-            .Include(p => p.Seller)
-            .FirstOrDefault(p => p.Id == id)!;
+        var product = _db.Products.FirstOrDefault(p => p.Id == id)!;
         return View(product);
     }
 

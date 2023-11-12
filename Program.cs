@@ -17,6 +17,7 @@ var connectionString = conf["Database:ConnectionString"];
 //Regist Service
 builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
+    optionsBuilder.UseLazyLoadingProxies();
     optionsBuilder.UseSqlServer(connectionString!);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });
