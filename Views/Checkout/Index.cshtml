@@ -1,9 +1,14 @@
-﻿@using System.Configuration
-@model dynamic
-
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using ShoppingWEB.Controllers
+@model List<CartItem>
 @{
     ViewBag.Title = "Thanh Toán";
     Layout = "_SecondaryLayout";
+    var info = (List<ProductModel>)ViewBag.Info;
+    var sellerGroupBy = Model.GroupBy(c => c.TypeProduct.Product!.SellerId);
+    var Total_PRICES = 0;
+    var Total_Price_Ship = 0;
+    var Totals = 0;
 }
 
 @section Styles
@@ -44,7 +49,7 @@
         <div class="position1"><i class="fa-solid fa-location-dot fa-bounce"></i> Địa Chỉ Nhận Hàng</div>
         <div class="position2">
             <b>Tuan (+84) 397374117 </b>
-            <div class="position2-1">Số 1/1, Nguyễn Huệ, Phường 1, Quận 1, TP. Hồ Chí Minh</div>
+            <div class="position2-1">Số 66b, Nguyễn Sỹ Sách, Phường 15, Quận Tân Bình, TP. Hồ Chí Minh</div>
             <div class="position2-2">Mặc định</div>
             <button id="changeAddressButton">Thay Đổi</button>
         </div>
@@ -65,112 +70,124 @@
             </th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td colspan="4" class="shop-name">
-                <div class="tenshop">
-                    <img src="/imgs/logomall.png">
-                    <div> Apple Flagship Store </div>
-                    <button><i class="fa-brands fa-facebook-messenger"></i> Chat ngay</button>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="o-sanpham">
-                <div class="o-sanpham1">
-                    <img class="img-sanpham" src="/imgs/sanpham1.png">
-                    <div class="ten-sanpham">
-                        Điện thoại Apple iPhone 14 Pro Max 128GB
-                        <div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="sotien-sp1">₫28.990.000</div>
-            </td>
-            <td>
-                <div class="soluong">1</div>
-            </td>
-            <td>
-                <div class="sotien-sp2">₫28.990.000</div>
-            </td>
-        </tr>
 
-        <tr>
-            <td>
-                <div class="checkbox-baohiem">
-                    <input type="checkbox">
-                </div>
-                <div>
-                    Bảo hiểm Thiết bị điện tử
-                    <div>
-                    </div>
-                    <div class="text-baohiem">Bảo vệ thiết bị điện tử của bạn trước những thiệt hại do sự cố, tiếp xúc với chất lỏng và mất cắp/mất trộm.<a href="#">Tìm hiểu thêm</a></div>
-                </div>
-            </td>
-            <td>
-                <div class="gia-baohiem1">₫265.999</div>
-            </td>
-            <td>
-                <div class="soluong-sp">1</div>
-            </td>
-            <td>
-                <div class="gia-baohiem2">₫265.999</div>
-            </td>
-        </tr>
+        @foreach (var cartItems in sellerGroupBy)
+        {
+            var listCartItem = cartItems.ToList();
+            var seller = listCartItem[0].TypeProduct!.Product!.Seller;
+            var countpro = 0;
+            var total_Price = 30000;
+            Total_Price_Ship += total_Price;
+            total_Price = 0;
 
-        <tr>
-            <td colspan="4">
-                <div class="yeucau-hoadon">
-                    <div class="text-hoadon">
-                        <div>Hóa đơn điện tử</div>
-                        <i class="fa-regular fa-circle-question"></i>
+            <tbody>
+            <tr>
+                <td colspan="4" class="shop-name">
+                    <div class="tenshop">
+                        <img src="/imgs/logomall.png">
+                        <div onclick="Erorr()"> @seller.SellerName </div>
+                        <button onclick="Erorr()"><i class="fa-brands fa-facebook-messenger"></i> Chat ngay</button>
                     </div>
-                    <div class="text-yeucaungay">Yêu Cầu Ngay</div>
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="ship" colspan="4">
-                <div class="ship-main">
-                    <div class="loinhan">
-                        <span>Lời nhắn: </span>
-                        <div>
-                            <input type="text" placeholder="Lưu ý cho Người bán...">
-                        </div>
-                    </div>
-                    <div class="vanchuyen">
-                        <div class="vanchuyen1">
-                            <div class="vanchuyen1-1">Đơn vị vận chuyển</div>
-                            <div>
-                                <div>Nhanh</div>
-                                <div class="time-nhanhang">Nhận hàng vào 10 Th10 - 12 Th10</div>
+                </td>
+            </tr>
+            
+            @for (var index = 0; index < listCartItem.Count; index++)
+            {
+                countpro++;
+                var cartItem = listCartItem[index];
+                total_Price += int.Parse(@info[index].Price.Replace(",", "")) ;
+                <tr>
+                    <td class="o-sanpham">
+                        <div class="o-sanpham1">
+                            <img class="img-sanpham" src="@cartItem.TypeProduct.ImagePath">
+                            <div class="ten-sanpham">
+                                @cartItem.TypeProduct.Product.ProductName
                             </div>
-                            <div>
-                                <button>THAY ĐỔI</button>
-                            </div>
-                            <div class="tien-ship">₫104.700</div>
                         </div>
-                        <div class="vanchuyen2">
-                            <div>Không đồng kiểm.</div>
+                    </td>
+                    <td>
+                        <div class="sotien-sp1">
+                            <i class="fa-solid fa-dong-sign"></i>
+                            <div>@($"{cartItem.TypeProduct.Product.Price:#,###}")</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="soluong">
+                            @cartItem.Quantity
+                        </div>
+                    </td>
+                    <td>
+                        <div class="sotien-sp2">
+                            <i class="fa-solid fa-dong-sign"></i>
+                            <div>@info[index].Price</div> @*   Price total duoc gui qua tu Cart   *@
+                        </div> 
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4">
+                    <div class="yeucau-hoadon">
+                        <div class="text-hoadon">
+                            <div>Hóa đơn điện tử</div>
                             <i class="fa-regular fa-circle-question"></i>
                         </div>
+                        <div class="text-yeucaungay" onclick="YeuCau()">Yêu Cầu Ngay</div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
 
-        <tr>
-            <td colspan="4">
-                <div class="tongsotien">
-                    <div class="text">Tổng số tiền(1 sản phẩm)</div>
-                    <div class="sotien">₫29.094.700</div>
-                </div>
-            </td>
-        </tr>
-        </tbody>
+            <tr>
+                <td class="ship" colspan="4">
+                    <div class="ship-main">
+                        <div class="loinhan">
+                            <span>Lời nhắn: </span>
+                            <div>
+                                <input type="text" placeholder="Lưu ý cho Người bán...">
+                            </div>
+                        </div>
+                        <div class="vanchuyen">
+                            <div class="vanchuyen1">
+                                <div class="vanchuyen1-1">Đơn vị vận chuyển</div>
+                                <div>
+                                    <div>Nhanh</div>
+                                    <div class="time-nhanhang">Nhận hàng vào 10 Th10 - 12 Th10</div>
+                                </div>
+                                <div>
+                                    <button onclick="Erorr()">THAY ĐỔI</button>
+                                </div>
+                                <div class="tien-ship" style="display: flex;align-items: center">
+                                    <i class="fa-solid fa-dong-sign"></i>
+                                    <div id="ship-price">30,000</div>
+                                </div>
+                            </div>
+                            <div class="vanchuyen2">
+                                <div>Không đồng kiểm.</div>
+                                <i class="fa-regular fa-circle-question"></i>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="tongsotien">
+                        <div class="text">Tổng số tiền(@countpro sản phẩm)</div>
+                        <div class="sotien" style="display: flex;align-items: center">
+                            <i class="fa-solid fa-dong-sign"></i>
+                            <div id="total-price">
+                                @($"{total_Price:#,###}")
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            Total_PRICES += total_Price;  //Tong tien cua 1 shop
+        }
+        @{
+            Totals = Total_PRICES + Total_Price_Ship;  //Tong tien Thanh Toan cuoi cung
+        }
+
     </table>
 </div>
 
@@ -181,7 +198,7 @@
             <div>Shopee Voucher</div>
         </div>
         <div>
-            <button>Chọn Voucher</button>
+            <button onclick="Erorr()">Chọn Voucher</button>
         </div>
     </div>
     <div class="shoppe-xu">
@@ -206,7 +223,7 @@
                     <button class="button-checkout1">Apple Pay</button>
                 </span>
                 <span>
-                    <button class="button-checkout" onclick="selectAddress(this)">Ví ShopeePay</button>
+                    <button class="button-checkout" onclick="selectAddress(this)" >Ví ShopeePay</button>
                 </span>
                 <span>
                     <button class="button-checkout1">Thẻ Tín dụng/Ghi nợ</button>
@@ -228,29 +245,34 @@
         <div class="dichvu">
             <div class="dat-hang1">
                 <h4>Tổng tiền hàng</h4>
-                <div>₫91.070.000</div>
-            </div>
-            <div class="dat-hang1">
-                <h4>Phí bảo hiểm</h4>
-                <div>₫1.131.997</div>
+                <div>
+                    <i class="fa-solid fa-dong-sign"></i>
+                    @($"{Total_PRICES:#,###}")
+                </div>
             </div>
             <div class="dat-hang1">
                 <h4>Phí vận chuyển</h4>
-                <div>₫117.500</div>
+                <div>
+                    <i class="fa-solid fa-dong-sign"></i>
+                    @($"{Total_Price_Ship:#,###}")
+                </div>
             </div>
             <div class="dat-hang2">
                 <h4>Tổng thanh toán:</h4>
-                <div>₫92.319.497</div>
+                <div>
+                    <i class="fa-solid fa-dong-sign"></i>
+                    @($"{Totals:#,###}")
+                </div>
             </div>
         </div>
         <div class="dieukhoan">
             <div class="text-dieukhoan">
                 Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo
-                <a href="#">Điều khoản Shopee</a> và
-                <a href="#">Điều khoản và Điều kiện</a> của hợp đồng Bảo hiểm
+                <a href="#" onclick="Erorr()">Điều khoản Shopee</a> và
+                <a href="#" onclick="Erorr()">Điều khoản và Điều kiện</a> của hợp đồng Bảo hiểm
             </div>
             <div class="button-dathang">
-                <button>Đặt Hàng</button>
+                <button id="btnThanhToan" class="button-thantoan" onclick="thanhToan()">Đặt Hàng</button>
             </div>
         </div>
     </div>

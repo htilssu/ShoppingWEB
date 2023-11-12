@@ -164,13 +164,16 @@ body {
 }
 
 .tenshop {
+    font-size: larger;
     display: flex;
+    align-items: center;
     gap: 15px;
     margin-inline-start: 20px;
     cursor: pointer;
 }
 
 .tenshop img {
+    height: 20px;
     width: 33px;
     border-radius: 2%;
     cursor: pointer;
@@ -183,7 +186,7 @@ body {
 
 /*Dòng sản phẩm*/
 .o-sanpham {
-    width: 35%;
+    width: 50%;
 }
 
 .o-sanpham1 {
@@ -211,8 +214,18 @@ body {
 }
 
 .phanloai {
+    display: grid;
     margin-left: 15px;
     opacity: 50%; /*độ mờ*/
+}
+.dongia{
+    display: flex;
+    color: #ee4d2d;
+    cursor: text;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    cursor: text;
 }
 
 .giamgia {
@@ -306,7 +319,7 @@ body {
 }
 
 .img-sanpham {
-    width: 80px;
+    width: 100px;
 }
 
 /* Cart Styles */
@@ -432,7 +445,6 @@ input[type="number"] {
 .voucher {
     display: flex;
     flex-direction: row-reverse;
-    padding: 10px;
 }
 
 .voucher button {
@@ -553,7 +565,7 @@ input[type="number"] {
     color: #ee4d2d;
 }
 
-.button-div2 {
+.button-muahang {
     background: #ee4d2d;
     padding: 13px 36px;
     cursor: pointer;
@@ -562,7 +574,7 @@ input[type="number"] {
     border-radius: 2px;
 }
 
-.button-div2 div {
+.button-muahang div {
     color: white;
     text-transform: initial;
 }

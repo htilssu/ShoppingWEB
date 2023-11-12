@@ -45,6 +45,10 @@ body {
     margin-bottom: 60px;
 }
 
+header{
+    background: #f53d2d;
+    background: linear-gradient(-180deg,#f53d2d,#f63) !important;
+}
 header .navbar {
     height: 70px;
 }
@@ -53,11 +57,10 @@ header .navbar.nav-social {
     font-size: .9rem;
     height: 10%;
     z-index: 1000;
-    background-color: #ce6c09;
 }
 
 .navbar .btn-search {
-    background-color: #ce6c09;
+    background-color: #fb5533;
     width: 65px;
     height: calc(100% - 4px);
     margin: 2px;
@@ -305,9 +308,6 @@ header .navbar.nav-social {
     background-color: #F5F5F5 !important;
 }
 
-.bg-custom-secondary {
-    background-color: #ce6c09 !important;
-}
 
 .pagination {
     display: flex;

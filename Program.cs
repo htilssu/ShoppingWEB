@@ -17,6 +17,7 @@ var connectionString = conf["Database:ConnectionString"];
 builder.Services.AddSingleton(new MySqlConnection(connectionString));
 builder.Services.AddDbContext<ShoppingContext>(optionsBuilder =>
 {
+    optionsBuilder.UseLazyLoadingProxies();
     optionsBuilder.UseMySQL(connectionString!);
     optionsBuilder.EnableSensitiveDataLogging(false);
 });

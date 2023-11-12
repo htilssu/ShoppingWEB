@@ -1,110 +1,169 @@
-﻿const selectAllCheckbox = document.getElementById("selectAllCheckbox");
-const productCheckboxes = document.querySelectorAll(".product-checkbox");
-
-const selectAllCheckbox1 = document.getElementById("selectAllCheckbox1");
-
-productCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", (e) => {
-    if (e.target.checked === false) {
-      selectAllCheckbox.checked = selectAllCheckbox1.checked = false;
+﻿//-----Tang Giam So Luong----
+const quantityInp = $("#quantity-1")
+quantityInp.on('change', handleChangeQuantity)
+function handleChangeQuantity() {
+    if ($(this).val() < 0){
+        $(this).val(0)
     }
-
-    updateSelectedProductsAndTotalPrice();
-  });
-});
-
-// Cấu trúc dữ liệu để lưu trữ thông tin sản phẩm.
-const products = {
-  1: { price: 1500, quantity: 1, remainingQuantity: 9 },
-  2: { price: 1700, quantity: 1, remainingQuantity: 19 },
-  3: { price: 1500, quantity: 1, remainingQuantity: 20 },
-  4: { price: 1300, quantity: 1, remainingQuantity: 3 },
-  5: { price: 1200, quantity: 1, remainingQuantity: 25 },
-  6: { price: 1400, quantity: 1, remainingQuantity: 30 },
-};
-
-function updateQuantity(productNumber) {
-        const soluong = document.getElementById(`quantity-${productNumber}`);
-        const sotien = document.getElementById(`sotien-${productNumber}`);
-        // Lấy giá trị số lượng từ ô nhập liệu
-        const newQuantity = parseInt(soluong.value);
-        // Kiểm tra xem số lượng nhập liệu có hợp lệ không
-        if (!isNaN(newQuantity) && newQuantity >= 0 && newQuantity <= products[productNumber].remainingQuantity) {
-            products[productNumber].quantity = newQuantity;
-            // Cập nhật tổng số tiền
-            sotien.textContent = `$${(newQuantity * products[productNumber].price).toLocaleString()}`;
-            updateSelectedProductsAndTotalPrice();
-        }
-        else{
-            // Nếu số lượng không hợp lệ, gán giá trị mặc định là 1 sản phẩm
-             products[productNumber].quantity = 0;
-
-            // Cập nhật giá trị trên giao diện
-            soluong.value = 0;
-            sotien.textContent = `$${(1 * products[productNumber].price).toLocaleString()}`;
-            updateSelectedProductsAndTotalPrice();
-        }
+    const parentTr = $(this).closest("tr")
+    var spMaxQuantity = parentTr.find(".max-quantity");
+    if ($(this).val() > spMaxQuantity.text().trim())
+    {
+        $(this).val(spMaxQuantity.text().trim())
     }
+    const dongia = parentTr.find(".dongia > div").eq(0)
+    const value = dongia.text().replaceAll(",", "")
+    const sotientra = parentTr.find("#sotientra")
+    const total = value * $(this).val();
+    sotientra.text(new Intl.NumberFormat().format(total))
 
-function dieuchinh_sl(productNumber, change) {
-  const soluong = document.getElementById(`quantity-${productNumber}`);
-  const sotien = document.getElementById(`sotien-${productNumber}`);
-  const remainingQuantityElement = document.getElementById(`remaining-quantity-${productNumber}`);
-
-  // Số lượng còn lại là số lượng hiện tại trừ đi sự thay đổi.
-  const remainingQuantity = products[productNumber].quantity + change;
-
-  // Kiểm tra xem số lượng tăng có vượt quá số lượng còn lại không.
-  if (
-    remainingQuantity >= 0 &&
-    remainingQuantity <= products[productNumber].remainingQuantity
-  ) {
-    products[productNumber].quantity += change;
-
-    // Cập nhật giao diện.
-    soluong.value = products[productNumber].quantity;
-    sotien.textContent = `$${(
-      products[productNumber].quantity * products[productNumber].price
-    ).toLocaleString()}`;
-
-    // Cập nhật tổng số tiền
+    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), $(this).val())
     updateSelectedProductsAndTotalPrice();
-  }
+    
 }
 
-selectAllCheckbox.addEventListener("change", () => {
-  productCheckboxes.forEach((checkbox) => {
-    checkbox.checked = selectAllCheckbox.checked;
-  });
-  selectAllCheckbox1.checked = selectAllCheckbox.checked;
-  updateSelectedProductsAndTotalPrice();
+var btnDcre = $(".decrement-soluong"); //truyen vao 1 doi tuong
+btnDcre.on('click', DreQuantity) //dang ky su kien, ten ham
+function DreQuantity() {
+    const parentTr = $(this).closest("tr")
+    const parent = parentTr.find("td").eq(2) // chon phan tu td thu 3 duoc tim tu the tr (so luong)
+    const intput = parent.find("input");
+    intput.val(intput.val() - 1 > 0 ? intput.val() - 1 : 0) //lay cha, xong tim con 
+
+    const dongia = parentTr.find(".dongia > div").eq(0)  //the div thu nhat
+    const value = dongia.text().replaceAll(",", "")
+    const sotientra = parentTr.find("#sotientra")
+    const total = value * intput.val();
+    if (isNaN(total)) {
+        sotientra.text(0)
+    } else {
+        sotientra.text(new Intl.NumberFormat().format(total))
+    }
+
+    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), intput.val())
+    updateSelectedProductsAndTotalPrice();
+    
+}
+
+var btnIncre = $(".increment-soluong");
+btnIncre.on('click', IncreQuantity)
+
+function IncreQuantity() {
+    const parentTr = $(this).closest("tr")
+    const parent = parentTr.find("td").eq(2)  //tim ra cha
+    var spMaxQuantity = parentTr.find(".max-quantity"); //lay ra con
+    const intput = parent.find("input");
+    intput.val(intput.val() - 0 + 1 <= spMaxQuantity.text().trim()-0 ? intput.val() - 0 + 1 : spMaxQuantity.text().trim())
+
+    const dongia = parentTr.find(".dongia > div").eq(0)
+    const value = dongia.text().replaceAll(",", "")
+    const sotientra = parentTr.find("#sotientra")
+    const total = value * intput.val();
+    sotientra.text(new Intl.NumberFormat().format(total))
+
+    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), intput.val())
+    updateSelectedProductsAndTotalPrice();
+    
+}
+//update du lieu len database
+function updateQuantityPost(cartItemId, quantity) {
+    $.ajax(document.location.href + "/UpdateQuantity", 
+        {
+        method: "POST",
+        data: {cartItemId, quantity},
+        xhrFields: {withCredentials: true}
+    })
+}
+
+//----------SeLect------
+const selectAllCheckbox = document.getElementById("selectAllCheckbox");
+const selectAllCheckbox1 = document.getElementById("selectAllCheckbox1");
+
+const productCheckboxes = $(".product-checkbox");
+
+productCheckboxes.on("change", (e) => {
+    if (e.target.checked === false) {  //neu 1 sanpham khong chon thi xoa selectAll
+        selectAllCheckbox.checked = selectAllCheckbox1.checked = false;
+    }
+    
+    updateSelectedProductsAndTotalPrice();
 });
-selectAllCheckbox1.addEventListener("change", () => {
-  productCheckboxes.forEach((checkbox) => {
-    checkbox.checked = selectAllCheckbox1.checked;
-  });
-  selectAllCheckbox.checked = selectAllCheckbox1.checked;
-  updateSelectedProductsAndTotalPrice();
+
+
+selectAllCheckbox.addEventListener("change", () => {  //select All tren
+    productCheckboxes.each((index,checkbox) => {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+    selectAllCheckbox1.checked = selectAllCheckbox.checked;
+    updateSelectedProductsAndTotalPrice();
+});
+selectAllCheckbox1.addEventListener("change", () => {  //select All duoi
+    productCheckboxes.each((INDEX   ,checkbox) => {
+        checkbox.checked = selectAllCheckbox1.checked;
+    });
+    selectAllCheckbox.checked = selectAllCheckbox1.checked;
+    updateSelectedProductsAndTotalPrice();
 });
 
 function updateSelectedProductsAndTotalPrice() {
-  let selectedCount = 0;
-  let totalPrice = 0;
-  // Đếm số sản phẩm đã chọn và tính tổng số tiền cho các sản phẩm được chọn
-  productCheckboxes.forEach((checkbox, index) => {
-    if (checkbox.checked) {
-      selectedCount++;
+    let selectedCount = 0;  //so san pham duoc chon
+    let totalPrice = 0;
+    // Đếm số sản phẩm đã chọn và tính tổng số tiền cho các sản phẩm được chọn
 
-      // Lấy giá của sản phẩm từ cấu trúc dữ liệu
-      const product = products[index + 1];
-      totalPrice += product.price * product.quantity;
-    }
-  });
+    const productCheckedList = $(".product-checkbox:checked");
+    productCheckedList.each((index, checkbox) => {
 
-  // Cập nhật nội dung các thẻ div
-  document.getElementById('selected-products').textContent = `Tổng thanh toán(${selectedCount} sản phẩm):`;
-  document.getElementById('total-price').textContent = `$${totalPrice.toFixed(2)}`;
+        selectedCount++;
+
+        // Lấy giá của sản phẩm 
+        const parent = $(checkbox).closest("tr");
+        const price = parent.find("#sotientra");
+        const value = price.text().replaceAll(",", "")
+
+        totalPrice += value - 0;
+    });
+
+    // Cập nhật nội dung các thẻ div
+    document.getElementById('selected-products').textContent = `Tổng thanh toán(${selectedCount} sản phẩm):`;
+    document.getElementById('total-price').textContent = `₫${new Intl.NumberFormat().format(totalPrice)}`;
 }
+
+//------Kiem tra dieu kien Mua Hang-------0
+var btnMua = $("#checkoutButton");
+btnMua.on('click', MuaHang)
+function MuaHang(e) {
+    const productCheckedList = $(".product-checkbox:checked");
+    if (productCheckedList.length === 0)  //neu chua chon san pham nao thi khong cho mua hang
+    {
+        e.preventDefault();
+        confirm("Bạn Chưa chọn Sản Phẩm nào! Vui lòng chọn để mua! ");
+    }
+    const selectedProducts = [];
+    productCheckedList.each(function () {
+        const parent = $(this).closest("tr");
+        const productId = parent.find("#cartItemId").attr("value");
+        console.log(productId)
+        const productQuantity = parent.find("#quantity-1").text();
+        const productTotalPrice = parent.find("#sotientra").text();
+
+        e.preventDefault()
+        e.stopPropagation()
+        // Thêm thông tin sản phẩm vào mảng
+        selectedProducts.push({
+            id: productId,
+            quantity: productQuantity,
+            price: productTotalPrice
+            // Thêm các thông tin khác nếu cần
+        });
+    });
+
+    // Chuyển dữ liệu sang trang thanh toán (checkout)
+    // Sử dụng AJAX hoặc chuyển hướng trình duyệt, tùy thuộc vào yêu cầu của bạn
+
+    // Ví dụ sử dụng chuyển hướng trình duyệt
+    window.location.href = `/Checkout?selectedProducts=${encodeURIComponent(JSON.stringify(selectedProducts))}`;
+}
+
 
 /*--------------------------FreeShip-----------------------------*/
 // JavaScript để hiển thị bảng thông báo khi di chuyển chuột đến "Tìm hiểu thêm"
@@ -112,13 +171,13 @@ const learnMoreElements = document.querySelectorAll(".learn-more");
 const popups = document.querySelectorAll(".popup");
 
 learnMoreElements.forEach((learnMoreElement, index) => {
-  learnMoreElement.addEventListener("mouseover", () => {
-    // Lấy vị trí của "Tìm hiểu thêm" để đặt vị trí cho bảng thông báo tương ứng
-    const rect = learnMoreElement.getBoundingClientRect();
-    popups[index].classList.remove("hidden");
-  });
+    learnMoreElement.addEventListener("mouseover", () => {
+        // Lấy vị trí của "Tìm hiểu thêm" để đặt vị trí cho bảng thông báo tương ứng
+        const rect = learnMoreElement.getBoundingClientRect();
+        popups[index].classList.remove("hidden");
+    });
 
-  learnMoreElement.addEventListener("mouseout", () => {
-    popups[index].classList.add("hidden");
-  });
+    learnMoreElement.addEventListener("mouseout", () => {
+        popups[index].classList.add("hidden");
+    });
 });
