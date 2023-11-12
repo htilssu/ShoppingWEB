@@ -73,3 +73,36 @@ function selectAddress(element) {
     // Thêm lớp CSS 'selected-address' cho địa chỉ được chọn
     element.classList.add('selected-address');
 }
+
+//----Xu Ly backend-----
+function updateTotalPrice(totalPrice) {
+    //tính tổng số tiền cho các bao hiem được chọn
+    const productCheckedList = $(".product-checkbox:checked");
+    productCheckedList.each((index, checkbox) => {
+        // Lấy giá của bao hiem sản phẩm 
+        const parent = $(checkbox).closest("tr");
+        const price = parent.find("#sotienbaohiem");
+        const value = price.text().replaceAll(",", "")
+
+        totalPrice += value - 0;
+    });
+
+    // Cập nhật nội dung các thẻ div
+    document.getElementById('total-price').textContent = `₫${new Intl.NumberFormat().format(totalPrice)}`;
+}
+function Erorr(){
+    confirm("Xin lỗi bạn! Tôi chưa thêm chức năng cho sự kiện này...");
+}
+function YeuCau(){
+    confirm("Yêu Cầu Thành Công.");
+}
+
+function thanhToan() {
+    if (selectedPay !== null) {
+        console.log(`Đang thực hiện thanh toán bằng phương thức: ${selectedPay}`);
+        // Thêm logic xử lý thanh toán của bạn tại đây
+    }
+    else {
+        confirm('Vui lòng chọn Phương Thức Thanh Toán !');
+    }
+}

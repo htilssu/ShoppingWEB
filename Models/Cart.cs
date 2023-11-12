@@ -10,4 +10,5 @@ public partial class Cart
     public string? CustomerId { get; set; }
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+    
 }
