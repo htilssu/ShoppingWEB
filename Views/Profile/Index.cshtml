@@ -1,0 +1,271 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model List<BillItem>
+@inject UserManager<UserModel> UserManager
+
+@{
+    ViewBag.Title = "Aetherix";
+    Layout = "_Layout";
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/actions/ProfileStyle.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" asp-append-version="true">
+}
+
+<div class="container">
+<div class="grid">
+<div class="grid_row content">
+<div class="grid_column-2">
+    <div class="user">
+        <a class="linkprofile" href="#">
+            <div class="user-avatar">
+                <div class="user-avatar-placehoder">
+                    <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" class="user-avatar-icon">
+                        <g>
+                            <circle cx="7.5" cy="4.5" fill="none" r="3.8" stroke-miterlimit="10"></circle><path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke-linecap="round" stroke-miterlimit="10"></path>
+                        </g>
+                    </svg>
+
+                </div>
+                <img class="user-avatar__img" src="@user!.AvtPath" alt="anh nguoi dung">
+            </div>
+        </a>
+        <div clas="user-title">
+            <div class="user-name">@user!.UserName</div>
+
+            <a class="suaprofile" href="#">
+                <i class="fa-solid fa-pen">
+                    <span class="suaprofile-label">Sửa Hồ Sơ</span>
+                </i>
+            </a>
+        </div>
+    </div>
+    <div class="info">
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/sg-11134004-7rbmf-lmyeojqx4sdl3c">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">11.11 Shopee Live Thời Trang</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/ba61750a46794d8847c3f463c5e71cc4">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Tài Khoản Của Tôi</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/f0049e9df4e536bc3e7f140d071e9078">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Đơn Mua</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/e10a43b53ec8605f4829da5618e0717c">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Thông Báo</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/84feaa363ce325071c0a66d3c9a88748">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Kho Voucher</span>
+                    </div>
+                </a>
+            </div>
+            <div class="info-1">
+                <div class="info-1-head">
+                    <a class="link-km" href="#">
+                        <div class="link-km-img">
+                            <img src="https://down-vn.img.susercontent.com/file/a0ef4bd8e16e481b4253bd0eb563f784">
+                        </div>
+                        <div class="info-1-label">
+                            <span class="info-1-label-title">Aetherix xu</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="grid_column-10">
+    <div class="table-list">
+        <a class="table-list-link active" href="#">
+            <span class="table-list-label">Tất Cả</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Chờ Thanh Toán</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Vận Chuyển</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Chờ Giao Hàng</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Hoàn Thành</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Đã Hủy</span>
+        </a>
+        <a class="table-list-link " href="#">
+            <span class="table-list-label">Trả Hàng/Hoàn Tiền</span>
+        </a>
+    </div>
+    <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="search-input" placeholder="Bạn có thể tìm kiếm theo tên Shop, ID đơn hàng hoặc Tên Sản phẩm" value="">
+    </div>
+    <div class="donhang-main">
+      @if (Model.Count == 0)
+      {
+          <div class="h-100 d-flex align-items-center justify-content-center">
+              Bạn chưa mua sản phẩm nào 
+          </div>
+      }
+      else
+      {
+            @foreach (var billItem in Model)
+        {
+            <div>
+            <div class="donhang-sp">
+                <div class="donhang-sp-header">
+                    <div class="donhang-sp-header-r">
+                        <div class="donhang-sp-header-r-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="16" fill="none">
+                                <title>Preferred Seller Plus</title><path fill="#EE4D2D" fill-rule="evenodd" d="M0 2C0 .9.9 0 2 0h66a2 2 0 012 2v12a2 2 0 01-2 2H2a2 2 0 01-2-2V2z" clip-rule="evenodd"></path>
+                                <g clip-path="url(#clip0)">
+                                    <path fill="#fff" d="M8.7 13H7V8.7L5.6 6.3A828.9 828.9 0 004 4h2l2 3.3a1197.3 1197.3 0 002-3.3h1.6L8.7 8.7V13zm7.9-1.7h1.7c0 .3-.2.6-.5 1-.2.3-.5.5-1 .7l-.6.2h-.8c-.5 0-1 0-1.5-.2l-1-.8a4 4 0 01-.9-2.4c0-1 .3-1.9 1-2.6a3 3 0 012.4-1l.8.1a2.8 2.8 0 011.3.7l.4.6.3.8V10h-4.6l.2 1 .4.7.6.5.7.1c.4 0 .7 0 .9-.2l.2-.6v-.1zm0-2.3l-.1-1-.3-.3c0-.2-.1-.2-.2-.3l-.8-.2c-.3 0-.6.2-.9.5l-.3.5a4 4 0 00-.3.8h3zm-1.4-4.2l-.7.7h-1.4l1.5-2h1.1l1.5 2h-1.4l-.6-.7zm8.1 1.6H25V13h-1.7v-.5.1H23l-.7.5-.9.1-1-.1-.7-.4c-.3-.2-.4-.5-.6-.8l-.2-1.3V6.4h1.7v3.7c0 1 0 1.6.3 1.7.2.2.5.3.7.3h.4l.4-.2.3-.3.3-.5.2-1.4V6.4zM34.7 13a11.2 11.2 0 01-1.5.2 3.4 3.4 0 01-1.3-.2 2 2 0 01-.5-.3l-.3-.5-.2-.6V7.4h-1.2v-1h1.1V5h1.7v1.5h1.9v1h-2v3l.2 1.2.1.3.2.2h.3l.2.1c.2 0 .6 0 1.3-.3v1zm2.4 0h-1.7V3.5h1.7v3.4a3.7 3.7 0 01.2-.1 2.8 2.8 0 013.4 0l.4.4.2.7V13h-1.6V9.3 8.1l-.4-.6-.6-.2a1 1 0 00-.4.1 2 2 0 00-.4.2l-.3.3a3 3 0 00-.3.5l-.1.5-.1.9V13zm5.4-6.6H44V13h-1.6V6.4zm-.8-.9l1.8-2h1.8l-2.1 2h-1.5zm7.7 5.8H51v.5l-.4.5a2 2 0 01-.4.4l-.6.3-1.4.2c-.5 0-1 0-1.4-.2l-1-.7c-.3-.3-.5-.7-.6-1.2-.2-.4-.3-.9-.3-1.4 0-.5.1-1 .3-1.4a2.6 2.6 0 011.6-1.8c.4-.2.9-.3 1.4-.3.6 0 1 .1 1.5.3.4.1.7.4 1 .6l.2.5.1.5h-1.6c0-.3-.1-.5-.3-.6-.2-.2-.4-.3-.8-.3s-.8.2-1.2.6c-.3.4-.4 1-.4 2 0 .9.1 1.5.4 1.8.4.4.8.6 1.2.6h.5l.3-.2.2-.3v-.4zm4 1.7h-1.6V3.5h1.7v3.4a3.7 3.7 0 01.2-.1 2.8 2.8 0 013.4 0l.3.4.3.7V13h-1.6V9.3L56 8.1c-.1-.3-.2-.5-.4-.6l-.6-.2a1 1 0 00-.3.1 2 2 0 00-.4.2l-.3.3a3 3 0 00-.3.5l-.2.5V13z"></path>
+                                </g>
+                                <g clip-path="url(#clip1)">
+                                    <path fill="#fff" d="M63 8.2h2.2v1.6H63V12h-1.6V9.8h-2.2V8.2h2.2V6H63v2.3z"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0">
+                                        <path fill="#fff" d="M0 0h55v16H0z" transform="translate(4)"></path>
+                                    </clipPath>
+                                    <clipPath id="clip1">
+                                        <path fill="#fff" d="M0 0h7v16H0z" transform="translate(59)"></path>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+
+                        </div>
+                        <div class="donhang-sp-header-r-2">
+                            HAV Store.Mũ - Nón VNXK
+                        </div>
+                        <div class="donhang-sp-header-r-3">
+                            <button class="donhang-sp-header-r-3">
+                                <i class="fa-regular fa-comment"></i>
+                                <Span class="btn-title">Chat</Span>
+                            </button>
+                        </div>
+                        <a class="donhang-sp-header-r-4" href="#">
+                            <div class="donhang-button-r-4">
+                                <i class="fa-solid fa-store"></i>
+                                <span>Xem Shop</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="donhang-sp-header-l">
+                        <div class="donhang-sp-header-l-1">
+                            <a class="link-vc" href="#">
+                                <span class="donhang-sp-header-l-1-vc">
+                                    <i class="fa-solid fa-truck">
+                                        <label class="tinhtrang">Đơn hàng đã được giao thành công</label>
+                                    </i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="donhang-sp-header-l-2">
+                            ĐÁNH GIÁ
+                        </div>
+                    </div>
+                </div>
+                <div class="donhang-sp-main">
+                    <div class="donhang-sp-main-p-1">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm7cin7d7lr38a_tn" class="sp-img" alt="" tabindex="0">
+                        <div class="donhang-sp-main-p-1-title">
+                            <div class="donhang-sp-main-p-1-label1">
+                                <span class="label-1">
+                                    Mũ lưỡi trai Stussy Cao Cấp Nam Nữ FULL HỘP
+                                </span>
+                            </div>
+                            <div class="donhang-sp-main-p-1-label2">
+                                <span class="label-2">Phân loại hàng: Stussy chữ logo cạnh</span>
+                            </div>
+                            <div class="donhang-sp-main-p-1-label3">x1</div>
+                        </div>
+                    </div>
+                    <div class="donhang-sp-main-gia">
+                        <div class="donhang-sp-main-gia-1">
+                            <span class="donhang-gia">₫169.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="gach">
+
+            </div>
+            <div class="donhang-footer">
+                <div class="donhang-footer-1">
+                    <span class="donhang-footer-1-label">Đánh Giá Sản Phẩm Ngay</span>
+                </div>
+                <div class="donhang-footer-2">
+                    <div class="donhang-footer-2-btn">
+                        <div class="donhang-footer-2-btn-1">
+                            <button class="footer-btn">Đánh Giá</button>
+                        </div>
+                    </div>
+                    <div class="donhang-footer-2-btn">
+                        <div class="donhang-footer-2-btn-2">
+                            <button class="footer-btn-2">Liên hệ Người bán</button>
+                        </div>
+                    </div>
+                    <div class="donhang-footer-2-btn">
+                        <div class="donhang-footer-2-btn-2">
+                            <button class="footer-btn-2">Xem đánh giá Shop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+      }
+    </div>
+</div>
+</div>
+
+</div>
+</div>

@@ -27,6 +27,8 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
 
     public virtual DbSet<Bill> Bills { get; set; }
 
+    public virtual DbSet<BillItem> BillItems { get; set; }
+
     public virtual DbSet<DeliveryType> DeliveryTypes { get; set; }
 
     public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
