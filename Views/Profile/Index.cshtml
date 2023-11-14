@@ -182,7 +182,7 @@
 
                         </div>
                         <div class="donhang-sp-header-r-2">
-                            HAV Store.Mũ - Nón VNXK
+                            @billItem.TypeProduct.Product.Seller;
                         </div>
                         <div class="donhang-sp-header-r-3">
                             <button class="donhang-sp-header-r-3">
@@ -214,22 +214,22 @@
                 </div>
                 <div class="donhang-sp-main">
                     <div class="donhang-sp-main-p-1">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lm7cin7d7lr38a_tn" class="sp-img" alt="" tabindex="0">
+                        <img src="@billItem.TypeProduct.Product.ImageUrls" class="sp-img" alt="" tabindex="0">
                         <div class="donhang-sp-main-p-1-title">
                             <div class="donhang-sp-main-p-1-label1">
                                 <span class="label-1">
-                                    Mũ lưỡi trai Stussy Cao Cấp Nam Nữ FULL HỘP
+                                   @billItem.TypeProduct.Product.ProductName;
                                 </span>
                             </div>
                             <div class="donhang-sp-main-p-1-label2">
-                                <span class="label-2">Phân loại hàng: Stussy chữ logo cạnh</span>
+                                <span class="label-2">Phân loại hàng:@billItem.TypeProduct.TypeName</span>
                             </div>
-                            <div class="donhang-sp-main-p-1-label3">x1</div>
+                            <div class="donhang-sp-main-p-1-label3">@billItem.Quantity</div>
                         </div>
                     </div>
                     <div class="donhang-sp-main-gia">
                         <div class="donhang-sp-main-gia-1">
-                            <span class="donhang-gia">₫169.000</span>
+                            <span class="donhang-gia">@billItem.Total</span>
                         </div>
                     </div>
                 </div>
