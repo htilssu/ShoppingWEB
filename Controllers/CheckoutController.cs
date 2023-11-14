@@ -8,9 +8,9 @@ namespace ShoppingWEB.Controllers
     
     public class ProductModel
     {
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
-        public string Price { get; set; }
+        public string? Price { get; set; }
         // Thêm các thuộc tính khác nếu cần
     }
 

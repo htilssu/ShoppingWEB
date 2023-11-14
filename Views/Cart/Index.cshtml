@@ -6,8 +6,8 @@
 @{
     ViewBag.Title = "Giỏ Hàng";
     Layout = "_SecondaryLayout";
-    var sellerGroupBy = Model.CartItems.GroupBy(c => c.TypeProduct.Product!.SellerId);
-    var totalPrice = Model.CartItems.Sum(c => c.Quantity * c.TypeProduct.Product.Price);
+    var sellerGroupBy = Model.CartItems.GroupBy(c => c.TypeProduct!.Product!.SellerId);
+    var totalPrice = Model.CartItems.Sum(c => c.Quantity * c.TypeProduct!.Product!.Price);
 }
 
 @section Styles

@@ -26,12 +26,6 @@ public class CartController : Controller
     {
         var user = await _userManager.GetUserAsync(User);
         var cartUser = _context.Carts
-            .Include(p => p.CartItems)
-            .ThenInclude(i => i.TypeProduct)
-            .ThenInclude(i => i!.Product).ThenInclude(i => i.Seller)
-            .Include(p => p.CartItems)
-            .ThenInclude(i => i.TypeProduct)
-            .ThenInclude(i => i!.Product).ThenInclude(p => p.TypeProducts)
             .FirstOrDefault(c => c.CustomerId == user!.Id);
 
         return View(cartUser);
