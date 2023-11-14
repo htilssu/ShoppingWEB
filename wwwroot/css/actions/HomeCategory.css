@@ -327,3 +327,6 @@ html {
 .select-input:hover .select-input-list {
     display: block;
 }
+.btn-apply{
+    margin-bottom: 5px;
+}
