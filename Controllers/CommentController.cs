@@ -12,8 +12,9 @@ public class CommentController : Controller
         _context=context;
     }
     // GET
-    public IActionResult Index()
+    public IActionResult Index(string? cartItemId)
     {
+        
         return View();
     }
 }
