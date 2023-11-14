@@ -1,0 +1,345 @@
+﻿.form {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    overflow-y: auto;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+textarea {
+    font: inherit;
+    margin-top: 10px;
+    color: rgba(0,0,0,.26);
+}
+
+.comment-form {
+    width: 45.625rem !important;
+    
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+
+    border-radius: 3px;
+    width: 500px;
+    max-width: 100%;
+    padding: 30px 30px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.comment-form-heading {
+    margin-bottom: 1.875rem;
+    display: flex;
+    align-items: center;
+}
+
+.comment-form-title {
+    font-weight: 400;
+    font-size: 1.35rem;
+    color: #222;
+    display: flex;
+    align-items: center;
+}
+
+.comment-form-label {
+    margin-left: 8px;
+}
+
+
+
+.comment-form-main-container-HD {
+    position: relative;
+    background: #fff8e4;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #f69113;
+    transition: all .2s;
+}
+
+.comment-form-phanloai {
+    color: rgba(0,0,0,.26);
+}
+
+.xu {
+    color: #ee4d2d;
+    margin-left: 5px;
+}
+
+.comment-form-rating {
+    margin-top: 1.25rem;
+}
+
+.comment-form-danhgia {
+    margin-top: 1.25rem;
+    display: flex;
+    align-content: center;
+    margin: 20px 0px;
+}
+
+.comment-form-danhgia-label {
+    font-size: 14px;
+    min-width: 180px;
+}
+
+
+
+.text {
+    margin-left: 10px;
+    min-width: 100px;
+    color: rgb(237, 165, 0);
+}
+
+.comment-form-content {
+    position: relative;
+    background-color: #f5f5f5;
+    padding: 1.25rem 1.5625rem 0.9375rem
+}
+
+.comment-form-content-main {
+    position: relative;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: inset 0 -0.5px 0 rgba(0,0,0,.09);
+    margin: 0 0 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid rgba(0,0,0,.26);
+    border-radius: 0.125rem;
+}
+
+.comment-form-content-main-cmt {
+    position: relative;
+    padding: 0;
+    margin: 0 0 0.75rem;
+}
+
+.comment-form-content-main-label {
+    top: 0;
+    background-color: #fff;
+    line-height: 1.25rem;
+    font-size: 1rem;
+    position: relative;
+    left: 0;
+    margin-bottom: 0.25rem;
+    color: rgba(0,0,0,.87);
+    font-weight: normal;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.comment-form-content-area {
+    overflow: hidden;
+    resize: none;
+    margin-top: 8px;
+    border: 0;
+    line-height: 1.25rem;
+    font-size: 1rem;
+    width: 100%;
+    height: 2.5rem;
+    color: rgba(0,0,0,.87);
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+.comment-form-content-danhgia {
+    position: relative;
+    padding: 0;
+    margin: 0 0 0.75rem;
+}
+
+.comment-form-content-main-mota {
+    top: 0;
+    background-color: #fff;
+    line-height: 1.25rem;
+    font-size: 1rem;
+    position: relative;
+    left: 0;
+    margin-bottom: 0.35rem;
+    color: rgba(0,0,0,.87);
+    font-weight: 600;
+}
+
+.gach {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.09);
+    padding: 0;
+    margin: 0 0 0.75rem;
+}
+
+.comment-form-content-share {
+    position: relative;
+}
+
+.share {
+    min-height: 100px;
+    color: rgba(0, 0, 0, 0.87);
+    resize: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    line-height: 1.25rem;
+    font-size: 1rem;
+    width: 100%;
+    height: 1.25rem;
+    border: none;
+    outline: none;
+}
+
+.comment-form-content-main-them {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.comment-form-content-main-cont {
+    background: #fef6f5;
+    border: 1px solid #ee4d2d;
+    box-sizing: border-box;
+    padding: 0 12px;
+    height: 30px;
+    color: #ee4d2d;
+    display: inline-flex;
+    margin-right: 8px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.comment-form-them-label {
+    margin-left: 6px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+}
+
+.comment-form-img {
+    display: flex;
+}
+
+.img {
+    display: none;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    line-height: normal;
+}
+
+.note {
+    color: #929292;
+    text-align: right;
+    font-size: .875rem;
+}
+
+.comment-form-hienthi {
+    display: flex;
+    align-items: center;
+    margin-top: 1.25rem
+}
+
+
+
+
+.comment-form-check_input {
+    width: 20px;
+    height: 20px;
+    border: 1px;
+    padding: 4px;
+}
+
+
+.comment-form-check-hienthi {
+    margin-left: 4px;
+}
+
+.comment-form-check-hienthi-hint {
+    color: rgba(0,0,0,.87);
+    font-size: .875rem;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+.comment-form-check-hienthi-username {
+    color: rgba(0,0,0,.54);
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+.comment-form-dv-user {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.comment-form-dv {
+    margin-top: 15px;
+    align-items: center;
+}
+
+.comment-form-dv-label {
+    min-width: 180px;
+}
+
+.comment-form-dv-user {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.dv-1 {
+    display: flex;
+    margin-top: 12px;
+}
+
+.dv-shop {
+    min-width: 180px;
+}
+
+.comment-form-footer {
+    display: flex;
+     justify-content: end;
+    right: 0;
+    height: 84px;
+    align-items: center;
+    padding: 22px 30px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    
+
+}
+
+.cancel-btn {
+    padding: 8px 5px;
+    width: 140px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #555;
+    margin-right: 6px;
+    line-height: 1;
+    border: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-HT {
+    color: #fff;
+    position: relative;
+    outline: 0;
+    background: #ee4d2d;
+    height: 34px;
+    padding: 8px 5px;
+    width: 140px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comment-form-star-check{
+    margin-top :10px;
+}
