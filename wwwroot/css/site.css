@@ -194,7 +194,7 @@ header .navbar.nav-social {
 
 .logged .option {
     right: 0;
-    width: 100px;
+    width: 130px;
     opacity: 1;
     height: auto;
     top: 110%;
@@ -221,15 +221,20 @@ header .navbar.nav-social {
 }
 
 .logged .option ul {
-    padding: 5px;
+    padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 .logged .option li {
     list-style: none;
     font-size: .9rem;
+    padding: 5px;
+}
+.logged .option li:hover {
+    background-color: rgba(0,0,0,.2);
 }
 
 

@@ -14,8 +14,7 @@ public class LogoutController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
     }
-
-    [HttpPost]
+    
     public async Task<IActionResult> Index()
     {
         await _signInManager.SignOutAsync();
