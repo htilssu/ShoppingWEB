@@ -1,5 +1,6 @@
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Areas.Admin.Models;
 using ShoppingWEB.Extension_Method;
@@ -174,6 +175,11 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     var propertyInfos = typeof(Product).GetProperties();
                     foreach (var propertyInfo in propertyInfos)
                     {
+                        if (propertyInfo.Name == "TypeProduct")
+                        {
+                            continue;
+                        }
+
                         var value = propertyInfo.GetValue(productModel);
                         if (value is null or IList { Count: 0 })
                         {
@@ -181,6 +187,31 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                         }
 
                         propertyInfo.SetValue(product, value);
+                    }
+
+                    foreach (var modelTypeProduct in productModel.TypeProducts)
+                    {
+                        bool isExist = false;
+                        foreach (var typeProduct in product.TypeProducts)
+                        {
+                            if (typeProduct.TypeName == modelTypeProduct.TypeName)
+                            {
+                                isExist = true;
+                                if (modelTypeProduct.ImageFile != null && modelTypeProduct.ImageFile.Length > 0)
+                                {
+                                    modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImage();
+                                }
+
+                                typeProduct.Sizes = modelTypeProduct.Sizes;
+                            }
+                        }
+
+                        if (!isExist)
+                        {
+                            if (modelTypeProduct.ImageFile != null)
+                                modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImage();
+                            product.TypeProducts.Add(modelTypeProduct);
+                        }
                     }
 
                     await Task.Delay(100);

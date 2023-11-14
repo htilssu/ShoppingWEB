@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShoppingWEB.Models;
 
 public partial class Product
 {
-    public string Id { get; set; } = null!;
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
-    public string? CategoryId { get; set; }
+    [Display(Name = "Loại Sản Phẩm")] public string? CategoryId { get; set; }
 
-    public string? ProductName { get; set; }
+    [Display(Name = "Tên Sản Phẩm")] public string? ProductName { get; set; }
 
-    public double? Price { get; set; }
+    [Display(Name = "Giá")] public double? Price { get; set; }
 
-    public double? DiscountPercent { get; set; }
+    [Display(Name = "Giảm Giá(%)")] public double? DiscountPercent { get; set; }
 
-    public string? ShortDescription { get; set; }
+    [Display(Name = "Mô Tả Ngắn")] public string? ShortDescription { get; set; }
 
-    public string? LongDescription { get; set; }
+    [Display(Name = "Mô Tả Chí Tiết")] public string? LongDescription { get; set; }
 
-    public byte? Publish { get; set; }
+    [Display(Name = "Công Khai")] public byte? Publish { get; set; }
 
     public int? Rating { get; set; }
 

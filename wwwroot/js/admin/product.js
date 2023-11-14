@@ -3,7 +3,7 @@ let sizeArr = [];
 collectSizeArr();
 let typeProduct = [];
 let btnClosePop = $(".btn-close__popup");
-const btnSubmit = $('button[type="submit"]');
+const btnSubmit = $("#check");
 const btnShowSizePop = $(".btn-show__size");
 const btnShowTypePop = $(".btn-show__type");
 const btnAddSize = $(".btn-add__size");
@@ -226,7 +226,6 @@ function handleAddType() {
 }
 
 function handleAddSize() {
-  console.log(sizeArr);
   const size = productTypeSizeForm.find("input").val();
   if (size !== "") {
     for (const item of sizeArr) {
@@ -237,6 +236,9 @@ function handleAddSize() {
       size: size,
       quantity: 0,
     });
+    console.log(sizeArr);
+  } else {
+    return;
   }
 
   productTypeSizeForm.find("input").val("");
@@ -248,7 +250,7 @@ function handleAddSize() {
 <div class="col-6 mt-2">${newSize.size}
 <input type="text" name="TypeProducts[${index}].Sizes[${
         sizeArr.length - 1
-      }].SizeType" value="${item.size}" hidden="hidden">
+      }].SizeType" value="${sizeArr[sizeArr.length - 1].size}" hidden="hidden">
 </div>
         
         <div class="col-6 ">
@@ -301,31 +303,38 @@ function handleCloseProductPopup() {
   productTypeSizeForm.find("input").val("");
 }
 
+setInterval(() => {
+  checkValidate();
+}, 1000);
+
 function checkValidate() {
   if ($(".product-type-list__size").find(".size__item").length === 0) {
-    btnSubmit.removeAttr("disable");
+    btnSubmit.attr("disabled", "disabled");
+    console.log(1);
     return;
   }
-  if ($(".product-type-list").find(".btn").length === 0) {
-    btnSubmit.removeAttr("disable");
+  if ($("#ProductName").val() === "") {
+    btnSubmit.attr("disabled", "disabled");
+    console.log(2);
     return;
   }
 
-  for (const item of $('input[type="text"]')) {
-    if ($(item).val() === "") {
-      btnSubmit.removeAttr("disable");
-      return;
-    }
+  if ($(".type__item").length === 0) {
+    btnSubmit.attr("disabled", "disabled");
+    console.log(111);
+    return;
   }
 
   for (const item of $('input[type="file"]')) {
-    if (item.values.length === 0) {
-      btnSubmit.removeAttr("disable");
+    if (item.files.length === 0) {
+      console.log(4);
+      btnSubmit.attr("disabled", "disabled");
+
       return;
     }
   }
 
-  btnSubmit.removeAttr("disable");
+  btnSubmit.removeAttr("disabled");
 }
 
 function renderSize() {
