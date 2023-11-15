@@ -18,9 +18,8 @@
 
 @section Scripts
 {
-    <script src="~/js/Actions/JsCart.js" asp-append-version="true"></script>
+    <script src="~/js/actions/JsCart.js" asp-append-version="true"></script>
     <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
-
 }
 
 @section HeaderNav {
@@ -65,10 +64,9 @@
         <th class="op-50">Thao tác</th>
     </tr>
     </thead>
-    @if (Model.CartItems.Count != 0)  
+    @if (Model.CartItems.Count != 0)
     {
         <tbody>
-
         @foreach (var cartItems in sellerGroupBy)
         {
             var listCartItem = cartItems.ToList();
@@ -136,7 +134,8 @@
                                 <input class="soluong" type="number" value="@cartItem.Quantity" id="quantity-1">
                                 <button class="increment-soluong">+</button>
                             </div>
-                            <div class="soluong-con-lai" id="remaining-quantity-1">Còn 
+                            <div class="soluong-con-lai" id="remaining-quantity-1">
+                                Còn
                                 <span class="max-quantity">
                                     @cartItem.TypeProduct.Sizes.FirstOrDefault(c => c.SizeType == cartItem.SizeType).Quantity
                                 </span>sản phẩm
@@ -159,7 +158,7 @@
                             </a>
 
                             <div class="timsanpham">
-                                <a asp-controller="Search" asp-action="Index" asp-route-search="@cartItem.TypeProduct.Product.ProductName.Substring(0,7)" style="text-decoration: none">
+                                <a asp-controller="Search" asp-action="Index" asp-route-search="@cartItem.TypeProduct.Product.ProductName.Substring(0, 7)" style="text-decoration: none">
                                     <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
                                     <div>
                                         <i class="fa-solid fa-caret-down"></i>
@@ -213,12 +212,12 @@
 
         </tbody>
     }
-    else  //Gio Hang rong
+    else //Gio Hang rong
     {
         <tr>
             <td colspan="6" style="height: 290px;font-size: larger;font-style: oblique;">
                 <div>Giỏ Hàng Của Bạn Đang Trống !</div>
-                <a asp-controller="Home" asp-action="Index" >
+                <a asp-controller="Home" asp-action="Index">
                     <button style="background-color: #EE4D2D ; border: none;padding: 7px; box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);">
                         <div style="color: white  ">Mua Hàng</div>
                     </button>
@@ -270,7 +269,7 @@
                     0.00
                 </div>
             </div>
-            <a asp-controller="Checkout" asp-action="Index" >
+            <a asp-controller="Checkout" asp-action="Index">
                 <button class="button-muahang" id="checkoutButton">
                     <div>Mua Hàng</div>
                 </button>

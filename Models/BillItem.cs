@@ -2,7 +2,7 @@
 
 public partial class BillItem
 {
-    public string Id { get; set; } = null!;
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
     public string? BillId { get; set; }
 

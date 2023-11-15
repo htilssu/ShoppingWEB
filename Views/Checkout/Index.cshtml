@@ -6,9 +6,12 @@
     Layout = "_SecondaryLayout";
     var info = (List<ProductModel>)ViewBag.Info;
     var sellerGroupBy = Model.GroupBy(c => c.TypeProduct.Product!.SellerId);
-    var Total_PRICES = 0;
-    var Total_Price_Ship = 0;
-    var Totals = 0;
+    double Total_Price_Ship = 0;
+    double total_sp = 0;
+    double Total_Sps = 0;
+    double total_tienhang = 0;
+    double total_shop = 0;
+    double thanh_toan = 0;
 }
 
 @section Styles
@@ -19,7 +22,7 @@
 
 @section Scripts
 {
-    <script src="~/js/Actions/JsCheckout.js" asp-append-version="true"></script>
+    <script src="~/js/actions/JsCheckout.js" asp-append-version="true"></script>
     <script src="~/js/partials/product_list.js" asp-append-version="true"></script>
 
 }
@@ -76,9 +79,8 @@
             var listCartItem = cartItems.ToList();
             var seller = listCartItem[0].TypeProduct!.Product!.Seller;
             var countpro = 0;
-            var total_Price = 30000;
-            Total_Price_Ship += total_Price;
-            total_Price = 0;
+            double Price_ship = 30000;
+            Total_Price_Ship += Price_ship;
 
             <tbody>
             <tr>
@@ -95,7 +97,10 @@
             {
                 countpro++;
                 var cartItem = listCartItem[index];
-                total_Price += int.Parse(@info[index].Price.Replace(",", "")) ;
+                double price = cartItem.TypeProduct.Product.Price ?? 0; // Sử dụng giá trị mặc định là 0 nếu là null
+                int quantity = cartItem.Quantity ?? 0; // Sử dụng giá trị mặc định là 0 nếu là null
+                total_sp += price * quantity;
+                total_tienhang += total_sp;
                 <tr>
                     <td class="o-sanpham">
                         <div class="o-sanpham1">
@@ -119,10 +124,16 @@
                     <td>
                         <div class="sotien-sp2">
                             <i class="fa-solid fa-dong-sign"></i>
-                            <div>@info[index].Price</div> @*   Price total duoc gui qua tu Cart   *@
+                            <div>@($"{total_sp:#,###}")</div> 
                         </div> 
                     </td>
                 </tr>
+                Total_Sps += total_sp;
+                total_sp = 0;
+            }
+            @{
+                total_shop = Total_Sps + Price_ship;
+                Total_Sps = 0;
             }
             <tr>
                 <td colspan="4">
@@ -153,7 +164,7 @@
                                     <div class="time-nhanhang">Nhận hàng vào 10 Th10 - 12 Th10</div>
                                 </div>
                                 <div>
-                                    <button onclick="Erorr()">THAY ĐỔI</button>
+                                    <button onclick="Erorr_ship()">THAY ĐỔI</button>
                                 </div>
                                 <div class="tien-ship" style="display: flex;align-items: center">
                                     <i class="fa-solid fa-dong-sign"></i>
@@ -175,17 +186,17 @@
                         <div class="sotien" style="display: flex;align-items: center">
                             <i class="fa-solid fa-dong-sign"></i>
                             <div id="total-price">
-                                @($"{total_Price:#,###}")
+                                @($"{total_shop:#,###}")
                             </div>
                         </div>
                     </div>
                 </td>
             </tr>
             </tbody>
-            Total_PRICES += total_Price;  //Tong tien cua 1 shop
+            total_shop = 0;
         }
         @{
-            Totals = Total_PRICES + Total_Price_Ship;  //Tong tien Thanh Toan cuoi cung
+            thanh_toan = total_tienhang + Total_Price_Ship;  //Tong tien Thanh Toan cuoi cung
         }
 
     </table>
@@ -247,7 +258,7 @@
                 <h4>Tổng tiền hàng</h4>
                 <div>
                     <i class="fa-solid fa-dong-sign"></i>
-                    @($"{Total_PRICES:#,###}")
+                    @($"{total_tienhang:#,###}")
                 </div>
             </div>
             <div class="dat-hang1">
@@ -261,7 +272,7 @@
                 <h4>Tổng thanh toán:</h4>
                 <div>
                     <i class="fa-solid fa-dong-sign"></i>
-                    @($"{Totals:#,###}")
+                    @($"{thanh_toan:#,###}")
                 </div>
             </div>
         </div>
@@ -272,7 +283,14 @@
                 <a href="#" onclick="Erorr()">Điều khoản và Điều kiện</a> của hợp đồng Bảo hiểm
             </div>
             <div class="button-dathang">
-                <button id="btnThanhToan" class="button-thantoan" onclick="thanhToan()">Đặt Hàng</button>
+                <form asp-controller="Checkout" asp-action="CheckOut" method="post">
+                    @for (var index = 0; index < Model.Count; index++)
+                    {
+                        var cartItem = Model[index];
+                        <input name="cartItemID[@index]" value="@cartItem.Id"/>
+                    }
+                    <button id="btnThanhToan" class="button-thantoan" onclick="thanhToan()">Đặt Hàng</button>
+                </form>
             </div>
         </div>
     </div>

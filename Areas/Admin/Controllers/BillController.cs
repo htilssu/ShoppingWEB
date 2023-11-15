@@ -23,9 +23,10 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         // GET: Admin/Bill
         public async Task<IActionResult> Index()
         {
-            var shoppingContext = _context.Bills.Include(b => b.Delivery).Include(b => b.PaymentMethodNavigation)
-                .Include(b => b.TypeProduct);
-            return View(await shoppingContext.ToListAsync());
+            // var shoppingContext = _context.Bills.Include(b => b.Delivery).Include(b => b.PaymentMethodNavigation)
+            //     .Include(b => b.TypeProduct);
+            // return View(await shoppingContext.ToListAsync());
+            return View();
         }
 
         // GET: Admin/Bill/Details/5
@@ -39,7 +40,6 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             var bill = await _context.Bills
                 .Include(b => b.Delivery)
                 .Include(b => b.PaymentMethodNavigation)
-                .Include(b => b.TypeProduct)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (bill == null)
             {
@@ -64,7 +64,6 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
             ViewData["DeliveryId"] = new SelectList(_context.DeliveryTypes, "Id", "Id", bill.DeliveryId);
             ViewData["PaymentMethod"] = new SelectList(_context.PaymentMethods, "Id", "Id", bill.PaymentMethod);
-            ViewData["TypeProductId"] = new SelectList(_context.TypeProducts, "Id", "Id", bill.TypeProductId);
             // TODO return
             return View("Index");
         }

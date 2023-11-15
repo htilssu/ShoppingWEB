@@ -2,9 +2,8 @@
 
 public partial class Bill
 {
-    public string Id { get; set; } = null!;
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
-    public string? TypeProductId { get; set; }
 
     public string? UserId { get; set; }
 
@@ -20,6 +19,5 @@ public partial class Bill
 
     public virtual PaymentMethod? PaymentMethodNavigation { get; set; }
 
-    public virtual TypeProduct? TypeProduct { get; set; }
     public virtual ICollection<BillItem> BillItems { get; set; } = new List<BillItem>();
 }

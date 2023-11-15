@@ -75,34 +75,39 @@ function selectAddress(element) {
 }
 
 //----Xu Ly backend-----
-function updateTotalPrice(totalPrice) {
-    //tính tổng số tiền cho các bao hiem được chọn
-    const productCheckedList = $(".product-checkbox:checked");
-    productCheckedList.each((index, checkbox) => {
-        // Lấy giá của bao hiem sản phẩm 
-        const parent = $(checkbox).closest("tr");
-        const price = parent.find("#sotienbaohiem");
-        const value = price.text().replaceAll(",", "")
-
-        totalPrice += value - 0;
-    });
-
-    // Cập nhật nội dung các thẻ div
-    document.getElementById('total-price').textContent = `₫${new Intl.NumberFormat().format(totalPrice)}`;
-}
 function Erorr(){
     confirm("Xin lỗi bạn! Tôi chưa thêm chức năng cho sự kiện này...");
+}
+function Erorr_ship(){
+    confirm("Không thể Thay Đổi phương thức Vận Chuyển.");
 }
 function YeuCau(){
     confirm("Yêu Cầu Thành Công.");
 }
 
-function thanhToan() {
-    if (selectedPay !== null) {
-        console.log(`Đang thực hiện thanh toán bằng phương thức: ${selectedPay}`);
-        // Thêm logic xử lý thanh toán của bạn tại đây
-    }
-    else {
-        confirm('Vui lòng chọn Phương Thức Thanh Toán !');
-    }
+var btnThanhToan = $(".btnThanhToan");
+btnThanhToan.on('click', Thanhtoan)
+function Thanhtoan() {
+    const parentTr = $(this).closest("tr")
+    const parent = parentTr.find("td").eq(2)  //tim ra cha
+    var spMaxQuantity = parentTr.find(".max-quantity"); //lay ra con
+    const intput = parent.find("input");
+    intput.val(intput.val() - 0 + 1 <= spMaxQuantity.text().trim()-0 ? intput.val() - 0 + 1 : spMaxQuantity.text().trim())
+
+    const dongia = parentTr.find(".dongia > div").eq(0)
+    const value = dongia.text().replaceAll(",", "")
+    const sotientra = parentTr.find("#sotientra")
+    const total = value * intput.val();
+    sotientra.text(new Intl.NumberFormat().format(total))
+
+    DataPost(parentTr.find("#cartItemId").attr("value"), intput.val())
+}
+//update du lieu len database
+function DataPost(cartItemId, quantity) {
+    $.ajax(document.location.href + "/UpdateQuantity",
+        {
+            method: "POST",
+            data: {cartItemId, quantity},
+            xhrFields: {withCredentials: true}
+        })
 }
