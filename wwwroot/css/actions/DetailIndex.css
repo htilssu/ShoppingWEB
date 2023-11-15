@@ -1,6 +1,6 @@
 @charset "UTF-8";
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 header .nav-social {
@@ -130,6 +130,9 @@ header .nav-social {
   min-height: 2rem;
   line-height: 1px;
 }
+.product-briefing .classify .data button.classify-item:hover {
+  border: 1px solid #d02d2d;
+}
 .product-briefing .classify .data button.classify-item img {
   width: 35px;
 }
@@ -159,11 +162,15 @@ header .nav-social {
 .size button {
   min-width: 40px;
   min-height: 2rem;
+  padding: 5px;
   border-radius: 2px;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.size button:hover {
+  border: 1px solid #d02d2d;
 }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
@@ -395,6 +402,14 @@ hr {
 
 hr {
   color: rgba(0, 0, 0, 0.3);
+}
+
+.discount-percent {
+  background-color: #fd7e14;
+  color: white;
+  font-weight: bold;
+  padding: 0 3px;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=DetailIndex.css.map */

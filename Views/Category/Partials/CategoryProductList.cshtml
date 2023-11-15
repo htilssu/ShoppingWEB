@@ -76,6 +76,12 @@ else
         </div>
     </div>
     <div class="MenuPage">
-        @Html.PagedListPager(Model, page => Url.Action("Index", (string)ViewBag.Controller, new { page = page, id = ViewBag.CategoryId }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", (string)ViewBag.Controller, new
+        {
+            page = page, id = ViewBag.Id, previous = true, PriceFrom = ViewBag.PriceFrom,
+            PriceTo = ViewBag.PriceTo,
+            IsDiscount = ViewBag.IsDiscount,
+            Location = ViewBag.Location,
+        }))
     </div>
 }

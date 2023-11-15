@@ -11,8 +11,7 @@ public partial class BillItem
     public string? SizeName { get; set; }
 
     public int? Quantity { get; set; }
-
-
+    
     public double? Total { get; set; }
     
     public sbyte? IsComment { get; set; }

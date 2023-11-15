@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using ShoppingWEB.Models;
 namespace ShoppingWEB.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class BillController : Controller
     {
         private readonly ShoppingContext _context;
@@ -30,21 +32,21 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         }
 
         // GET: Admin/Bill/Details/5
-        public async Task<IActionResult> Detail(string id)
+        public async Task<IActionResult> Detail(string? id)
         {
-            if (id == null || _context.Bills == null)
-            {
-                return NotFound();
-            }
+            // if (id == null || _context.Bills == null)
+            // {
+            //     return NotFound();
+            // }
 
             var bill = await _context.Bills
                 .Include(b => b.Delivery)
                 .Include(b => b.PaymentMethodNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (bill == null)
-            {
-                return NotFound();
-            }
+            // if (bill == null)
+            // {
+            //     return NotFound();
+            // }
 
             return View(bill);
         }

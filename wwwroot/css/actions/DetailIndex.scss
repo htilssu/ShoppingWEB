@@ -1,6 +1,6 @@
 ﻿
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 header {
@@ -173,6 +173,10 @@ header {
         min-height: 2rem;
 
         line-height: 1px;
+        
+        &:hover {
+          border: 1px solid #d02d2d;
+        }
 
         img {
           width: 35px;
@@ -218,11 +222,16 @@ header {
   button {
     min-width: 40px;
     min-height: 2rem;
+    padding: 5px;
     border-radius: 2px;
     margin-top: .5rem;
     margin-right: .5rem;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .3);
+    
+    &:hover {
+      border: 1px solid #d02d2d;
+    }
   }
 }
 
@@ -515,4 +524,12 @@ hr {
 
 hr {
   color: rgba(0, 0, 0, .3);
+}
+
+.discount-percent {
+  background-color: #fd7e14;
+  color: white;
+  font-weight: bold;
+  padding: 0 3px;
+  border-radius: 5px;
 }

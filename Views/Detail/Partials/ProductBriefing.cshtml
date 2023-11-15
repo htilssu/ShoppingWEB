@@ -71,7 +71,7 @@
                     <span>Tố cáo</span>
                 </div>
             </div>
-            <div class="product-price p-2 mt-2">
+            <div class="product-price d-flex align-items-center p-2 mt-2">
                 @if (Model.DiscountPercent == 0)
                 {
                     <div class="price">
@@ -80,9 +80,15 @@
                 }
                 else
                 {
-                    <div class="text-decoration-line-through">@Model.Price</div>
+                    <div class="text-decoration-line-through mx-3 fs-4 opacity-50"><span class="fs-5">đ</span>@($"{Model.Price:#,###}")</div>
                     <div class="price">
-                        đ@($"{Model.Price:###,###}")
+                        @{
+                            var discountPrice = Model.Price - Model.Price * Model.DiscountPercent / 100;
+                        }
+                        đ@($"{discountPrice:###,###}")
+                    </div>
+                    <div class="discount-percent mx-3">
+                        @Model.DiscountPercent% Giảm
                     </div>
                 }
             </div>

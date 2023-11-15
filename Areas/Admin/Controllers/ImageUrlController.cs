@@ -14,7 +14,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 {
     [Route("api/image")]
     [ApiController]
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ImageUrlController : ControllerBase
     {
         private readonly ShoppingContext _context;
