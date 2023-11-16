@@ -52,14 +52,15 @@ public class CartController : Controller
                 }
             }
 
-            if (isExist)
+            /*if (!isExist)
             {
-            }
-            else
-            {
+                if (cartItem.Quantity >= _context.prod)
+                {
+                    
+                }
                 cartItem.CartId = cartUser!.Id;
                 _context.CartItems.Add(cartItem);
-            }
+            }*/
 
             await _context.SaveChangesAsync();
         }

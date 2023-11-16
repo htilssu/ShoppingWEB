@@ -15,7 +15,7 @@
                 <input type="text" asp-for="UserName" class="form-control" placeholder="Tên đăng nhập" id="username">
                 <span asp-validation-for="UserName" class="text-danger"></span>
                 <small class="error-message" id="username-error">Tên đăng nhập không hợp lệ.Vui lòng kiểm tra lại</small>
-                <small class="error-message">@(ViewBag.UserExist ?? "")</small>
+                <small class="text-danger">@(ViewBag.UserExist ?? "")</small>
 
 
             </div>

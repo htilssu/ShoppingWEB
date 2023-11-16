@@ -25,10 +25,8 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         // GET: Admin/Bill
         public async Task<IActionResult> Index()
         {
-            // var shoppingContext = _context.Bills.Include(b => b.Delivery).Include(b => b.PaymentMethodNavigation)
-            //     .Include(b => b.TypeProduct);
-            // return View(await shoppingContext.ToListAsync());
-            return View();
+            var shoppingContext = await _context.Bills.ToListAsync();
+            return View(shoppingContext);
         }
 
         // GET: Admin/Bill/Details/5

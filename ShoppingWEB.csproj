@@ -73,7 +73,6 @@
         <_ContentIncludedByDefault Remove="Areas\Admin\Views\Product\Index.cshtml"/>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Areas\Admin\Data\"/>
         <Folder Include="Migrations\"/>
         <Folder Include="Views\Home\Partials\"/>
         <Folder Include="wwwroot\uploads\"/>

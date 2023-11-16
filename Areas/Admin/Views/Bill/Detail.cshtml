@@ -15,43 +15,65 @@
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
+                    <a class="btn btn-primary" asp-controller="Bill" asp-action="Index">Quay Lại</a>
                 </div>
             </div>
             <div class="product-item__content">
-                <div class="bill-item d-flex flex-column">
-                    @foreach (var modelBillItem in Model.BillItems)
-                    {
-                        <div class="o-sanpham1">
-                            <input type="checkbox" class="product-checkbox" style="margin-right: 5px;">
-                            <a asp-controller="Detail" asp-action="Index" asp-route-id="@modelBillItem.TypeProduct.Product.Id">
-                                <div class="image" style="margin-right: 10px;!important;">
-                                    <img src="@modelBillItem.TypeProduct!.ImagePath" class="img-sanpham"/>
-                                </div>
-                            </a>
-                            @* TODO design datbase contain product price *@
-                            <div class="ten-sanpham">
-                                @modelBillItem.TypeProduct.Product.ProductName
-                            </div>
-                            <div class="phanloai">
-                                <div>Phân loại hàng: <span>@Model.TypeProduct.TypeName</span></div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Ảnh</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Phân loại hàng</th>
+                            <td>Size</td>
+                            <th>Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng Tiền</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <div class="bill-item d-flex flex-column">
+                            @{
+                                var modelBillItem = Model.BillItems.ToList();
+                            }
+                            @for (var i = 0; i < modelBillItem.Count; i++)
+                            {
+                                <tr>
 
-                                Size: @modelBillItem.SizeName
-                            </div>
+                                    <td>@(i+1)</td>
+                                    <td >
+                                        <a asp-controller="Detail" asp-action="Index" asp-route-id="@modelBillItem[i].TypeProduct.Product.Id">
+                                            <div class="image" style="margin-right: 10px;!important;">
+                                                <img width="100px" src="@modelBillItem[i].TypeProduct!.ImagePath" class="img-sanpham"/>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    @* TODO design datbase contain product price *@
+                                    <td> @modelBillItem[i].TypeProduct.Product.ProductName</td>
+
+                                    <td > @modelBillItem[i].TypeProduct.TypeName</td>
+
+
+                                    <td> @modelBillItem[i].SizeName</td>
+
+                                    <td>@($"{modelBillItem[i].TypeProduct.Product.Price:#,###}")</td>
+                                    <td> @modelBillItem[i].Quantity</td>
+
+                                    <td >
+                                        <div id="sotientra">@($"{modelBillItem[i].Total:#,###}")</div>
+                                    </td>
+
+                                </tr>
+                            }
+
                         </div>
-                        <div class="dongia">
-                            <i class="fa-solid fa-dong-sign"></i>
-                            <div>@($"{modelBillItem.TypeProduct.Product.Price:#,###}")</div>
-                        </div>
-                        <div>
-                            @modelBillItem.Quantity
-                        </div>
-                        <div class="sotien-phaitra">
-                            <div class="dongia">
-                                <i class="fa-solid fa-dong-sign fa-bounce"></i>
-                                <div id="sotientra">@($"{@Model.Total:#,###}")</div>
-                            </div>
-                        </div>
-                    }
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-end p-3 fw-bold">
+                        Tổng Tiền: @($"{Model.Total:#,###}")đ
+                    </div>
                 </div>
             </div>
         </div>

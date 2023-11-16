@@ -11,8 +11,4 @@ public class CategoryModel
     [Display(Name = "Image")]
     [Required(ErrorMessage = "Hãy chọn ảnh")]
     public IFormFile? ImageFile { get; set; }
-
-    public DateTime? CreatedAt { get; set; }
-
-    public DateTime? UpdatedAt { get; set; }
 }

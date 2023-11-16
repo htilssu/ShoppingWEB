@@ -84,9 +84,14 @@ function Erorr_ship(){
 function YeuCau(){
     confirm("Yêu Cầu Thành Công.");
 }
+var btnThanhToan = $("#btnThanhToan");
 
-var btnThanhToan = $(".btnThanhToan");
-btnThanhToan.on('click', Thanhtoan)
+btnThanhToan.on("click", () => {
+    confirm("Thanh toán thành công")
+})
+
+// btnThanhToan.on('click', Thanhtoan)
+/*
 function Thanhtoan() {
     const parentTr = $(this).closest("tr")
     const parent = parentTr.find("td").eq(2)  //tim ra cha
@@ -99,7 +104,7 @@ function Thanhtoan() {
     const sotientra = parentTr.find("#sotientra")
     const total = value * intput.val();
     sotientra.text(new Intl.NumberFormat().format(total))
-
+    confirm("Thanh toán thành công!!!")
     DataPost(parentTr.find("#cartItemId").attr("value"), intput.val())
 }
 //update du lieu len database
@@ -111,3 +116,5 @@ function DataPost(cartItemId, quantity) {
             xhrFields: {withCredentials: true}
         })
 }
+
+*/

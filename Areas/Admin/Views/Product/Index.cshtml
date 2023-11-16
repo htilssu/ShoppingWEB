@@ -32,82 +32,9 @@
                     <a class="btn btn-success" asp-action="Create">Thêm</a>
                 </div>
             </div>
-            <div class="product-item__content">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên Sản Phẩm</th>
-                            <th>Công Khai</th>
-                            <th>Tùy Chỉnh</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @{
-                            if (Model.Count != 0)
-                            {
-                                for (var i = 0; i < Model.Count; i++)
-                                {
-                                    <tr>
-                                        <td>@(i + 1)</td>
-                                        <td class="align-middle" style="max-width: 700px; width: 700px;">
-                                            <div class="h-100 d-flex justify-content-center">
-                                                <div class="w-75" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">@Model[i].ProductName</div>
-                                            </div>
-                                        </td>
-                                        @if (Model[i].Publish == 0)
-                                        {
-                                            <td>Không công khai</td>
-                                        }
-                                        else
-                                        {
-                                            <td>Công khai</td>
-                                        }
-                                        <td>
-                                            <a asp-action="Edit" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
-                                                <i class="bi bi-pencil-fill"></i>
-                                            </a>
-                                            <a asp-action="Detail" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
-                                                <i class="bi bi-eye-fill"></i>
-                                            </a>
-                                            <a class="btn btn-danger text-decoration-none delete">
-                                                <i class="bi bi-trash3-fill"></i>
-                                            </a>
-                                        </td>
-                                        <td >
-                                            <div class="delete-confirm-pop p-0 position-absolute d-none">
-                                                <form asp-action="Delete" asp-route-id="@Model[i].Id">
-                                                    <div class="form-header">
-                                                        Xóa
-                                                    </div>
-                                                    <div class="form-content">
-                                                        Bạn có xác nhận muốn xóa không?
-                                                    </div>
-                                                    <div class="form-action">
-                                                        <div class="btn btn-primary cancel">Không</div>
-                                                        <div>
-                                                            <button type="submit" class="btn btn-danger">Xóa</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-
-                        }
-                        </tbody>
-                    </table>
-                    @if (Model.Count == 0)
-                    {
-                        <div class="no-product-notify d-flex justify-content-center h-75 align-items-center">
-                            Không Có Sản Phẩm Nào
-                        </div>
-                    }
-                </div>
-            </div>
+            @{
+                await Html.RenderPartialAsync("Partials/ProductList", Model);
+            }
         </div>
     </div>
 </div>

@@ -68,9 +68,6 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.Property(e => e.PaymentMethod)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-            entity.Property(e => e.TypeProductId)
-                .HasMaxLength(255)
-                .IsUnicode(false);
             entity.Property(e => e.UserId)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -82,10 +79,7 @@ public partial class ShoppingContext : IdentityDbContext<UserModel, RoleModel, s
             entity.HasOne(d => d.PaymentMethodNavigation).WithMany(p => p.Bills)
                 .HasForeignKey(d => d.PaymentMethod)
                 .HasConstraintName("Bill_PaymentMethod_Id_fk");
-
-            entity.HasOne(d => d.TypeProduct).WithMany(p => p.Bills)
-                .HasForeignKey(d => d.TypeProductId)
-                .HasConstraintName("Bill_TypeProduct_Id_fk");
+            
         });
 
         modelBuilder.Entity<BillItem>(entity =>

@@ -1,11 +1,9 @@
-﻿namespace ShoppingWEB.Areas.Admin.Models;
+﻿using ShoppingWEB.Models;
 
-public class ImageModel
+namespace ShoppingWEB.Areas.Admin.Models;
+
+public class ImageModel : ImageUrl
 {
-    public string? ProductId { get; set; } = null!;
-
-    public string? ImagePath { get; set; }
 
     public IFormFile ImageFile { get; set; } = null!;
-    public bool? Thumnail { get; set; }
 }

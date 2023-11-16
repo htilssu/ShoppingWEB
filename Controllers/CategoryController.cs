@@ -4,78 +4,80 @@ using ShoppingWEB.Controllers.ControllerModels;
 using ShoppingWEB.Models;
 using X.PagedList;
 
-namespace ShoppingWEB.Controllers
+namespace ShoppingWEB.Controllers;
+
+public class CategoryController : Controller
 {
-    public class CategoryController : Controller
+    private readonly ShoppingContext _context;
+
+    public CategoryController(ShoppingContext context)
     {
-        private readonly ShoppingContext _context;
+        _context = context;
+    }
 
-        public CategoryController(ShoppingContext context)
+    // GET: Category
+    public async Task<IActionResult> Index(string? id, int? page, int? orderBy, SearchFilterModel filterModel,
+        bool previous = false)
+    {
+        if (string.IsNullOrEmpty(id))
         {
-            _context = context;
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: Category
-        public async Task<IActionResult> Index(string? id,  int? page, int? orderBy, SearchFilterModel filterModel,
-            bool previous = false)
+        ViewBag.Id = id;
+
+        var productList = await _context.Products.Include(product => product.Seller).ToListAsync();
+        if (previous)
         {
-            if (string.IsNullOrEmpty(id))
+            if (filterModel.Location != null)
             {
-                return RedirectToAction("Index", "Home");
+                productList = productList.Where(p => p.Seller?.Address == filterModel.Location).ToList();
             }
-            ViewBag.Id = id;
-            
-            var productList = await _context.Products.Include(product => product.Seller).ToListAsync();
-            if (previous)
+
+            if (filterModel.IsDiscount is "on")
             {
-                if (filterModel.Location != null)
-                {
-                    productList = productList.Where(p => p.Seller?.Address == filterModel.Location).ToList();
-                }
-
-                if (filterModel.IsDiscount is "on")
-                {
-                    productList = productList.Where(p => p.DiscountPercent != 0).ToList();
-                }
-
-                if (filterModel.PriceTo != null)
-                {
-                    productList = productList.Where(p => p.Price <= filterModel.PriceTo).ToList();
-                }
-
-                if (filterModel.PriceFrom != null)
-                {
-                    productList = productList.Where(p => p.Price >= filterModel.PriceFrom).ToList();
-                }
-
-                ViewBag.Location = filterModel.Location ?? "";
-                ViewBag.PriceFrom = (filterModel.PriceFrom == null ? "" : filterModel.PriceFrom.ToString())!;
-                ViewBag.PriceTo = filterModel.PriceTo == null ? "" : filterModel.PriceTo.ToString()!;
-                ViewBag.IsDiscount = filterModel.IsDiscount ?? "";
+                productList = productList.Where(p => p.DiscountPercent != 0).ToList();
             }
-            
-            if (orderBy != null)
+
+            if (filterModel.PriceTo != null)
             {
-                productList = orderBy switch
-                {
-                    0 => productList.OrderByDescending(p => p.Price).ToList(),
-                    1 => productList.OrderBy(p => p.Price).ToList(),
-                    2 => productList.OrderByDescending(p => p.Sold).ToList(),
-                    _ => productList
-                };
-                ViewBag.OrderBy = orderBy;
+                productList = productList.Where(p => p.Price <= filterModel.PriceTo).ToList();
             }
-            var pageNum = page ?? 1;
-             productList = productList
-                .Where(p => p.CategoryId == id).ToList();
-            var result = await productList.ToPagedListAsync(pageNum, 16);
-            ViewBag.Controller = "Category";
-            ViewBag.CategoryId = id;
-            return View(result);
+
+            if (filterModel.PriceFrom != null)
+            {
+                productList = productList.Where(p => p.Price >= filterModel.PriceFrom).ToList();
+            }
+
+            ViewBag.Location = filterModel.Location ?? "";
+            ViewBag.PriceFrom = (filterModel.PriceFrom == null ? "" : filterModel.PriceFrom.ToString())!;
+            ViewBag.PriceTo = filterModel.PriceTo == null ? "" : filterModel.PriceTo.ToString()!;
+            ViewBag.IsDiscount = filterModel.IsDiscount ?? "";
         }
-        
-        
-         public async Task<IActionResult> SearchFilter(string? id, SearchFilterModel filterModel)
+
+        if (orderBy != null)
+        {
+            productList = orderBy switch
+            {
+                0 => productList.OrderByDescending(p => p.Price).ToList(),
+                1 => productList.OrderBy(p => p.Price).ToList(),
+                2 => productList.OrderByDescending(p => p.Sold).ToList(),
+                _ => productList
+            };
+            ViewBag.OrderBy = orderBy;
+        }
+
+        var pageNum = page ?? 1;
+        productList = productList
+            .Where(p => p.CategoryId == id).ToList();
+        var result = await productList.ToPagedListAsync(pageNum, 16);
+        ViewBag.Controller = "Category";
+        ViewBag.CategoryId = id;
+        return View(result);
+    }
+
+
+    public async Task<IActionResult> SearchFilter(string? id, SearchFilterModel filterModel)
     {
         //return if not have search
         if (string.IsNullOrEmpty(id)) return RedirectToAction("Index", "Home");
@@ -109,25 +111,7 @@ namespace ShoppingWEB.Controllers
 
         ViewBag.IsFindout = productList.Count != 0 ? true : false;
         ViewBag.Id = id;
-
-        return View("Index", await productList.ToPagedListAsync(1, 16));
-
-        /*try
-        {
-            productList = o switch
-            {
-                "Location" => productList.Where(p => p.Seller?.Address == query[o]).ToList(),
-                "PriceFrom" => productList.Where(p => p.Price >= int.Parse(query[o] ?? "0")).ToList(),
-                "PriceTo" => productList.Where(p => p.Price <= int.Parse(query[o] ?? "0")).ToList(),
-                "IsDiscount" => productList.Where(p => p.DiscountPercent != 0).ToList(),
-                _ => productList,
-            };
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }*/
-    }
+        return View("Index");
+        // return View("Index", await productList.ToPagedListAsync(1, 16));
     }
 }

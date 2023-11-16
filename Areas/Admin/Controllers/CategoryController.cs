@@ -51,11 +51,8 @@ public class CategoryController : Controller
     {
         if (id == null) return NotFound();
 
-        var category = await _context.Categories
-            .Include(c => c.Products)
-            .FirstOrDefaultAsync(m => m.Id == id);
+        var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
         if (category == null) return NotFound();
-
         return View(category);
     }
 
@@ -160,14 +157,23 @@ public class CategoryController : Controller
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(string id)
+    public async Task<IActionResult> DeleteConfirmed(string? id)
     {
+        if (string.IsNullOrEmpty(id))
+        {
+            return RedirectToAction(nameof(Index));
+        }
         var category = await _context.Categories.FindAsync(id);
-        _context.Categories.Remove(category!);
+        if (category != null && category.Products.Count == 0)
+        {
+            _context.Categories.Remove(category);
+            category.ImagePath?.DeleteFile();
 
-        category?.ImagePath?.DeleteFile();
+            await _context.SaveChangesAsync();
+        }
+       
 
-        await _context.SaveChangesAsync();
+        
         return RedirectToAction(nameof(Index));
     }
 }

@@ -65,6 +65,9 @@ body {
   font-size: 1.3rem;
   text-transform: uppercase;
 }
+.product-container .product-item__content {
+  width: 100%;
+}
 .product-container .product-item__content .table-container {
   height: 500px;
   overflow-y: auto;

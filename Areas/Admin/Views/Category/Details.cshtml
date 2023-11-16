@@ -1,3 +1,4 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model Category
 
 @{
@@ -14,9 +15,7 @@
             <div class="main-container__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
                 <div class="d-flex align-items-center">Chi Tiết</div>
                 <div class="d-flex align-items-center gap-3">
-                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model?.Id">Chỉnh sửa</a>
                     <a class="btn btn-primary" asp-action="Index">Quay lại</a>
-                    <a class="btn btn-primary" asp-controller="Product" asp-action="Index" asp-route-categoryId="@Model?.Id">Danh sách sản phẩm</a>
                 </div>
             </div>
             <div class="main-container__main p-3">
@@ -38,6 +37,15 @@
                     <div class="img-preview">
                         <img src="@Model.ImagePath" width="300px" id="display-img" alt="Ảnh">
                     </div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center product-container">
+                    <div class="product-list__header fs-3">
+                        Danh Sách Sản Phẩm
+                    </div>
+                    @{
+                        await Html.RenderPartialAsync("Partials/ProductList", Model.Products.ToList());
+                    }
+
                 </div>
             </div>
         </div>

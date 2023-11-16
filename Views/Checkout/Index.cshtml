@@ -287,7 +287,7 @@
                     @for (var index = 0; index < Model.Count; index++)
                     {
                         var cartItem = Model[index];
-                        <input name="cartItemID[@index]" value="@cartItem.Id"/>
+                        <input type="hidden" name="cartItemID[@index]" value="@cartItem.Id"/>
                     }
                     <button id="btnThanhToan" class="button-thantoan" onclick="thanhToan()">Đặt Hàng</button>
                 </form>

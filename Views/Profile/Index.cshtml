@@ -182,7 +182,7 @@
 
                         </div>
                         <div class="donhang-sp-header-r-2">
-                            @billItem.TypeProduct.Product.Seller;
+                            @billItem.TypeProduct.Product.Seller.SellerName
                         </div>
                         <div class="donhang-sp-header-r-3">
                             <button class="donhang-sp-header-r-3">
@@ -214,7 +214,7 @@
                 </div>
                 <div class="donhang-sp-main">
                     <div class="donhang-sp-main-p-1">
-                        <img src="@billItem.TypeProduct.Product.ImageUrls" class="sp-img" alt="" tabindex="0">
+                        <img src="@billItem.TypeProduct.Product.ImageUrls.FirstOrDefault(p => p.Thumbnail == 1).ImagePath" class="sp-img" alt="" tabindex="0">
                         <div class="donhang-sp-main-p-1-title">
                             <div class="donhang-sp-main-p-1-label1">
                                 <span class="label-1">
@@ -229,7 +229,7 @@
                     </div>
                     <div class="donhang-sp-main-gia">
                         <div class="donhang-sp-main-gia-1">
-                            <span class="donhang-gia">@billItem.Total</span>
+                            <span class="donhang-gia">@($"{billItem.Total:#,###}")đ</span>
                         </div>
                     </div>
                 </div>

@@ -31,15 +31,13 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(s))
                 {
                     var resultProduct = products
-                        .Where(p => p.ProductName!.Contains(s) || p.ProductName == s)
+                        .Where(p => p.ProductName!.ToUpper().Contains(s.ToUpper()) || string.Equals(p.ProductName, s, StringComparison.CurrentCultureIgnoreCase))
                         .ToList();
 
                     return View(resultProduct);
                 }
-                else
-                {
-                    return View(products);
-                }
+
+                return View(products);
             }
 
             if (!string.IsNullOrEmpty(s))
@@ -234,12 +232,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
-            var product = await _context.Products
-                .Include(p => p.ImageUrls)
-                .Include(p => p.TypeProducts)
-                .ThenInclude(p => p.Sizes)
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             return View(product);
         }
 
