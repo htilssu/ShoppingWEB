@@ -16,8 +16,19 @@ public class CustomerController : Controller
     // GET: Admin/Customer
     public async Task<IActionResult> Index()
     {
-        var listUser = await _context.Users.ToListAsync();
-        return View(listUser);
+        var roleAdmin = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Admin");
+        if (roleAdmin != null)
+        {
+           var listAdmin =await _context.UserRoles.Where(u => u.RoleId == roleAdmin.Id).ToListAsync();
+           var listUser = await _context.Users.ToListAsync();
+           foreach (var userRole in listAdmin)
+           {
+               listUser = listUser.Where(u => u.Id != userRole.UserId).ToList();  //lay ra list != admin
+           }
+           return View(listUser);
+
+        }
+        return View("Index");
     }
     
     //Viết hàm xóa khách hàng 
