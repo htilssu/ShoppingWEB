@@ -115,7 +115,7 @@ public class CategoryController : Controller
         ViewBag.Controller = "Category";
 
 
-        ViewBag.IsFindout = productList.Count != 0 ? true : false;
+        ViewBag.IsFindout = productList.Count != 0;
         ViewBag.Id = id;
         // return View("Index");
         return View("Index", await productList.ToPagedListAsync(1, 16));
