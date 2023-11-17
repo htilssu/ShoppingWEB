@@ -49,5 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("password-error").style.display = "none";
         document.getElementById("password").classList.remove("error");
       }
+        if (password !== confirmPassword || confirmPassword === "") {
+            document.getElementById("repassword-error").style.display = "block";
+            document.getElementById("repassword").classList.add("error");
+            event.preventDefault();
+        } else {
+            document.getElementById("repassword-error").style.display = "none";
+            document.getElementById("repassword").classList.remove("error");
+        }
     });
 });
+    

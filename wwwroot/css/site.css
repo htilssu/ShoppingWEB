@@ -332,10 +332,11 @@ header .navbar.nav-social {
 .MenuPage{
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
     
 }
 
-.active{
+.pagination .active{
     width: 100%;
     height: 100%;
     background-color: #c1712a;

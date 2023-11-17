@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingWEB.Models;
+using X.PagedList;
 
 namespace ShoppingWEB.Controllers;
 
@@ -18,8 +19,11 @@ public class ProfileController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? page)
     {
+        int pageSize =15 ;
+        ViewBag.Controller = "Home";
+        int pageNum = (page ?? 1);
         var user = await _userManager.GetUserAsync(User);
         var listBillItem = _context.BillItems.ToList();
         var billList = _context.Bills.ToList();
@@ -28,6 +32,6 @@ public class ProfileController : Controller
             where bill.UserId == user.Id
             select billItem).ToList();
         
-        return View(userBillItem);
+        return View( await userBillItem.ToPagedListAsync(pageNum, pageSize));
     }
 }
