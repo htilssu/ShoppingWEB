@@ -39,7 +39,6 @@ function clearAll() {
 }
 
 $(".category-group-item-check").on("change", function () {
-  // Nếu checkbox này được chọn, hủy chọn tất cả các checkbox khác
   if ($(this).prop("checked")) {
     $(".category-group-item-check").not(this).prop("checked", false);
   }

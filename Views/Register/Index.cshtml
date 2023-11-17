@@ -24,14 +24,14 @@
 
                 <span asp-validation-for="NumberPhone" class="text-danger"></span>
                 <small class="error-message" id="phone-error">Số điện thoại không hợp lệ.Vui lòng kiểm tra lại</small>
-
+                <small class="text-danger">@(ViewBag.NumberExist ?? "")</small>
 
             </div>
             <div class="username mb-3 d-flex flex-column">
                 <input type="text" asp-for="Email" class="form-control" placeholder="Email" id="email">
 
                 <span asp-validation-for="Email" class="text-danger"></span>
-
+                <small class="text-danger">@(ViewBag.EmailExist ?? "")</small>
                 <small class="error-message" id="email-error">Email không hợp lệ.Vui lòng kiểm tra lại</small>
 
             </div>

@@ -174,16 +174,14 @@
 
                     </div>
                     <div class="remaining mx-3 opacity-75">
-                        @* TODO remaining product *@
-                        @* TODO each typeproduct has own quantity *@
                         @foreach (var modelTypeProduct in Model.TypeProducts)
                         {
                             foreach (var size in modelTypeProduct.Sizes)
                             {
-                                <span class="d-none remaining-quantity" id="@(size.TypeProductId+size.SizeType)">@size.Quantity sản phẩm có sẵn</span>
+                                <span class="d-none remaining-quantity" id="@(size.TypeProductId+size.SizeType)">@size.Quantity</span>
                             }
                         }
-                        <span class="remaining-quantity">@totalRemainingQuantity sản phẩm có sẵn</span>
+                        <span class="remaining-quantity">@totalRemainingQuantity</span><span> sản phẩm có sẵn</span>
                     </div>
                 </div>
             </div>

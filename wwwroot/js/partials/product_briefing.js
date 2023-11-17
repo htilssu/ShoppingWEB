@@ -3,6 +3,7 @@ const subImageCol = $(".sub-image-item");
 const classifyList = $(".classify-item");
 const firstSubImage = subImageCol.first();
 const quantityInp = $(".data-quantity input");
+quantityInp.val(1)
 const remainingQuantity = $('.remaining-quantity');
 const sizeValue = $("#size");
 const btnSizes = $(".size-item");
@@ -79,6 +80,9 @@ function handleQuantityInputChange() {
     if (quantityInp.val() === "") {
         quantityInp.val(1);
     }
+    if (!checkQuantity(quantityInp.val())){
+        quantityInp.val(0)
+    }
 }
 
 function handleQuantityDecrease() {
@@ -106,6 +110,11 @@ function returnPreviewImage() {
 
 function classifyClickHandle(e) {
     const target = $(this);
+    if (target.hasClass("viewing")){
+       target.removeClass("viewing");
+        typeProductInp.attr("value", "");
+        return;
+    }
     typeProductInp.attr("value", $(this).attr("id"));
     if (lastChoose) {
         lastChoose.removeClass("viewing");
@@ -115,11 +124,17 @@ function classifyClickHandle(e) {
     lastImage = target.find("img").attr("src");
     lastChoose = target;
     e.preventDefault();
-    
+
     // TODO xử lý thay đổi số lượng sản phẩm còn lại khi thay đổi loại sản phẩm
 }
 
 function handleChangeSize() {
+   
+    if ($(this).hasClass("viewing")){
+        $(this).removeClass("viewing")
+        sizeTypeInp.attr("value", "");
+        return
+    }
     if (sizeLastChoose !== null) {
         sizeLastChoose.removeClass("viewing");
     }
@@ -140,4 +155,10 @@ function handleChangeSize() {
 function updateRemainingQuantity(id) {
     remainingQuantity.addClass('d-none');
     $(".remaining").find(`#${id}`).removeClass('d-none');
+}
+
+
+function checkQuantity(quan) {
+    const quantity = $(".remaining-quantity:not(.d-none)").text().trim();
+    return quan <= quantity;
 }

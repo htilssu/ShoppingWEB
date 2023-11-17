@@ -35,22 +35,31 @@ public class CheckoutController : Controller
         if (!string.IsNullOrEmpty(selectedProductsParam))
         {
             // Giải mã JSON từ tham số selectedProducts
-            List<ProductModel> selectedProducts =
+            var selectedProducts =
                 JsonConvert.DeserializeObject<List<ProductModel>>(HttpUtility.UrlDecode(selectedProductsParam));
 
             // Thực hiện các bước xử lý cần thiết với thông tin sản phẩm đã chọn
             var listCart = new List<CartItem>();
-            foreach (var selectedProduct in selectedProducts)
+            if (selectedProducts != null)
             {
-                listCart.Add(_context.CartItems.FirstOrDefault(p => p.Id == selectedProduct.Id)!);
-            }
+                foreach (var selectedProduct in selectedProducts)
+                {
+                    var item = _context.CartItems.FirstOrDefault(p => p.Id == selectedProduct.Id);
+                    if (item == null)
+                    {
+                        return NotFound();
+                    }
 
-            if (listCart.Count == 0)
-            {
-                return RedirectToAction("Index", "Cart");
-            }
+                    listCart.Add(item);
+                }
 
-            ViewBag.Info = selectedProducts;
+                if (listCart.Count == 0)
+                {
+                    return RedirectToAction("Index", "Cart");
+                }
+
+                ViewBag.Info = selectedProducts;
+            }
 
             return View(listCart);
         }
@@ -87,16 +96,14 @@ public class CheckoutController : Controller
                 billItem.SizeName = cart.SizeType;
                 bill.BillItems.Add(billItem);
                 bill.Total += billItem.Total;
-                
-                
-                
+
+
                 _context.CartItems.Remove(cart);
             }
             else
             {
                 return RedirectToAction("Index", "Home");
             }
-
         }
 
         _context.Bills.Add(bill);
@@ -106,5 +113,4 @@ public class CheckoutController : Controller
         /*cartItem.ClearCart();*/
         return RedirectToAction("Index", "Checkout");
     }
-
 }

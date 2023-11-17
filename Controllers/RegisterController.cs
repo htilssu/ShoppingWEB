@@ -37,6 +37,19 @@ public class RegisterController : Controller
             var user = await _userManager.FindByNameAsync(registModel.UserName!);
             if (user == null)
             {
+
+                var userEmail = _context.Users.Any(u => u.Email == registModel.Email);
+                if (userEmail)
+                {
+                    ViewBag.EmailExist = "Email đã được đăng ký";
+                    return View();
+                }
+
+                if (_context.Users.Any(u => u.PhoneNumber == registModel.NumberPhone))
+                {
+                    ViewBag.NumberExist = "Số điện thoại đã được đăng ký";
+                    return View();
+                }
                 var userId = Guid.NewGuid().ToString();
                 var result = await _userManager.CreateAsync(new UserModel
                 {

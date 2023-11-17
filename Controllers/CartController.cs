@@ -12,14 +12,11 @@ public class CartController : Controller
 {
     private ShoppingContext _context;
     private UserManager<UserModel> _userManager;
-    private SignInManager<UserModel> _signInManager;
 
-    public CartController(ShoppingContext context, UserManager<UserModel> userManager,
-        SignInManager<UserModel> signInManager)
+    public CartController(ShoppingContext context, UserManager<UserModel> userManager)
     {
         _context = context;
         _userManager = userManager;
-        _signInManager = signInManager;
     }
 
     public async Task<IActionResult> Index()
@@ -46,29 +43,40 @@ public class CartController : Controller
             {
                 if (cartUserCartItem.TypeProductId == cartItem.TypeProductId)
                 {
-                    isExist = true;
-                    cartUserCartItem.Quantity += cartItem.Quantity < 0 ? 0 : cartItem.Quantity;
-                    break;
+                    if (cartUserCartItem.SizeType == cartItem.SizeType)
+                    {
+                        cartUserCartItem.Quantity += cartItem.Quantity < 0 ? 0 : cartItem.Quantity;
+                        break;
+                    }
+                    else
+                    {
+                        cartItem.CartId = cartUser.Id;
+                        _context.CartItems.Add(cartItem);
+                        break;
+                    }
+                    
                 }
             }
 
-            /*if (!isExist)
+            if (!isExist)
             {
-                if (cartItem.Quantity >= _context.prod)
+                var remainingQuantity = _context.TypeProducts.FirstOrDefault(t => t.Id == cartItem.TypeProductId)?.Sizes
+                    .FirstOrDefault(s => s.SizeType == cartItem.SizeType)?.Quantity;
+                if (cartItem.Quantity <= remainingQuantity)
                 {
-                    
+                    cartItem.CartId = cartUser.Id;
+                    _context.CartItems.Add(cartItem);
                 }
-                cartItem.CartId = cartUser!.Id;
-                _context.CartItems.Add(cartItem);
-            }*/
-
-            await _context.SaveChangesAsync();
+              
+            }
         }
 
+        await _context.SaveChangesAsync();
         return RedirectToAction("Index");
     }
 
-    //Viết hàm xóa sản phẩm trong giỏ hàng
+
+//Viết hàm xóa sản phẩm trong giỏ hàng
     public async Task<IActionResult> RemoveCart(string? id) //truyền vào 1 id
     {
         var cartItem = _context.CartItems.FirstOrDefault(i => i.Id == id); //lấy id
@@ -81,7 +89,7 @@ public class CartController : Controller
         return RedirectToAction("Index");
     }
 
-    //Xóa tất cả sản phẩm trong Cart
+//Xóa tất cả sản phẩm trong Cart
     public async Task<IActionResult> ClearCart(string? cartId)
     {
         // Lấy tất cả sản phẩm trong giỏ hàng
@@ -102,6 +110,7 @@ public class CartController : Controller
         {
             cartItem.TypeProductId = typeId;
         }
+
         return Ok();
     }
 
@@ -117,6 +126,7 @@ public class CartController : Controller
         {
             return NotFound();
         }
+
         if (cartItem != null)
         {
             cartItem.Quantity = quantity < 0 ? 0 : quantity;
@@ -125,5 +135,4 @@ public class CartController : Controller
         await _context.SaveChangesAsync();
         return cartItem != null ? Ok() : NotFound();
     }
-    
 }

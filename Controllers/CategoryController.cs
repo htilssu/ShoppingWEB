@@ -19,6 +19,10 @@ public class CategoryController : Controller
     public async Task<IActionResult> Index(string? id, int? page, int? orderBy, SearchFilterModel filterModel,
         bool previous = false)
     {
+        ViewBag.Controller = "Category";
+        ViewBag.CategoryId = id;
+
+
         if (string.IsNullOrEmpty(id))
         {
             return RedirectToAction("Index", "Home");
@@ -53,6 +57,7 @@ public class CategoryController : Controller
             ViewBag.PriceFrom = (filterModel.PriceFrom == null ? "" : filterModel.PriceFrom.ToString())!;
             ViewBag.PriceTo = filterModel.PriceTo == null ? "" : filterModel.PriceTo.ToString()!;
             ViewBag.IsDiscount = filterModel.IsDiscount ?? "";
+
         }
 
         if (orderBy != null)
@@ -107,11 +112,12 @@ public class CategoryController : Controller
         ViewBag.PriceFrom = (filterModel.PriceFrom == null ? "" : filterModel.PriceFrom.ToString())!;
         ViewBag.PriceTo = filterModel.PriceTo == null ? "" : filterModel.PriceTo.ToString()!;
         ViewBag.IsDiscount = filterModel.IsDiscount ?? "";
+        ViewBag.Controller = "Category";
 
 
         ViewBag.IsFindout = productList.Count != 0 ? true : false;
         ViewBag.Id = id;
-        return View("Index");
-        // return View("Index", await productList.ToPagedListAsync(1, 16));
+        // return View("Index");
+        return View("Index", await productList.ToPagedListAsync(1, 16));
     }
 }
