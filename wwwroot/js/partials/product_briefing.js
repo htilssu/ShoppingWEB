@@ -3,7 +3,6 @@ const subImageCol = $(".sub-image-item");
 const classifyList = $(".classify-item");
 const firstSubImage = subImageCol.first();
 const quantityInp = $(".data-quantity input");
-quantityInp.val(1)
 const remainingQuantity = $('.remaining-quantity');
 const sizeValue = $("#size");
 const btnSizes = $(".size-item");
@@ -80,7 +79,7 @@ function handleQuantityInputChange() {
     if (quantityInp.val() === "") {
         quantityInp.val(1);
     }
-    if (!checkQuantity(quantityInp.val())){
+    if (!checkQuantity(quantityInp.val())) {
         quantityInp.val(1)
     }
 }
@@ -110,8 +109,8 @@ function returnPreviewImage() {
 
 function classifyClickHandle(e) {
     const target = $(this);
-    if (target.hasClass("viewing")){
-       target.removeClass("viewing");
+    if (target.hasClass("viewing")) {
+        target.removeClass("viewing");
         typeProductInp.attr("value", "");
         return;
     }
@@ -125,12 +124,12 @@ function classifyClickHandle(e) {
     lastChoose = target;
     e.preventDefault();
 
-    // TODO xử lý thay đổi số lượng sản phẩm còn lại khi thay đổi loại sản phẩm
+    updateRemainingQuantity()
 }
 
 function handleChangeSize() {
-   
-    if ($(this).hasClass("viewing")){
+
+    if ($(this).hasClass("viewing")) {
         $(this).removeClass("viewing")
         sizeTypeInp.attr("value", "");
         return
@@ -143,22 +142,25 @@ function handleChangeSize() {
     sizeLastChoose.addClass("viewing");
     const value = $(this).text().trim();
     sizeValue.val(value);
-    const typeProductId = typeProductInp.attr('value');
-    if (typeProductId) {
-        const sizeText = $(this).text().trim();
-        const id = typeProductId + sizeText;
-        updateRemainingQuantity(id)
-    }
+    updateRemainingQuantity()
 }
 
 
-function updateRemainingQuantity(id) {
-    remainingQuantity.addClass('d-none');
-    $(".remaining").find(`#${id}`).removeClass('d-none');
+function updateRemainingQuantity() {
+
+    const typeProductId = typeProductInp.attr('value');
+    const sizeText = sizeTypeInp.attr('value');
+
+    if (typeProductId && sizeText) {
+        const id = typeProductId + sizeText;
+        remainingQuantity.addClass('d-none');
+        $(".remaining").find(`#${id}`).removeClass('d-none');
+    }
+
 }
 
 
 function checkQuantity(quan) {
     const quantity = $(".remaining-quantity:not(.d-none)").text().trim();
-    return quan <= quantity;
+    return quan <= quantity - 0;
 }
