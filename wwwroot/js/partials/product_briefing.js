@@ -81,7 +81,7 @@ function handleQuantityInputChange() {
         quantityInp.val(1);
     }
     if (!checkQuantity(quantityInp.val())){
-        quantityInp.val(0)
+        quantityInp.val(1)
     }
 }
 

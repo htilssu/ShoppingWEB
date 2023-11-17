@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" asp-append-version="true">
     <link rel="shortcut icon" href="~/imgs/shopping-brand.png" type="image/x-icon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
@@ -153,6 +154,36 @@
                     <div class="position-absolute"></div>
                 </div>
             }
+            
+            @if (ViewBag.Page == "Customer")
+                        {
+                            <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center selected">
+                                <div class="nav-item__item">
+                                    <a asp-controller="Customer" asp-action="Index" class="text-decoration-none text-white">
+                                        <div class="d-flex justify-content-start align-items-baseline gap-3">
+                                            <i class="fa-solid fa-users"></i>
+                                            <div>Customer</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="position-absolute selected-field"></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="fs-5 nav-content__item p-2 position-relative d-flex align-items-center justify-content-center">
+                                <div class="nav-item__item">
+                                    <a asp-controller="Customer" asp-action="Index" class="text-decoration-none text-white">
+                                        <div class="d-flex justify-content-start align-items-baseline gap-3">
+                                            <i class="fa-solid fa-users"></i>
+                                            <div>Customer</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="position-absolute"></div>
+                            </div>
+                        }
+            
         </div>
     </div>
     <div class="right-side w-100 flex-shrink-1 flex-grow-0 position-relative">

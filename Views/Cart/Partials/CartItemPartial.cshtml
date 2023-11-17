@@ -1,0 +1,145 @@
+﻿@model List<IGrouping<string?,CartItem>>
+
+     
+        @foreach (var cartItems in Model)
+        {
+            var listCartItem = cartItems.ToList();
+            var seller = listCartItem[0].TypeProduct!.Product!.Seller;
+            <tr>
+                <td colspan="5" class="checkbox-tenshop" onclick="Erorr()">
+                    <div class="tenshop">
+                        <img src="/imgs/logomall.png">
+                        <div>@seller!.SellerName</div>
+                        <i class="fa-regular fa-message"></i>
+                    </div>
+                </td>
+            </tr>
+            @foreach (var cartItem in listCartItem)
+            {
+                decimal total = (decimal)cartItem.Quantity * (decimal)cartItem.TypeProduct.Product.Price.Value;
+                <tr class="product-item">
+                    <input id="cartItemId" type="hidden" value="@cartItem.Id"/>
+                    <td class="o-sanpham">
+                        <div class="o-sanpham1">
+                            <input type="checkbox" class="product-checkbox" style="margin-right: 5px;">
+                            <a asp-controller="Detail" asp-action="Index" asp-route-id="@cartItem.TypeProduct.Product.Id">
+                                <div class="image" style="margin-right: 10px;!important;">
+                                    <img src="@cartItem.TypeProduct!.ImagePath" class="img-sanpham"/>
+                                </div>
+                            </a>
+                            <div class="ten-sanpham">
+                                @cartItem.TypeProduct.Product.ProductName
+                                <div>
+                                    <img class="logo-sale" src="~/imgs/sale11.11.png">
+                                </div>
+                                <div class="mienphi-trahang"><img src="~/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
+                            </div>
+                            <div class="phanloai">
+                                <div>Phân loại hàng:</div>
+                                <select id="loaimau" name="loaimau">
+
+                                    @foreach (var productTypeProduct in cartItem.TypeProduct.Product.TypeProducts)
+                                    {
+                                        if (cartItem.TypeProductId != productTypeProduct.Id)
+                                        {
+                                            <option value="@productTypeProduct.Id"> @productTypeProduct.TypeName </option>
+                                        }
+                                        else
+                                        {
+                                            <option selected="selected" value="@productTypeProduct.Id"> @productTypeProduct.TypeName </option>
+                                        }
+                                    }
+
+                                </select>
+                                Size: @cartItem.SizeType
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="dongia">
+                            <i class="fa-solid fa-dong-sign"></i>
+                            <div>@($"{cartItem.TypeProduct.Product.Price:#,###}")</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="dc-soluong">
+                                <button class="decrement-soluong">-</button>
+                                <input class="soluong" type="number" value="@cartItem.Quantity" id="quantity-1">
+                                <button class="increment-soluong">+</button>
+                            </div>
+                            <div class="soluong-con-lai" id="remaining-quantity-1">
+                                Còn
+                                <span class="max-quantity">
+                                    @cartItem.TypeProduct.Sizes.FirstOrDefault(c => c.SizeType == cartItem.SizeType).Quantity
+                                </span>sản phẩm
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="sotien-phaitra">
+                            <div class="dongia">
+                                <i class="fa-solid fa-dong-sign fa-bounce"></i>
+                                <div id="sotientra">@($"{total:#,###}")</div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td class="o-xoasanpham">
+                        <div>
+                            <a asp-action="RemoveCart" asp-route-id="@cartItem.Id">
+                                <button class="xoa">Xóa</button>
+                            </a>
+
+                            <div class="timsanpham">
+                                <a asp-controller="Search" asp-action="Index" asp-route-search="@cartItem.TypeProduct.Product.ProductName.Substring(0, 7)" style="text-decoration: none">
+                                    <div class="sanpham-tuongtu">Tìm sản phẩm tương tự</div>
+                                    <div>
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" class="footer-table">
+                    <div class="footer-table1">
+                        <img src=".\imgs\freeship.png">
+                        <div id="text-ship">Giảm ₫30.000 phí vận chuyển đơn tối thiểu ₫0 </div>
+                        @*TODO voucher ne cac ban*@
+                        <div>
+                            <span class="learn-more" data-popup="popup-1" onclick="Erorr()">Tìm hiểu thêm</span>
+                            <div class="popup hidden" id="popup-1">
+                                <div id="popup-content">
+                                    <div id="popup-content1">
+                                        <h3>Khuyến mãi vận chuyển</h3>
+                                    </div>
+                                    <div id="popup-content2">@seller.SellerName</div>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Đơn hàng tối thiểu</th>
+                                            <th>Ưu đãi</th>
+                                            <th>Phương thức vận chuyển</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>₫0</td>
+                                            <td>₫30.000</td>
+                                            <td>Nhanh</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" style="background-color: #f5f5f5 !important;height: 50px"></td>
+            </tr>
+        }
