@@ -3,7 +3,7 @@ const quantityInp = $("#quantity-1")
 quantityInp.on('change', handleChangeQuantity)
 function handleChangeQuantity() {
     if ($(this).val() < 0){
-        $(this).val(0)
+        $(this).val(1)
     }
     const parentTr = $(this).closest("tr")
     var spMaxQuantity = parentTr.find(".max-quantity");
@@ -24,7 +24,7 @@ function handleChangeQuantity() {
 
 var btnDcre = $(".decrement-soluong"); //truyen vao 1 doi tuong
 btnDcre.on('click', DreQuantity) //dang ky su kien, ten ham
-function DreQuantity() {
+function DreQuantity() {    
     const parentTr = $(this).closest("tr")
     const parent = parentTr.find("td").eq(2) // chon phan tu td thu 3 duoc tim tu the tr (so luong)
     const intput = parent.find("input");

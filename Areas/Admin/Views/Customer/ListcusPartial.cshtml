@@ -1,0 +1,26 @@
+﻿@model List<UserModel>
+
+@for (var i = 0; i < Model.Count; i++)
+{
+<tr>
+    <td>@(i + 1)</td>
+    <td>
+        @Model[i].LastName @Model[i].FirstName
+    </td>
+    <td>
+        @Model[i].UserName
+    </td>
+    <td>
+        <div>Email: @Model[i].Email</div>
+        <div>SDT: @Model[i].PhoneNumber</div>
+    </td>
+    <td>21/11/2023</td>
+    <td>
+        <div style="display:grid ">
+            <a asp-controller="Customer" asp-action="RemoveUser" asp-route-id="@Model[i].Id" onclick="return confirmDelete();" style="text-decoration: none" class="delete">
+                Xóa
+            </a>
+        </div>
+    </td>
+</tr>
+}

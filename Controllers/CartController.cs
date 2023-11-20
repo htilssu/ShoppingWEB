@@ -75,8 +75,25 @@ public class CartController : Controller
         return RedirectToAction("Index");
     }
 
+    //viết hàm lấy tổng số sản phẩm có trong Giỏ hàng, sau đó Render đến PartialView
+    public PartialViewResult BagCart()
+    {
+        var count = 0;
+        int soLuongSanPham = 0;
+        // Giả sử _context là DbContext chứa DbSet Carts
+        var danhSachGioHang = _context.Carts.ToList();
+        foreach (var product in danhSachGioHang)
+        {
+            if (product != null)
+            {
+                count++;
+            }
+        }
+        ViewBag.SoLuongSanPham = count;
+        return PartialView("BagCart");
+    }
 
-//Viết hàm xóa sản phẩm trong giỏ hàng
+    //Viết hàm xóa sản phẩm trong giỏ hàng
     public async Task<IActionResult> RemoveCart(string? id) //truyền vào 1 id
     {
         var cartItem = _context.CartItems.FirstOrDefault(i => i.Id == id); //lấy id

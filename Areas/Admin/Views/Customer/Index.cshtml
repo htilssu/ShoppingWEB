@@ -4,7 +4,6 @@
     ViewBag.Title = "Danh Sách Bill";
     ViewBag.Page = "Customer";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    var listUser = Context.Users.ToList();
 }
 
 <div class="bg-white product-container">
@@ -12,7 +11,6 @@
         <div class="product-item d-flex flex-column flex-grow-1">
             <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
                 <div class="d-flex align-items-center">Danh Sách Khách Hàng</div>
-
             </div>
             <div class="product-item__content">
                 <div class="table-container">
@@ -31,31 +29,7 @@
                         @{
                             if (Model.Count != 0)
                             {
-                                for (var i = 0; i < Model.Count; i++)
-                                {
-                                    var user = listUser.FirstOrDefault(u => u.Id == Model[i].Id);
-                                    <tr>
-                                        <td>@(i + 1)</td>
-                                        <td>
-                                            @user.LastName @user.FirstName
-                                        </td>
-                                        <td>
-                                            @user.UserName
-                                        </td>
-                                        <td>
-                                            <div>Email: @user.Email</div>
-                                            <div>SDT: @user.PhoneNumber</div>
-                                        </td>
-                                        <td>21/11/2023</td>
-                                        <td>
-                                            <div style="display:grid ">
-                                                <a asp-controller="Customer" asp-action="RemoveUser" asp-route-id="@user.Id" onclick="return confirmDelete();" style="text-decoration: none" class="delete">
-                                                    Xóa
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
+                                await Html.RenderPartialAsync("ListcusPartial");
                             }
 
                         }
