@@ -1,0 +1,94 @@
+﻿@model UserModel
+
+
+<div class="bg-white p-4">
+    <div class="py-3 border-bottom">
+        <h4 class="">Hồ sơ của tôi</h4>
+        <div class="">Quản lý thông tin hồ sơ để bảo mật tài khoản</div>
+    </div>
+    <div class="d-flex py-5">
+        <div class="flex-grow-1 w-50">
+            <form asp-controller="Profile" asp-action="OnPostEditUser" method="post" enctype="multipart/form-data">
+                <table class="table+">
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Tên đăng nhập</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <div class="">
+                                <input asp-for="UserName" readonly="readonly" class="form-control"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Tên</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <div>
+                                <div class="">
+                                    <input type="text"  class="form-control"  placeholder=""  value="@Model.FirstName">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Email</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <div class="">
+                                <input asp-for="Email" class="form-control"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Số điện thoại</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <div class="d-flex align-items-center gap-1">
+                                <input asp-for="PhoneNumber" class="form-control"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Giới tính</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <div class="">
+                                <select asp-for="Gender" class="form-select">
+                                   <option class="form-control" value="true">Nam</option>
+                                   <option class="form-control" value="false">Nữ</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right pb-3">
+                            <label>Ngày sinh</label>
+                        </td>
+                        <td class="px-3 pb-3">
+                            <input class="form-control" asp-for="BirthDay" type="date"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-3 pb-3 text-center pt-3" colspan="2">
+                            <button class="btn btn-success btn--m btn--inline">Lưu</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="flex-grow-1 w-50">
+            <div class="d-flex flex-column border-left p-3 justify-content-center align-items-center">
+                <div class="avatar-preview">
+                    <div class="avatar__image" style="background-image: url(@Model.AvtPath);"></div>
+                </div>
+                <form asp-controller="Profile" asp-action="OnPostEditAvatar" enctype="multipart/form-data" method="post"> <input class="avatar-input d-none" name="Avatar" type="file" accept=".jpg,.jpeg,.png">
+                    <button type="button" class="btn btn-primary btn--m btn--inline" id="pick-image">Chọn ảnh</button></form>
+            </div>
+        </div>
+    </div>
+</div>

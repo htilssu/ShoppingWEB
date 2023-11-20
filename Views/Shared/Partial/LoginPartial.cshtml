@@ -8,8 +8,10 @@
             var user = await UserManager.GetUserAsync(User);
 
         }
-        <img class="avatar" src="@user!.AvtPath" alt="avt">
-        <span>@user.UserName</span>
+        <img class="avatar rounded-circle" style="width: 20px; height: 20px" src="@user!.AvtPath" alt="avt">
+        <a class="text-decoration-none text-white" asp-action="Index" asp-controller="Profile">
+            <span>@user.UserName</span>
+        </a>
         <div id="option-area" class="position-absolute d-none op-hide bg-white option">
             <ul>
                 <li>

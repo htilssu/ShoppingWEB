@@ -1,0 +1,86 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<UserModel> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+ 
+<div class="user">
+        <a class="linkprofile" href="#">
+            <div class="user-avatar">
+                <div class="user-avatar-placehoder">
+                    <svg viewBox="0 0 15 15" x="0" y="0" class="user-avatar-icon">
+                        <g>
+                            <circle cx="7.5" cy="4.5" fill="none" r="3.8" stroke-miterlimit="10"></circle><path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke-linecap="round" stroke-miterlimit="10"></path>
+                        </g>
+                    </svg>
+
+                </div>
+                <img class="user-avatar__img" src="@user!.AvtPath" alt="anh nguoi dung">
+            </div>
+        </a>
+        <div clas="user-title">
+            <div class="user-name">@user.UserName</div>     
+        </div>
+    </div>
+    <div class="info">
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/ba61750a46794d8847c3f463c5e71cc4" alt="">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Tài Khoản Của Tôi</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/f0049e9df4e536bc3e7f140d071e9078" alt="">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Đơn Mua</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/e10a43b53ec8605f4829da5618e0717c" alt="">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Thông Báo</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="info-1">
+            <div class="info-1-head">
+                <a class="link-km" href="#">
+                    <div class="link-km-img">
+                        <img src="https://down-vn.img.susercontent.com/file/84feaa363ce325071c0a66d3c9a88748" alt="">
+                    </div>
+                    <div class="info-1-label">
+                        <span class="info-1-label-title">Kho Voucher</span>
+                    </div>
+                </a>
+            </div>
+            <div class="info-1">
+                <div class="info-1-head">
+                    <a class="link-km" href="#">
+                        <div class="link-km-img">
+                            <img src="https://down-vn.img.susercontent.com/file/a0ef4bd8e16e481b4253bd0eb563f784" alt="">
+                        </div>
+                        <div class="info-1-label">
+                            <span class="info-1-label-title">Aetherix xu</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

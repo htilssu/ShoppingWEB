@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ShoppingWEB.Models;
 
 namespace ShoppingWEB.Controllers;
@@ -17,7 +16,7 @@ public class DetailController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index(string? id, int? page)
+    public IActionResult Index(string? id, int? page)
     {
         ViewBag.Page = page ?? 1;
         ViewBag.Controller = "Detail";

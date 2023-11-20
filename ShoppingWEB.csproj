@@ -75,6 +75,7 @@
     <ItemGroup>
         <Folder Include="Migrations\" />
         <Folder Include="Views\Home\Partials\" />
+        <Folder Include="wwwroot\css\controllers\profile\" />
         <Folder Include="wwwroot\uploads\" />
     </ItemGroup>
     <ItemGroup>

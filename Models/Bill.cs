@@ -18,6 +18,8 @@ public partial class Bill
 
     public string? UserId { get; set; }
 
+    public DateTime? Date { get; set; }
+
     public virtual DeliveryType? Delivery { get; set; }
 
     public virtual PaymentMethod? PaymentMethodNavigation { get; set; }

@@ -118,6 +118,6 @@ public class CategoryController : Controller
         ViewBag.IsFindout = productList.Count != 0;
         ViewBag.Id = id;
         // return View("Index");
-        return View("Index", await productList.ToPagedListAsync(1, 16));
+        return View("~/Views/Category/Index.cshtml", await productList.ToPagedListAsync(1, 16));
     }
 }

@@ -9,7 +9,7 @@ public static class Extension
     public static string GetWebPath(this Category category)
     {
         var path = category.ImagePath;
-        return path![path.IndexOf('\\')..].Replace(@"\", "/");
+        return path != null ? path[path.IndexOf('\\')..].Replace(@"\", "/") : "";
     }
 
     public static void DeleteFile(this string path)
@@ -43,7 +43,7 @@ public static class Extension
         return newText.ToString();
     }
 
-    public static async Task<string> SaveImage(this IFormFile formFile)
+    public static async Task<string> SaveImageAsync(this IFormFile? formFile)
     {
         var filePath = "";
         if (formFile is { Length: > 0 })
