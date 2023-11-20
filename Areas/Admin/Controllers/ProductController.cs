@@ -254,6 +254,10 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
             if (targetProduct != null)
             {
+                if (targetProduct.TypeProducts.Count != 0)
+                {
+                    return NotFound();
+                }
                 foreach (var targetProductImageUrl in targetProduct.ImageUrls)
                 {
                     targetProductImageUrl.ImagePath.DeleteFile();
