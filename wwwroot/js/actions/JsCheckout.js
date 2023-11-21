@@ -96,12 +96,13 @@ function selectPay(element) {
 }
 
 var btnThanhToan = $("#btnThanhToan");
-btnThanhToan.on("click", function () {
+btnThanhToan.on("click", function (e) {
     // Kiểm tra xem có phương thức thanh toán nào được chọn không
     var selectedAddress = document.querySelector('.selected-address');
 
     // Nếu không có phương thức thanh toán
     if (!selectedAddress) {
+        e.preventDefault();
         alert("Vui lòng chọn Phương Thức Thanh Toán trước khi Thanh Toán.");
     }
     //Ngược lại:

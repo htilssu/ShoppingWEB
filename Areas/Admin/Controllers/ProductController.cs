@@ -166,6 +166,17 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     }
 
                     var propertyInfos = typeof(Product).GetProperties();
+                    if (product.TypeProducts.Count != productModel.TypeProducts.Count)
+                    {
+                        var typeProduct =  product.TypeProducts.Where(a =>
+                            productModel.TypeProducts.All(p => p.Product.ProductName == a.Product.ProductName));
+                        foreach (var product1 in typeProduct)
+                        {
+                            _context.TypeProducts.Remove(product1);
+                            product.TypeProducts.Remove(product1);
+                        }
+                    }
+
                     foreach (var propertyInfo in propertyInfos)
                     {
                         if (propertyInfo.Name is "TypeProducts" or "Id" or "Sold")
@@ -197,14 +208,13 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
                                 if (typeProduct.Sizes.Count != modelTypeProduct.Sizes.Count)
                                 {
-                                    var remain = from productSiz in typeProduct.Sizes
-                                        join modelsize in modelTypeProduct.Sizes on productSiz.SizeType equals modelsize
-                                            .SizeType
-                                        select productSiz;
-                                }
-                                else
-                                {
-                                    var remain = typeProduct.Sizes;
+                                    var size = typeProduct.Sizes
+                                        .Where(p => modelTypeProduct.Sizes.All(a => a.SizeType != p.SizeType));
+                                    foreach (var siz in size)
+                                    {
+                                        _context.Sizes.Remove(siz);
+                                        typeProduct.Sizes.Remove(siz);
+                                    }
                                 }
 
 

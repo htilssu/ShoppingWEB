@@ -1,24 +1,25 @@
-@model ShoppingWEB.Models.Bill
+﻿@model ShoppingWEB.Models.Bill
 @inject ShoppingContext ShoppingContext
 
 @{
-    ViewBag.Title = "Chi tiết hóa đơn";
-    ViewBag.Page = "Bill";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Hóa đơn";
+    Layout = "_Layout";
     var user = ShoppingContext.Users.FirstOrDefault(model => model.Id == Model.UserId);
 }
+
+
 
 <div class="bg-white product-container">
     <div class="d-flex overflow-hidden h-100">
         <div class="product-item d-flex flex-column flex-grow-1">
             <div class="product-item__header d-flex p-3 w-100  flex-grow-1 justify-content-between px-5">
-                <div class="d-flex align-items-center">Chi tiết hóa đơn</div>
+                @*<div class="d-flex align-items-center">Chi tiết hóa đơn</div>
                 <div class="d-flex align-items-center">
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
                     <a class="btn btn-primary" asp-controller="Bill" asp-action="Index">Quay Lại</a>
-                </div>
+                </div>*@
             </div>
             @*<div class="product-item__content">
                 <div class="table-container">
@@ -191,10 +192,10 @@
                                 <div class="col-xl-10">
                                 </div>
                                 <div class="col-xl-2">
-                                    @*<button type="button" class="btn btn-primary text-capitalize"
+                                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary text-capitalize"
                                             style="background-color:#60bdf3 ;">
                                         Quay về trang chủ
-                                    </button>*@
+                                    </a>
                                 </div>
                             </div>
 
@@ -205,3 +206,5 @@
         </div>
     </div>
 </div>
+
+

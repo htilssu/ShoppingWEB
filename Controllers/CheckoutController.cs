@@ -72,7 +72,7 @@ public class CheckoutController : Controller
         {
             return NotFound();
         }
-        Bill bill = new Bill
+        var bill = new Bill
         {
             UserId = user.Id,
             Quantity = 0,
@@ -117,6 +117,9 @@ public class CheckoutController : Controller
 
         /*_context.SaveChanges();*/
         /*cartItem.ClearCart();*/
-        return RedirectToAction("Index", "Checkout");
+        return RedirectToAction("Index", "Bill", new
+        {
+            id = bill.Id
+        });
     }
 }

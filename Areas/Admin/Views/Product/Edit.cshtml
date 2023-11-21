@@ -96,7 +96,7 @@
         <textarea asp-for="LongDescription" style="-webkit-user-drag: none;resize: none" class="form-control h-100"></textarea>
     </div>
 </div>
-<div class="col-6">
+@*<div class="col-6">
     <div class="row d-flex justify-content-between align-items-center">
         <div class="fw-bold mt-2 col-6">
             <label class="form-label">Size</label>
@@ -179,7 +179,7 @@
         <div class="product-type-list d-flex flex-wrap gap-3">
             @foreach (var modelTypeProduct in Model.TypeProducts)
             {
-                <div class="type__item">
+                <div class="type__item" id="@modelTypeProduct.Id">
                     <div class="position-relative">
                         <div class="btn showQuantity btn-outline-primary" id="@modelTypeProduct.Id">
                             @modelTypeProduct.TypeName
@@ -247,7 +247,7 @@
             }
         </div>
     </div>
-</div>
+</div>*@
 <div class="mt-2">
     <div class="d-flex row justify-content-between">
         <div class="col-6">
