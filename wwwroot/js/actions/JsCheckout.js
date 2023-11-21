@@ -65,11 +65,10 @@ changeAddressForm.addEventListener("click", function (e) {
 // Hàm JavaScript để chọn địa chỉ
 function selectAddress(element) {
     // Loại bỏ lớp CSS 'selected-address' từ tất cả các địa chỉ
-    const addresses = document.querySelectorAll('.o-nharieng, .o-vanphong, .button-checkout');
+    const addresses = document.querySelectorAll('.o-nharieng, .o-vanphong');
     addresses.forEach(address => {
         address.classList.remove('selected-address');
     });
-
     // Thêm lớp CSS 'selected-address' cho địa chỉ được chọn
     element.classList.add('selected-address');
 }
@@ -85,27 +84,34 @@ function YeuCau(){
     confirm("Yêu Cầu Thành Công.");
 }
 
-var btnThanhToan = $("#btnThanhToan");
-btnThanhToan.on("click", () => {
-    confirm("Thanh toán thành công")
-})
 
-// btnThanhToan.on('click', Thanhtoan)
-/*
-function Thanhtoan() {
-    const parentTr = $(this).closest("tr")
-    const parent = parentTr.find("td").eq(2)  //tim ra cha
-    var spMaxQuantity = parentTr.find(".max-quantity"); //lay ra con
-    const intput = parent.find("input");
-    intput.val(intput.val() - 0 + 1 <= spMaxQuantity.text().trim()-0 ? intput.val() - 0 + 1 : spMaxQuantity.text().trim())
-
-    const dongia = parentTr.find(".dongia > div").eq(0)
-    const value = dongia.text().replaceAll(",", "")
-    const sotientra = parentTr.find("#sotientra")
-    const total = value * intput.val();
-    sotientra.text(new Intl.NumberFormat().format(total))
-    confirm("Thanh toán thành công!!!")
-    DataPost(parentTr.find("#cartItemId").attr("value"), intput.val())
+// Hàm JavaScript để chọn Phương thức thanh toán
+function selectPay(element) {
+    const addresses = document.querySelectorAll('.button-checkout');
+    addresses.forEach(address => {
+        address.classList.remove('selected-address'); //Loại bỏ lớp CSS 'selected-address' từ tất cả các địa chỉ
+    });
+    // Thêm lớp CSS 'selected-address' cho địa chỉ được chọn
+    element.classList.add('selected-address');
 }
 
-*/
+var btnThanhToan = $("#btnThanhToan");
+btnThanhToan.on("click", function () {
+    // Kiểm tra xem có phương thức thanh toán nào được chọn không
+    var selectedAddress = document.querySelector('.selected-address');
+
+    // Nếu không có phương thức thanh toán
+    if (!selectedAddress) {
+        alert("Vui lòng chọn Phương Thức Thanh Toán trước khi Thanh Toán.");
+    }
+    //Ngược lại:
+    else {
+        var confirmation = confirm("Xác nhận Thanh Toán ?");
+        if (confirmation) {
+            alert("Thanh toán Thành Công");
+        } else {
+            alert("Thanh toán bị Hủy!");
+        }
+    }
+});
+
