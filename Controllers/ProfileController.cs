@@ -45,6 +45,13 @@ public class ProfileController : Controller
     public async Task<IActionResult> OnPostEditUser(UserModel userModel)
     {
         var user = await _userManager.GetUserAsync(User);
+
+        //Check email and phone number
+        if (!Valid.IsValidEmail(userModel.Email) && !Valid.IsValidPhoneNumber(userModel.PhoneNumber))
+        {
+            return NotFound();
+        }
+
         if (user != null && user.UserName != userModel.UserName)
         {
             return NotFound();
