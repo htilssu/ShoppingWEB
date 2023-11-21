@@ -1,0 +1,184 @@
+﻿@model Product
+@{
+    var totalRemainingQuantity = Model.TypeProducts.
+        Sum(product => product.Sizes.Sum(size => size.Quantity));
+}
+
+<section class="product-briefing bg-white d-flex mt-5">
+    <div class="left-side overflow-hidden p-2">
+        <div class="overflow-hidden">
+            <div class="picture-review">
+                <img class="w-100" id="product-img-preview" src="@Model.ImageUrls.FirstOrDefault(i => i.Thumbnail == 1)!.ImagePath" alt="">
+            </div>
+            <div class="w-100">
+                <div class="sub-image d-flex w-100">
+                    @foreach (var s in Model.ImageUrls)
+                    {
+                        <div class="p-2 hover-pointer">
+                            <div class="sub-image-item">
+                                <img src="@s.ImagePath" alt="">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-side p-5 w-100">
+        <div class="product-info d-flex flex-column">
+            <div class="product-name fs-5">
+                <span>@Model.ProductName</span>
+            </div>
+            <div class="product-analysis d-flex justify-content-between mt-2">
+                <div class="product-analysis-info d-flex">
+                    <div class="star d-flex">
+                        <span>
+                            <a href="#comment">5</a>
+                        </span>
+                        @* TODO rate star *@
+                        <div class="star-count d-flex align-items-center">
+                            <svg height="15" width="15">
+                                <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                            </svg>
+                            <svg height="15" width="15">
+                                <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                            </svg>
+                            <svg height="15" width="15">
+                                <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                            </svg>
+                            <svg height="15" width="15">
+                                <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                            </svg>
+                            <svg height="15" width="15">
+                                <polygon points="7.5,0 9.1,4.7 13.4,5.2 10.2,8.1 11.0,12.5 7.5,10.5 4.0,12.5 4.8,8.1 1.6,5.2 5.9,4.7" fill="#f00"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="rate">
+                        <span>
+                            <a href="#comment">23k</a>
+                        </span>
+                        <span>đánh giá</span>
+                    </div>
+                    <div class="sold-info">
+                        <span>
+                            @Model.Sold
+                        </span>
+                        <span class="opacity-75">Đã Bán</span>
+                    </div>
+                </div>
+                <div class="product-report">
+                    <span>Tố cáo</span>
+                </div>
+            </div>
+            <div class="product-price d-flex align-items-center p-2 mt-2">
+                @if (Model.DiscountPercent == 0)
+                {
+                    <div class="price">
+                        đ@($"{Model.Price:###,###}")
+                    </div>
+                }
+                else
+                {
+                    <div class="text-decoration-line-through mx-3 fs-4 opacity-50">
+                        <span class="fs-5">đ</span>@($"{Model.Price:#,###}")
+                    </div>
+                    <div class="price">
+                        @{
+                            var discountPrice = Model.Price - Model.Price * Model.DiscountPercent / 100;
+                        }
+                        đ@($"{discountPrice:###,###}")
+                    </div>
+                    <div class="discount-percent mx-3">
+                        @Model.DiscountPercent% Giảm
+                    </div>
+                }
+            </div>
+        </div>
+        <form asp-action="AddToCard" asp-controller="Cart" method="post">
+            <div class="buy-info p-2">
+
+                <div class="shipping d-flex align-items-start mt-4">
+                    <div class="display">
+                        Vận Chuyển
+                    </div>
+                    <div class="data">
+                        <div>
+                            <div class="d-flex align-items-center">
+                                <img src="~/imgs/freeship.png" alt="">
+                            </div>
+                        </div>
+                        <div>
+                            <div>Miễn phí vận chuyển</div>
+                        </div>
+                        <div>
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="d-flex flex-column mt-1">
+                            <div class=" d-flex">
+                                <div class="shipping-address">
+                                    Vận chuyển tới
+                                </div>
+                                <div class="shipping-address">Huyện Ba Vì</div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="shipping-address">Phí vận chuyển</div>
+                                <div class="shipping-address">0đ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="classify d-flex mt-3">
+                    <div class="display d-flex justify-content-start align-items-center">
+                        Phân Loại
+                    </div>
+                    <div class="data d-flex">
+                        <div class="classify-list d-flex flex-wrap">
+                            @foreach (var modelTypeProduct in Model.TypeProducts)
+                            {
+                                <button type="button" class="classify-item" id="@modelTypeProduct.Id">
+                                    <img src="@modelTypeProduct.ImagePath" alt="@modelTypeProduct.TypeName">@modelTypeProduct.TypeName
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="size d-flex mt-3">
+                    <div class="display d-flex align-items-center justify-content-start">
+                        Kích Cỡ
+                    </div>
+                    <div class="data d-flex ">
+                        <div class="size-list d-flex flex-wrap">
+                            @foreach (var o in Model.TypeProducts.FirstOrDefault()!.Sizes)
+                            {
+                                <button type="button" class="size-item">
+                                    @o.SizeType
+                                </button>
+                            }
+                            <input name="size" id="size" type="hidden" value="-1"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action mt-3 w-100 d-flex justify-content-center p-2">
+                <div class="w-100 d-flex">
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <div class="footer d-flex justify-content-between p-2">
+            <div class="d-flex gap-1">
+                <img src="~/imgs/return.png" alt="">
+                <div>7 ngày miễn phí trả hàng</div>
+            </div>
+            <div class="d-flex gap-1">
+                <img src="~/imgs/protect.png" alt="">
+                <div > Hàng chĩnh hãng 100%</div>
+            </div>
+            <div class="d-flex gap-1">
+                <img src="~/imgs/shipping.png" alt="">
+                <div >Miễn phí vận chuyển</div>
+            </div>
+        </div>
+    </div>
+</section>

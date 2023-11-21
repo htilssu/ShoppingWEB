@@ -1,0 +1,32 @@
+﻿@using Microsoft.EntityFrameworkCore
+@using X.PagedList
+@model Product
+@inject ShoppingContext Shopping
+@{
+    var topProduct = Shopping.Products
+        .Include(p => p.ImageUrls)
+        .Where(p => p.CategoryId == Model.CategoryId)
+        .OrderByDescending(p => p.Sold)
+        .Take(6);
+}
+
+<div class="mt-3 d-flex">
+    <div class="page-product-l flex-grow-1">
+        <div class="p-4 bg-white">
+            @{ await Html.RenderPartialAsync("./ProductInfo.cshtml"); }
+        </div>
+
+        @*<div class="product-rating my-3 p-4 bg-white">
+            <div>
+                <div class="product-rating__header mb-3">
+                    <div class="fs-5 text-uppercase">Đánh giá sản phẩm</div>
+                </div>
+                <div>
+                    @{ await Html.RenderPartialAsync("./ProductRating.cshtml"); }
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+<div>
+</div>

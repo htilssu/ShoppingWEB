@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShoppingWEB;
 using ShoppingWEB.Extension_Method;
 using ShoppingWEB.Models;
 
@@ -24,8 +17,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
             _context = context;
         }
 
-
-        // DELETE: api/ImageUrlController/5
+        
         [HttpDelete]
         public async Task<IActionResult> DeleteImageUrl([FromQuery] string id)
         {
