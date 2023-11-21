@@ -508,16 +508,16 @@ th, td {
     background-color: white;
 }
 
-/* Đổi màu khi hover */
+/*!* Đổi màu khi hover *!
 .button-checkout:hover {
-    color: #ff6600; /* Màu nền khi hover */
+    color: #ff6600; !* Màu nền khi hover *!
     border-color: #ff6600;
 }
 
 .button-checkout:active {
     color: #ff6600;
     border-color: #ff6600;
-}
+}*/
 
 .button-checkout1 {
     color: rgba(0, 0, 0, .26);

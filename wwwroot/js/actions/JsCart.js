@@ -1,27 +1,25 @@
 ﻿//-----Tang Giam So Luong----
-const quantityInp = $("#quantity-1")
+const quantityInp = $(".soluong")
 quantityInp.on('change', handleChangeQuantity)
+quantityInp.on('input', handleChangeQuantity)
 function handleChangeQuantity() {
-    // Lấy giá trị nhập vào ô số lượng
-    const inputValue = $(this).val();
-    if (isNaN(inputValue) ||inputValue < 1){
+    console.log(1);
+    if ($(this).val() < 0){
         $(this).val(1)
     }
-  
-    const parentTr = $(this).closest("tr");
+    const parentTr = $(this).closest("tr")
     var spMaxQuantity = parentTr.find(".max-quantity");
-
-    if ($(this).val() > spMaxQuantity.text().trim()) {
-        $(this).val(spMaxQuantity.text().trim());
+    if ($(this).val() > spMaxQuantity.text().trim()-0)  
+    {
+        $(this).val(spMaxQuantity.text().trim())
     }
-
-    const dongia = parentTr.find(".dongia > div").eq(0);
-    const value = dongia.text().replaceAll(",", "");
-    const sotientra = parentTr.find("#sotientra");
+    const dongia = parentTr.find(".dongia > div").eq(0)
+    const value = dongia.text().replaceAll(",", "")
+    const sotientra = parentTr.find("#sotientra")
     const total = value * $(this).val();
-    sotientra.text(new Intl.NumberFormat().format(total));
+    sotientra.text(new Intl.NumberFormat().format(total))
 
-    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), $(this).val());
+    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), $(this).val())
     updateSelectedProductsAndTotalPrice();
     
 }
@@ -32,7 +30,7 @@ function DreQuantity() {
     const parentTr = $(this).closest("tr")
     const parent = parentTr.find("td").eq(2) // chon phan tu td thu 3 duoc tim tu the tr (so luong)
     const intput = parent.find("input");
-    intput.val(intput.val() - 1 > 0 ? intput.val() - 1 : 0) //lay cha, xong tim con 
+    intput.val(intput.val() - 1 > 0 ? intput.val() - 1 : 1) //lay cha, xong tim con 
 
     const dongia = parentTr.find(".dongia > div").eq(0)  //the div thu nhat
     const value = dongia.text().replaceAll(",", "")

@@ -84,8 +84,8 @@ function Erorr_ship(){
 function YeuCau(){
     confirm("Yêu Cầu Thành Công.");
 }
-var btnThanhToan = $("#btnThanhToan");
 
+var btnThanhToan = $("#btnThanhToan");
 btnThanhToan.on("click", () => {
     confirm("Thanh toán thành công")
 })
@@ -106,15 +106,6 @@ function Thanhtoan() {
     sotientra.text(new Intl.NumberFormat().format(total))
     confirm("Thanh toán thành công!!!")
     DataPost(parentTr.find("#cartItemId").attr("value"), intput.val())
-}
-//update du lieu len database
-function DataPost(cartItemId, quantity) {
-    $.ajax(document.location.href + "/UpdateQuantity",
-        {
-            method: "POST",
-            data: {cartItemId, quantity},
-            xhrFields: {withCredentials: true}
-        })
 }
 
 */
