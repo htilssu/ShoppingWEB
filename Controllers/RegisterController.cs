@@ -21,7 +21,6 @@ public class RegisterController : Controller
     }
 
 
-    // GET
     public IActionResult Index()
     {
         if (User.Identity!.IsAuthenticated) return RedirectToAction("Index", "Home");
@@ -50,6 +49,7 @@ public class RegisterController : Controller
                     ViewBag.NumberExist = "Số điện thoại đã được đăng ký";
                     return View();
                 }
+                
                 var userId = Guid.NewGuid().ToString();
                 var result = await _userManager.CreateAsync(new UserModel
                 {
@@ -63,7 +63,7 @@ public class RegisterController : Controller
                 {
                     await _signInManager.PasswordSignInAsync(registModel.UserName!, registModel.Password!, false,
                         false);
-                    _context.Carts.Add(new Cart()
+                    _context.Carts.Add(new Cart
                     {
                         Id = Guid.NewGuid().ToString(),
                         CustomerId = userId

@@ -169,7 +169,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     var propertyInfos = typeof(Product).GetProperties();
                     foreach (var propertyInfo in propertyInfos)
                     {
-                        if (propertyInfo.Name == "TypeProduct")
+                        if (propertyInfo.Name == "TypeProducts")
                         {
                             continue;
                         }
@@ -252,8 +252,14 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 .Include(p => p.TypeProducts)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
+          
+
             if (targetProduct != null)
             {
+                if (targetProduct.TypeProducts.Count == 0)
+                {
+                    return NotFound();
+                }
                 if (targetProduct.TypeProducts.Count != 0)
                 {
                     return NotFound();
