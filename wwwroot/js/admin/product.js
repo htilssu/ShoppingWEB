@@ -138,7 +138,7 @@ function handleAddType() {
   });
 
   const newType = typeProduct[typeProduct.length - 1];
-  const indexProduct = typeProduct.length - 1;
+  const indexProduct = $('.product-quantity__form').length;
   console.log(typeProduct);
 
   productQuantityFormList.append(`
@@ -223,6 +223,8 @@ function handleAddType() {
     $(this).closest(".product-quantity-form__list").addClass("d-none");
     $(this).closest(".popup-form").addClass("d-none");
   });
+  $(this).closest(".popup-form").addClass("d-none");
+  
 }
 
 function handleAddSize() {
@@ -275,6 +277,7 @@ function handleAddSize() {
   `);
 
   $(".delete__size").on("click", handleDeleteSize);
+  $(this).closest(".popup-form").addClass('d-none')
 }
 
 function handleDeleteSize() {

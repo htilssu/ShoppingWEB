@@ -31,7 +31,8 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(s))
                 {
                     var resultProduct = products
-                        .Where(p => p.ProductName!.ToUpper().Contains(s.ToUpper()) || string.Equals(p.ProductName, s, StringComparison.CurrentCultureIgnoreCase))
+                        .Where(p => p.ProductName!.ToUpper().Contains(s.ToUpper()) ||
+                                    string.Equals(p.ProductName, s, StringComparison.CurrentCultureIgnoreCase))
                         .ToList();
 
                     return View(resultProduct);
@@ -132,9 +133,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var product = await _context.Products
-                    .Include(p => p.ImageUrls)
-                    .Include(p => p.TypeProducts).FirstOrDefaultAsync(p => p.Id == productModel.Id);
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == productModel.Id);
 
                 if (product != null)
                 {
@@ -169,7 +168,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     var propertyInfos = typeof(Product).GetProperties();
                     foreach (var propertyInfo in propertyInfos)
                     {
-                        if (propertyInfo.Name == "TypeProducts")
+                        if (propertyInfo.Name is "TypeProducts" or "Id" or "Sold")
                         {
                             continue;
                         }
@@ -191,16 +190,40 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                             if (typeProduct.TypeName == modelTypeProduct.TypeName)
                             {
                                 isExist = true;
-                                if (modelTypeProduct.ImageFile != null && modelTypeProduct.ImageFile.Length > 0)
+                                if (modelTypeProduct.ImageFile is { Length: > 0 })
                                 {
                                     modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImageAsync();
                                 }
-                                foreach (var size in modelTypeProduct.Sizes)
+
+                                if (typeProduct.Sizes.Count != modelTypeProduct.Sizes.Count)
                                 {
-                                    size.TypeProductId = typeProduct.Id;
+                                    var remain = from productSiz in typeProduct.Sizes
+                                        join modelsize in modelTypeProduct.Sizes on productSiz.SizeType equals modelsize
+                                            .SizeType
+                                        select productSiz;
+                                }
+                                else
+                                {
+                                    var remain = typeProduct.Sizes;
                                 }
 
-                                typeProduct.Sizes = modelTypeProduct.Sizes;
+
+                                foreach (var size in modelTypeProduct.Sizes)
+                                {
+                                    var sizeT = typeProduct.Sizes.FirstOrDefault(s => s.SizeType == size.SizeType);
+                                    if (sizeT == null)
+                                    {
+                                        typeProduct.Sizes.Add(new Size
+                                        {
+                                            SizeType = size.SizeType,
+                                            Quantity = size.Quantity
+                                        });
+                                    }
+                                    else
+                                    {
+                                        sizeT.Quantity = size.Quantity;
+                                    }
+                                }
                             }
                         }
 
@@ -208,6 +231,11 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                         {
                             if (modelTypeProduct.ImageFile != null)
                                 modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImageAsync();
+                            foreach (var size in modelTypeProduct.Sizes)
+                            {
+                                size.TypeProductId = modelTypeProduct.Id;
+                            }
+
                             product.TypeProducts.Add(modelTypeProduct);
                         }
                     }
@@ -252,18 +280,9 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 .Include(p => p.TypeProducts)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-          
 
             if (targetProduct != null)
             {
-                if (targetProduct.TypeProducts.Count == 0)
-                {
-                    return NotFound();
-                }
-                if (targetProduct.TypeProducts.Count != 0)
-                {
-                    return NotFound();
-                }
                 foreach (var targetProductImageUrl in targetProduct.ImageUrls)
                 {
                     targetProductImageUrl.ImagePath.DeleteFile();

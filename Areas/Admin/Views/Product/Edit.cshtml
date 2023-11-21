@@ -130,7 +130,7 @@
         <div class="product-type-list__size d-flex flex-wrap gap-3">
             @foreach (var size in Model.TypeProducts.ToList()[0].Sizes)
             {
-                <div class="size__item">
+                <div class="size__item" id="@(size.SizeType)">
                     <div class="position-relative">
                         <div class="btn btn-outline-primary">
                             @size.SizeType
@@ -223,13 +223,15 @@
                                 var sizeList = typeList[i].Sizes.ToList();
                                 for (var i1 = 0; i1 < sizeList.Count; i1++)
                                 {
-                                    <div class="col-6 mt-2 @sizeList[i1].SizeType">
-                                        @sizeList[i1].SizeType
-                                        <input type="hidden" name="TypeProducts[@i].Sizes[@i1].SizeType" value="@sizeList[i1].SizeType"/>
+                                    <div class="row m-0 p-0" id="@(sizeList[i1].SizeType)">
+                                        <div class="col-6 mt-2 @sizeList[i1].SizeType">
+                                            @sizeList[i1].SizeType
+                                            <input type="hidden" name="TypeProducts[@i].Sizes[@i1].SizeType" value="@sizeList[i1].SizeType"/>
 
-                                    </div>
-                                    <div class="col-6 @sizeList[i1].SizeType">
-                                        <input class="form-control" name="TypeProducts[@i].Sizes[@i1].Quantity" value="@sizeList[i1].Quantity">
+                                        </div>
+                                        <div class="col-6 @sizeList[i1].SizeType">
+                                            <input class="form-control" name="TypeProducts[@i].Sizes[@i1].Quantity" value="@sizeList[i1].Quantity">
+                                        </div>
                                     </div>
                                 }
                             }
