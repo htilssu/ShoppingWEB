@@ -73,6 +73,9 @@ function handleQuantityOnInput() {
         quantityInp.val(value.substring(1, value.length));
     }
     if (quantityInp.val() < 0) quantityInp.val(-quantityInp.val());
+    if (!checkQuantity(quantityInp.val())){
+        quantityInp.val(1)
+    }
 }
 
 function handleQuantityInputChange() {
