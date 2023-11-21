@@ -2,22 +2,26 @@
 const quantityInp = $("#quantity-1")
 quantityInp.on('change', handleChangeQuantity)
 function handleChangeQuantity() {
-    if ($(this).val() < 0){
+    // Lấy giá trị nhập vào ô số lượng
+    const inputValue = $(this).val();
+    if (isNaN(inputValue) ||inputValue < 1){
         $(this).val(1)
     }
-    const parentTr = $(this).closest("tr")
+  
+    const parentTr = $(this).closest("tr");
     var spMaxQuantity = parentTr.find(".max-quantity");
-    if ($(this).val() > spMaxQuantity.text().trim())
-    {
-        $(this).val(spMaxQuantity.text().trim())
-    }
-    const dongia = parentTr.find(".dongia > div").eq(0)
-    const value = dongia.text().replaceAll(",", "")
-    const sotientra = parentTr.find("#sotientra")
-    const total = value * $(this).val();
-    sotientra.text(new Intl.NumberFormat().format(total))
 
-    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), $(this).val())
+    if ($(this).val() > spMaxQuantity.text().trim()) {
+        $(this).val(spMaxQuantity.text().trim());
+    }
+
+    const dongia = parentTr.find(".dongia > div").eq(0);
+    const value = dongia.text().replaceAll(",", "");
+    const sotientra = parentTr.find("#sotientra");
+    const total = value * $(this).val();
+    sotientra.text(new Intl.NumberFormat().format(total));
+
+    updateQuantityPost(parentTr.find("#cartItemId").attr("value"), $(this).val());
     updateSelectedProductsAndTotalPrice();
     
 }

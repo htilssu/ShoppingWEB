@@ -35,8 +35,8 @@
                                 <div class="mienphi-trahang"><img src="~/imgs/logoduoisale10.10.png"> 7 Ngày Miễn Phí Trả Hàng</div>
                             </div>
                             <div class="phanloai">
-                                <div>Phân loại hàng:</div>
-                                <select id="loaimau" name="loaimau">
+                                <div>Phân loại hàng: @cartItem.TypeProduct.TypeName</div>
+                                @*<select id="loaimau" name="loaimau">
 
                                     @foreach (var productTypeProduct in cartItem.TypeProduct.Product.TypeProducts)
                                     {
@@ -50,7 +50,7 @@
                                         }
                                     }
 
-                                </select>
+                                </select>*@
                                 Size: @cartItem.SizeType
                             </div>
                         </div>
