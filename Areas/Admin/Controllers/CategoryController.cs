@@ -77,7 +77,7 @@ public class CategoryController : Controller
             if (imageFile is { Length: > 0 })
                 try
                 {
-                    category.ImagePath = await imageFile.SaveImage();
+                    category.ImagePath = await imageFile.SaveImageAsync();
                 }
                 catch (Exception e)
                 {

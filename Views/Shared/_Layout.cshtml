@@ -52,7 +52,7 @@
     let notifyRender = document.createElement("div");
     notifyRender.className = "notify-render newrender position-absolute bg-white shadow-sm border-1 d-flex flex-column align-items-center"
     notifyRender.innerHTML = `
-     @if (!User.Identity.IsAuthenticated)
+     @if (!User.Identity!.IsAuthenticated)
      {
          <div class="notify d-flex flex-column align-items-center">
                     <div class="bg-notify w-100"></div>

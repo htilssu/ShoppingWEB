@@ -135,26 +135,10 @@ public class SearchController : Controller
         ViewBag.IsDiscount = filterModel.IsDiscount ?? "";
 
 
-        ViewBag.IsFindout = productList.Count != 0 ? true : false;
+        ViewBag.IsFindout = productList.Count != 0;
         ViewBag.Search = search;
 
         return View("Index", await productList.ToPagedListAsync(1, 16));
-
-        /*try
-        {
-            productList = o switch
-            {
-                "Location" => productList.Where(p => p.Seller?.Address == query[o]).ToList(),
-                "PriceFrom" => productList.Where(p => p.Price >= int.Parse(query[o] ?? "0")).ToList(),
-                "PriceTo" => productList.Where(p => p.Price <= int.Parse(query[o] ?? "0")).ToList(),
-                "IsDiscount" => productList.Where(p => p.DiscountPercent != 0).ToList(),
-                _ => productList,
-            };
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }*/
+        
     }
 }

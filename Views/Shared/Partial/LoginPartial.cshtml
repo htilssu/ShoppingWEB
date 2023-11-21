@@ -8,12 +8,17 @@
             var user = await UserManager.GetUserAsync(User);
 
         }
-        <img class="avatar" src="@user!.AvtPath" alt="avt">
-        <span>@user.UserName</span>
+        <img class="avatar rounded-circle" style="width: 20px; height: 20px" src="@user!.AvtPath" alt="avt">
+        <a class="text-decoration-none text-white" asp-action="Index" asp-controller="Profile">
+            <span>@user.UserName</span>
+        </a>
         <div id="option-area" class="position-absolute d-none op-hide bg-white option">
             <ul>
                 <li>
-                    <a asp-controller="Profile" class="bg-transparent text-black nav-link p-0">Thông tin chi tiết</a>
+                    <a asp-controller="Profile" class="bg-transparent text-black nav-link p-0">Thông tin người dùng</a>
+                </li>
+                <li>
+                    <a asp-action="Bill" asp-controller="Profile" class="bg-transparent text-black nav-link p-0">Lịch sử giao dịch</a>
                 </li>
                 <li>
                     <a asp-controller="Logout" class="bg-transparent text-black nav-link p-0">Đăng xuất</a>
@@ -26,10 +31,10 @@ else
 {
     <div class="reg-log not-logged nav-item gap-1 d-flex">
         <div class="reg">
-            <a href="/Register">Đăng ký</a>
+            <a asp-controller="Register" asp-action="Index">Đăng ký</a>
         </div>
         <div class="log">
-            <a href="/Login">Đăng nhập</a>
+            <a asp-controller="Login" asp-action="Index">Đăng nhập</a>
         </div>
     </div>
 }

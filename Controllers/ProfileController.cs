@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingWEB.Extension_Method;
 using ShoppingWEB.Models;
 using X.PagedList;
 
@@ -19,11 +20,17 @@ public class ProfileController : Controller
     }
 
     // GET
-    public async Task<IActionResult> Index(int? page)
+    public async Task<IActionResult> Index()
     {
-        int pageSize =15 ;
+        var user = await _userManager.GetUserAsync(User);
+        return View(user);
+    }
+
+    public async Task<IActionResult> Bill(int? page)
+    {
+        var pageSize = 15;
         ViewBag.Controller = "Home";
-        int pageNum = (page ?? 1);
+        var pageNum = (page ?? 1);
         var user = await _userManager.GetUserAsync(User);
         var listBillItem = _context.BillItems.ToList();
         var billList = _context.Bills.ToList();
@@ -31,7 +38,55 @@ public class ProfileController : Controller
             join billItem in listBillItem on bill.Id equals billItem.BillId
             where bill.UserId == user.Id
             select billItem).ToList();
-        
-        return View( await userBillItem.ToPagedListAsync(pageNum, pageSize));
+
+        return View(await userBillItem.ToPagedListAsync(pageNum, pageSize));
+    }
+
+    public async Task<IActionResult> OnPostEditUser(UserModel userModel)
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        //Check email and phone number
+        if (!Valid.IsValidEmail(userModel.Email) && !Valid.IsValidPhoneNumber(userModel.PhoneNumber))
+        {
+            return NotFound();
+        }
+
+        if (user != null && user.UserName != userModel.UserName)
+        {
+            return NotFound();
+        }
+
+        user!.Email = userModel.Email;
+        user.PhoneNumber = userModel.PhoneNumber;
+        user.Gender = userModel.Gender;
+        user.BirthDay = userModel.BirthDay;
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index", "Profile");
+    }
+
+    public async Task<IActionResult> OnPostEditAvatar(IFormFile? Avatar)
+    {
+        if (Avatar == null)
+        {
+            return NotFound();
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var imagePath = await Avatar.SaveImageAsync();
+        if (!user.AvtPath.Contains("avatars/"))
+        {
+            user.AvtPath.DeleteFile();
+        }
+
+        user.AvtPath = imagePath;
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index", "Profile");
     }
 }

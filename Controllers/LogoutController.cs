@@ -7,14 +7,12 @@ namespace ShoppingWEB.Controllers;
 public class LogoutController : Controller
 {
     private readonly SignInManager<UserModel> _signInManager;
-    private UserManager<UserModel> _userManager;
 
-    public LogoutController(UserManager<UserModel> userManager, SignInManager<UserModel> signInManager)
+    public LogoutController(SignInManager<UserModel> signInManager)
     {
-        _userManager = userManager;
         _signInManager = signInManager;
     }
-    
+
     public async Task<IActionResult> Index()
     {
         await _signInManager.SignOutAsync();

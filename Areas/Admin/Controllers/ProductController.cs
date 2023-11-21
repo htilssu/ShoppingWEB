@@ -68,7 +68,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 //Binding ProductTypeId for size
                 foreach (var productTypeProduct in product.TypeProducts)
                 {
-                    var typeImagePath = await productTypeProduct.ImageFile!.SaveImage();
+                    var typeImagePath = await productTypeProduct.ImageFile!.SaveImageAsync();
                     productTypeProduct.ImagePath = typeImagePath;
                     foreach (var size in productTypeProduct.Sizes)
                     {
@@ -78,7 +78,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
 
                 foreach (var formFile in product.ImageFile!)
                 {
-                    var pathImage = await formFile.SaveImage();
+                    var pathImage = await formFile.SaveImageAsync();
                     product.ImageUrls.Add(new ImageUrl()
                     {
                         Product = product,
@@ -88,7 +88,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     });
                 }
 
-                var thumbnailPath = await product.Thumbnail!.SaveImage();
+                var thumbnailPath = await product.Thumbnail!.SaveImageAsync();
                 product.ImageUrls.Add(new ImageUrl()
                 {
                     Product = product,
@@ -140,7 +140,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 {
                     if (productModel.Thumbnail != null)
                     {
-                        var thumbnailPath = await productModel.Thumbnail.SaveImage();
+                        var thumbnailPath = await productModel.Thumbnail.SaveImageAsync();
                         var thumbnailImage = await _context.ImageUrls
                             .FirstOrDefaultAsync(i => i.ProductId == product.Id && i.Thumbnail == 1);
                         thumbnailImage!.ImagePath.DeleteFile();
@@ -156,7 +156,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     {
                         foreach (var formFile in productModel.ImageFile)
                         {
-                            var imagePath = await formFile.SaveImage();
+                            var imagePath = await formFile.SaveImageAsync();
                             _context.ImageUrls.Add(new ImageUrl()
                             {
                                 Product = product,
@@ -169,7 +169,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                     var propertyInfos = typeof(Product).GetProperties();
                     foreach (var propertyInfo in propertyInfos)
                     {
-                        if (propertyInfo.Name == "TypeProduct")
+                        if (propertyInfo.Name == "TypeProducts")
                         {
                             continue;
                         }
@@ -193,7 +193,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                                 isExist = true;
                                 if (modelTypeProduct.ImageFile != null && modelTypeProduct.ImageFile.Length > 0)
                                 {
-                                    modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImage();
+                                    modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImageAsync();
                                 }
                                 foreach (var size in modelTypeProduct.Sizes)
                                 {
@@ -207,7 +207,7 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                         if (!isExist)
                         {
                             if (modelTypeProduct.ImageFile != null)
-                                modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImage();
+                                modelTypeProduct.ImagePath = await modelTypeProduct.ImageFile.SaveImageAsync();
                             product.TypeProducts.Add(modelTypeProduct);
                         }
                     }
@@ -252,8 +252,18 @@ namespace ShoppingWEB.Areas.Admin.Controllers
                 .Include(p => p.TypeProducts)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
+          
+
             if (targetProduct != null)
             {
+                if (targetProduct.TypeProducts.Count == 0)
+                {
+                    return NotFound();
+                }
+                if (targetProduct.TypeProducts.Count != 0)
+                {
+                    return NotFound();
+                }
                 foreach (var targetProductImageUrl in targetProduct.ImageUrls)
                 {
                     targetProductImageUrl.ImagePath.DeleteFile();

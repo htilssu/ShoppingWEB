@@ -44,21 +44,25 @@
 
                                     <td>@(i+1)</td>
                                     <td >
-                                        <a asp-controller="Detail" asp-action="Index" asp-route-id="@modelBillItem[i].TypeProduct.Product.Id">
+
+                                        @{
+                                            var i1 = i;
+                                        }
+                                        <a asp-controller="Detail" asp-action="Index" asp-route-id="@modelBillItem[i1].TypeProduct!.Product!.Id">
                                             <div class="image" style="margin-right: 10px;!important;">
-                                                <img width="100px" src="@modelBillItem[i].TypeProduct!.ImagePath" class="img-sanpham"/>
+                                                <img width="100px" src="@modelBillItem[i1].TypeProduct!.ImagePath" class="img-sanpham"/>
                                             </div>
                                         </a>
                                     </td>
                                     @* TODO design datbase contain product price *@
-                                    <td> @modelBillItem[i].TypeProduct.Product.ProductName</td>
+                                    <td> @modelBillItem[i].TypeProduct?.Product?.ProductName</td>
 
-                                    <td > @modelBillItem[i].TypeProduct.TypeName</td>
+                                    <td > @modelBillItem[i].TypeProduct?.TypeName</td>
 
 
                                     <td> @modelBillItem[i].SizeName</td>
 
-                                    <td>@($"{modelBillItem[i].TypeProduct.Product.Price:#,###}")</td>
+                                    <td>@($"{modelBillItem[i].TypeProduct!.Product!.Price:#,###}")</td>
                                     <td> @modelBillItem[i].Quantity</td>
 
                                     <td >

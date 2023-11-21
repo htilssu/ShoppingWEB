@@ -7,7 +7,7 @@
             <tr>
                 <th>STT</th>
                 <th>Tên Sản Phẩm</th>
-                <th>Công Khai</th>
+                <th>Giá</th>
                 <th>Tùy Chỉnh</th>
             </tr>
             </thead>
@@ -24,14 +24,7 @@
                                     <div class="w-75" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">@Model[i].ProductName</div>
                                 </div>
                             </td>
-                            @if (Model[i].Publish == 0)
-                            {
-                                <td>Không công khai</td>
-                            }
-                            else
-                            {
-                                <td>Công khai</td>
-                            }
+                           <td>@($"{Model[i].Price:#,###}")đ</td>
                             <td>
                                 <a asp-action="Edit" asp-controller="Product" asp-route-id="@Model[i].Id" class="btn btn-danger text-decoration-none">
                                     <i class="bi bi-pencil-fill"></i>

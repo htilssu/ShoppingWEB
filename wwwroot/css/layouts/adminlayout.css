@@ -15,23 +15,23 @@ body {
   background-color: #F5F5F5;
 }
 
-.left-side {
+.left-side-layout {
   width: 300px;
   z-index: 1;
   background-color: #EA384E;
   min-height: 100vh;
   color: white;
 }
-.left-side .nav-header__title {
+.left-side-layout .nav-header__title {
   font-family: "Kalam", cursive;
 }
-.left-side .nav-content .nav-content__item .nav-item__item {
+.left-side-layout .nav-content .nav-content__item .nav-item__item {
   min-width: 60%;
 }
-.left-side .nav-content .nav-content__item.selected {
+.left-side-layout .nav-content .nav-content__item.selected {
   background-color: #34383c;
 }
-.left-side .nav-content .selected-field {
+.left-side-layout .nav-content .selected-field {
   left: 0;
   width: 2px;
   height: 70%;

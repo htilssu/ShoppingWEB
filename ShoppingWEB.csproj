@@ -75,6 +75,7 @@
     <ItemGroup>
         <Folder Include="Migrations\" />
         <Folder Include="Views\Home\Partials\" />
+        <Folder Include="wwwroot\css\controllers\profile\" />
         <Folder Include="wwwroot\uploads\" />
     </ItemGroup>
     <ItemGroup>
@@ -83,5 +84,10 @@
         <AdditionalFiles Include="Areas\Admin\Views\Category\Details.cshtml" />
         <AdditionalFiles Include="Areas\Admin\Views\Category\Edit.cshtml" />
         <AdditionalFiles Include="Areas\Admin\Views\Category\Index.cshtml" />
+        <AdditionalFiles Include="Areas\Admin\Views\Product\Partials\PageProduct.cshtml" />
+        <AdditionalFiles Include="Areas\Admin\Views\Product\Partials\ProductBriefing.cshtml" />
+        <AdditionalFiles Include="Areas\Admin\Views\Product\Partials\ProductInfo.cshtml" />
+        <AdditionalFiles Include="Areas\Admin\Views\Product\Partials\ProductRating.cshtml" />
+        <AdditionalFiles Include="Areas\Admin\Views\Product\Partials\SellerInfo.cshtml" />
     </ItemGroup>
 </Project>

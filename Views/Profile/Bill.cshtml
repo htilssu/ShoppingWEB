@@ -1,20 +1,15 @@
-﻿@model UserModel
+﻿@model IPagedList<BillItem>
 
 @{
-    ViewBag.Title = "Thông tin người dùng";
+    ViewBag.Title = "Aetherix";
     Layout = "_Layout";
 }
 
 @section Styles
 {
+    <link rel="stylesheet" href="~/css/actions/ProfileStyle.css" asp-append-version="true"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/actions/ProfileStyle.css" asp-append-version="true"/>
-}
-
-@section Scripts
-{
-    <script src="~/js/controllers/profile/index.js" asp-append-version="true"></script>
 }
 
 <div class="container mt-4">
@@ -27,10 +22,10 @@
 
             </div>
             <div class="grid_column-10">
-
+    
                 <div class="donhang-main h-100">
                     @{
-                        await Html.RenderPartialAsync("Partials/UserInfo", Model);
+                        await Html.RenderPartialAsync("Partials/BillItemPartial", Model);
                     }
                 </div>
             </div>

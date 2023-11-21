@@ -1,0 +1,204 @@
+﻿@{
+    var text = new string[]
+    {
+        "Tất cả",
+        "5 Sao",
+        "4 Sao",
+        "3 Sao",
+        "2 Sao",
+        "1 Sao",
+        "Có Bình Luận",
+        "Có Hình Ảnh / Video"
+    };
+}
+
+<div class="product-rating">
+    <div class="product-rating-overview p-4">
+        <div>
+            <div class="d-flex align-items-center">
+                <div class="product-rating-overview__briefing">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="fs-4 text-primary-custom"><span class="fs-2">5</span> trên 5</div>
+                        <div class=" rating-stars product-rating-overview__stars mt-2">
+                            <div class="d-flex w-100">
+                                @for (var i = 0; i < 5; i++)
+                                {
+                                    <div class="rating-stars__star-wrapper position-relative w-100">
+                                        <div class="rating-stars__lit" style="width: 100%;">
+                                            <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid">
+                                                <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                            </svg>
+                                        </div>
+                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
+                                            <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                        </svg>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-rating-overview__filters">
+                    <div class="d-flex p-md-5 gap-3 flex-wrap justify-content-start align-items-center">
+                        @foreach (var t in text)
+                        {
+                            <div class="product-rating-filter__item border-light-custom px-4 py-2 bg-white">@t</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-3">
+        @for (var i = 0; i < 4; i++)
+        {
+            <div class="mb-3 product-rating__comment mt-3">
+                <div class="d-flex ">
+                    <div class="product-rating-comment__avatar">
+                        <div>
+                            <img class="w-100 rounded-circle" src="/avatars/default-avatar.png" alt="">
+                        </div>
+                    </div>
+                    <div class="product-rating-comment__main">
+                        <div class="w-100">
+                            <div class="author-name hover-pointer">
+                                <div>htilssu</div>
+                            </div>
+                            <div class="d-flex w-100">
+                                <div class="d-flex">
+                                    @for (var j = 0; j < 5; j++)
+                                    {
+                                        <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__primary-star icon-rating-solid m-0">
+                                            <polygon points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" fill="#DC593A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                        </svg>
+
+
+                                            @*
+                                            <svg viewBox="0 0 15 15" x="0" y="0" class="svg-icon rating-stars__hollow-star icon-rating">
+                                                <polygon fill="none" points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></polygon>
+                                            </svg>
+                                            *@
+                                    }
+                                </div>
+                            </div>
+                            <div class="posted-info">
+                                <div>
+                                    <div class="opacity-50">
+                                        @* TODO binding date *@
+                                        2023-08-02 10:32 | Phân loại hàng: RÊU,S
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="posted-content">
+                                <div class="posted-content__header">
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Chất liệu: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Màu sắc: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="opacity-50">Đúng với mô tả: </span>
+                                        <span>Tốt</span>
+                                    </div>
+                                </div>
+                                <div class="posted-content__comment mt-2">
+                                    <p>Quần đẹp xịn tưởng mỏng nhưng không nhưng giao hàng hơi lâu khoảng tuần thôi thì thương shop vì 2/9 định đánh giá 3,4 sao nhưng thôi cho 5 sao luôn hơi nhiều chỉ thừa xíu nhưng ko đáng kể</p>
+                                </div>
+                                <div class="posted-content__image">
+                                    <div class="posted-content__sub-image">
+                                        <div class="d-flex h-100">
+                                            @for (var x = 0; x < 5; x++)
+                                            {
+                                                <div class="flex-grow-0 hover-pointer  p-1">
+                                                    <img src="~/uploads/0a2211a6-c53a-4738-a282-825ee2b2bbb8_vn-11134207-7qukw-lk582m3hyfwieb.jpg" class="h-100" alt="anh san pham">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="posted-content__preview-img position-relative d-flex align-items-center justify-content-center">
+                                        <div class="overflow-hidden mt-2 d-flex align-items-center justify-content-center">
+                                            @for (var x = 0; x < 5; x++)
+                                            {
+                                                <div class="flex-shrink-0 flex-grow-0 w-100 d-flex align-items-center">
+                                                    <div>
+                                                        <img src="~/uploads/0a2211a6-c53a-4738-a282-825ee2b2bbb8_vn-11134207-7qukw-lk582m3hyfwieb.jpg" class="w-100" alt="anh san pham">
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="position-absolute action-preview-img previous-img d-flex justify-content-center align-items-center">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </div>
+                                        <div class="position-absolute action-preview-img next-img d-flex justify-content-center align-items-center">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment__like mt-3 mb-3">
+                                    <div class="d-flex align-items-center justify-content-start opacity-50 gap-2">
+                                        <div class="like-icon d-flex align-items-center">
+                                            <svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <defs></defs>
+                                                <g stroke="none" stroke-width="1" fill-rule="evenodd">
+                                                    <g id="Product-Ratings-Working" transform="translate(-245.000000, -855.000000)" fill-rule="nonzero">
+                                                        <g transform="translate(155.000000, 92.000000)">
+                                                            <g transform="translate(40.000000, 184.000000)">
+                                                                <g transform="translate(0.000000, 326.000000)">
+                                                                    <g transform="translate(50.000000, 253.000000)">
+                                                                        <g>
+                                                                            <path d="M0,12.7272727 L2.54545455,12.7272727 L2.54545455,5.09090909 L0,5.09090909 L0,12.7272727 Z M14,5.72727273 C14,5.02727273 13.4272727,4.45454545 12.7272727,4.45454545 L8.71818182,4.45454545 L9.35454545,1.52727273 L9.35454545,1.33636364 C9.35454545,1.08181818 9.22727273,0.827272727 9.1,0.636363636 L8.4,0 L4.2,4.2 C3.94545455,4.39090909 3.81818182,4.70909091 3.81818182,5.09090909 L3.81818182,11.4545455 C3.81818182,12.1545455 4.39090909,12.7272727 5.09090909,12.7272727 L10.8181818,12.7272727 C11.3272727,12.7272727 11.7727273,12.4090909 11.9636364,11.9636364 L13.8727273,7.44545455 C13.9363636,7.31818182 13.9363636,7.12727273 13.9363636,7 L13.9363636,5.72727273 L14,5.72727273 C14,5.79090909 14,5.72727273 14,5.72727273 Z"></path>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="like-count">
+                                            23
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="nav-pages">
+        <div class="d-flex justify-content-center align-items-center">
+
+            <div class="pages-list">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="pages-list__item previous-page">
+                        <i class="bi bi-chevron-left hover-pointer"></i>
+                    </div>
+                    @for (int z = 0; z < 5; z++)
+                    {
+                        <div class="pages-list__item d-flex justify-content-center align-items-center">
+                            <div class="p-1 d-flex align-items-center justify-content-center">
+                                <div class="list_number">@(z + 1)</div>
+                            </div>
+                        </div>
+                    }
+                    <div class="pages-list__item pages-list__item-end d-flex justify-content-center align-items-center">
+                        <div class="p-2 d-flex align-items-center justify-content-center">...</div>
+                    </div>
+                    <div class="pages-list__item next-page">
+                        <i class="bi bi-chevron-right hover-pointer"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

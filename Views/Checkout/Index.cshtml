@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Thanh Toán";
     Layout = "_SecondaryLayout";
-    var info = (List<ProductModel>)ViewBag.Info;
+    var info = (List<Product>)ViewBag.Info;
     var sellerGroupBy = Model.GroupBy(c => c.TypeProduct.Product!.SellerId);
     double Total_Price_Ship = 0;
     double total_sp = 0;
