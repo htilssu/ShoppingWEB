@@ -279,8 +279,6 @@ create table Bill
     UserId        varchar(255)
         constraint Bill_AspNetUsers_Id_fk
             references AspNetUsers,
-    constraint Bill_TypeProduct_Id_fk
-        foreign key (TypeProductId) references TypeProduct
 )
 go
 
@@ -294,10 +292,7 @@ create table BillItem
             references TypeProduct,
     BillId        varchar(255)
         constraint BillItem_Bill_Id_fk
-            references Bill
-        constraint BillItem_Bill_Id_fk
-            references Bill
-            on delete cascade,
+            references Bill,
     Quantity      int,
     SizeName      varchar(20),
     IsComment     tinyint,
