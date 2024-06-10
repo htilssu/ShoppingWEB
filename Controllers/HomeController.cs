@@ -14,6 +14,7 @@ public class HomeController : Controller
     public HomeController(ShoppingContext context)
     {
         _context = context;
+
     }
 
     public async Task<IActionResult> Index(int? page)

@@ -273,6 +273,7 @@ create table Bill
         constraint Bill_PaymentMethod_Id_fk
             references PaymentMethod,
     Quantity      int,
+    Date          datetime2(0),
     DeliveryId    varchar(255)
         constraint Bill_DeliveryType_Id_fk
             references DeliveryType,
