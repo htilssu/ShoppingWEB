@@ -43,7 +43,7 @@ public static class Extension
         return newText.ToString();
     }
 
-    public static async Task<string> SaveImageAsync(this IFormFile? formFile)
+    public async static Task<string> SaveImageAsync(this IFormFile? formFile)
     {
         var filePath = "";
         if (formFile is { Length: > 0 })
