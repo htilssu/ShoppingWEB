@@ -1,5 +1,5 @@
 # SHOPPING WEB
-## ASP.NET CORE 7
+## ASP.NET CORE
 ### TECHNOLOGY
 - Entity Framework
 - SQL Server
